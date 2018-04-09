@@ -1,0 +1,21 @@
+#OP_name    resname    atom1    atom2
+#------------------------------------------------------------
+# alpha and beta values:
+# From Seelig and Gally Biochemistry 15 (1976) 5199-5204
+# Values taken from Table II in Wohlgemuth et al. Biochemistry 19, 3315-3321 (1980)
+#  
+# g1,2,3 are from:
+# From Gally et al. Biochemistry 1981, 20, 1826-1831
+# Table I
+# 
+# Absolute values, I am not aware of data for signs +/-
+#  
+beta1 POPE C32 H2A   0.0029  0.2
+beta2 POPE C32 H2B   0.0029  0.2
+alpha1 POPE C31 H1A  0.080752  0.2
+alpha2 POPE C31 H1B  0.076832  0.2
+g3_1 POPE C3 HA  -0.19365  0.2
+g3_2 POPE C3 HB  -0.2140    0.2
+g2_1 POPE C2 HX  -0.19835  0.2
+g1_1 POPE C1 HR  -0.138   0.2
+g1_2 POPE C1 HS  0.0  0.2

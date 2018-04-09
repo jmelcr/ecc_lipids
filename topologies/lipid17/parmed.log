@@ -1,0 +1,11 @@
+# Log started on 04/05/2018 [mm/dd/yyyy] at 10:21:02
+# Command line arguments: -p POPS_amber_lipid17_jcions.prmtop
+# Loaded topologies: POPS_amber_lipid17_jcions.prmtop
+help
+writeCoordinates
+writeCoordinates a
+writeFrcmod
+writeOFF
+writeOFF off
+exit
+quit

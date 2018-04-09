@@ -1,0 +1,189 @@
+Force field parameters from POPS_amber_lipid17_jcions.prmtop
+MASS
+cD    12.010
+hL     1.008
+cC    12.010
+oC    16.000
+oS    16.000
+cA    12.010
+hE     1.008
+oT    16.000
+pA    30.970
+hX     1.008
+nA    14.010
+hN     1.008
+oP    16.000
+oO    16.000
+cB    12.010
+hB     1.008
+Na+   22.990
+OW    16.000
+HW     1.008
+
+BOND
+cD-cC    328.300   1.508
+cD-cD    240.000   1.520
+cC-oC    648.000   1.214
+oS-cC    411.300   1.343
+cC-oO    648.000   1.214
+cA-nA    293.600   1.499
+cA-cC    328.300   1.508
+cA-cA    303.100   1.535
+oT-cA    320.000   1.410
+pA-oT    230.000   1.610
+pA-oP    525.000   1.480
+cA-oS    301.500   1.439
+cB-cD    328.300   1.490
+cB-cB    450.000   1.330
+cD-hL    337.300   1.092
+nA-hN    369.000   1.033
+cA-hX    338.700   1.091
+cA-hE    335.900   1.093
+cB-hB    344.300   1.087
+HW-HW    553.000   1.514
+OW-HW    553.000   0.957
+
+ANGLE
+cD-cC-oC     68.030  123.110
+cD-cC-oS     69.260  111.960
+cD-cD-cC     63.790  110.530
+cD-cD-cD     63.210  113.600
+oO-cC-oO     78.170  130.380
+oS-cC-oC     75.930  123.330
+oP-pA-oP    140.000  119.900
+nA-cA-cC     65.070  114.210
+cA-cC-oO     68.030  123.110
+cA-cA-nA     64.450  114.320
+cA-cA-cC     63.790  110.530
+oT-pA-oP    100.000  108.230
+oT-cA-cA     50.000  109.500
+pA-oT-cA    100.000  120.500
+oT-pA-oT     90.000  102.600
+cA-cA-oS     67.780  108.420
+cA-oS-cC     63.630  115.140
+cA-cA-cA     63.210  110.630
+cB-cD-cD     35.500  112.320
+cB-cB-cD     48.520  124.880
+hL-cD-cC     47.200  109.680
+hL-cD-hL     33.500  107.350
+hL-cD-cD     35.700  110.970
+hN-nA-hN     40.520  108.110
+hX-cA-nA     49.020  107.910
+hX-cA-cC     47.230  109.540
+cA-nA-hN     46.190  110.110
+hE-cA-cA     46.360  110.070
+hE-cA-hE     39.180  109.550
+cA-cA-hX     46.020  111.740
+oT-cA-hE     50.000  109.500
+hE-cA-oS     50.840  108.820
+hB-cB-cD     45.660  117.300
+cB-cD-hL     47.030  110.490
+hB-cB-cB     50.040  120.940
+
+DIHE
+cD-cC-oS-cA    1     2.70000000  180.000   2.0    SCEE=1.2 SCNB=2.0
+cD-cD-cC-oC    1    -1.40230000  180.000  -1.0    SCEE=1.2 SCNB=2.0
+cD-cD-cC-oC    1     0.19330000  180.000  -2.0    SCEE=1.2 SCNB=2.0
+cD-cD-cC-oC    1     0.96380000    0.000  -3.0    SCEE=1.2 SCNB=2.0
+cD-cD-cC-oC    1    -0.13530000    0.000  -4.0    SCEE=1.2 SCNB=2.0
+cD-cD-cC-oC    1    -0.01080000    0.000   5.0    SCEE=1.2 SCNB=2.0
+cD-cD-cC-oS    1    -0.53790000  180.000  -1.0    SCEE=1.2 SCNB=2.0
+cD-cD-cC-oS    1     0.23610000  180.000  -2.0    SCEE=1.2 SCNB=2.0
+cD-cD-cC-oS    1     0.81760000    0.000  -3.0    SCEE=1.2 SCNB=2.0
+cD-cD-cC-oS    1     0.09560000    0.000  -4.0    SCEE=1.2 SCNB=2.0
+cD-cD-cC-oS    1    -0.01820000    0.000   5.0    SCEE=1.2 SCNB=2.0
+cD-cD-cD-cC    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+cD-cD-cD-cD    1    -0.07250000  180.000  -1.0    SCEE=1.2 SCNB=2.0
+cD-cD-cD-cD    1     0.01040000  180.000  -2.0    SCEE=1.2 SCNB=2.0
+cD-cD-cD-cD    1     0.08300000    0.000  -3.0    SCEE=1.2 SCNB=2.0
+cD-cD-cD-cD    1     0.19850000    0.000  -4.0    SCEE=1.2 SCNB=2.0
+cD-cD-cD-cD    1     0.16450000    0.000   5.0    SCEE=1.2 SCNB=2.0
+nA-cA-cC-oO    1     0.00000000  180.000   2.0    SCEE=1.2 SCNB=2.0
+cA-oT-pA-oP    1     0.25000000    0.000   3.0    SCEE=1.2 SCNB=2.0
+cA-cA-cC-oO    1     0.00000000  180.000   2.0    SCEE=1.2 SCNB=2.0
+oT-cA-cA-nA    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+oT-cA-cA-cC    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+pA-oT-cA-cA    1     0.38333333    0.000   3.0    SCEE=1.2 SCNB=2.0
+oT-cA-cA-oS    1     1.17500000    0.000  -2.0    SCEE=1.2 SCNB=2.0
+oT-cA-cA-oS    1     0.14400000    0.000   3.0    SCEE=1.2 SCNB=2.0
+oT-pA-oT-cA    1     1.20000000    0.000  -2.0    SCEE=1.2 SCNB=2.0
+oT-pA-oT-cA    1     0.25000000    0.000   3.0    SCEE=1.2 SCNB=2.0
+cA-cA-oS-cC    1     0.80000000  180.000  -1.0    SCEE=1.2 SCNB=2.0
+cA-cA-oS-cC    1     0.38300000    0.000   3.0    SCEE=1.2 SCNB=2.0
+cA-oS-cC-oC    1     1.40000000  180.000  -1.0    SCEE=1.2 SCNB=2.0
+cA-oS-cC-oC    1     2.70000000  180.000   2.0    SCEE=1.2 SCNB=2.0
+cA-cA-cA-oT    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+oS-cA-cA-cA    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+oS-cA-cA-oS    1     1.17500000    0.000  -2.0    SCEE=1.2 SCNB=2.0
+oS-cA-cA-oS    1     0.14400000    0.000   3.0    SCEE=1.2 SCNB=2.0
+cB-cD-cD-cD    1    -0.23600000  180.000  -1.0    SCEE=1.2 SCNB=2.0
+cB-cD-cD-cD    1    -0.11720000  180.000  -2.0    SCEE=1.2 SCNB=2.0
+cB-cD-cD-cD    1     0.15520000    0.000  -3.0    SCEE=1.2 SCNB=2.0
+cB-cD-cD-cD    1     0.05090000    0.000  -4.0    SCEE=1.2 SCNB=2.0
+cB-cD-cD-cD    1     0.01280000    0.000   5.0    SCEE=1.2 SCNB=2.0
+cB-cB-cD-cD    1     0.90680000    0.000  -1.0    SCEE=1.2 SCNB=2.0
+cB-cB-cD-cD    1    -0.05090000    0.000  -2.0    SCEE=1.2 SCNB=2.0
+cB-cB-cD-cD    1    -0.24980000    0.000  -3.0    SCEE=1.2 SCNB=2.0
+cB-cB-cD-cD    1    -0.07040000    0.000  -4.0    SCEE=1.2 SCNB=2.0
+cB-cB-cD-cD    1    -0.21290000    0.000   5.0    SCEE=1.2 SCNB=2.0
+cD-cB-cB-cD    1     0.32040000  180.000  -1.0    SCEE=1.2 SCNB=2.0
+cD-cB-cB-cD    1     4.37700000  180.000  -2.0    SCEE=1.2 SCNB=2.0
+cD-cB-cB-cD    1     0.48210000    0.000  -3.0    SCEE=1.2 SCNB=2.0
+cD-cB-cB-cD    1     0.13650000    0.000  -4.0    SCEE=1.2 SCNB=2.0
+cD-cB-cB-cD    1    -0.26490000    0.000   5.0    SCEE=1.2 SCNB=2.0
+hL-cD-cC-oC    1     0.80000000    0.000  -1.0    SCEE=1.2 SCNB=2.0
+hL-cD-cC-oC    1     0.08000000  180.000   3.0    SCEE=1.2 SCNB=2.0
+hL-cD-cC-oS    1     0.00000000  180.000   2.0    SCEE=1.2 SCNB=2.0
+hL-cD-cD-hL    1     0.15000000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hL-cD-cD-cC    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hL-cD-cD-cD    1     0.16000000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hN-nA-cA-cC    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hX-cA-nA-hN    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hX-cA-cC-oO    1     0.00000000  180.000   2.0    SCEE=1.2 SCNB=2.0
+hE-cA-cA-hX    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hE-cA-cA-nA    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hE-cA-cA-cC    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+cA-cA-nA-hN    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+oT-cA-cA-hX    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+pA-oT-cA-hE    1     0.38333333    0.000   3.0    SCEE=1.2 SCNB=2.0
+hE-cA-cA-oS    1     0.25000000    0.000  -1.0    SCEE=1.2 SCNB=2.0
+hE-cA-cA-oS    1     0.00000000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hE-cA-cA-hE    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hE-cA-cA-oT    1     0.25000000    0.000  -1.0    SCEE=1.2 SCNB=2.0
+hE-cA-cA-oT    1     0.00000000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hE-cA-oS-cC    1     0.38330000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hE-cA-cA-cA    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hB-cB-cD-hL    1     0.00000000    0.000   2.0    SCEE=1.2 SCNB=2.0
+hB-cB-cD-cD    1     0.00000000    0.000   2.0    SCEE=1.2 SCNB=2.0
+cB-cD-cD-hL    1     0.15560000    0.000   3.0    SCEE=1.2 SCNB=2.0
+hB-cB-cB-hB    1     6.65000000  180.000   2.0    SCEE=1.2 SCNB=2.0
+hB-cB-cB-cD    1     6.65000000  180.000   2.0    SCEE=1.2 SCNB=2.0
+cB-cB-cD-hL    1     1.15000000    0.000  -1.0    SCEE=1.2 SCNB=2.0
+cB-cB-cD-hL    1     0.38000000  180.000   3.0    SCEE=1.2 SCNB=2.0
+
+IMPROPER
+cD-oC-cC-oS    10.50000000  180.000   2.0
+cA-oO-cC-oO     1.10000000  180.000   2.0
+cB-cD-cB-hB     1.10000000  180.000   2.0
+
+NONB
+cD    1.90800000   0.10940000
+hL    1.46000000   0.01000000
+cC    1.90800000   0.07000000
+oC    1.65000000   0.14000000
+oS    1.65000000   0.12000000
+cA    1.90800000   0.10940000
+hE    1.38700000   0.01570000
+oT    1.65000000   0.12000000
+pA    2.10000000   0.20000000
+hX    1.10000000   0.01570000
+nA    1.82400000   0.17000000
+hN    0.60000000   0.01570000
+oP    1.65000000   0.14000000
+oO    1.65000000   0.14000000
+cB    1.90800000   0.08600000
+hB    1.25000000   0.00700000
+Na+    1.36900000   0.08743930
+OW    1.76830000   0.15200000
+HW    0.00000000   0.00000000
+

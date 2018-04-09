@@ -1,0 +1,112 @@
+; POPC_GMX.top created by acpype (Rev: 0) on Tue Mar 11 09:53:41 2014
+; Atom types and definitions of Lipid14 
+; adaped to account for electronic polarization through ECC
+;  -> ECC-lipids
+;
+; Last edit 29-Jan 2018 
+; by Josef Melcr
+
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+1               2               yes             0.5     0.8333
+
+[ atomtypes ]
+;name   bond_type     mass     charge   ptype   sigma         epsilon       Amb
+; non-tail atoms - sigma scaled by 0.89:
+; tweaked values
+ oC       oC          0.00000  0.00000   A     0.261657   5.85760e-01 ; EVAL 5 0.293997*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ oO       oO          0.00000  0.00000   A     0.261657   5.85760e-01 ; EVAL 5 0.293997*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ oS       oS          0.00000  0.00000   A     0.261657   5.02080e-01 ; EVAL 5 0.293997*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ oT       oT          0.00000  0.00000   A     0.261657   5.02080e-01 ; EVAL 5 0.293997*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ oP       oP          0.00000  0.00000   A     0.261657   5.85760e-01 ; EVAL 5 0.293997*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ pA       pA          0.00000  0.00000   A     0.333018   8.36800e-01 ; EVAL 5 0.374177*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ nA       nA          0.00000  0.00000   A     0.289250   7.11280e-01 ; EVAL 5 0.325000*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ cC       cC          0.00000  0.00000   A     0.302571   2.92880e-01 ; EVAL 5 0.339967*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ cA       cA          0.00000  0.00000   A     0.302571   4.57730e-01 ; EVAL 5 0.339967*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ hE       hE          0.00000  0.00000   A     0.219950   6.56888e-02 ; EVAL 5 0.247135*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ hX       hX          0.00000  0.00000   A     0.174438   6.56888e-02 ; EVAL 5 0.195998*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ hN       hN          0.00000  0.00000   A     0.0935445  6.56888e-02 ; EVAL 5 0.106908*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+; tweak end
+; lipid-tail atom types
+ cD       cD          0.00000  0.00000   A     3.39967e-01   4.57730e-01 ; 1.91  0.1094
+ hL       hL          0.00000  0.00000   A     2.60142e-01   4.18400e-02 ; 1.46  0.0100
+ cB       cB          0.00000  0.00000   A     3.39967e-01   3.59824e-01 ; 1.91  0.0860
+ hB       hB          0.00000  0.00000   A     2.22725e-01   2.92880e-02 ; 1.25  0.0070
+; water atom types
+ OW           8      16.00    0.0000  A   3.15061e-01  6.36386e-01
+ HW           1       1.008   0.0000  A   0.00000e+00  0.00000e+00 
+ OWT3         8      16.00    0.0000  A   3.15061e-01  6.36386e-01
+ HWT3         1       1.008   0.0000  A   0.00000e+00  0.00000e+00 
+;name  at.num    mass      charge    ptype   sigma     epsilon
+  OW3   8      15.9994    -0.895170    A    0.317427   0.68369  ; DOI: http://dx.doi.org/10.1063/1.4960175 ; OPC3 water Oxygen
+  HW3   1       1.008      0.447585    A    0.0        0.0      ; DOI: http://dx.doi.org/10.1063/1.4960175 ; OPC3 water Hydrogen
+; spc water - use only with spc.itp & settles
+OW_spc       8      15.9994  0.0000  A   3.16557e-01  6.50629e-01
+; v-site in 4-site water models
+MW     0             0.000       D   0.0           0.0
+; tip4p/2005 water extra atomtypes
+;name     mass      charge   ptype    sigma        epsilon
+OWT4   15.9994       0.000       A   0.31589       0.77490
+; OPC4 water extra atomtypes
+OPC4    0.0000  0.0000  A   3.16655e-01  8.903586e-01
+; ECC-water extra atomtypes - work-in-progress model based on TIP4p/2005
+OW_ecc  8     15.99940     0.000       A    3.173598347979e-01  6.262177731687e-01 ; PARM 5 6
+; tip3p-FB water extra atomtypes
+OW_tip3pfb    8     15.99940     0.000       A    0.317796456355  0.652143528104
+HW_tip3pfb    1      1.00800     0.000       A    0.00000e+00  0.00000e+00
+; tip4p-FB water extra atomtypes
+OW_tip4pfb    8     15.99940     0.00000     A    3.16555e-01  7.49279e-01
+HW_tip4pfb    1      1.00800     0.00000     A    0.00000e+00  0.00000e+00
+MW_tip4pfb    0      0.00000     0.00000     D    0.00000e+00  0.00000e+00 ; Same as other virtual sites
+
+
+; additional bond types for PS headgroup taken from Charmm36 (charmmgui)
+
+;     cC     6    12.0110      0.340     A    3.56359487256e-01    2.928800e-01 
+;     oC     8    15.9994     -0.670     A    3.02905564168e-01    5.020800e-01 
+
+[ bondtypes ]
+; parameters taken from Charmm36:
+;    cA     cC     1  1.522000e-01  1.673600e+05
+;    oC     cC     1  1.260000e-01  4.393200e+05
+; parameters from Amber15-FB
+  cC oC         1    1.254229009886e-01   5.291373276441e+05  ; PRM 3 4
+  cA cC         1    1.509124253378e-01   2.301983205526e+05  ; PRM 3 4
+
+;[ pairtypes ]
+;    cC    cA     1  3.47450500075e-01  1.10698234855e-01 
+;    cA    oC     1  3.20723538531e-01  1.44938011577e-01 
+
+[ angletypes ]
+; parameters taken from Charmm36:
+;    cA     cA     cC     5  1.0800000e+02  4.3513600e+02  0.0000000e+00  0.0000000e+00
+;    hX     cA     cC     5  1.0950000e+02  4.1840000e+02  0.0000000e+00  0.0000000e+00
+;    nA     cA     cC     5  1.1000000e+02  3.6568160e+02  0.0000000e+00  0.0000000e+00
+;    oC     cC     cA     5  1.1800000e+02  3.3472000e+02  2.3880000e-01  4.1840000e+04
+;    oC     cC     oC     5  1.2400000e+02  8.3680000e+02  2.2250000e-01  5.8576000e+04
+; parameters from Amber15-FB
+ cC   cA   hX          1   1.105395762561e+02    4.057612020822e+02  ; PRM 4 5
+ nA   cA   cC          1   1.069814478289e+02    5.231241213103e+02  ; PRM 4 5
+ oC   cC   cA          1   1.174017238288e+02    5.879878692820e+02  ; PRM 4 5
+ oC   cC   oC          1   1.257098340802e+02    6.741365670945e+02  ; PRM 4 5
+
+[ dihedraltypes ]
+; parameters taken from Charmm36:
+;    oC     cC    cA    nA     9  1.800000e+02  1.338880e+01      2
+;    X      cA    cC     X     9  1.800000e+02  2.092000e-01      6
+;    oC     X     X     cC     2  0.000000e+00  8.033280e+02
+;    oC     X     X     cA     2  0.000000e+00  8.033280e+02
+; parameters from Amber15-FB
+ X  oC   cC   oC       4      180.00    43.93200     2    
+ X  cC   cA  X         9       0.0      0.00000     0
+; OPLS MacRog parameters
+  cA  cA  cC  oC   3   2.28446   0.00000  -2.28446   0.00000   0.00000   0.00000 
+  hX  cA  cC  oC   3   0.00000   0.00000   0.00000   0.00000   0.00000   0.00000
+  cC  cA  cA  oT   3   2.87441   0.58158   2.09200  -5.54799   0.00000   0.00000
+  cC  cA  cA  hE   3  -0.20920  -0.62760   0.00000   0.83680   0.00000   0.00000
+  nA  cA  cC  oC   3   0.00000   0.00000   0.00000   0.00000   0.00000   0.00000
+; extra dihedrals from MacRog POPS
+  pA  oT  cA  cA   3  -5.62590   2.08175   7.69277   0.01874  -4.16736   0.0     ;
+  pA  oT  cA  hE   3   0.62760   1.88280   0.00000  -2.51040   0.00000   0.00000 ;
+  nA  cA  cA  oT   3   22.054   -21.6956   -9.81734   4.40504   7.47583  -1.83112 ;
+
