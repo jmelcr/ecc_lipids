@@ -11,5 +11,5 @@ as a data source and a tool with analysis scripts.
 
 # published papers
 
-+ [ECC-POPC](https://pubs.acs.org/doi/10.1021/acs.jpcb.7b12510) also available at [Zenodo](https://doi.org/10.5281/zenodo.1203882) 
++ [ECC-POPC](https://pubs.acs.org/doi/10.1021/acs.jpcb.7b12510) also available at [GitHub](https://github.com/ohsOllila/NMRlipids_VI-NewIonModel)
 
