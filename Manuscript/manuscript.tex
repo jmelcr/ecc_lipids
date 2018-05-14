@@ -22,6 +22,7 @@
 \usepackage{csquotes} 
 \usepackage{mhchem} 
 \usepackage{chemfig} 
+\usepackage[obeyFinal]{easy-todo}
  
 %\usepackage{markdown}  
  
@@ -426,20 +427,51 @@ and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS co
 
 Provide density plots and show, where and how the cations bind to the membrane. 
 
-Where do the cations bind? Preferentially to POPS. Discuss further \dots 
+\textbf{Where do the cations bind?} 
+The affinity towards PC and PS lipids and some of their groups was evaluated 
+by counting contacts between the cation and the oxygen atoms of the lipids
+similarly as was done in \cite{melcr18}. 
+The threshold for counting a contact was set to be $0.3 \mathrm{nm}$, 
+which encompasses the first peak of radial distribution function between the cations and the oxygen atoms of the lipids. 
+In Table~\ref{tab:binding}, there are percentages of the membrane-bound calcium population for various membrane moieties. 
+Although the lipid ratio in the membrane is 5~PC:1~PS,
+half of the total population of calcium cations is bound to PS lipids
+with 7\% bound only to them. 
+This corroborates the intrinsincally higher affinity of PS lipids to calcium cations compared to PC lipids. 
+The population analysis also suggests 
+that the calcium cations prefer to reside in the phosphate region of the membrane. 
+Hence, the carboxylate group in PS is coordinated to the cations bound in that region. 
+The increased response of head group order parameters $\alpha$ and $\beta$ of PC 
+in mixed 5~PC:1~PS bilayer compared to pure PC
+is due to higer affinity of the membrane mediated by even a relatively small fraction (1/6) of PS lipids. 
+This is in line with the steep onset of the response of the PS head group order parameters at lower concentrations.
+The complex response of the head group order parameters of PS lipids 
+is due to the confomational change of the carboxylate group that is attracted more towards the phosphate region. 
+In order to examine whether the carboxylate and phosphate groups in PS are bound 
+to the same calcium cation or rather different cations, 
+more detailed analysis is required. 
+\todo{Detailed analysis of the interactions of cations and PC/PS head groups using MSM.}
 
-After validation above, it can be an option to show results also for systems, for which we have no experiments. 
+
  
 \begin{table}[tb!] 
-  \caption{Bulk concentrations of Ca$^{2+}$ (C$_b$), relative surface excess of calcium with respect to water ($\Gamma_{Ca}^{\rm water}$), 
-    and the percetages of Ca$^{2+}$ bound to phosphate or carbonyl oxyges ($r^\mathrm{Ca^{2+}} _\mathrm{PO_4} $ and $r^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}}$) 
-    in different mixed POPC:POPS (5:1) bilayer models. 
-  \label{tab:binding}} 
-  \begin{tabular}{l|c c | c | c c} 
-    model                  & $C_{ion}'$ & $C_{ion}\,/\,\mathrm{mM}$ & $\Gamma_{Ca}^{\rm water} \,/\, \mathrm{nm}^{-2}$  & $r^\mathrm{Ca^{2+}} _\mathrm{PO_4} $ & $r^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} $ \\ 
+  \caption{Bulk concentrations of Ca$^{2+}$ (C$_b$), 
+           and the percentages of Ca$^{2+}$ bound to 
+           either to PC or PS, 
+           to PC or PS without phosphate group,
+           to PC or PS without carboxylate group,
+           to PC and PS at the same time,
+           only to PC, 
+           and only to PS 
+           in a mixed POPC:POPS (5:1) bilayer. 
+          \label{tab:binding}} 
+  \begin{tabular}{l| c | c c c c c c } 
+    model                  & $C_{ion}\,/\,\mathrm{mM}$ & PC+PS  &  PC+PS no PO$_4$ & PC+PS no COO$^-$ & PC-$Ca^{2+}$-PS  & PC & PS  \\ 
     \hline 
-    ECC-POPS               &  tba  &  $tba\pm 10 $  &  $0.?? \pm 0.01 $   &  ??\%  &    ??\%    \\ 
-    Lipid14/Dang           &  tba  &  $tba\pm 10 $  &  $0.?? \pm 0.03 $   &  ??\%  &    ??\%    \\ 
+    ECC-lipids             &  $240\pm 10 $             & 100    &   98-99          & 100              & 43               & 50 &  7  \\
+    \hline 
+    Lipid14/17             &  $280\pm 10 $             & 100    &   ---            & ---              & ---              & ---& --- \\
+    \hline 
   \end{tabular} 
 \end{table} 
  
@@ -476,6 +508,7 @@ After validation above, it can be an option to show results also for systems, fo
 
 Show the successes and possible \emph{limits} of ECC applied on top of various models \cite{melcr18, martinek17, Pluharova2014, kohagen14, kohagen16}. 
 
+After validation above, it can be an option to show results also for systems, for which we have no experiments. 
 
  
  
