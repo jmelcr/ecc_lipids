@@ -3,7 +3,7 @@
 Tracking the development of ECC-lipids - 
 classical MD lipid models with 
 implicitly embedded electronic polarization
-through Electronic Continuum Correction ([ECC](TODO:LINK TO MY SITE)).
+through Electronic Continuum Correction ([ECC](https://jmelcr.github.io/blog/ECC-post)).
 
 Directory structure and working style is highly inspired by 
 open-collaboration [NMRLipids projects](https://nmrlipids.blogspot.cz/),
