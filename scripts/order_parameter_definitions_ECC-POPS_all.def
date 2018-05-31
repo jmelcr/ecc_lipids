@@ -17,36 +17,36 @@ g3_2          POPS    C1    HB      -0.196   0.02
 gamma1        POPS    N     HN1   
 gamma2        POPS    N     HN2   
 gamma3        POPS    N     HN3  
-oleoyl_C2a POPS    C22   H2R   0.12  0.02
-oleoyl_C2b POPS    C22   H2S   0.12  0.02
-oleoyl_C3a POPS    C23   H3R   0.20  0.02
-oleoyl_C3b POPS    C23   H3S   0.20  0.02
-oleoyl_C4a POPS    C24   H4R   0.20  0.02
-oleoyl_C4b POPS    C24   H4S   0.20  0.02
-oleoyl_C5a POPS    C25   H5R   0.22  0.02
-oleoyl_C5b POPS    C25   H5S   0.22  0.02
-oleoyl_C6a POPS    C26   H6R   0.20  0.02
-oleoyl_C6b POPS    C26   H6S   0.20  0.02
-oleoyl_C7a POPS    C27   H7R   0.17  0.02
-oleoyl_C7b POPS    C27   H7S   0.17  0.02
-oleoyl_C8a POPS    C28   H8R   0.12  0.02
-oleoyl_C8b POPS    C28   H8S   0.12  0.02
-oleoyl_C9a POPS    C29   H91   0.12  0.02
-oleoyl_C10a POPS   C210  H101  0.00  0.02
-oleoyl_C11a POPS   C211  H11R  0.07  0.02
-oleoyl_C11b POPS   C211  H11S  0.07  0.02
-oleoyl_C12a POPS   C212  H12R  0.12  0.02
-oleoyl_C12b POPS   C212  H12S  0.12  0.02
-oleoyl_C13a POPS   C213  H13R  0.12  0.02
-oleoyl_C13b POPS   C213  H13S  0.12  0.02
-oleoyl_C14a POPS   C214  H14R  0.10  0.02
-oleoyl_C14b POPS   C214  H14S  0.10  0.02
-oleoyl_C15a POPS   C215  H15R  0.10  0.02
-oleoyl_C15b POPS   C215  H15S  0.10  0.02
-oleoyl_C16a POPS   C216  H16R  0.07  0.02
-oleoyl_C16b POPS   C216  H16S  0.07  0.02
-oleoyl_C17a POPS   C217  H17R  0.00  0.02
-oleoyl_C17b POPS   C217  H17S  0.00  0.02
+oleoyl_C2a POPS    C22   H2R   -0.12  0.02
+oleoyl_C2b POPS    C22   H2S   -0.12  0.02
+oleoyl_C3a POPS    C23   H3R   -0.20  0.02
+oleoyl_C3b POPS    C23   H3S   -0.20  0.02
+oleoyl_C4a POPS    C24   H4R   -0.20  0.02
+oleoyl_C4b POPS    C24   H4S   -0.20  0.02
+oleoyl_C5a POPS    C25   H5R   -0.22  0.02
+oleoyl_C5b POPS    C25   H5S   -0.22  0.02
+oleoyl_C6a POPS    C26   H6R   -0.20  0.02
+oleoyl_C6b POPS    C26   H6S   -0.20  0.02
+oleoyl_C7a POPS    C27   H7R   -0.17  0.02
+oleoyl_C7b POPS    C27   H7S   -0.17  0.02
+oleoyl_C8a POPS    C28   H8R   -0.12  0.02
+oleoyl_C8b POPS    C28   H8S   -0.12  0.02
+oleoyl_C9a POPS    C29   H91   -0.12  0.02
+oleoyl_C10a POPS   C210  H101  -0.00  0.02
+oleoyl_C11a POPS   C211  H11R  -0.07  0.02
+oleoyl_C11b POPS   C211  H11S  -0.07  0.02
+oleoyl_C12a POPS   C212  H12R  -0.12  0.02
+oleoyl_C12b POPS   C212  H12S  -0.12  0.02
+oleoyl_C13a POPS   C213  H13R  -0.12  0.02
+oleoyl_C13b POPS   C213  H13S  -0.12  0.02
+oleoyl_C14a POPS   C214  H14R  -0.10  0.02
+oleoyl_C14b POPS   C214  H14S  -0.10  0.02
+oleoyl_C15a POPS   C215  H15R  -0.10  0.02
+oleoyl_C15b POPS   C215  H15S  -0.10  0.02
+oleoyl_C16a POPS   C216  H16R  -0.07  0.02
+oleoyl_C16b POPS   C216  H16S  -0.07  0.02
+oleoyl_C17a POPS   C217  H17R  -0.00  0.02
+oleoyl_C17b POPS   C217  H17S  -0.00  0.02
 palmitoyl_C2a  POPS    C32   H2X   
 palmitoyl_C2b  POPS    C32   H2Y   
 palmitoyl_C3a  POPS    C33   H3X    -0.20  0.02
