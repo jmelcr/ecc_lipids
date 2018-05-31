@@ -1,6 +1,7 @@
 # OP_name    resname    atom1    atom2    OP_mean   OP_stddev   OP_err.est. 95% 
 #--------------------------------------------------------------------------------------------
 # experimental values by Tiago Ferriera, only g1 values are from DOPS from e.coli as in Match repo
+#   - tails have been measured in a crude way, the error is really around 0.02
 #--------------------------------------------------------------------------------------------
 alpha1        POPS    C11   H11A     0.09    0.02
 alpha1_vector POPS    C11   H11A     
