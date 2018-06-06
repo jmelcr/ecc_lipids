@@ -17,6 +17,10 @@ g3_2          POPS    C1    HB      -0.196   0.02
 gamma1        POPS    N     HN1   
 gamma2        POPS    N     HN2   
 gamma3        POPS    N     HN3  
+carboxylate_vector   POPS    C12   C13 
+carbonyl_sn1_vector  POPS    C31   O32 
+carbonyl_sn2_vector  POPS    C21   O22 
+PN_vector            POPS    P     N   
 oleoyl_C2a POPS    C22   H2R   -0.12  0.02
 oleoyl_C2b POPS    C22   H2S   -0.12  0.02
 oleoyl_C3a POPS    C23   H3R   -0.20  0.02
