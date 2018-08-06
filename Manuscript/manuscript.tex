@@ -12,9 +12,21 @@
 %% extensions are not currently available on the ACS conversion 
 %% servers. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%% Workaround for malfunctioning textsuperscript with pdfx and T1 encoding
+\let\tmpa\textsuperscript
+\DeclareTextCommandDefault{\textsuperscript}{\tmpa}
+
+\usepackage[x11names]{xcolor}  % typesetting in color
+%% Generate PDF/A-2u
+\usepackage[a-2u]{pdfx}
  
+\usepackage[super]{natbib}         % citation style AUTHOR (YEAR), or AUTHOR [NUMBER]
+
+\usepackage{achemso}  
 \usepackage{rotating}  
-\usepackage{times} 
+%\usepackage{times} 
+%\usepackage{lmodern}    %% Prefer Latin Modern fonts
 \usepackage{graphicx} 
 \usepackage{setspace} 
 \usepackage{amsmath} 
@@ -23,9 +35,25 @@
 \usepackage{mhchem} 
 \usepackage{chemfig} 
 \usepackage[obeyFinal]{easy-todo}
+\usepackage[english]{babel}
  
+\usepackage{subfig}
+\usepackage{dcolumn}        % improved alignment of table columns
+\usepackage{booktabs}       % improved horizontal lines in tables
+\usepackage{paralist}       % improved enumerate and itemize
+
+%% Character encoding: usually latin2, cp1250 or utf8:
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
 %\usepackage{markdown}  
  
+%% The hyperref package for clickable links in PDF and also for storing
+%% metadata to PDF (including the table of contents).
+%% Most settings are pre-set by the pdfx package.
+\hypersetup{unicode}
+\hypersetup{breaklinks=true}
+\hypersetup{colorlinks,allcolors=DodgerBlue4}
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% If issues arise when submitting your manuscript, you may want to 
@@ -40,8 +68,14 @@
 %% when typesetting). 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \newcommand*\mycommand[1]{\texttt{\emph{#1}}} 
+%%% Custom variables
+% width suitable for fitting into a column in 1-column page layout
 \newlength{\figwidth}
-\setlength{\figwidth}{8 cm}
+\setlength{\figwidth}{9 cm} 
+\newlength{\figwidthsmall}
+\setlength{\figwidthsmall}{6 cm} 
+\newlength{\figwidthfull}
+\setlength{\figwidthfull}{14 cm} 
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -172,9 +206,16 @@ separate page at the end of the document.
  
  
 \begin{abstract} 
+	\emph{Adapt abstract to the final message: properties of POPS-containing bilayers -or- ECC-concept applicability?}
+
 Binding affinities and stoichiometries of sodium and calcium ions to phospholipid bilayers are of paramount significance in the properties and functionality of cellular membranes. Current estimates of binding affinities and stoichiometries of cations are, however, controversial due to limitations in the available experimental and theoretical methods. Experimentally one can assess these parameters by titrating several membrane properties as a function of the ion concentration. However, the interpretation of the experiments relies on theoretical models, as direct molecular information is not available. 
+
 Classical molecular dynamics (MD) simulations provide details of the ion binding process with atomistic resolution, therefore offering all the necessary information to interpret experimental data without the need to resort to over-simplified models. However, the accuracy of the currently available lipid models when interacting with ions is not sufficient for such interpretation \cite{catte16}. Recently, we have improved the binding details of sodium and calcium ions to the 1-Palmitoyl-2-oleoyl-phosphatidylcholine (POPC) bilayer by implicitly including electronic polarization as a mean field correction, known as the electronic continuum correction (ECC). Our improved ECC-POPC model reproduces not only the experimentally measured structural parameters for the ion-free membrane, but also improves significantly the response of lipid head group to a bound positive charge, and the binding affinities of sodium and calcium ions. \cite{melcr18}
-We are now extending our work to other lipid membranes composed of larger varieties of different biologically relevant lipids. In particular, we focus our attention on membranes with phosphatidylethanolamine (PE) and negatively charged phosphatidylserine (PS). We compare available NMR and x-ray experiments with MD simulations to obtain atomistic-resolution picture of the interactions between cations and phospholipid membranes. Our preliminary results indicate that electronic polarization is a non-negligable interaction, which dramatically improves the description of cation binding to the membranes. 
+
+We are now extending our work to other lipid membranes composed of larger varieties of different biologically relevant lipids. In particular, we focus our attention on membranes with 
+	%phosphatidylethanolamine (PE) and 
+	negatively charged phosphatidylserine (PS) lipids. 
+	We compare available NMR and x-ray experiments with MD simulations to obtain atomistic-resolution picture of the interactions between cations and phospholipid membranes. Our results indicate that electronic polarization is a non-negligable interaction, which dramatically improves the description of cation binding to phospholipid membranes. 
 \end{abstract} 
  
  
@@ -203,16 +244,103 @@ We are now extending our work to other lipid membranes composed of larger variet
 \section{Methods} 
  
 \subsection{Electronic continuum correction for lipid bilayers}\label{section:ecc} 
-This section may not be required, we may just cite ECC-POPS 
-and put a short paragraph describing what we did on POPS. 
 
-Compared to ECC-POPC model \cite{melcr18}, 
-which used used a scaling factor $f_q = 0.8$ for all charges but lipid tails,
-this model, ECC-POPS, has to adopt a scaling factor $f_q = 0.75$ 
-as it has non-zero total charge in line with ECC theory. \cite{leontyev09}
-Hence, electronic continuum correction of POPS 
-has the same characteristics as for cations and anions, 
-denoted as ECC-ions \cite{martinek17, Pluharova2014, kohagen14, kohagen16}. 
+\emph{ Directly taken from my thesis.}
+
+The lack of electronic polarizability in classical MD simulations
+has been considered a serious issue since the early days of the modeling of lipid bilayers. 
+% the commented text on polarizability in this section comes from \citep{huang2017mapping}
+There exist two main approaches for the explicit representation of electronic polarizability -- atomic induced dipoles and Drude oscillators.
+%The AMOEBA FF adopts the point induced dipole model in which each atom carries an induced dipole moment determined by the electric field and its atomic polarizability. 
+%Permanent dipole and quadrupoles are also assigned to each atomic site for a more accurate description of electrostatic interactions. 
+The induced dipole approach models the polarizability through a point dipole moment on each atom.
+Such an electric dipole is induced by the acting electric field proportionally to its polarizability. 
+This model is implemented in the widely adopted force field AMOEBA \citep{amoeba06, amoeba10, amoeba13}.
+
+%The Drude FF adopts the classical Drude oscillator model where auxiliary charges (Drude oscillators or particles) are attached to non-hydrogen atoms with harmonic springs, and the displacement of the Drude particle relative to its parent atom represents the response to the external electric field. 
+%Virtual particles representative of lone pairs are included in the Drude FF to improve the treatment of electrostatic interactions typically involving hydrogen bond acceptors.
+%The charge distribution between a Drude particle and its parent atom is a finite difference representation of a dipole moment. 
+%Similarly, lone pairs can be considered as real space representations of permanent multipoles. 
+%Such analogy between the classical Drude oscillator model and the multipole and induced dipole (MPID) model suggests that in theory one can interconvert polarizable FFs between the two models. 
+The classical Drude oscillator model is inspired by a classical representation of a lone pair of electrons. 
+It uses an auxiliary charge,
+also termed Drude oscillator or Drude particle, 
+which is attached to each atom through a harmonic spring.
+The displacement of the Drude particle represents the induced polarization proportionally to the acting electric field,
+as implemented for example in the Drude force field \citep{lemkul2016empirical}. 
+
+%In this work, we convert the Drude polarizable force field from its original classical Drude oscillator formalism onto a permanent multipole and induced dipole formalism, which we refer to as MPID. 
+%We show that a direct mapping without any reparametrization can transfer the Drude FF into the MPID FF, yielding a similar level of agreement as the Drude FF in reproducing condensed phase properties of organic liquids, crystals, and interfaces. 
+%Our results thus also serve as an additional validation of these novel simulation algorithms.
+Although the two approaches, 
+the induced dipole model and the classical Drude oscillator model, 
+are very different in how they represent polarizability in simulations,
+it was shown that the classical Drude oscillator formalism can be converted to the induced dipole formalism 
+proving the two methods to be equivalent. \citep{huang2017mapping}
+From the point of view of lipids, however, the classical models with fixed charges and no explicit polarizability that are currently available 
+provide comparable accuracy at a fraction of the computational cost of the models with explicit polarization. \citep{lucas12,chowdhary13} 
+
+%The effects of polarization from rather computationally demanding simulations with explicit models 
+%can be implemented using an implicit model of polarization. 
+Instead of the computationally demanding explicit polarization approach, 
+electronic polarization can also be accounted for implicitly.
+Such an implicit mean field model of electronic polarizability 
+%was developed by \citet{leontyev09} under the name Molecular Dynamics in Electronic Continuum, MDEC. 
+termed Electronic continuum correction (ECC) 
+was first suggested by \citet{leontyev09}, 
+and was then systematically applied to solutions of ions by \citet{Pluharova2014, kohagen14, kohagen16, martinek17}. 
+Through a comparison of neutron scattering and/or \emph{ab-initio} molecular dynamics data with classical MD simulations, 
+the authors developed an array of models for cations and anions, termed here as ECC-ions,
+which provide realistic structures even for concentrated solutions of both monovalent and divalent cations. 
+%The term Electronic continuum correction, ECC, originates in the works by \citet{Pluharova2014, kohagen14, kohagen16, martinek17},
+%where the rigorously developed theory by \citet{leontyev14} was systematicaly applied to solutions of ions.
+%that use ECC to represent electronic polarizability. 
+
+%Electronic continuum correction (ECC) 
+In ECC, a system of polarizable particles is represented 
+with an equivalent system of particles with fixed charges. %\citep{leontyev09, leontyev10, leontyev11, leontyev14}
+%including the effects of electronic polarization \emph{implicitly} in a mean-field way. 
+This can be done by a simple transform of the partial charges,
+which does not change the form of the empirical force field in Equation~\ref{eq:amber}, 
+providing the effects of the electronic polarization in a mean field way at no additional computational cost. 
+Although this is technically similar to the phenomenological scaling of partial charges 
+applied in earlier studies of aqueous solutions or ionic liquids \citep{jonsson86,egberts94,beichel14},
+%where also other possible effects (e.g. charge transfer) were considered,
+ECC is a physically well justified and rigorously derived model \citep{leontyev09, leontyev10, leontyev11, leontyev14}.
+Assuming that the electronic polarizability of electrons is approximately constant in biological solutions, 
+it was shown by \citet{leontyev11} that the electrostatic interactions between atoms 
+are screened like in a dielectric continuum 
+with an electronic dielectric constant, $\epsilon _{el}$, 
+also known as the high frequency dielectric constant. 
+This can be formally written as
+\begin{equation}  \label{eq:coulomb}
+   %U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{r_{ij}} + \frac{1}{2} \displaystyle \sum ^N _{i,j=1} U ^{dip} _{ij} - \displaystyle \sum ^N _{i=1} E^q(r_i) d_i  \propto  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q^{ECC}_i q^{ECC}_j}{r_{ij}} 
+   %U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{r_{ij}} + \frac{1}{2} \displaystyle \sum ^N _{i,j=1} U ^{dip-dip} _{ij} - \displaystyle \sum ^N _{i=1} U^{q-dip}_i  \propto  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{\frac{q_i}{\sqrt{\epsilon _{el}}} \frac{q_j}{\sqrt{\epsilon _{el}}}}{r_{ij}}  , 
+   U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{\frac{q_i}{\sqrt{\epsilon _{el}}} \frac{q_j}{\sqrt{\epsilon _{el}}}}{r_{ij}}  , 
+\end{equation} 
+where $q_i$ is the point charge of the particle $i$,
+and $r_{ij}$ are the distances between particles $i$ and $j$.
+%$U^{dip-dip} _{ij}$ represent the interactions between induced dipoles and their polarization energies,
+%and the terms $U^{q-dip} _i$ are the interactions between point charges and induced dipoles. 
+It naturally follows from the above equation that 
+embedding all atoms into a dielectric continuum 
+is equivalent to a formal scaling of the atomic point charges 
+\begin{equation}  \label{eq:scaling}
+ q_i ^{ECC} = \frac{q_i}{\sqrt{\epsilon _{el}}} ,
+\end{equation} 
+where $q_i$ and $q_i^{ECC}$ are respectively the original partial charges and the scaled charges, 
+which represent the effects of the electronic polarization. 
+Given that the  high frequency dielectric constant of water is 1.78 (i.e., the square of the refraction index of 1.33), 
+the scaling factor for ions in water is $\approx 0.75$. 
+
+It is important to note that the value of the high frequency dielectric constant  
+is around 2 for almost any biologically relevant environment \citep{leontyev11}. 
+This means that even interfaces like biological membranes do not contain discontinuities of the electronic continuum. 
+The dielectric discontinuity in a lipid bilayer thus arises only 
+from the orientational polarization of the molecules, which is accounted for explicitly in standard MD simulations.  
+Therefore, the same correction for the electronic polarizability can be  
+applied throughout the lipid bilayer/aqueous solution interface. 
+
  
  
  
@@ -245,13 +373,9 @@ Scattering form factors validate the dimensions of the lipid bilayer (i.e., the 
 
 General simulation setup.
  
-\subsubsection{Simulations of POPS:POPS bilayers with aqueous ions} 
 
-Any specifics for simulations with cations.
+Any specifics for simulations with aqueous cations.
  
- 
- 
-\subsubsection{Simulations of POPS:POPS bilayers with anionic/cationic surfactants/peptides} 
 
 Any specifics for simulations with anionic/cationinc surfactants/peptides. 
 e.g. where the parameters for them came from. 
@@ -268,146 +392,139 @@ e.g. where the parameters for them came from.
  
 \subsection{Structural parameters of a pure ECC-POPS model membrane: Agreement with experiments} 
  
+
 \begin{figure}[tb!] 
   \centering 
-  \includegraphics[width=\figwidth]{../Fig/order_parameters_actual_pure-POPS.pdf} \\
-  \includegraphics[width=0.7\figwidth]{../Fig/form-f_l17-ecc-pops-exp_compar.pdf} 
-  \includegraphics[width=0.55 \figwidth]{../Fig/lipids_chemfig.pdf} 
-  \caption{\label{simVSexpNOions} 
-    X-ray scattering form factors from simulations with the Lipid17 \cite{lipid17-future} and 
-    the ECC-POPS models compared with experiments~\cite{SDP-CHARMM36_comparison_paper_Samuli-knows} at 298~K. 
-    The disagreements between ECC-POPS model and experiment 
-    may come from an intrinsincally incorrect structure of the head group (and, hence, electron density in the region), 
-    however, lipid packing and overall membrane properties 
-    may be still caputured well enough -- after considering areas per lipid reported in Table~\ref{tab:apls}.  \\
-    Order parameters of POPS head group, glycerol backbone and acyl chains  
-    from simulations with the Lipid17 \cite{lipid17-future} and the ECC-POPS models 
-    compared with \emph{experiments at 300~K (check and change)}. 
-    Open/closed symbols are used for palmitoyl/oleoyl chains of POPS. \\
-    The chemical structure of POPS and the labeling of the carbon segments. 
+  \includegraphics[width=\figwidth]{../img/ecc_pops/Order-parameters_form-factors_exp-L17-ECC-lipids.pdf}
+  \includegraphics[width=\figwidth]{../img/ecc_pops/pops_chemfig.pdf} 
+\hfill
+  \caption{\label{simVSexpNOions_POPS} 
+    Top: X-ray scattering form factors from simulations with the Lipid17 \citep{lipid17-future} and 
+    the ECC-POPS models compared with experiments~\citep{kucerka14} at 298~K. 
+    Middle: Order parameters of POPS head group, glycerol backbone and acyl chains  
+    from simulations with the Lipid17 \citep{lipid17-future} and the ECC-POPS models 
+    compared with experiments at 298~K. \citep{nmrlipids_proj4}
+    Open/closed symbols are used for palmitoyl/oleoyl chains of POPS. 
+    Bottom: The chemical structure of POPS and the labeling of the carbon segments. 
   }  
 \end{figure} 
  
+
+
 \begin{table}[tb!] 
-  \caption{Values of the area per lipid (APL) of POPS bilayers with only \ce{Na^+} counterions. \label{tab:apls} 
-  } 
+\centering
+  \caption{Values of the area per lipid (APL) of POPS bilayers 
+	   at 298~K with only \ce{Na^+} counterions and no additional ions. \label{tab:apls} } 
   \begin{tabular}{l|c c} 
-    model          & APL (\AA$^2$)   & Temperature [K] \\ 
+%    \multicolumn{3}{c}{POPC} \\
+%    model          & APL / Å$^2$   & $T$ / K  \\ 
+%    \hline 
+%    Lipid14 POPC \citep{melcr18}    & 65.1$\pm$ 0.6  &  300 \\ 
+%    Lipid14 POPC \citep{dickson14}  & 65.6$\pm$ 0.5  &  303 \\ 
+%    \hline 
+%    ECC-POPC     \citep{melcr18}    & 63.2$\pm$ 0.6  &  300       \\ 
+%    \hline 
+%    experiment (SDP model) \citep{kucerka11} & 64.3  &  303    \\ 
+%    \hline 
+%    \multicolumn{3}{c}{} \\
+%    \multicolumn{3}{c}{POPE} \\
+%    model          & APL / Å$^2$   & $T$ / K  \\ 
+%    \hline 
+%    ECC-POPE                 & 56.7$\pm$ 0.8  &  298 \\ 
+%    \hline 
+%    experiment   \citep{parsegian89} & 56.6  &  310    \\ 
+%    experiment   \citep{rappolt03}   & 59--61 &  303--313  \\ 
+%    \hline 
+%    \multicolumn{3}{c}{} \\
+    \multicolumn{3}{c}{POPS} \\
+    model          & APL / Å$^2$   & $T$ / K  \\ 
     \hline 
-    Lipid14                   & 53.5$\pm$ 0.8  &  298 \\ 
+    Lipid17 POPS              & 53.5$\pm$ 0.8  &  298 \\ 
     \hline 
     ECC-POPS                & 60.3$\pm$ 0.6  &  298       \\ 
     \hline 
-    experiment \cite{SDP-CHARMM36_comparison_paper_Samuli-knows} & 62.3  &  298    \\ 
+    experiment (SDP model) \citep{kucerka14} & 62.3  &  298    \\ 
     \hline 
   \end{tabular} 
 \end{table} 
  
  
+We compared X-ray scattering form factors and NMR order parameters of bilayers
+in pure water without any ions (or only counter ions)
+from simulations and experiments
+as the first step in the assessment of the quality of the model. 
+The experimental X-ray scattering form factors 
+of a bilayer are well reproduced for all lipids employing the presented ECC-lipids model 
+(see Figs.~\ref{fig:simVSexpNOions}, \ref{simVSexpNOions_POPE} and \ref{simVSexpNOions_POPS}). 
+
+The area per lipid is often used as a relatively simple structural parameter reporting on the bilayer properties and the packing of lipids. 
+In experiments, modeling is used on top of the scattering factors to obtain it \citep{kucerka14}. 
+From simulations, this property is easily extracted. 
+We compare the values from experiments and simulations in Table~\ref{tab:apls}. 
+
+
+While the agreement between the scattering form factors 
+from the simulation of a pure POPS bilayer and experiment 
+are excellent (Fig.~\ref{simVSexpNOions_POPS}),
+there is a non-negligible difference between the values of the area per lipid in Table~\ref{tab:apls}. 
+Since both values are derived from the scattering form factors through modeling of the electron density of the bilayer,
+we cannot decide, which of the values is more reliable. 
+In general, we can conclude that ECC-lipids
+%the presented lipid models with ECC-lipids 
+reproduce the experimental structural parameters of the lipid bilayers 
+with a comparable accuracy to existing state-of-the-art lipid models~\citep{botan15, ollila16, Pluhackova2016}. 
+ 
+The head group and acyl chain order parameters within ECC-lipids
+are in general in a good agreement with the experimental values 
+as shown in Fig. \ref{simVSexpNOions_POPS}. 
+The acyl chain order parameters in particular are almost all within the experimental error bars.
+The order parameters of the head groups are at an accuracy comparable to 
+other currently available classical models of lipids \citep{botan15, catte16, Pluhackova2016}. 
+
+The head group order parameters $\alpha$ and $\beta$ are highly relevant for this work,
+as they are being used in the electrometer concept \cite{altenbach84, catte16, melcr18}.
+For POPC in pure water, the order parameter $\beta$ agrees well with the experiment, 
+while the order parameter $\alpha$ is somewhat lower. 
+In the case of POPS, the situation is a bit more complicated
+compared to POPC as the order parameter $\alpha$ exhibits a notable forking (see Fig.~\ref{simVSexpNOions_POPS}).
+One of the order parameters of ECC-POPS, $\alpha_1$, agrees well with the experiment, 
+while the other, $\alpha_2$, adopts a higher value underestimating the experimentally reported forking. 
+There is only one order parameter $\beta$ in POPS, 
+which has a higher value closer to zero in the ECC-lipids model than in experiment. 
+Such a feature suggests that the model overestimates the orientational freedom of its head group. 
 
  
  
-\subsection{Electrometer concept in negatively charged membranes with various cations} 
  
-Preliminary results are plotted in the figures in this section. 
-Beware! -- the y-axis scales are variable!
-Colours:
-\begin{itemize}
-  \item Red -- ECC-lipids, ECC-ions
-  \item Blue -- Lipid14/17, Dang ions
-\end{itemize}
+\subsection{Electrometer concept: cationic and anionic amphiphilic molecules} 
+ 
 
 Changes of the lipid bilayer head group order parameters extracted from simulations and 
-experiments \cite{roux90} are shown in Figs.~\ref{fig:delta_ordPar_KCl}, \ref{fig:delta_ordPar_NaCl} 
-and~\ref{fig:delta_ordPar_CaCl} as functions of KCl, NaCl or CaCl$_2$ concentrations,
+experiments \cite{roux90} are shown in Figs.~\ref{fig:delta_ordPar_KCl_PCPS}, \ref{fig:delta_ordPar_NaCl_PCPS} 
+and~\ref{fig:delta_ordPar_CaC_PCPS} as functions of KCl, NaCl or CaCl$_2$ concentrations,
 and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS content. 
+and in Figs.~\ref{OrderParameterCHANGESsurf} as a function of the content of dihexadecylammonium bromide, a cationic amphiphile. 
 
-
-
-% ============================== 
-% ==  ECC-lipids plots ========= 
-% ==     and           ========= 
-% ==  Lipid14/17 plots ========= 
-% ============================== 
-\begin{figure}[htb!] 
+\begin{figure}[tb!] 
   \centering 
-  \includegraphics[width=\figwidth]{../Fig/l17/order_parameters_changes_A-B_POPC_kcl.pdf} 
-  \includegraphics[width=\figwidth]{../Fig/l17/order_parameters_changes_A-B_POPS_kcl.pdf} 
-  \caption{\label{fig:delta_ordPar_KCl_l17} 
-    Changes of the head group order parameters of a POPC:POPS 5:1 bilayer as a function of KCl concentration 
-    in bulk ($C_{ion}$) from simulations with different force fields at 298 K together with  
+  \includegraphics[width=\figwidth]{../img/ecc_popc/PN_angle_OrdPars-A-B_L14-ECCL17_q80_sig89_surf.pdf} 
+  \caption{\label{OrderParameterCHANGESsurf} 
+    Changes of the head group order parameters $\alpha$, $\beta$ and P-N vector orientation as a function of 
+    the molar fraction of a cationic surfactant dihexadecyldimethylammonium in a POPC bilayer 
+    from simulations and experiments \citep{scherer89} at 313 K.
+    Image reproduced from \cite{melcr18}.
   } 
-\end{figure} 
- 
-\begin{figure}[htb!] 
-  \centering 
-  \includegraphics[width=\figwidth]{../Fig/order_parameters_changes_A-B_POPC_kcl.pdf} 
-  \includegraphics[width=\figwidth]{../Fig/order_parameters_changes_A-B_POPS_kcl.pdf} 
-  \caption{\label{fig:delta_ordPar_KCl} 
-    Changes of the head group order parameters of a POPC:POPS 5:1 bilayer as a function of KCl concentration 
-    in bulk ($C_{ion}$) from simulations with different force fields at 298 K together with  
-  } 
-\end{figure} 
- 
- 
-\begin{figure}[htb!] 
-  \centering 
-  \includegraphics[width=\figwidth]{../Fig/l17/order_parameters_changes_A-B_POPC_nacl.pdf} 
-  \includegraphics[width=\figwidth]{../Fig/l17/order_parameters_changes_A-B_POPS_nacl.pdf} 
-  \caption{\label{fig:delta_ordPar_NaCl_l17} 
-    Changes of the head group order parameters of a POPC:POPS 5:1 bilayer as a function of NaCl concentration 
-    in bulk ($C_{ion}$) from simulations with different force fields at 298 K together with  
-  } 
-\end{figure} 
-
-\begin{figure}[htb!] 
-  \centering 
-  \includegraphics[width=\figwidth]{../Fig/order_parameters_changes_A-B_POPC_nacl.pdf} 
-  \includegraphics[width=\figwidth]{../Fig/order_parameters_changes_A-B_POPS_nacl.pdf} 
-  \caption{\label{fig:delta_ordPar_NaCl} 
-    Changes of the head group order parameters of a POPC:POPS 5:1 bilayer as a function of NaCl concentration 
-    in bulk ($C_{ion}$) from simulations with different force fields at 298 K together with  
-  } 
-\end{figure} 
- 
-
-\begin{figure}[htb!] 
-  \centering 
-  \includegraphics[width=\figwidth]{../Fig/l17/order_parameters_changes_A-B_POPC_cacl.pdf} 
-  \includegraphics[width=\figwidth]{../Fig/l17/order_parameters_changes_A-B_POPS_cacl.pdf} 
-  \caption{\label{fig:delta_ordPar_CaCl_l17} 
-    Changes of the head group order parameters of a POPC:POPS 5:1 bilayer as a function of CaCl concentration 
-    in bulk ($C_{ion}$) from simulations with different force fields at 298 K together with  
-  } 
-\end{figure} 
- 
-\begin{figure}[htb!] 
-  \centering 
-  \includegraphics[width=\figwidth]{../Fig/order_parameters_changes_A-B_POPC_cacl.pdf} 
-  \includegraphics[width=\figwidth]{../Fig/order_parameters_changes_A-B_POPS_cacl.pdf} 
-  \caption{\label{fig:delta_ordPar_CaCl} 
-    Changes of the head group order parameters of a POPC:POPS 5:1 bilayer as a function of CaCl concentration 
-    in bulk ($C_{ion}$) from simulations with different force fields at 298 K together with  
-  } 
+\todo{Combine with Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} into a single plot.}
 \end{figure} 
 
 
 
 \begin{figure}[htb!] 
   \centering 
-  \includegraphics[width=\figwidth]{../Fig/l17/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
-  \includegraphics[width=\figwidth]{../Fig/l17/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
-  \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix_l17} 
-    Changes of the head group order parameters of a POPC:POPS 5:1 bilayer as a function of PS content.
-    Experimental points have inherent systematic error, as they come from different experiments.
-    A complete series of points can be found (?) in \cite{roux90} -- which is to be added to the plot.
-  } 
-\end{figure} 
- 
-\begin{figure}[htb!] 
-  \centering 
-  \includegraphics[width=\figwidth]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
-  \includegraphics[width=\figwidth]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
+  \includegraphics[width=\figwidthsmall]{../Fig/l17/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
+  \includegraphics[width=\figwidthsmall]{../Fig/l17/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
+  \includegraphics[width=\figwidthsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
+  \includegraphics[width=\figwidthsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
   \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix} 
     Changes of the head group order parameters of a POPC:POPS 5:1 bilayer as a function of PS content
     Experimental points have inherent systematic error, as they come from different experiments.
@@ -417,95 +534,470 @@ and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS co
 
 
 
+
  
  
  
 
 
-\subsection{Molecular interaction and binding affinities of K$^+$, Na$^+$ or Ca$^{2+}$  cations to the mixed POPC:POPS (5:1) membrane} 
+\subsection{Molecular interaction and binding affinities of K$^+$ and Na$^+$ cations to mixed POPC:POPS (5:1) membrane} 
 \label{sec:affinity} 
+
+ 
+ 
+\begin{figure}[tbp!] 
+  \centering 
+  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_nacl.pdf} 
+  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_nacl.pdf} 
+  \caption{\label{fig:delta_ordPar_NaCl_PCPS} 
+    Changes of the head group order parameters $\alpha$, $\beta$ and the orientations of the carboxylate group and the P-N vector  
+    of POPC (left) and POPS (right) phospholipids in a POPC:POPS 5:1 bilayer as a function of \ce{NaCl} concentration 
+    in bulk ($C_{ion}$) from simulations with different force fields at 298 K.
+    Because data with \ce{NaCl} are not available for POPC, 
+    we show experimental data for \ce{LiCl} (dashed line, left) 
+    as an upper bound for the magnitude of the response to \ce{NaCl}, 
+    which has a lower affinity to phospholipid bilayers compared to \ce{LiCl} \citep{roux90}. 
+    The orientation of the \ce{COO^-} group is defined as 
+    the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
+  } 
+\end{figure} 
+
+
+\begin{figure}[tbp!] 
+  \centering 
+  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_kcl.pdf} 
+  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_kcl.pdf} 
+  \caption{\label{fig:delta_ordPar_KCl_PCPS} 
+    Changes of the head group order parameters $\alpha$, $\beta$ and the orientations of the carboxylate group and the P-N vector  
+    of POPC (left) and POPS (right) phospholipids in a POPC:POPS 5:1 bilayer as a function of \ce{KCl} concentration 
+    in bulk ($C_{ion}$) from simulations with different force fields and experiments at 298 K. \citep{roux90}
+    The orientation of the \ce{COO^-} group is defined as 
+    the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
+  } 
+\end{figure} 
+ 
+
+
+% Pavel suggested to remove this as it only recaps previous sections
+%It was presented in the previous section,
+%that accounting for electronic polarization,
+%a distinct feature of ECC-lipids compared to other lipid models, 
+%is crucial for an accurate description of the response of the POPC electrometer. 
+%In this section,
+%we employ ECC-lipids to simulate neutral and negatively charged bilayers 
+%in the presence of monovalent salts, namely \ce{KCl} and \ce{NaCl}. 
+
+The binding of \ce{Na^+} cations to phospholipid bilayers 
+is not generally agreed on between simulations 
+\citep{bockmann03,sachs04,berkowitz06,cordomi09}
+and experiments 
+\citep{cevc90,tocanne90,hauser76,herbette84,uhrikova08}.
+We attempted to find a model, 
+which would successfully interpret the experiments on binding of \ce{Na^+}
+to neutral and negatively charged phospholipid bilayers \citep{akutsu81, roux90} 
+in our works \citep{catte16, nmrlipids_proj4}.
+After testing the currently available force fields for phospholipids,
+we concluded
+that the interactions are generally overestimated in magnitude in almost all models 
+but Lipid14 (PC) \citep{dickson14}, resp. Lipid17 (PS) \citep{lipid17-future}. 
+This model yields a semi-quantitative agreement with the experimentally measured small changes of the order parameters 
+when used with the model of ions by \citet{aqvist90} (Fig.~\ref{fig:catte16}). 
+However, when used with a more accurate model of ions by \citet{Pluharova2014, martinek17},
+the model overestimates the binding affinity of \ce{Na^+}
+measured with lipid electrometer concept. \citep{melcr18}
+In total, these results suggest that improvements 
+in the lipid parameters are required for more accurate interactions even with monovalent cations. 
+\citep{catte16, melcr18, nmrlipids_proj4}
+
+Generally improved behaviour 
+of the POPC and POPS head group order parameters 
+with \ce{NaCl} or \ce{KCl} concentrations 
+was achieved through the combination of models 
+ECC-lipids \citep{melcr18} and ECC-ions \citep{martinek17, kohagen16, Pluharova2014}. 
+Simulations with these models 
+reveal a good agreement with the NMR experiments 
+for both neutral and negatively charged membranes.
+The results are plotted for \ce{NaCl} in Fig. \ref{fig:delta_ordPar_NaCl_PCPS}, 
+and for \ce{KCl} in Fig. \ref{fig:delta_ordPar_KCl_PCPS}. 
+
+
+The interaction with \ce{K^+}, which binds very weakly to both neutral and negatively charged membranes, 
+renders a qualitatively different response of the order parameter $S^\beta$ in POPS in the mixed negatively charged bilayers compared to the neutral bilayers. 
+While the order parameter $S^\beta$ increases for both \ce{Na^+} and \ce{Ca^{2+}},
+it decreases in the presence of \ce{K^+}.
+%This feature is, \emph{qualitatively} captured by a few models in \citep{nmrlipids_proj4},
+%neither of them is as close to a \emph{qunatitative} agreement with the experiments 
+%as the combination of ECC-lipids with ECC-ions. 
+However, no model studied in \citep{nmrlipids_proj4} describes the behaviour of a PS head group correctly enough to reveal this effect. 
+In contrast, ECC-lipids with ECC-ions capture the different response of the order parameters $S^{\beta}$, $S^{\alpha _1}$ and $S^{\alpha _2}$ in POPS to various salts accurately. 
+Such a detailed description of the changes of the structural parameters 
+demonstrates that including electronic polarization
+improves the description of the interactions even for very weakly binding cations like \ce{K^+}. 
+
+
+
+
+\begin{figure}[tbp!] 
+  \centering 
+  \includegraphics[width=\figwidth]{../img/ecc_pops/density_profiles_na_k_cl_wat_phos_models-compar_4-6_NaCl-and-KCl-series.pdf}
+  \caption{\label{fig:nacl-dens_PCPS} 
+    Number density profiles of \ce{K^{+}}, \ce{Na^{+}} and \ce{Cl^-} along the membrane normal axis 
+    for the negatively charged membranes with the composition of 5\,PC:1\,PS using ECC-lipids and ECC-ions.  
+    The top profile shows the simulation without any additional salt concentration, i.e., only with \ce{Na^+} counterions. 
+    The middle profile shows the simulation with an additional \ce{KCl} concentration and \ce{Na^+} counterions. 
+    The bottom profile shows the simulation with an additional \ce{NaCl} concentration and \ce{Na^+} counterions, which are not distinguished from the added salt. 
+    In order to visualize the density profiles with a scale comparable to the profile of \ce{Ca^{2+}}, 
+    the density profiles of~\ce{Cl^-}, \ce{K^+} and \ce{Na^+} ions are divided by 2, and 
+    the density profiles of phosphate groups and water are divided by 5 and 200, respectively.  
+    } 
+\end{figure} 
+
+
+
+The difference between the affinities of \ce{Na^+} and \ce{K^+} to neutral and negatively charged membranes
+can be described by their relative surface excesses with respect to water, $\Gamma ^{w} _{ion}$, 
+which are shown in the plots of the density profiles of the ions in Figs.~\ref{fig:nacl-dens} (neutral bilayer) and \ref{fig:nacl-dens_PCPS} (negatively charged bilayer). 
+Such a quantity compares the adsorption of ions to the adsorption of water molecules at an interface 
+without the necessity of defining a Gibbs dividing surface. \citep{melcr18, chattorajBOOK}
+While \ce{K^+} maintains negative values of $\Gamma^{w}_{K}$ even for the negatively charged bilayer,
+the value of $\Gamma^{w}_{Na}$ for \ce{Na^+} changes from negative to positive
+in a neutral POPC bilayer versus in a negatively charged bilayer with the composition 5\,PC:1\,PS.
+%This means that at the given concentration the bilayer interface has a small preference to \ce{Na^+} cations compared to water molecules. 
+Interestingly, this value is slightly decreased in the presence of an additional \ce{NaCl} concentration adding also \ce{Cl^-} anions, 
+which are not present in the system when only counterions are used
+(bottom resp. top plot in Fig.~\ref{fig:nacl-dens_PCPS}). 
+The interaction of a neutral POPC bilayer with \ce{NaCl} is discussed in a greater detail in our publication \citep{melcr18}. 
+
+ 
+
+
+
+
+
+ 
+ 
+
+
+\subsection{Molecular interaction and binding affinities of \ce{Ca^{2+}} cations to mixed POPC:POPS (5:1) membrane} 
+\label{section:lip-ion_ca}
+
+
+
+\begin{figure}[tbp!] 
+  \centering 
+  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_cacl.pdf} 
+  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_cacl.pdf} 
+  \caption{\label{fig:delta_ordPar_CaCl_PCPS} 
+    Changes of the head group order parameters $\alpha$, $\beta$ and the orientations of the carboxylate group and the P-N vector  
+    of POPC (left) and POPS (right) phospholipids in a POPC:POPS 5:1 bilayer as a function of \ce{CaCl2} concentration 
+    in bulk ($C_{ion}$) from simulations with different force fields and experiments at 298~K. \citep{roux90}
+    The orientation of the \ce{COO^-} group is defined as 
+    the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
+  } 
+\end{figure} 
+
+
+
+%%% Sum up what is to be presented briefly
+%The importance of treating polarizability for interactions of phospholipids with monovalent ions was demonstrated in the previous section. 
+Electronic polarization is a non-negligible contribution to the interactions of calcium even in simple aqueous solutions of \ce{CaCl2} \citep{martinek17, kohagen16, Pluharova2014}. 
+In this section,
+we will show the results from simulations of neutral and negatively charged phospholipid bilayers at varying \ce{CaCl2} concentrations
+using the recently developed models ECC-lipids and ECC-ions \citep{melcr18, martinek17}, 
+which implicitly include the effects of electronic polarization through electronic continuum correction \citep{leontyev11}. 
+Validated with the concept of a lipid electrometer in section \ref{section:electrometer_exp_sim},
+these implicitly polarizable models yield accurate description of 
+the interaction of \ce{Ca^{2+}} with both neutral and negatively charged phospholipids. 
+
+The changes of the head group order parameters $S^\alpha$ and $S^\beta$ from simulations and experiments 
+are shown in Fig.~\ref{fig:delta_ordPar_CaCl} for a neutral POPC bilayer, 
+and in Fig.~\ref{fig:delta_ordPar_CaCl_PCPS} for a negatively charged bilayer with the composition 5\,PC:1\,PS. 
+For a direct comparison and a connection to our works \citep{catte16, nmrlipids_proj4},
+we show simulation results from ECC-lipids and also from Lipid17 \citep{lipid17-future}. 
+This also highlights the improvements in ECC-lipids over Lipid17 arising from the electronic polarization. 
+%Although Lipid17 already belongs to the top-performing models in terms of the responses of the head group order parameters in those studies,  
+%including electronic polarizability to form ECC-lipids improves the results even further.
+The effect is probably the most striking for POPS, 
+for which also the structure of a pure POPS bilayer with only counterions is dramatically improved with the augmentation. 
+
+
+%%% Discuss the changes of OPs and vectors from neutral and neg. membranes
+%While the changes induced by \ce{CaCl2} are \emph{qualitatively} correct for Lipid14/17, 
+Increasing concentrations of \ce{CaCl2} induce a systematic decrease of the order parameters $S^\alpha$ and $S^\beta$ in POPC. 
+Although the total magnitude of the response of the PC head group order parameters 
+is only slightly higher in the negatively charged bilayers than in the neutral bilayers, 
+the shape of the changes in the latter shows a steeper onset at low concentrations. 
+This is apparently due to the presence of POPS, 
+which has a higher affinity to \ce{Ca^{2+}} compared to POPC. 
+ECC-lipids is the first model,
+which achieves a \emph{quantitative} agreement with the changes induced by \ce{CaCl2} in experiments. 
+
+
+
+
+
+
+\begin{figure}[htbp!] 
+  \centering 
+  \includegraphics[width=\figwidth]{../img/ecc_pops/density_profiles_ca_na_cl_wat_phos_models-compar_1-3_CaCl2-series.pdf}
+  \caption{\label{fig:cacl-dens_PCPS} 
+    Number density profiles of \ce{Ca^{2+}}, \ce{Na^{+}} and \ce{Cl^-} along the normal of the membrane starting at the centre
+    for the negatively charged membrane with the composition 5\,PC:1\,PS
+    at various bulk concentrations of \ce{CaCl2} from simulations with ECC-lipids. 
+    All profiles contain \ce{Na^+} counterions and an additional concentration of \ce{CaCl2}. 
+    In order to visualize the density profiles with a scale comparable to the profile of \ce{Ca^{2+}},  
+    the density profiles of~\ce{Cl^-} ions are divided by 2, and 
+    the density profiles of phosphate groups and water are divided by 5 and 200, respectively.  
+    } 
+\todo{JM: Compare with pure POPC bilayer?}
+\end{figure} 
+ 
+
+
+
+
+
+%%% Present the density profiles (different concentrations for both POPC and mixed)
+The increase in the amount of bound calcium cations from pure POPC \cite{melcr18}
+to the mixed negatively charged bilayer containing POPS
+is well demonstrated using the relative surface excess, $\Gamma ^w _{Ca}$,
+summarized in Table~\ref{tab:binding}. 
+Distributions of \ce{Ca^{2+}}, \ce{Na^+} counterions and also \ce{Cl^-} 
+are plotted in Fig.~\ref{fig:cacl-dens_PCPS} for the negatively charged bilayer. 
+In contrast to \ce{KCl} or added concentrations of \ce{NaCl}, 
+\ce{Na^+} counterions are substituted with \ce{Ca^{2+}} even at low concentrations of \ce{CaCl2}. 
+The increasing concentration of \ce{CaCl2} and, hence, a higher amount of bound \ce{Ca^{2+}}
+also attracts \ce{Cl^-} anions to the bilayer 
+as can be seen from its growing density at the interface. 
+
+
+%%% discuss the table with Gammas and follow up with molecular details, where do cations bind? Support with the spatial density figure
+The density profiles of ions suggest that
+the dominant contribution to the binding of \ce{Ca^{2+}} to phospholipid bilayers
+comes from the interactions with the phosphate groups in both POPC and POPS. 
+%The population analysis also suggests 
+%that the calcium cations prefer to reside in the phosphate region of the membrane. 
+%Such a finding is further validated with a more detailed analysis using Markov state modeling (MSM) \citep{Pande_MSM_paper} \todoi{Add papers reviewing MSM, e.g. recent Pande's paper.}. 
+%The set of states of a calcium cation 
+%encompassed all possible combinations of up to three surrounding lipids. 
+%In the case of PC, we used only the phosphate moitety, which forms the dominant contribution for calcium binding.
+%For PS we also distinguished configurations in which calcium interacts with the carboxylate moiety. 
+%All possible combinations of such states were used to build a Markov model at a lag time $25\,\mathrm{ns}$ using pyEMMA code by \citet{pyemma} \todoi{add citation for pyemma}. 
+%The resulting MSM was validated using Chapman-Kolmogorov test \citep{FrankNoe_papers_MSM} \todoi{Add citation for Noe's papers on MSM, especially Chapman Kolmogorov test.}. 
+%The stationary distribution of the states reveals a strong preference of the calcium cations to reside in the phosphate region of the mixed PC-PS membrane. 
+%When interacting with PS, configurations with the phosphate moiety from either PC or PS dominate the population.
+%Moreover, states containing interactions with the carboxylate group in PS 
+%bear higher probability when interacting also with the phosphate group of the same lipid or other lipids. 
+This is also reflected in the shift of the mean orientation 
+of the \ce{COO^-} group from $62^\circ$ to $73^\circ$ (420~mM \ce{CaCl2})
+which was measured as the connector of the carbon atoms 
+forming the bond between the group and the $\beta$-carbon of the phospholipid. 
+The interactions of the carboxylate group in PS with calcium and other phosphate groups
+shed light into the qualitatively different response of the head group order parameters $\alpha$ and $\beta$ in PS compared to PC 
+(see Figs.~\ref{fig:delta_ordPar_CaCl} and~\ref{fig:delta_ordPar_CaCl_PCPS}). 
+We find that the complex response of the head group order parameters of POPS 
+is affected by the conformational changes of the carboxylate group,
+which is attracted more towards the phosphate region, 
+where the calcium cations dominantly bind. 
+In line with the experimental work by \citet{browning80},
+this is also very likely the reason, 
+why the magnitude of the P-N vector change in POPS is diminished compared to POPC, 
+which is not restrained by an additional cation binding group like \ce{COO^-} in POPS. 
+
+
+Further details about the interactions of \ce{Ca^{2+}} with various moieties in POPC or POPS
+were obtained by counting contacts between the cations and the oxygen atoms of the lipids
+similarly as was done in \cite{melcr18}. 
+The threshold for counting a contact was set to $0.3\,\mathrm{nm}$, 
+which encompasses the first peak of the radial distribution function between the cations and the oxygen atoms of the lipids. 
+
+
+\begin{table}[tb!] 
+\centering
+  \caption{Bulk concentrations, $C _{Ca}$, and molar fractions, $C' _{Ca}$, of Ca$^{2+}$;
+           relative surface excess of calcium with respect to water ($\Gamma_{Ca}^{\rm water}$); 
+           and percentages of the population 
+           of bound Ca$^{2+}$ to various moieties 
+           in a neutral membrane composed of POPC
+           and in a negatively charged membrane with the composition 5\,PC:1\,PS.
+           \label{tab:binding}} 
+  \begin{tabular}{ l | c c } 
+	                     &  5\,POPC:1\,POPS &  POPC   \\
+	\hline
+	$C _{Ca}\,/\,\mathrm{mM}$  &  $240\pm 10 $  &  $280\pm 10 $  \\
+	$C'_{Ca}\,/\,\mathrm{mM}$  &  $400\pm 10 $  &  $350\pm 10 $  \\
+	$\Gamma_{Ca}^{\rm water}\, / \,\mathrm{nm}^{-2}$  &  $0.24 \pm 0.01 $  &  $0.06 \pm 0.01 $  \\
+	\hline
+                             &  \multicolumn{2}{c}{ } \\
+        interacting moiety   &  \multicolumn{2}{c}{percentage of bound \ce{Ca^{2+}} } \\
+	\hline
+	     PC              &   59   &  100   \\
+	     PO$_4$    in PC &   41   &   67   \\
+	     carbonyls in PC &   <1   &   ~1   \\
+	\hline
+	     PS              &    8   &        \\ 
+	     PO$_4$  in PS   &    2   &        \\
+	     COO$^-$ in PS   &    4   &        \\
+	     carbonyls in PS &   <1   &        \\
+	\hline
+	both PC and PS       &   33   &        \\
+  \end{tabular} 
+\end{table} 
+
+
+
+
+
+
+
+The percentages of the populations of membrane-bound calcium cations for various membrane moieties 
+are summarized in Table~\ref{tab:binding}.
+Even though the negatively charged membrane contains only 18\% of POPS, 
+approximately 41\% of the total population of bound calcium cations is in contact with PS lipids
+with 8\% bound only to them. 
+This corroborates the intrinsically higher affinity of PS lipids to calcium cations compared to neutral PC lipids. 
+POPC interacts with the calcium cations almost entirely through its phosphate group 
+in both neutral and negatively charged membranes. 
+Interactions of \ce{Ca^{2+}} with carbonyl groups are also present, 
+however, they are always accompanied by interactions with phosphate groups. 
+%but a very small negligable amount much below 1\%. 
+
+
+
+\begin{figure}[tb!] 
+  \centering 
+  \includegraphics[width=\figwidth]{../img/stoichiometry_CaCl2_comparison_Ecc-lipids_PC-vs-PCPS.pdf} \\ 
+  \caption{\label{fig:cacl_complexes} 
+      Relative probabilities of existence of \ce{Ca^{2+}} complexes 
+      with a certain number of lipids.  
+      All lipids were taken into account with the exception of the complexes in light green and orange, 
+      for which we counted only contacts with POPC resp POPS from the mixed 5\,PC:1\,PS negatively charged bilayer. 
+      The calculated probabilities of the calcium-lipid complexes also reflect only POPC (light green) resp POPS (orange). 
+      Probabilities were taken from simulations with comparable bulk concentrations of calcium around 250~mM. 
+      Clusters of four or more lipids were not observed in either membrane. 
+      Simulation data for POPC bilayers were taken directly from \cite{melcr18}. 
+  } 
+\end{figure} 
+
+
+
+
+Relative probabilities of \ce{Ca^{2+}} complexes with a certain number of lipids are presented in Fig.~\ref{fig:cacl_complexes}. 
+Calcium cations that are bound only to PC in the mixed bilayer with PS 
+behave similarly as in the pure PC bilayer
+maintaining comparable probabilities for clustering one, two, or even three PC lipids together. 
+In contrast, PS lipids prefer 1:1 ratio with \ce{Ca^{2+}},
+which may also be due to their low molar fraction in the the mixed bilayer. 
+In total, however, the negatively charged membrane has its stoichiometry 
+shifted towards complexes with three phospholipids and one calcium. 
+This is obviously due to the presence of POPS, 
+which also contributes to the pre-formed one- and two-membered clusters of POPC. 
+Clusters of four or more lipids were not observed in either membrane. 
+
+%This is also reflected in the increased probability 
+%of a single phospholipid interacting with two \ce{Ca^{2+}} cations 
+%compared to the neutral POPC bilayer, 
+%where such a probability is almost negligable. 
+% Not shown through numbers, however, I have the plots to back it. 
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+%\todo{Stationary distribution: Make a figure documenting the populations of bound \ce{Ca^{2+}} cations (like I have in the presentation) that would accompany Table \ref{tab:Ca_binding_PCPS}. 
+%This will roughly correspond to the PC stoichiometry plot \ref{fig:cacl_complexes}. }
+
+
+
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\figwidth]{../img/histogram_bound_times_26CaCl2_comparison_PC-PCPS.pdf}
+  \caption{\label{fig:hist_residence_times}
+   Histograms of residence times of \ce{Ca^{2+}} 
+   in a neutral membrane composed of POPC (orange)
+   and in a negatively charged membrane with the composition 5\,PC:1\,PS (blue)
+   from simulations with ECC-lipids and ECC-ions.
+   The simulation with the neutral membrane has a bulk concentration of calcium $C_{ion} = 280\mathrm{mM}$, 
+   the simulation with the negatively charged membrane has a bulk concentration of calcium $C_{ion} = 240\mathrm{mM}$. 
+   In the simulation with the neutral membrane, 
+   90\% of the residence times of calcium cations are
+   shorter than $60\,\mathrm{ns}$, % exactly $53\,\mathrm{ns}$                                                                          
+   with the longest observed residence time being $141\,\mathrm{ns}$. 
+   In the simulation with the negatively charged membrane, 
+   90\% of the residence times of calcium cations are
+   shorter than $200\,\mathrm{ns}$, % exactly $53\,\mathrm{ns}$                                                                          
+   with the longest observed residence time being $485\,\mathrm{ns}$. 
+   Simulation data for POPC bilayers were taken directly from \cite{melcr18}. 
+   }
+\end{figure}
+
+
+Timescales associated with the binding of calcium cations from solution to the membrane
+are plotted for each binding event as a histogram in Fig.~\ref{fig:hist_residence_times}. 
+Using these plots, we can estimate that 90\% of the residence times of any calcium cation 
+will be lower than $60\,\mathrm{ns}$ for pure POPC neutral bilayer 
+and shorter than $200\,\mathrm{ns}$ for the mixed 5\,PC:1\,PS negatively charged bilayer. 
+The longest observed residence times in the simulations were $141\,\mathrm{ns}$ for the neutral membrane 
+and $485\,\mathrm{ns}$ for the negatively charged membrane. 
+Both estimates of the residence times come from simulations with comparable concentrations of around $250\mathrm{mM}$;
+the simulation with the neutral membrane has a bulk concentration of calcium $C_{ion} = 280\mathrm{mM}$, 
+whereas the simulation with the negatively charged membrane has a bulk concentration of calcium $C_{ion} = 240\mathrm{mM}$. 
+
+In summary, the results from ECC-lipids suggest 
+that the exchange of calcium between the POPC bilayer and the solvent 
+occurs at the order of $\sim$10--100~ns, 
+which is significantly faster than observed in simulations 
+with other presently available non-polarizable models of lipids and ions~\citep{javanainen17, catte16}. 
+Our results suggest 
+that simulation trajectories with a characteristic length of several hundreds of nanoseconds 
+are necessary to capture the binding of calcium to neutral POPC bilayers 
+in equilibrium when more realistic \emph{polarizable} force fields are used. 
+Interestingly enough, almost an order of magnitude longer simulations
+are required for the negatively charged bilayers. 
+
+ 
+%In addition to such estimates of the time scales, we used the Markov model on top of the simulation with the negatviely charged mixed bilayer
+%to calculate the time of the mean first passage of calcium from solution to the membrane (and in reverse) resulting in $55\,\mathrm{ns}$  ($165\,\mathrm{ns}$). 
+
+%\todo{Fluxes: committor analysis, dominant fluxes (table and figure)}
+%From the spectrum of the transition matrix, we also observe that 
+%the slowest transitions are associated with the binding to two or three phosphate moieties from either PC or PS,
+%which are also among the states with the highest probabilities.
+%The net fluxes of calcium cations from solution to such states also form a large contribution to the total flux ($\approx 45\%$). 
+%\todo{Make a table and a figure of the state probabilities and fluxes to support this statement.}. 
+%Analysis of the possible binding pathways of calcium cations to the negatively charged mixed bilayer 
+%reveal that the cations mostly enter the membrane bound states directly from solution 
+%without complicated transitions at the time scales of the order of the lag time of the Markov state model, $25\,\mathrm{ns}$. 
 
 Provide density plots and show, where and how the cations bind to the membrane. 
 
-\textbf{Where do the cations bind?} 
-The affinity towards PC and PS lipids and some of their groups was evaluated 
-by counting contacts between the cation and the oxygen atoms of the lipids
-similarly as was done in \cite{melcr18}. 
-The threshold for counting a contact was set to be $0.3 \mathrm{nm}$, 
-which encompasses the first peak of radial distribution function between the cations and the oxygen atoms of the lipids. 
-In Table~\ref{tab:binding}, there are percentages of the membrane-bound calcium population for various membrane moieties. 
-Although the lipid ratio in the membrane is 5~PC:1~PS,
-half of the total population of calcium cations is bound to PS lipids
-with 7\% bound only to them. 
-This corroborates the intrinsincally higher affinity of PS lipids to calcium cations compared to PC lipids. 
-The population analysis also suggests 
-that the calcium cations prefer to reside in the phosphate region of the membrane. 
-Hence, the carboxylate group in PS is coordinated to the cations bound in that region. 
-The increased response of head group order parameters $\alpha$ and $\beta$ of PC 
-in mixed 5~PC:1~PS bilayer compared to pure PC
-is due to higer affinity of the membrane mediated by even a relatively small fraction (1/6) of PS lipids. 
-This is in line with the steep onset of the response of the PS head group order parameters at lower concentrations.
-The complex response of the head group order parameters of PS lipids 
-is due to the confomational change of the carboxylate group that is attracted more towards the phosphate region. 
-In order to examine whether the carboxylate and phosphate groups in PS are bound 
-to the same calcium cation or rather different cations, 
-more detailed analysis is required. 
-\todo{Detailed analysis of the interactions of cations and PC/PS head groups using MSM.}
 
 
- 
-\begin{table}[tb!] 
-  \caption{Bulk concentrations of Ca$^{2+}$ (C$_b$), 
-           and the percentages of Ca$^{2+}$ bound to 
-           either to PC or PS, 
-           to PC or PS without phosphate group,
-           to PC or PS without carboxylate group,
-           to PC and PS at the same time,
-           only to PC, 
-           and only to PS 
-           in a mixed POPC:POPS (5:1) bilayer. 
-          \label{tab:binding}} 
-  \begin{tabular}{l| c | c c c c c c } 
-    model                  & $C_{ion}\,/\,\mathrm{mM}$ & PC+PS  &  PC+PS no PO$_4$ & PC+PS no COO$^-$ & PC-$Ca^{2+}$-PS  & PC & PS  \\ 
-    \hline 
-    ECC-lipids             &  $240\pm 10 $             & 100    &   98-99          & 100              & 43               & 50 &  7  \\
-    \hline 
-    Lipid14/17             &  $280\pm 10 $             & 100    &   ---            & ---              & ---              & ---& --- \\
-    \hline 
-    \todo{transpose this table and remove the comparison with Lipid14/17}
-  \end{tabular} 
-\end{table} 
- 
- 
-%\begin{figure}[htbp!] 
-%  \centering 
-%  \includegraphics[height=19.9cm]{../Fig/}
-%  \caption{\label{fig:cacl-dens} 
-%    Number density profiles of \ce{Ca^{2+}}, \ce{Na^{+}} and \ce{Cl^-} along membrane normal axis 
-%    for different force fields. 
-%    } 
-%\end{figure} 
- 
-%\subsection{Molecular interactions between K$^+$, Na$^+$ or Ca$^{2+}$ cations and mixed POPC:POPS membrane} 
- 
-%\subsection{Binding stoichiometry of cations to mixed POPC:POPS membrane} 
-
-%\subsection{Residence times of cations in the mixed POPC:POPS membrane} 
- 
-%\begin{figure}[tb!] 
-%  \centering 
-%  \includegraphics[width=8.0cm]{../Fig/ipython_nb/stoichiometry_NaCl-CaCl2_comparison_Ecc-lipids.pdf} \\ 
-%  \caption{\label{fig:cacl_complexes} 
-%      Relative probabilities of existence of \ce{Na^{+}} or \ce{Ca^{2+}} complexes 
-%      with a certain number of POPS lipids.  
-%      \ce{Na^{+}} complexes were evaluated from the simulation with 1~M concentration; 
-%      and \ce{Ca^{2+}} complexes were evaluated from the simulation with 287~mM concentration. 
-%  } 
-%\end{figure} 
  
  
 
 \subsection{Electronic Continuum Correction as a generally applicable model polarizability?}
+
+\todo{Look up possible applications of AMOEBA and Drude on anions/cations and possibly lipids. 
+Does ECC provide improvment over them? 
+This is crucial -- if this section will make the core message of this paper, 
+I have to put the ECC-method into context of other polarizable models. 
+If there are no other simulations like these and no data on the accuracy with cation/anions, 
+our approach (ECC) is hence the pioneer in the field and, hence, sets the standard instead. 
+}
 
 Show the successes and possible \emph{limits} of ECC applied on top of various models \cite{melcr18, martinek17, Pluharova2014, kohagen14, kohagen16}. 
 
@@ -520,7 +1012,9 @@ After validation above, it can be an option to show results also for systems, fo
 
  
  
+\listoftodos
  
+
 % If you have acknowledgments, this puts in the proper section head. 
 \begin{acknowledgement} 
 % Put your acknowledgments here. 

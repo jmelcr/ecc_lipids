@@ -34,7 +34,7 @@
 
 \newcommand{\todoindextitle}{ToDo}
 \newcommand{\todoindexpagetitle}{P.}
-\newcommand{\todocolor}{\color{red}}
+\newcommand{\todocolor}{\color{OrangeRed4}}
 
 \newcommand{\listoftodosname}{\todoindextitle} 
 \newlistof[part]{todos}{lod}{\listoftodosname} 
@@ -84,7 +84,8 @@
 }{}%
 \ifthenelse{\equal{\@todoenable}{true}}{%
 \refstepcounter{todos}%
-\noindent{\todocolor\normalfont\scriptsize{\bfseries{\thetodos.#1}}}%
+%\noindent{\todocolor\normalfont\scriptsize{\bfseries{\thetodos.#1}}}%
+\noindent{\todocolor\normalfont\normalsize{{\thetodos.#1}}}%
 \addcontentsline{lod}{todos}{\protect{\thetodos. }#2}%
 }{}%
 }
