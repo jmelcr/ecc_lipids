@@ -112,7 +112,9 @@ Academy of Sciences of the Czech Republic,
 Prague 6, Czech Republic} 
 \alsoaffiliation{Department of Physics, Tampere University of Technology, P.O. Box 692, FI-33101 
 Tampere, Finland} 
- 
+%SAMULI: We need to put tiago because the experimental acyl chain order parameters
+\author{Tiago Ferreira}
+\affiliation{Halle} 
 \author{O. H. Samuli Ollila} 
 \email{samuli.ollila@helsinki.fi} 
 %%\homepage[]{Your web page} 
@@ -151,10 +153,14 @@ Prague 6, Czech Republic}
 %% a running title from the author: this should be supplied as an 
 %% optional argument to \title. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\title[] 
+%  {Accurate interactions of cations with 
+%   neutral and negatively charged membranes 
+%   via combination of experiments and molecular simulation}
+
+%%SAMULI: new suggestion for the preliminary title
 \title[] 
-  {Accurate interactions of cations with 
-   neutral and negatively charged membranes 
-   via combination of experiments and molecular simulation}
+  {Effective Inclusion of Electronic Polarization to a Negatively Charged Membrane}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% Some journals require a list of abbreviations or keywords to be 
@@ -208,14 +214,16 @@ separate page at the end of the document.
 \begin{abstract} 
 	\emph{Adapt abstract to the final message: properties of POPS-containing bilayers -or- ECC-concept applicability?}
 
-Binding affinities and stoichiometries of sodium and calcium ions to phospholipid bilayers are of paramount significance in the properties and functionality of cellular membranes. Current estimates of binding affinities and stoichiometries of cations are, however, controversial due to limitations in the available experimental and theoretical methods. Experimentally one can assess these parameters by titrating several membrane properties as a function of the ion concentration. However, the interpretation of the experiments relies on theoretical models, as direct molecular information is not available. 
+%%% SAMULI: I commented this out because it way too general. We can write abstract later when the final content is clear.
 
-Classical molecular dynamics (MD) simulations provide details of the ion binding process with atomistic resolution, therefore offering all the necessary information to interpret experimental data without the need to resort to over-simplified models. However, the accuracy of the currently available lipid models when interacting with ions is not sufficient for such interpretation \cite{catte16}. Recently, we have improved the binding details of sodium and calcium ions to the 1-Palmitoyl-2-oleoyl-phosphatidylcholine (POPC) bilayer by implicitly including electronic polarization as a mean field correction, known as the electronic continuum correction (ECC). Our improved ECC-POPC model reproduces not only the experimentally measured structural parameters for the ion-free membrane, but also improves significantly the response of lipid head group to a bound positive charge, and the binding affinities of sodium and calcium ions. \cite{melcr18}
+%Binding affinities and stoichiometries of sodium and calcium ions to phospholipid bilayers are of paramount significance in the properties and functionality of cellular membranes. Current estimates of binding affinities and stoichiometries of cations are, however, controversial due to limitations in the available experimental and theoretical methods. Experimentally one can assess these parameters by titrating several membrane properties as a function of the ion concentration. However, the interpretation of the experiments relies on theoretical models, as direct molecular information is not available. 
 
-We are now extending our work to other lipid membranes composed of larger varieties of different biologically relevant lipids. In particular, we focus our attention on membranes with 
-	%phosphatidylethanolamine (PE) and 
-	negatively charged phosphatidylserine (PS) lipids. 
-	We compare available NMR and x-ray experiments with MD simulations to obtain atomistic-resolution picture of the interactions between cations and phospholipid membranes. Our results indicate that electronic polarization is a non-negligable interaction, which dramatically improves the description of cation binding to phospholipid membranes. 
+%Classical molecular dynamics (MD) simulations provide details of the ion binding process with atomistic resolution, therefore offering all the necessary information to interpret experimental data without the need to resort to over-simplified models. However, the accuracy of the currently available lipid models when interacting with ions is not sufficient for such interpretation \cite{catte16}. Recently, we have improved the binding details of sodium and calcium ions to the 1-Palmitoyl-2-oleoyl-phosphatidylcholine (POPC) bilayer by implicitly including electronic polarization as a mean field correction, known as the electronic continuum correction (ECC). Our improved ECC-POPC model reproduces not only the experimentally measured structural parameters for the ion-free membrane, but also improves significantly the response of lipid head group to a bound positive charge, and the binding affinities of sodium and calcium ions. \cite{melcr18}
+
+%We are now extending our work to other lipid membranes composed of larger varieties of different biologically relevant lipids. In particular, we focus our attention on membranes with 
+%	%phosphatidylethanolamine (PE) and 
+%	negatively charged phosphatidylserine (PS) lipids. 
+%	We compare available NMR and x-ray experiments with MD simulations to obtain atomistic-resolution picture of the interactions between cations and phospholipid membranes. Our results indicate that electronic polarization is a non-negligable interaction, which dramatically improves the description of cation binding to phospholipid membranes. 
 \end{abstract} 
  
  
@@ -240,10 +248,15 @@ We are now extending our work to other lipid membranes composed of larger variet
  
  
 \section{Introduction} 
+
+\todo{SAMULI: I can write preliminary version of the introduction asap.}
  
 \section{Methods} 
  
 \subsection{Electronic continuum correction for lipid bilayers}\label{section:ecc} 
+
+\todo{SAMULI: I think that all the current content is too general for this paper. The focus should be
+in application of ECC to negatively charge lipids versus zwitterionic lipid in the previous paper.}
 
 \emph{ Directly taken from my thesis.}
 
@@ -343,15 +356,22 @@ applied throughout the lipid bilayer/aqueous solution interface.
 
  
  
- 
-\subsection{Electrometer concept} \label{section:electrometer} 
-This section may not be required, 
-we may just cite ECC-POPS and NMRlipids projects papers (and ongoing works)
- 
- 
- 
-\subsection{Validation of lipid bilayer structure against NMR and scattering experiments} 
-\emph{This section probably has to stay. Following text to be modified. Taken from Ref.~\citenum{melcr18}}
+% SAMULI:
+%\subsection{Electrometer concept} \label{section:electrometer} 
+%This section may not be required, 
+%we may just cite ECC-POPS and NMRlipids projects papers (and ongoing works)
+% 
+% 
+% 
+%\subsection{Validation of lipid bilayer structure against NMR and scattering experiments} 
+%\emph{This section probably has to stay. Following text to be modified. Taken from Ref.~\citenum{melcr18}}
+%
+%
+
+\subsection{Validation of membrane properties} 
+\todo{SAMULI: I would put under under this section.
+1) a very short explanation of the usage of electrometer concept in this paper by mainly citing NMRlipids IV.
+2) a very short explanation of the usage of form factor and order parameters by citing approriate publications}
 
 The structures of lipid bilayers in simulations without ions were validated against NMR by calculating the order parameters for the C-H bonds and against \mbox{X-ray} scattering experiments by evaluating the scattering form factors. 
 NMR order parameters validate the structures sampled by the individual lipid molecules with atomic resolution. 
@@ -365,12 +385,13 @@ Scattering form factors validate the dimensions of the lipid bilayer (i.e., the 
  
 \noindent where $\rho_{el} (z)$ is the total electron density, $\rho_{el}^s$ is the electron density of the solvent far in the aqueous bulk, and $z$ is the distance from the membrane center along its normal with $D/2$ being half of the unit cell size.   
 
- 
- 
+\subsection{Measurements of acyl chain order parameters}
+\todo{SAMULI: Short description about the order parameter experiments by Tiago.} 
  
  
 \subsection{Simulation details} 
 
+\todo{SAMULI: Table of simulated systems would be useful.}
 General simulation setup.
  
 
@@ -497,7 +518,9 @@ Such a feature suggests that the model overestimates the orientational freedom o
  
  
 \subsection{Electrometer concept: cationic and anionic amphiphilic molecules} 
- 
+
+\todo{SAMULI: This section should be titled something like ''PS-PC headgroup interactions in mixtures'',
+unless we actually run simulations with anionic amphiphilic molecules.} 
 
 Changes of the lipid bilayer head group order parameters extracted from simulations and 
 experiments \cite{roux90} are shown in Figs.~\ref{fig:delta_ordPar_KCl_PCPS}, \ref{fig:delta_ordPar_NaCl_PCPS} 
@@ -514,7 +537,8 @@ and in Figs.~\ref{OrderParameterCHANGESsurf} as a function of the content of dih
     from simulations and experiments \citep{scherer89} at 313 K.
     Image reproduced from \cite{melcr18}.
   } 
-\todo{Combine with Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} into a single plot.}
+\todo{Combine with Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} into a single plot.} \\
+\todo{SAMULI: I do not see any reason why we should show this data in this paper at all.}
 \end{figure} 
 
 
@@ -530,6 +554,8 @@ and in Figs.~\ref{OrderParameterCHANGESsurf} as a function of the content of dih
     Experimental points have inherent systematic error, as they come from different experiments.
     A complete series of points can be found (?) in \cite{roux90} -- which is to be added to the plot.
   } 
+\todo{SAMULI: It would be probably better to show also here the Lipid17 and ECC results in the same 
+  plot as done in the other figures.}
 \end{figure} 
 
 
@@ -560,6 +586,10 @@ and in Figs.~\ref{OrderParameterCHANGESsurf} as a function of the content of dih
     The orientation of the \ce{COO^-} group is defined as 
     the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
   } 
+  \todo{SAMULI: The forking of PS alpha carbon should not be put to zero with zero salt concentrations
+    in this or in other figures. This is confusing expecially for the results with CaCl$_2$ where the forking
+    seems to increase with CaCl$_2$, which is not correct. In NMRlipids IV, I have now put the lower order parameter
+    to zero and kept the forking correct with all concentrations of ions.}
 \end{figure} 
 
 
@@ -574,6 +604,10 @@ and in Figs.~\ref{OrderParameterCHANGESsurf} as a function of the content of dih
     The orientation of the \ce{COO^-} group is defined as 
     the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
   } 
+  \todo{SAMULI: The forking of PS alpha carbon should not be put to zero with zero salt concentrations
+    in this or in other figures. This is confusing expecially for the results with CaCl$_2$ where the forking
+    seems to increase with CaCl$_2$, which is not correct. In NMRlipids IV, I have now put the lower order parameter
+    to zero and kept the forking correct with all concentrations of ions.}
 \end{figure} 
  
 
@@ -694,6 +728,10 @@ The interaction of a neutral POPC bilayer with \ce{NaCl} is discussed in a great
     The orientation of the \ce{COO^-} group is defined as 
     the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
   } 
+  \todo{SAMULI: The forking of PS alpha carbon should not be put to zero with zero salt concentrations
+    in this or in other figures. This is confusing expecially for the results with CaCl$_2$ where the forking
+    seems to increase with CaCl$_2$, which is not correct. In NMRlipids IV, I have now put the lower order parameter
+    to zero and kept the forking correct with all concentrations of ions.}
 \end{figure} 
 
 
@@ -749,7 +787,8 @@ which achieves a \emph{quantitative} agreement with the changes induced by \ce{C
     the density profiles of~\ce{Cl^-} ions are divided by 2, and 
     the density profiles of phosphate groups and water are divided by 5 and 200, respectively.  
     } 
-\todo{JM: Compare with pure POPC bilayer?}
+\todo{JM: Compare with pure POPC bilayer? 
+SAMULI: Comparison of the relative surface excess values in the text and in the table would be probably sufficient.}
 \end{figure} 
  
 
@@ -997,7 +1036,12 @@ This is crucial -- if this section will make the core message of this paper,
 I have to put the ECC-method into context of other polarizable models. 
 If there are no other simulations like these and no data on the accuracy with cation/anions, 
 our approach (ECC) is hence the pioneer in the field and, hence, sets the standard instead. 
-}
+SAMULI: We should keep the focus on lipids here. We should check the recent literature, but
+I am not aware of charged lipid simulations with explicitly polarizable force fields. 
+As for PC, the charge scaling was used in the early simulations of PS lipids from Berendsen group.
+We should mention this. Otherwise, I think that one of our conclusions will be that our
+results indicate that ECC generally improves the results of lipids bilayer MD simulations.
+However, we should not write a separate section about it. It should be in the conclusions section.}
 
 Show the successes and possible \emph{limits} of ECC applied on top of various models \cite{melcr18, martinek17, Pluharova2014, kohagen14, kohagen16}. 
 
