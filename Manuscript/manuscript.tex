@@ -212,7 +212,10 @@ separate page at the end of the document.
  
  
 \begin{abstract} 
-	\emph{Adapt abstract to the final message: properties of POPS-containing bilayers -or- ECC-concept applicability?}
+
+\textbf{Main message: 
+ECC generally improves interaction and structure of both neutral and charged molecules. 
+Polarizability is necessarry for accurate simulations of cellular membranes at physiological ionic conditions.} 
 
 %%% SAMULI: I commented this out because it way too general. We can write abstract later when the final content is clear.
 
@@ -517,10 +520,8 @@ Such a feature suggests that the model overestimates the orientational freedom o
  
  
  
-\subsection{Electrometer concept: cationic and anionic amphiphilic molecules} 
+\subsection{Interactions between PC and PS head groups in mixed PC:PS bilayers}
 
-\todo{SAMULI: This section should be titled something like ''PS-PC headgroup interactions in mixtures'',
-unless we actually run simulations with anionic amphiphilic molecules.} 
 
 Changes of the lipid bilayer head group order parameters extracted from simulations and 
 experiments \cite{roux90} are shown in Figs.~\ref{fig:delta_ordPar_KCl_PCPS}, \ref{fig:delta_ordPar_NaCl_PCPS} 
@@ -545,17 +546,23 @@ and in Figs.~\ref{OrderParameterCHANGESsurf} as a function of the content of dih
 
 \begin{figure}[htb!] 
   \centering 
-  \includegraphics[width=\figwidthsmall]{../Fig/l17/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
-  \includegraphics[width=\figwidthsmall]{../Fig/l17/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
   \includegraphics[width=\figwidthsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
   \includegraphics[width=\figwidthsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
+  \includegraphics[width=\figwidthsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_kcl.pdf} 
+  \includegraphics[width=\figwidthsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_kcl.pdf} 
   \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix} 
-    Changes of the head group order parameters of a POPC:POPS 5:1 bilayer as a function of PS content
-    Experimental points have inherent systematic error, as they come from different experiments.
-    A complete series of points can be found (?) in \cite{roux90} -- which is to be added to the plot.
+    Changes of the head group order parameters of a POPC:POPS (5:1) bilayer as a function of PS content
+    with \ce{Na^+} and \ce{K^+} counterions from simulations with ECC-lipids and Lipid17 \cite{lipid17-future} 
+    and experiments (only \ce{Na^+} counterions). \cite{roux90}. 
+    The underestimated response of ECC-lipids with \ce{Na^+} counterions 
+    is likely due to a still slightly overestimated binding affinity of \ce{Na^+} to the phospholipids,
+    which is corroborated by the series with \ce{K^+} counterions (lower affinity than \ce{Na^+}),
+    where the response is closer to the experiment (which uses only \ce{Na^+} counterions). 
+    Experimental points for POPS inherently contain larger systematic error, 
+    as they come from independent experiments.
   } 
-\todo{SAMULI: It would be probably better to show also here the Lipid17 and ECC results in the same 
-  plot as done in the other figures.}
+\todo{Josef: Simulation at 50:50 PC:PS might be useful for this plot (PC-PS interactions). 
+Now it may make an impression, that we are consciously avoiding it. }
 \end{figure} 
 
 
@@ -1029,6 +1036,8 @@ Provide density plots and show, where and how the cations bind to the membrane.
  
 
 \subsection{Electronic Continuum Correction as a generally applicable model polarizability?}
+
+\textbf{This will be exemplified on POPS throughout this paper and, hence, it does not require additional section. }
 
 \todo{Look up possible applications of AMOEBA and Drude on anions/cations and possibly lipids. 
 Does ECC provide improvment over them? 
