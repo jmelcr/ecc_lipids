@@ -1,0 +1,24 @@
+;
+; Include the Force field parameters for lipids and ions
+; parameters for ions: https://bitbucket.org/hseara/ions
+;
+#include <ecc-lipids/ecc-lipids.itp> 
+#include <ions/gromacs/ions_nb_sigma_eps.itp> 
+;
+; Include molecular topologies
+;
+#include "ecc-lipids/ECC-POPS_charmm36-atomic-names.itp"
+#include "ecc-lipids/ECC-POPC_charmm36-atomic-names.itp"
+#include "ecc-lipids/spce.itp"
+#include <ions/gromacs/ions.itp>
+
+[ system ]
+POPC:POPS 5:1 mixed membrane with Na+ counterions
+
+[molecules]
+POPS    12
+POPC    60
+SOL   3600
+Na_s    12
+;Cl_2s   14
+
