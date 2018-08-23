@@ -255,9 +255,9 @@ Polarizability is necessarry for accurate simulations of cellular membranes at p
 Lipids with negatively charged headgroups, like phophatidylserine
 play important role in biomembranes. Signaling domains interact with
 anionic lipid membranes due to electrostatic and specific interactions
-with negatively charged lipids \cite{??}.
+with negatively charged lipids \cite{lemmon08,leventis10}.
 Anionic lipids and their interactions with ions play also role in membrane
-fusion \cite{??}.
+fusion \cite{??}. \todo{Pavel can probably improve this and give a citation}
 These interactions depend on
 chemical details of lipid headgroups and binding of counter and co-ions
 to anionic membranes. 
@@ -266,24 +266,25 @@ Various interaction schemes have been proposed for the negatively charged
 lipids with ions and other lipids. Some studies suggest that the
 binding constant to negatively charged lipids is similar to zwitterionic
 and the binding affinity is increased only due to the increased cation
-concentration in the vicinity of the membrane \cite{??}. On the other hand,
-PS headgroups can form dehydrated complexes with calcium \cite{??} and ?? are
-proposed to form complexes with ions \cite{??}. Different scenarios are
-difficult to evaluate experimentally, especially with physiological
-ion concentrations which are typically quite low.
+concentration in the vicinity of the membrane \cite{seelig90,sinn06}.
+On the other hand, calcium forms dehydrated complexes with PS headgroups
+which cause phase separation \cite{hauser77,kurland79,hauser85,feigenson86,mattai89,roux90,roux91,boettcher11}.
+Different theories are difficult to evaluate experimentally,
+especially with physiological ion concentrations which are typically quite low.
 
 Spectroscopic experiments give detailed information about the
-interactions \cite{??}. The data is, however, often indirect and difficult
-to interpret. Classical molecular dynamics (MD) simulations give
+interactions between ions and PS lipids, but the data is often indirect and difficult to
+interpret \cite{hauser77,kurland79,eisenberg79,hauser83,dluhy83,hauser85,feigenson86,mattai89,roux90,roux91,boettcher11}.
+Classical molecular dynamics (MD) simulations give
 access to all the details, but the current force fields are not
-sufficiently accurate to interpret the interactions of cationic
-lipid headgroups with other lipids and ions \cite{NMRlipidsIV}.
+sufficiently accurate to interpret the interactions between anionic
+lipid headgroups and other lipids or ions \cite{NMRlipidsIV}.
 Implicit inclusion of electronic polarizability using
 electronic continuum correction (ECC) to lipid models
 substantially improved the interactions between cations and
 zwitterionic lipids \cite{melcr18}. Here, we extend the approach
-to anionic PS lipids to more accurately describe its interactions with ions
-and PC headgroups in mixed lipid bilayer. The results pave
+to anionic PS lipids to more accurately describe their interactions with ions
+and PC headgroups in mixed lipid bilayers. The results pave
 the way for more realistic MD simulations of negatively charged
 lipid bilayers to be used in wide range of applications.
 
