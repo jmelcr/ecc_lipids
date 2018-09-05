@@ -436,7 +436,7 @@ Scattering form factors validate the dimensions of the lipid bilayer (i.e., the 
            Given concentrations adopt the form $C_{bulk}/C_{buffer}$. 
         }
 \todo{Joe: to be filled-in. I'll generate it automatically from my Jupyter notebooks.}  
-\label{IONsystems_conc}
+\label{tbl:sim-list}
 \begin{tabular}{l c c r r r r }
   lipid/counter-ions &  KCl (mM)  &  NaCl (mM) & CaCl$_2$\,(mM) &  \footnote{Number of lipid molecules with the largest mole fraction}N$_{\rm l}$   &  \footnote{Number of water molecules}N$_{\rm w}$ \todoi{Should confirm that the amounts of water in experiments matched those in simulations.}   &  \footnote{Simulation temperature}T (K)  \\
   \hline
@@ -447,14 +447,37 @@ Scattering form factors validate the dimensions of the lipid bilayer (i.e., the 
 \end{tabular}
 \end{table*}
 
-General simulation setup.
+
+MD simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 2018). 
+The simulation parameters used in this work are summarized in Table~\ref{tbl:mdpar}. 
+A comprehensive list of simulaitons used in this work is in Table~\ref{tbl:sim-list}. 
+
+\begin{table}[tbp]
+  \caption{Simulation parameters}
+  \label{tbl:mdpar}
+  \begin{tabular}{ll}
+    simulation property & parameter   \\
+    \hline
+    time-step           & 2~fs         \\
+    equilibration time  & tba~ns  \\
+    total simulation time     & 1.5~$\mu$s  \\
+    temperature         & 298~K       \\
+    thermostat          & v-rescale  \cite{bussi07}   \\
+    barostat            & Parrinello-Rahman, semi-isotropic \cite{parrinello81} \\
+    long-range electrostatics & PME  \cite{darden93}  \\
+    cut-off scheme      & Verlet \cite{Pall13}      \\
+    Coulomb and VdW cut-off & 1.0~nm \\
+    constraints         & LINCS, only hydrogen atoms \cite{hess97} \\
+    constraints for water & SETTLE  \cite{miyamoto92} \\
+    \hline
+  \end{tabular}
+\end{table}
  
 
-Any specifics for simulations with aqueous cations.
+For deposited trajectories and parameter files see 
+Refs.~\citenum{TBA}.
+\todo{Joe: Upload trajectories and add references here.}
  
-
-Any specifics for simulations with anionic/cationinc surfactants/peptides. 
-e.g. where the parameters for them came from. 
 
 
 
