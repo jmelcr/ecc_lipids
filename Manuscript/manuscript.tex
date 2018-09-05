@@ -430,7 +430,23 @@ Scattering form factors validate the dimensions of the lipid bilayer (i.e., the 
  
 \subsection{Simulation details} 
 
-\todo{SAMULI: Table of simulated systems would be useful.}
+\begin{table*}[tbp]
+\centering
+\caption{  List of MD simulations. 
+           Given concentrations adopt the form $C_{bulk}/C_{buffer}$. 
+        }
+\todo{Joe: to be filled-in. I'll generate it automatically from my Jupyter notebooks.}  
+\label{IONsystems_conc}
+\begin{tabular}{l c c r r r r }
+  lipid/counter-ions &  KCl (mM)  &  NaCl (mM) & CaCl$_2$\,(mM) &  \footnote{Number of lipid molecules with the largest mole fraction}N$_{\rm l}$   &  \footnote{Number of water molecules}N$_{\rm w}$ \todoi{Should confirm that the amounts of water in experiments matched those in simulations.}   &  \footnote{Simulation temperature}T (K)  \\
+  \hline
+    POPC:POPS (5:1)/K$^+$  & tba & tba & 60:12 & 9999 & 298  \\
+    \hline
+    POPC:POPS (5:1)/Na$^+$ & tba & tba & 60:12 & 9999 & 298  \\
+    \hline
+\end{tabular}
+\end{table*}
+
 General simulation setup.
  
 
