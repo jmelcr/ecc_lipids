@@ -289,10 +289,22 @@ the way for more realistic MD simulations of negatively charged
 lipid bilayers to be used in wide range of applications.
 
 
+
+
+
+\todo{ Make a literature search for any possible applications of polarizable force fields (AMOEBA and Drude) on anions/cations and lipids. 
+If found -- Does ECC provide improvment over them? 
+As for PC, the charge scaling was used in the early simulations of PS lipids from Berendsen group.  }
+
+
+
+
  
 \section{Methods} 
  
 \subsection{Electronic continuum correction for lipid bilayers}\label{section:ecc} 
+
+\todo{Joe: It might be a very short section -- Shall we merge it with the simulation details section?}
 
 \todo{SAMULI: I think that all the current content is too general for this paper. The focus should be
 in application of ECC to negatively charge lipids versus zwitterionic lipid in the previous paper.}
@@ -801,7 +813,12 @@ in a neutral POPC bilayer versus in a negatively charged bilayer with the compos
 Interestingly, this value is slightly decreased in the presence of an additional \ce{NaCl} concentration adding also \ce{Cl^-} anions, 
 which are not present in the system when only counterions are used
 (bottom resp. top plot in Fig.~\ref{fig:nacl-dens_PCPS}). 
-The interaction of a neutral POPC bilayer with \ce{NaCl} is discussed in a greater detail in our publication \citep{melcr18}. 
+The relative surface excess of calcium, $\Gamma^{w}_{Ca}$, also reflects
+the higher affinity of the negatively charged PC:PS (5:1) membrane compared to a neutral POPC bilayer; 
+its value for the latter is       $\Gamma^{w}_{Ca} = 0.06\mathrm{nm^{-2}}$, 
+while for the PC:PS mixture it is $\Gamma^{w}_{Ca} = 0.24\mathrm{nm^{-2}}$
+at comparable concentrations $C _{Ca} = 260\pm 30 \mathrm{mM} $. 
+
 
  
 
@@ -888,8 +905,6 @@ which achieves a \emph{quantitative} agreement with the changes induced by \ce{C
     the density profiles of~\ce{Cl^-} ions are divided by 2, and 
     the density profiles of phosphate groups and water are divided by 5 and 200, respectively.  
     } 
-\todo{JM: Compare with pure POPC bilayer? 
-SAMULI: Comparison of the relative surface excess values in the text and in the table would be probably sufficient.}
 \end{figure} 
  
 
@@ -1129,26 +1144,7 @@ Provide density plots and show, where and how the cations bind to the membrane.
  
  
 
-\subsection{Electronic Continuum Correction as a generally applicable model polarizability?}
 
-\textbf{This will be exemplified on POPS throughout this paper and, hence, it does not require additional section. }
-
-\todo{Look up possible applications of AMOEBA and Drude on anions/cations and possibly lipids. 
-Does ECC provide improvment over them? 
-This is crucial -- if this section will make the core message of this paper, 
-I have to put the ECC-method into context of other polarizable models. 
-If there are no other simulations like these and no data on the accuracy with cation/anions, 
-our approach (ECC) is hence the pioneer in the field and, hence, sets the standard instead. 
-SAMULI: We should keep the focus on lipids here. We should check the recent literature, but
-I am not aware of charged lipid simulations with explicitly polarizable force fields. 
-As for PC, the charge scaling was used in the early simulations of PS lipids from Berendsen group.
-We should mention this. Otherwise, I think that one of our conclusions will be that our
-results indicate that ECC generally improves the results of lipids bilayer MD simulations.
-However, we should not write a separate section about it. It should be in the conclusions section.}
-
-Show the successes and possible \emph{limits} of ECC applied on top of various models \cite{melcr18, martinek17, Pluharova2014, kohagen14, kohagen16}. 
-
-After validation above, it can be an option to show results also for systems, for which we have no experiments. 
 
  
  
