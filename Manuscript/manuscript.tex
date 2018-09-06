@@ -430,6 +430,31 @@ Scattering form factors validate the dimensions of the lipid bilayer (i.e., the 
  
 \subsection{Simulation details} 
 
+
+MD simulations were performed using the GROMACS 2018 \cite{Abraham15} simulation package. 
+The simulated system consisted of lipids (POPC and POPS) forming a single lipid bilayer,
+an amount of water molecules comparable to the hydration levels in experiments, 
+\todo{Check this claim.}
+and concentrations of ions (\ce{K^+}, \ce{Na^+}, \ce{Ca^{2+}} and \ce{Cl^{-}})
+in an orthorhombic simulation box with periodic boundary conditions. 
+The simulation parameters used in this work are summarized in Table~\ref{tbl:mdpar}. 
+A comprehensive list of simulations used in this work is in Table~\ref{tbl:sim-list}. 
+
+We used the SPC/E~\cite{Berendsen1987} water model 
+and ECC-ions \cite{martinek17, kohagen16, Pluharova2014} 
+for the simulations with ECC-lipids.
+Force field parameters for POPC were taken from Ref.~\citenum{melcr18}. 
+The ECC-POPS model as derived again from the Lipid14 force field~\cite{dickson14, lipid17-future}, as was described above.
+For a direct comparison, 
+we also performed simulations with the Lipid14 model~\cite{dickson14},
+the TIP3P water model~\cite{jorgensen83}, 
+and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006}. 
+
+For deposited trajectories and parameter files see Refs.~
+\todo{Joe: Upload trajectories and add references here.}
+
+
+
 \begin{table*}[tbp]
 \centering
 \caption{  List of MD simulations. 
@@ -448,9 +473,6 @@ Scattering form factors validate the dimensions of the lipid bilayer (i.e., the 
 \end{table*}
 
 
-MD simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 2018). 
-The simulation parameters used in this work are summarized in Table~\ref{tbl:mdpar}. 
-A comprehensive list of simulaitons used in this work is in Table~\ref{tbl:sim-list}. 
 
 \begin{table}[tbp]
   \caption{Simulation parameters}
@@ -474,9 +496,6 @@ A comprehensive list of simulaitons used in this work is in Table~\ref{tbl:sim-l
 \end{table}
  
 
-For deposited trajectories and parameter files see 
-Refs.~\citenum{TBA}.
-\todo{Joe: Upload trajectories and add references here.}
  
 
 
