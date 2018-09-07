@@ -420,21 +420,27 @@ applied throughout the lipid bilayer/aqueous solution interface.
 %
 
 \subsection{Validation of membrane properties} 
-\todo{SAMULI: I would put under under this section.
-1) a very short explanation of the usage of electrometer concept in this paper by mainly citing NMRlipids IV.
-2) a very short explanation of the usage of form factor and order parameters by citing approriate publications}
 
-The structures of lipid bilayers in simulations without ions were validated against NMR by calculating the order parameters for the C-H bonds and against \mbox{X-ray} scattering experiments by evaluating the scattering form factors. 
-NMR order parameters validate the structures sampled by the individual lipid molecules with atomic resolution. 
-The simulated order parameters were calculated for all C-H bonds in lipid molecules from Eq. \ref{OP}.
-Scattering form factors validate the dimensions of the lipid bilayer (i.e., the bilayer thickness and area per molecule). Form factors were calculated using a relation 
+The structures of lipid bilayers in simulations without ions were validated against NMR 
+by calculating the order parameters for the C-H bonds and against \mbox{X-ray} scattering experiments by evaluating the scattering form factors
+as was done in Refs.~\citenum{catte16, melcr18, nmrlipids_proj4}.
+%NMR order parameters validate the structures sampled by the individual lipid molecules with atomic resolution. 
+The simulated order parameters were calculated for all C-H bonds in lipid molecules, 
+while all order paremeters in the head group and only some in the \ce{C-H} groups in tails were resolved experimentally
+(see next section and Fig.~\ref{simVSexpNOions_POPS}). 
+
+Ion binding to lipid bilayers can be experimentally quantified
+by measuring the changes of the head group order parameters in the lipids using solid state NMR.
+In the case of the head group order parameters $S^\alpha$ and $S^\beta$ in phosphatidylcholine
+(see Fig.~\ref{simVSexpNOions_POPS} for the definition of the order parameters)
+such changes are known under the term ''electrometer concept'' \citep{seelig87,catte16, ollila16, melcr18, nmrlipids_proj4}. 
+It is experimentally observed that the \ce{C-H} bond
+order parameters of $S^\alpha$ and $S^\beta$ carbons in a PC lipid head group
+are proportional to the amount of charge, positive or negative, bound per lipid~\citep{seelig87, roux90}.
+The change of the order parameters measured with varying concentrations of aqueous ions 
+can be then related to the amount of bound ions.
+
  
-\begin{equation} 
-  F(q) = \int _{-D/2} ^{D/2} \left ( \rho_{el}(z) - \rho_{el}^s \right ) \cos (zq_z) \mathrm{d}z, 
-  %F(q) = \int _{-D/2} ^{D/2} \left ( \sum _\alpha f_\alpha (q_z) n_\alpha (z) - \rho _s \right ) \exp (izq_z) \mathrm{d}z, 
-\end{equation} 
- 
-\noindent where $\rho_{el} (z)$ is the total electron density, $\rho_{el}^s$ is the electron density of the solvent far in the aqueous bulk, and $z$ is the distance from the membrane center along its normal with $D/2$ being half of the unit cell size.   
 
 \subsection{Measurements of acyl chain order parameters}
 \todo{SAMULI: Short description about the order parameter experiments by Tiago.} 
@@ -597,8 +603,8 @@ in pure water without any ions (or only counter ions)
 from simulations and experiments
 as the first step in the assessment of the quality of the model. 
 The experimental X-ray scattering form factors 
-of a bilayer are well reproduced for all lipids employing the presented ECC-lipids model 
-(see Figs.~\ref{fig:simVSexpNOions}, \ref{simVSexpNOions_POPE} and \ref{simVSexpNOions_POPS}). 
+of a bilayer are well reproduced  
+(see Fig.~\ref{simVSexpNOions_POPS}). 
 
 The area per lipid is often used as a relatively simple structural parameter reporting on the bilayer properties and the packing of lipids. 
 In experiments, modeling is used on top of the scattering factors to obtain it \citep{kucerka14}. 
