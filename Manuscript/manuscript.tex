@@ -469,28 +469,30 @@ For deposited trajectories and parameter files see Refs.~
 
 \begin{table*}[tbp]
 \centering
-\caption{  List of MD simulations. 
-           %Given concentrations adopt the form $C_{bulk}/C_{buffer}$. 
+\caption{  List of MD simulations with
+           numbers of individual molecules for each simulation
+           at temperature $T$. 
         }
 \label{tbl:sim-list}
 \begin{tabular}{l c c r r r r r }
-  lipid/counter-ions &  K  &  Na & Ca & Cl &  \footnote{Number of water molecules}N$_{\rm w}$ \todoi{Should confirm that the amounts of water in experiments matched those in simulations.}   &  \footnote{Number of lipid molecules with the largest mole fraction}N$_{\rm l}$     &  \footnote{Simulation temperature}T (K)  \\
+  lipids/counter-ions &  \ce{K^+}  &  \ce{Na^+} & \ce{Ca^{2+}} & \ce{Cl^-} & \ce{H2O} &  PC:PS total  &  $T$~(K)  \\
   \hline
-PC:PS (1:1)/CIon  &  0  &  64  &  0  &  0  &  5253  &  64:64  &  298 \\ 
-PC:PS (1:1)/CIon  &  64  &  0  &  0  &  0  &  5253  &  64:64  &  298 \\ 
-PC:PS (10:1)/CIon  &  0  &  6  &  0  &  0  &  3600  &  60:6  &  298 \\ 
-PC:PS (10:1)/CIon  &  6  &  0  &  0  &  0  &  3600  &  60:6  &  298 \\ 
-PC:PS (0:1)/CIon  &  72  &  0  &  0  &  0  &  3600  &  0:72  &  298 \\ 
-PC:PS (0:1)/CIon  &  0  &  72  &  0  &  0  &  3600  &  0:72  &  298 \\ 
-PC:PS (4:1)/CIon  &  0  &  12  &  0  &  0  &  3600  &  48:12  &  298 \\ 
-PC:PS (4:1)/CIon  &  12  &  0  &  0  &  0  &  3600  &  48:12  &  298 \\ 
-PC:PS (5:1)/CIon  &  0  &  12  &  13  &  26  &  3561  &  60:12  &  298 \\ 
-PC:PS (5:1)/CIon  &  0  &  12  &  26  &  52  &  3522  &  60:12  &  298 \\ 
-PC:PS (5:1)/CIon  &  0  &  12  &  0  &  0  &  3600  &  60:12  &  298 \\ 
-PC:PS (5:1)/CIon  &  12  &  0  &  0  &  0  &  3600  &  60:12  &  298 \\ 
-PC:PS (5:1)/CIon  &  0  &  12  &  39  &  78  &  3483  &  60:12  &  298 \\ 
-PC:PS (5:1)/CIon  &  39  &  12  &  0  &  39  &  3483  &  60:12  &  298 \\ 
-PC:PS (5:1)/CIon  &  0  &  51  &  0  &  39  &  3483  &  60:12  &  298 \\ 
+PC:PS (1:1)/Na+  &  0  &  64  &  0  &  0  &  5253  &  64:64  &  298 \\ 
+PC:PS (1:1)/K+  &  64  &  0  &  0  &  0  &  5253  &  64:64  &  298 \\ 
+PC:PS (10:1)/Na+  &  0  &  6  &  0  &  0  &  3600  &  60:6  &  298 \\ 
+PC:PS (10:1)/K+  &  6  &  0  &  0  &  0  &  3600  &  60:6  &  298 \\ 
+PC:PS (4:1)/Na+  &  0  &  12  &  0  &  0  &  3600  &  48:12  &  298 \\ 
+PC:PS (4:1)/K+  &  12  &  0  &  0  &  0  &  3600  &  48:12  &  298 \\ 
+PC:PS (5:1)/Na+  &  0  &  12  &  13  &  26  &  3561  &  60:12  &  298 \\ 
+PC:PS (5:1)/Na+  &  0  &  12  &  26  &  52  &  3522  &  60:12  &  298 \\ 
+PC:PS (5:1)/Na+  &  0  &  12  &  0  &  0  &  3600  &  60:12  &  298 \\ 
+PC:PS (5:1)/K+  &  12  &  0  &  0  &  0  &  3600  &  60:12  &  298 \\ 
+PC:PS (5:1)/Na+  &  0  &  12  &  39  &  78  &  3483  &  60:12  &  298 \\ 
+PC:PS (5:1)/Na+  &  39  &  12  &  0  &  39  &  3483  &  60:12  &  298 \\ 
+PC:PS (5:1)/Na+  &  0  &  51  &  0  &  39  &  3483  &  60:12  &  298 \\ 
+  \hline
+PS/K+  &  72  &  0  &  0  &  0  &  3600  &  0:72  &  298 \\ 
+PS/Na+  &  0  &  72  &  0  &  0  &  3600  &  0:72  &  298 \\ 
   \hline
 \end{tabular}
 \end{table*}
