@@ -309,7 +309,47 @@ As for PC, the charge scaling was used in the early simulations of PS lipids fro
 \todo{SAMULI: I think that all the current content is too general for this paper. The focus should be
 in application of ECC to negatively charge lipids versus zwitterionic lipid in the previous paper.}
 
-\emph{ Directly taken from my thesis.}
+\todo{The following contains reference, which are not added to the bibliography yet. 
+These paragraphs are not meant as a final intro -- it is rather a summary of my recent lit search. 
+Everything is to be completely rewritten. }
+
+Polarizability in classical MD simulations is a matter of an open discussion for many years. 
+While the most of the MD community uses and tries to reassure themselves
+that the lack of polarizability is not an issue for their applications,
+there are several groups which point at this apparent problem. 
+It was already demonstrated on several case problems
+that electronic polarization is a non-negligable part of the interactions between molecules. \cite{lopes2009}
+To give a few examples, 
+the community around ionic liquids considers not only polarization, 
+but also a charge transfer between moiteties an iportant effect in their simulations. \cite{borodin2009}
+Simulations of DNA suffer from overestimated interactions with divalent cations,
+which are much improved upon introduction of polarizability
+concluding that polarizability is crucial for a correct 
+characterization of structure and dynamics of DNA even without the ions. \cite{lemkul2016empirical}
+
+Using a common scaling factor is not a new approach in classical MD simulations,
+as it can be find in the early work on lipid bilayer simulation \cite{berkowitz06},
+in force fields employing explicit polarization \cite{lemkul2016empirical},
+in ionic liquids \cite{borodin2009} 
+\todo{Check these references whether they really contain scaling, especially the ionic liquid one.}
+Great improvement in permeability of charged solutes in gramicidin channel is observed with a force field using charge equilibration to model polarizability. \cite{lucas2012} 
+
+
+Classical Durde model polarizable force field for phospholipids is gradually being developed,
+however, only PC and PE are available at this moment. \cite{chowdhary13, chowdhary17}
+While the polarizable model shows a potential improvement from many perspectives -- for example
+dipole potential of a membrane is found to be changed dramaticly 
+when polarizability is considered \cite{harder2009} -- 
+its non-polarizable version still performes better in some cases (e.g., in head group structure). 
+Anyhow, to date there is no study that would show any results 
+about negatively charged lipids using polarizable force fields
+nor about their interactions with cations and anions. 
+From this perspective,
+this work is the first to study interactions of POPS with monovalent and even divalent cations. 
+
+Even though the software packages are more and more optimized for running simulations with explicit polarization,
+its application still seems to be rather far from ready for common production use. \cite{jiang2011, lopes2009}
+
 
 The lack of electronic polarizability in classical MD simulations
 has been considered a serious issue since the early days of the modeling of lipid bilayers. 
@@ -317,8 +357,8 @@ has been considered a serious issue since the early days of the modeling of lipi
 There exist two main approaches for the explicit representation of electronic polarizability -- atomic induced dipoles and Drude oscillators.
 %The AMOEBA FF adopts the point induced dipole model in which each atom carries an induced dipole moment determined by the electric field and its atomic polarizability. 
 %Permanent dipole and quadrupoles are also assigned to each atomic site for a more accurate description of electrostatic interactions. 
-The induced dipole approach models the polarizability through a point dipole moment on each atom.
-Such an electric dipole is induced by the acting electric field proportionally to its polarizability. 
+%The induced dipole approach models the polarizability through a point dipole moment on each atom.
+%Such an electric dipole is induced by the acting electric field proportionally to its polarizability. 
 This model is implemented in the widely adopted force field AMOEBA \citep{amoeba06, amoeba10, amoeba13}.
 
 %The Drude FF adopts the classical Drude oscillator model where auxiliary charges (Drude oscillators or particles) are attached to non-hydrogen atoms with harmonic springs, and the displacement of the Drude particle relative to its parent atom represents the response to the external electric field. 
@@ -326,11 +366,11 @@ This model is implemented in the widely adopted force field AMOEBA \citep{amoeba
 %The charge distribution between a Drude particle and its parent atom is a finite difference representation of a dipole moment. 
 %Similarly, lone pairs can be considered as real space representations of permanent multipoles. 
 %Such analogy between the classical Drude oscillator model and the multipole and induced dipole (MPID) model suggests that in theory one can interconvert polarizable FFs between the two models. 
-The classical Drude oscillator model is inspired by a classical representation of a lone pair of electrons. 
-It uses an auxiliary charge,
-also termed Drude oscillator or Drude particle, 
-which is attached to each atom through a harmonic spring.
-The displacement of the Drude particle represents the induced polarization proportionally to the acting electric field,
+%The classical Drude oscillator model is inspired by a classical representation of a lone pair of electrons. 
+%It uses an auxiliary charge,
+%also termed Drude oscillator or Drude particle, 
+%which is attached to each atom through a harmonic spring.
+%The displacement of the Drude particle represents the induced polarization proportionally to the acting electric field,
 as implemented for example in the Drude force field \citep{lemkul2016empirical}. 
 
 %In this work, we convert the Drude polarizable force field from its original classical Drude oscillator formalism onto a permanent multipole and induced dipole formalism, which we refer to as MPID. 
@@ -377,23 +417,23 @@ are screened like in a dielectric continuum
 with an electronic dielectric constant, $\epsilon _{el}$, 
 also known as the high frequency dielectric constant. 
 This can be formally written as
-\begin{equation}  \label{eq:coulomb}
-   %U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{r_{ij}} + \frac{1}{2} \displaystyle \sum ^N _{i,j=1} U ^{dip} _{ij} - \displaystyle \sum ^N _{i=1} E^q(r_i) d_i  \propto  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q^{ECC}_i q^{ECC}_j}{r_{ij}} 
-   %U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{r_{ij}} + \frac{1}{2} \displaystyle \sum ^N _{i,j=1} U ^{dip-dip} _{ij} - \displaystyle \sum ^N _{i=1} U^{q-dip}_i  \propto  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{\frac{q_i}{\sqrt{\epsilon _{el}}} \frac{q_j}{\sqrt{\epsilon _{el}}}}{r_{ij}}  , 
-   U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{\frac{q_i}{\sqrt{\epsilon _{el}}} \frac{q_j}{\sqrt{\epsilon _{el}}}}{r_{ij}}  , 
-\end{equation} 
-where $q_i$ is the point charge of the particle $i$,
-and $r_{ij}$ are the distances between particles $i$ and $j$.
-%$U^{dip-dip} _{ij}$ represent the interactions between induced dipoles and their polarization energies,
+%\begin{equation}  \label{eq:coulomb}
+%   %U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{r_{ij}} + \frac{1}{2} \displaystyle \sum ^N _{i,j=1} U ^{dip} _{ij} - \displaystyle \sum ^N _{i=1} E^q(r_i) d_i  \propto  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q^{ECC}_i q^{ECC}_j}{r_{ij}} 
+%   %U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{r_{ij}} + \frac{1}{2} \displaystyle \sum ^N _{i,j=1} U ^{dip-dip} _{ij} - \displaystyle \sum ^N _{i=1} U^{q-dip}_i  \propto  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{\frac{q_i}{\sqrt{\epsilon _{el}}} \frac{q_j}{\sqrt{\epsilon _{el}}}}{r_{ij}}  , 
+%   U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{\frac{q_i}{\sqrt{\epsilon _{el}}} \frac{q_j}{\sqrt{\epsilon _{el}}}}{r_{ij}}  , 
+%\end{equation} 
+%where $q_i$ is the point charge of the particle $i$,
+%and $r_{ij}$ are the distances between particles $i$ and $j$.
+%%$U^{dip-dip} _{ij}$ represent the interactions between induced dipoles and their polarization energies,
 %and the terms $U^{q-dip} _i$ are the interactions between point charges and induced dipoles. 
-It naturally follows from the above equation that 
-embedding all atoms into a dielectric continuum 
-is equivalent to a formal scaling of the atomic point charges 
-\begin{equation}  \label{eq:scaling}
- q_i ^{ECC} = \frac{q_i}{\sqrt{\epsilon _{el}}} ,
-\end{equation} 
-where $q_i$ and $q_i^{ECC}$ are respectively the original partial charges and the scaled charges, 
-which represent the effects of the electronic polarization. 
+%It naturally follows from the above equation that 
+%embedding all atoms into a dielectric continuum 
+%is equivalent to a formal scaling of the atomic point charges 
+%\begin{equation}  \label{eq:scaling}
+% q_i ^{ECC} = \frac{q_i}{\sqrt{\epsilon _{el}}} ,
+%\end{equation} 
+%where $q_i$ and $q_i^{ECC}$ are respectively the original partial charges and the scaled charges, 
+%which represent the effects of the electronic polarization. 
 Given that the  high frequency dielectric constant of water is 1.78 (i.e., the square of the refraction index of 1.33), 
 the scaling factor for ions in water is $\approx 0.75$. 
 
