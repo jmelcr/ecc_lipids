@@ -300,7 +300,8 @@ As for PC, the charge scaling was used in the early simulations of PS lipids fro
  
 \subsection{Electronic continuum correction for lipid bilayers}\label{section:ecc} 
 
-\todo{Joe: It might be a very short section -- Shall we merge it with the simulation details section?}
+\todo{Joe: It might be a very short section -- Shall we merge it with the simulation details section?
+SAMULI: Let's write it first and then see.}
 
 \todo{SAMULI: I think that all the current content is too general for this paper. The focus should be
 in application of ECC to negatively charge lipids versus zwitterionic lipid in the previous paper.}
@@ -457,6 +458,7 @@ applied throughout the lipid bilayer/aqueous solution interface.
 
 \subsection{Validation of membrane properties} 
 
+\todo{SAMULI: Short discussion about mixtures should be added by citing the NMRlipids IV.}
 The structures of lipid bilayers in simulations without ions were validated against NMR 
 by calculating the order parameters for the C-H bonds and against \mbox{X-ray} scattering experiments by evaluating the scattering form factors
 as was done in Refs.~\citenum{catte16, melcr18, nmrlipids_proj4}.
@@ -502,7 +504,8 @@ The ECC-POPS model as derived again from the Lipid14 force field~\cite{dickson14
 For a direct comparison, 
 we also performed simulations with the Lipid14 model~\cite{dickson14},
 the TIP3P water model~\cite{jorgensen83}, 
-and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006}. 
+and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006}.
+\todo{The usage of Dang ions should be justified here.}
 
 For deposited trajectories and parameter files see Refs.~
 \todo{Joe: Upload trajectories and add references here.}
@@ -514,7 +517,10 @@ For deposited trajectories and parameter files see Refs.~
 \caption{  List of MD simulations with
            numbers of individual molecules for each simulation
            at temperature $T$. 
-        }
+         }
+         \todo{SAMULI: Temperature column is not necessary because it is always the same.}
+         \todo{SAMULI: Columns reporting the additional ion concentrations would be useful.}
+         \todo{SAMULI: Order of the PC:PS (5:1)/Na+ systems in little bit confusing.}
 \label{tbl:sim-list}
 \begin{tabular}{l c c r r r r r }
   lipids/counter-ions &  \ce{K^+}  &  \ce{Na^+} & \ce{Ca^{2+}} & \ce{Cl^-} & \ce{H2O} &  PC:PS total  &  $T$~(K)  \\
@@ -633,7 +639,14 @@ PS/Na+  &  0  &  72  &  0  &  0  &  3600  &  0:72  &  298 \\
   \end{tabular} 
 \end{table} 
  
- 
+\todo{SAMULI: Lipid17 simulations are too compressed, which is probably due to the
+  overbinding of Dang ions. Lipid17 with Åqvist ions (default in Amber) has larger
+  area in NMRlipids IV. This is similar to ECC-POPC paper where changing from Åqvist to
+  Dang or ECC-ions increased binding affinity in Lipid14. However, the headgroup order
+  parameters are better in ECC-POPS compared to Lipid17 simulations with any ions.
+  These should be discussed in this section.
+}
+
 We compared X-ray scattering form factors and NMR order parameters of bilayers
 in pure water without any ions (or only counter ions)
 from simulations and experiments
@@ -691,7 +704,7 @@ and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS co
 
 
 
-\begin{figure}[htb!] 
+\begin{figure*}[!htb] 
   \centering 
   \includegraphics[width=\figwidthsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
   \includegraphics[width=\figwidthsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
@@ -707,8 +720,13 @@ and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS co
     where the response is closer to the experiment (which uses only \ce{Na^+} counterions). 
     Experimental points for POPS inherently contain larger systematic error, 
     as they come from independent experiments.
-  } 
-\end{figure} 
+  }
+  \todo{SAMULI: Caption says Åqvist, but I guess that Dang is used also here?} \\
+  \todo{SAMULI: Do you have a simulation of Lipid14 pure POPC at 298K?
+    This is not in the table. This simulation would be useful also for NMRlipids IV.
+  } \\
+  \todo{SAMULI: Error bars for lipid14 missing.}
+\end{figure*} 
 
 
 
@@ -741,8 +759,11 @@ and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS co
   \todo{SAMULI: The forking of PS alpha carbon should not be put to zero with zero salt concentrations
     in this or in other figures. This is confusing expecially for the results with CaCl$_2$ where the forking
     seems to increase with CaCl$_2$, which is not correct. In NMRlipids IV, I have now put the lower order parameter
-    to zero and kept the forking correct with all concentrations of ions.}
-\end{figure} 
+    to zero and kept the forking correct with all concentrations of ions.} \\
+  \todo{SAMULI: Ion concentrations should be updated to the concentrations in water before solvating the lipids.} \\
+  \todo{SAMULI: Error bars should be recalculated with the fixed code} \\
+  \todo{SAMULI: We should have at least one more points with higher concentration (maybe close to 2M), or maybe two more points.} \\
+  \end{figure} 
 
 
 \begin{figure}[tbp!] 
@@ -759,7 +780,10 @@ and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS co
   \todo{SAMULI: The forking of PS alpha carbon should not be put to zero with zero salt concentrations
     in this or in other figures. This is confusing expecially for the results with CaCl$_2$ where the forking
     seems to increase with CaCl$_2$, which is not correct. In NMRlipids IV, I have now put the lower order parameter
-    to zero and kept the forking correct with all concentrations of ions.}
+    to zero and kept the forking correct with all concentrations of ions.} \\              
+  \todo{SAMULI: Ion concentrations should be updated to the concentrations in water before solvating the lipids.} \\
+  \todo{SAMULI: Error bars should be recalculated with the fixed code} \\
+  \todo{SAMULI: We should have at least one more points with higher concentration (maybe close to 2M), or maybe two more points.} \\
 \end{figure} 
  
 
@@ -835,14 +859,23 @@ improves the description of the interactions even for very weakly binding cation
     In order to visualize the density profiles with a scale comparable to the profile of \ce{Ca^{2+}}, 
     the density profiles of~\ce{Cl^-}, \ce{K^+} and \ce{Na^+} ions are divided by 2, and 
     the density profiles of phosphate groups and water are divided by 5 and 200, respectively.  
-    } 
+  }
+  \todo{SAMULI: Top figure should go together with figure of only K+ counterions and figure with pure PS mentioned
+    another todo point
+  } \\
+  \todo{SAMULI: Division of ion densities with 2 in figure without calcium is not necessary and makes
+  comparison to other results more difficult.}
 \end{figure} 
 
 
 
 The difference between the affinities of \ce{Na^+} and \ce{K^+} to neutral and negatively charged membranes
 can be described by their relative surface excesses with respect to water, $\Gamma ^{w} _{ion}$, 
-which are shown in the plots of the density profiles of the ions in Figs.~\ref{fig:nacl-dens} (neutral bilayer) and \ref{fig:nacl-dens_PCPS} (negatively charged bilayer). 
+which are shown in the plots of the density profiles of the ions in Figs.~\ref{fig:nacl-dens} (neutral bilayer)
+\todo{SAMULI: We should have a figure showing density profiles of Na+ and K+ in pure POPS and PC:PS (5:1) mixture
+  with only counterions from ECC-POPS model and Lipid17 model.
+}
+and \ref{fig:nacl-dens_PCPS} (negatively charged bilayer). 
 Such a quantity compares the adsorption of ions to the adsorption of water molecules at an interface 
 without the necessity of defining a Gibbs dividing surface. \citep{melcr18, chattorajBOOK}
 While \ce{K^+} maintains negative values of $\Gamma^{w}_{K}$ even for the negatively charged bilayer,
@@ -888,7 +921,11 @@ at comparable concentrations $C _{Ca} = 260\pm 30 \mathrm{mM} $.
   \todo{SAMULI: The forking of PS alpha carbon should not be put to zero with zero salt concentrations
     in this or in other figures. This is confusing expecially for the results with CaCl$_2$ where the forking
     seems to increase with CaCl$_2$, which is not correct. In NMRlipids IV, I have now put the lower order parameter
-    to zero and kept the forking correct with all concentrations of ions.}
+    to zero and kept the forking correct with all concentrations of ions.} \\
+  \todo{SAMULI: Ion concentrations should be updated to the concentrations in water before solvating the lipids.} \\
+  \todo{SAMULI: Error bars should be recalculated with the fixed code} \\
+  \todo{SAMULI: Maybe we should have at least one more points with smaller concentration
+    (maybe close to 100mM in solution before solvating lipids).} \\
 \end{figure} 
 
 
@@ -927,7 +964,10 @@ which has a higher affinity to \ce{Ca^{2+}} compared to POPC.
 ECC-lipids is the first model,
 which achieves a \emph{quantitative} agreement with the changes induced by \ce{CaCl2} in experiments. 
 
-
+\todo{SAMULI: The qualitative iprovement of PS headgroup order parameter response to bound Ca2+
+  should be discussed. We should, however, point out that the response PS alpha carbon to bound
+  Ca2+ is not excatly reproduced even by the ECC-POPS model.
+}
 
 
 
@@ -943,7 +983,9 @@ which achieves a \emph{quantitative} agreement with the changes induced by \ce{C
     In order to visualize the density profiles with a scale comparable to the profile of \ce{Ca^{2+}},  
     the density profiles of~\ce{Cl^-} ions are divided by 2, and 
     the density profiles of phosphate groups and water are divided by 5 and 200, respectively.  
-    } 
+  }
+  \todo{SAMULI: Ion concentrations should be updated to the concentrations in water before solvating the lipids.} \\
+  \todo{SAMULI: We should compare to the density profiles from Lipid17 simulations. These are also needed for NMRlipids IV.}
 \end{figure} 
  
 
@@ -964,7 +1006,9 @@ The increasing concentration of \ce{CaCl2} and, hence, a higher amount of bound 
 also attracts \ce{Cl^-} anions to the bilayer 
 as can be seen from its growing density at the interface. 
 
-
+\todo{SAMULI: This paragraph in unclear. Should be clarified and the changes
+  of headgroup orientations in PC and PS clearly discussed.
+}
 %%% discuss the table with Gammas and follow up with molecular details, where do cations bind? Support with the spatial density figure
 The density profiles of ions suggest that
 the dominant contribution to the binding of \ce{Ca^{2+}} to phospholipid bilayers
@@ -1055,7 +1099,9 @@ in both neutral and negatively charged membranes.
 Interactions of \ce{Ca^{2+}} with carbonyl groups are also present, 
 however, they are always accompanied by interactions with phosphate groups. 
 %but a very small negligable amount much below 1\%. 
-
+\todo{Also COO- vs. phosphate binding should be discussed and the results should be
+  discussed with respect to the literature: https://doi.org/10.1016/j.bpj.2018.08.044 and
+  Melcrova et al. Scientific Reports | 6:38035 | DOI: 10.1038/srep38035 }
 
 
 \begin{figure}[tb!] 
