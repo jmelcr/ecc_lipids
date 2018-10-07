@@ -310,6 +310,33 @@ in application of ECC to negatively charge lipids versus zwitterionic lipid in t
 These paragraphs are not meant as a final intro -- it is rather a summary of my recent lit search. 
 Everything is to be completely rewritten. }
 
+The polarization of electrons in ECC-lipids uses the implicit method termed electronic continuum correction (ECC). \cite{leontyev09, Pluharova2014, martinek17, melcr18} 
+In this method, the effects of electronic polarization are represented through rescaling of charges. \cite{melcr18}
+The scaling factor is derived from the high-frequency dielectric constant of electrons, $\epsilon_{el}$, as
+\begin{equation}
+f_q = \frac{1}{\sqrt{\epsilon_{el}}} .
+\end{equation}
+The value of $\epsilon_{el}$ for water solutions is $\epsilon_{el} = 1.78$ \cite{leontyev09},
+hence, the scaling factor yields $f_q \approx 0.75$. 
+
+In the case of POPS, which is a monovalently negatively charged lipid, 
+we used exactly this scaling factor to represent the polarizability of the electrons
+yielding a total charge of $-0.75$ in the ECC formalism. \cite{martinek17, leontyev09, melcr18}
+
+Note that we used a different scaling factor of $f_q = 0.8$ 
+to derive a ECC-POPC model, which also uses ECC. \cite{melcr18}
+Compared to POPS, POPC is a zwitterionic neutral molecule with a zero total charge; 
+scaling it by any factor does not affect it. 
+Partial charges of the atoms in POPC are not physical observabels, 
+and vary greatly between different models. \cite{botan15, catte16, nmrlipids_proj4, Pluhackova2016}
+The choice of a larger scaling factor in ECC-POPC represents the fact that 
+the set of partial charges in the initial model for ECC-POPC, the Lipid14 model \cite{dickson14}, 
+was determined as less polar compared to other models. 
+
+\textbf{This explains the choice of different scaling factor. uff..}
+
+
+
 Polarizability in classical MD simulations is a matter of an open discussion for many years. 
 While the most of the MD community uses and tries to reassure themselves
 that the lack of polarizability is not an issue for their applications,
