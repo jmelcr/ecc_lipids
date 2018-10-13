@@ -282,7 +282,43 @@ lipid headgroups and other lipids or ions \cite{NMRlipidsIV}.
 Implicit inclusion of electronic polarizability using
 electronic continuum correction (ECC) to lipid models
 substantially improved the interactions between cations and
-zwitterionic lipids \cite{melcr18}. Here, we extend the approach
+zwitterionic lipids \cite{melcr18}. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% On the simulation part .. %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+An empirical scaling factor, which reduces electrostatic forces between molecules, 
+is a well known concept in molecular modelling;
+such an approach was adopted in the early simulations of lipid bilayers \cite{egberts94, berendsen1996},
+in force fields employing explicit polarization \cite{lemkul2016empirical},
+or in the simulations of ionic liquids \cite{Bhargava2007}. 
+%An improvement of permeability of charged solutes in the gramicidin A channel 
+%is observed with a force field using charge equilibration to model polarizability. \cite{lucas2012} 
+
+From the perspective of phospholipid bilayers,
+a force field with an explicit polarizability 
+using the Classical Durde model 
+is gradually being developed, however, 
+only parameters for PC and PE are available at this moment. \cite{chowdhary13, chowdhary17}
+While such a model shows a potential improvement from many perspectives -- 
+for example accounting for polarizability has a significant impact on the dipole potential of a membrane \cite{harder2009} -- 
+the non-polarizable version of the same force field 
+performes comparably well at a fraction of the computational cost 
+of the models with explicit polarization. \citep{lucas12,chowdhary13} 
+
+%To our knowledge, there is no study focusing on
+%charged lipids using polarizable force fields. 
+%nor about their interactions with cations and anions. 
+%From this perspective,
+%this work is the first pioneering study providing atomistic resolution insight 
+%into the interactions of POPS with monovalent and even divalent cations. 
+
+%Even though the software packages are more and more optimized for running simulations with explicit polarization,
+%its application still seems to be rather far from ready for common production use. \cite{jiang2011, lopes2009}
+
+Here, we extend the approach
 to anionic PS lipids to more accurately describe their interactions with ions
 and PC headgroups in mixed lipid bilayers. The results pave
 the way for more realistic MD simulations of negatively charged
@@ -290,9 +326,6 @@ lipid bilayers to be used in wide range of applications.
 
 
 
-\todo{ Make a literature search for any possible applications of polarizable force fields (AMOEBA and Drude) on anions/cations and lipids. 
-If found -- Does ECC provide improvment over them? 
-As for PC, the charge scaling was used in the early simulations of PS lipids from Berendsen group.  }
 
 
  
@@ -300,166 +333,21 @@ As for PC, the charge scaling was used in the early simulations of PS lipids fro
  
 \subsection{Electronic continuum correction for lipid bilayers}\label{section:ecc} 
 
-\todo{Joe: It might be a very short section -- Shall we merge it with the simulation details section?
-SAMULI: Let's write it first and then see.}
-
-\todo{SAMULI: I think that all the current content is too general for this paper. The focus should be
-in application of ECC to negatively charge lipids versus zwitterionic lipid in the previous paper.}
-
-\todo{The following contains reference, which are not added to the bibliography yet. 
-These paragraphs are not meant as a final intro -- it is rather a summary of my recent lit search. 
-Everything is to be completely rewritten. }
 
 The polarization of electrons in ECC-lipids uses the implicit method termed electronic continuum correction (ECC). \cite{leontyev09, Pluharova2014, martinek17, melcr18} 
-In this method, the effects of electronic polarization are represented through rescaling of charges. \cite{melcr18}
-The scaling factor is derived from the high-frequency dielectric constant of electrons, $\epsilon_{el}$, as
+In this method, a system of polarizable particles is represented with an equivalent system of particles with fixed charges. 
+This is practically achieved rescaling the charges with a pre-determined scaling factor, $f_q$,
+which is derived from the high-frequency dielectric constant of electrons, $\epsilon_{el}$, as
 \begin{equation}
 f_q = \frac{1}{\sqrt{\epsilon_{el}}} .
 \end{equation}
 The value of $\epsilon_{el}$ for water solutions is $\epsilon_{el} = 1.78$ \cite{leontyev09},
-hence, the scaling factor yields $f_q \approx 0.75$. 
+hence, the scaling factor for aquaeous environments yields $f_q \approx 0.75$. 
 
 In the case of POPS, which is a monovalently negatively charged lipid, 
-we used exactly this scaling factor to represent the polarizability of the electrons
+we used exactly this scaling factor 
+to represent the effects of electronic polarization
 yielding a total charge of $-0.75$ in the ECC formalism. \cite{martinek17, leontyev09, melcr18}
-
-Note that we used a different scaling factor of $f_q = 0.8$ 
-to derive a ECC-POPC model, which also uses ECC. \cite{melcr18}
-Compared to POPS, POPC is a zwitterionic neutral molecule with a zero total charge; 
-scaling it by any factor does not affect it. 
-Partial charges of the atoms in POPC are not physical observabels, 
-and vary greatly between different models. \cite{botan15, catte16, nmrlipids_proj4, Pluhackova2016}
-The choice of a larger scaling factor in ECC-POPC represents the fact that 
-the set of partial charges in the initial model for ECC-POPC, the Lipid14 model \cite{dickson14}, 
-was determined as less polar compared to other models. 
-
-\textbf{This explains the choice of different scaling factor. uff..}
-
-
-
-Polarizability in classical MD simulations is a matter of an open discussion for many years. 
-While the most of the MD community uses and tries to reassure themselves
-that the lack of polarizability is not an issue for their applications,
-there are several groups which point at this apparent problem. 
-It was already demonstrated on several case problems
-that electronic polarization is a non-negligable part of the interactions between molecules. \cite{lopes2009}
-To give a few examples, 
-the community around ionic liquids considers not only polarization, 
-but also a charge transfer between moiteties an iportant effect in their simulations. \cite{borodin2009}
-Simulations of DNA suffer from overestimated interactions with divalent cations,
-which are much improved upon introduction of polarizability
-concluding that polarizability is crucial for a correct 
-characterization of structure and dynamics of DNA even without the ions. \cite{lemkul2016empirical}
-
-Using a common scaling factor is not a new approach in classical MD simulations,
-as it can be find in the early work on lipid bilayer simulation \cite{berkowitz06},
-in force fields employing explicit polarization \cite{lemkul2016empirical},
-in ionic liquids \cite{borodin2009} 
-\todo{Check these references whether they really contain scaling, especially the ionic liquid one.}
-Great improvement in permeability of charged solutes in gramicidin channel is observed with a force field using charge equilibration to model polarizability. \cite{lucas2012} 
-
-
-Classical Durde model polarizable force field for phospholipids is gradually being developed,
-however, only PC and PE are available at this moment. \cite{chowdhary13, chowdhary17}
-While the polarizable model shows a potential improvement from many perspectives -- for example
-dipole potential of a membrane is found to be changed dramaticly 
-when polarizability is considered \cite{harder2009} -- 
-its non-polarizable version still performes better in some cases (e.g., in head group structure). 
-Anyhow, to date there is no study that would show any results 
-about negatively charged lipids using polarizable force fields
-nor about their interactions with cations and anions. 
-From this perspective,
-this work is the first to study interactions of POPS with monovalent and even divalent cations. 
-
-Even though the software packages are more and more optimized for running simulations with explicit polarization,
-its application still seems to be rather far from ready for common production use. \cite{jiang2011, lopes2009}
-
-
-The lack of electronic polarizability in classical MD simulations
-has been considered a serious issue since the early days of the modeling of lipid bilayers. 
-% the commented text on polarizability in this section comes from \citep{huang2017mapping}
-There exist two main approaches for the explicit representation of electronic polarizability -- atomic induced dipoles and Drude oscillators.
-%The AMOEBA FF adopts the point induced dipole model in which each atom carries an induced dipole moment determined by the electric field and its atomic polarizability. 
-%Permanent dipole and quadrupoles are also assigned to each atomic site for a more accurate description of electrostatic interactions. 
-%The induced dipole approach models the polarizability through a point dipole moment on each atom.
-%Such an electric dipole is induced by the acting electric field proportionally to its polarizability. 
-This model is implemented in the widely adopted force field AMOEBA \citep{amoeba06, amoeba10, amoeba13}.
-
-%The Drude FF adopts the classical Drude oscillator model where auxiliary charges (Drude oscillators or particles) are attached to non-hydrogen atoms with harmonic springs, and the displacement of the Drude particle relative to its parent atom represents the response to the external electric field. 
-%Virtual particles representative of lone pairs are included in the Drude FF to improve the treatment of electrostatic interactions typically involving hydrogen bond acceptors.
-%The charge distribution between a Drude particle and its parent atom is a finite difference representation of a dipole moment. 
-%Similarly, lone pairs can be considered as real space representations of permanent multipoles. 
-%Such analogy between the classical Drude oscillator model and the multipole and induced dipole (MPID) model suggests that in theory one can interconvert polarizable FFs between the two models. 
-%The classical Drude oscillator model is inspired by a classical representation of a lone pair of electrons. 
-%It uses an auxiliary charge,
-%also termed Drude oscillator or Drude particle, 
-%which is attached to each atom through a harmonic spring.
-%The displacement of the Drude particle represents the induced polarization proportionally to the acting electric field,
-as implemented for example in the Drude force field \citep{lemkul2016empirical}. 
-
-%In this work, we convert the Drude polarizable force field from its original classical Drude oscillator formalism onto a permanent multipole and induced dipole formalism, which we refer to as MPID. 
-%We show that a direct mapping without any reparametrization can transfer the Drude FF into the MPID FF, yielding a similar level of agreement as the Drude FF in reproducing condensed phase properties of organic liquids, crystals, and interfaces. 
-%Our results thus also serve as an additional validation of these novel simulation algorithms.
-Although the two approaches, 
-the induced dipole model and the classical Drude oscillator model, 
-are very different in how they represent polarizability in simulations,
-it was shown that the classical Drude oscillator formalism can be converted to the induced dipole formalism 
-proving the two methods to be equivalent. \citep{huang2017mapping}
-From the point of view of lipids, however, the classical models with fixed charges and no explicit polarizability that are currently available 
-provide comparable accuracy at a fraction of the computational cost of the models with explicit polarization. \citep{lucas12,chowdhary13} 
-
-%The effects of polarization from rather computationally demanding simulations with explicit models 
-%can be implemented using an implicit model of polarization. 
-Instead of the computationally demanding explicit polarization approach, 
-electronic polarization can also be accounted for implicitly.
-Such an implicit mean field model of electronic polarizability 
-%was developed by \citet{leontyev09} under the name Molecular Dynamics in Electronic Continuum, MDEC. 
-termed Electronic continuum correction (ECC) 
-was first suggested by \citet{leontyev09}, 
-and was then systematically applied to solutions of ions by \citet{Pluharova2014, kohagen14, kohagen16, martinek17}. 
-Through a comparison of neutron scattering and/or \emph{ab-initio} molecular dynamics data with classical MD simulations, 
-the authors developed an array of models for cations and anions, termed here as ECC-ions,
-which provide realistic structures even for concentrated solutions of both monovalent and divalent cations. 
-%The term Electronic continuum correction, ECC, originates in the works by \citet{Pluharova2014, kohagen14, kohagen16, martinek17},
-%where the rigorously developed theory by \citet{leontyev14} was systematicaly applied to solutions of ions.
-%that use ECC to represent electronic polarizability. 
-
-%Electronic continuum correction (ECC) 
-In ECC, a system of polarizable particles is represented 
-with an equivalent system of particles with fixed charges. %\citep{leontyev09, leontyev10, leontyev11, leontyev14}
-%including the effects of electronic polarization \emph{implicitly} in a mean-field way. 
-This can be done by a simple transform of the partial charges,
-which does not change the form of the empirical force field in Equation~\ref{eq:amber}, 
-providing the effects of the electronic polarization in a mean field way at no additional computational cost. 
-Although this is technically similar to the phenomenological scaling of partial charges 
-applied in earlier studies of aqueous solutions or ionic liquids \citep{jonsson86,egberts94,beichel14},
-%where also other possible effects (e.g. charge transfer) were considered,
-ECC is a physically well justified and rigorously derived model \citep{leontyev09, leontyev10, leontyev11, leontyev14}.
-Assuming that the electronic polarizability of electrons is approximately constant in biological solutions, 
-it was shown by \citet{leontyev11} that the electrostatic interactions between atoms 
-are screened like in a dielectric continuum 
-with an electronic dielectric constant, $\epsilon _{el}$, 
-also known as the high frequency dielectric constant. 
-This can be formally written as
-%\begin{equation}  \label{eq:coulomb}
-%   %U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{r_{ij}} + \frac{1}{2} \displaystyle \sum ^N _{i,j=1} U ^{dip} _{ij} - \displaystyle \sum ^N _{i=1} E^q(r_i) d_i  \propto  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q^{ECC}_i q^{ECC}_j}{r_{ij}} 
-%   %U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{r_{ij}} + \frac{1}{2} \displaystyle \sum ^N _{i,j=1} U ^{dip-dip} _{ij} - \displaystyle \sum ^N _{i=1} U^{q-dip}_i  \propto  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{\frac{q_i}{\sqrt{\epsilon _{el}}} \frac{q_j}{\sqrt{\epsilon _{el}}}}{r_{ij}}  , 
-%   U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{\frac{q_i}{\sqrt{\epsilon _{el}}} \frac{q_j}{\sqrt{\epsilon _{el}}}}{r_{ij}}  , 
-%\end{equation} 
-%where $q_i$ is the point charge of the particle $i$,
-%and $r_{ij}$ are the distances between particles $i$ and $j$.
-%%$U^{dip-dip} _{ij}$ represent the interactions between induced dipoles and their polarization energies,
-%and the terms $U^{q-dip} _i$ are the interactions between point charges and induced dipoles. 
-%It naturally follows from the above equation that 
-%embedding all atoms into a dielectric continuum 
-%is equivalent to a formal scaling of the atomic point charges 
-%\begin{equation}  \label{eq:scaling}
-% q_i ^{ECC} = \frac{q_i}{\sqrt{\epsilon _{el}}} ,
-%\end{equation} 
-%where $q_i$ and $q_i^{ECC}$ are respectively the original partial charges and the scaled charges, 
-%which represent the effects of the electronic polarization. 
-Given that the  high frequency dielectric constant of water is 1.78 (i.e., the square of the refraction index of 1.33), 
-the scaling factor for ions in water is $\approx 0.75$. 
 
 It is important to note that the value of the high frequency dielectric constant  
 is around 2 for almost any biologically relevant environment \citep{leontyev11}. 
@@ -469,19 +357,22 @@ from the orientational polarization of the molecules, which is accounted for exp
 Therefore, the same correction for the electronic polarizability can be  
 applied throughout the lipid bilayer/aqueous solution interface. 
 
+Note that we used a different scaling factor $f_q = 0.8$ 
+to for the ECC-POPC model. \cite{melcr18}
+Compared to POPS, POPC is a zwitterionic neutral molecule with a zero total charge; 
+scaling it by any factor does not affect it. 
+Partial charges of the atoms in POPC are not physical observables, 
+and vary greatly between different models. \cite{botan15, catte16, nmrlipids_proj4, Pluhackova2016}
+The choice of a larger scaling factor in ECC-POPC represents the fact that 
+the set of partial charges in the initial model for ECC-POPC, the Lipid14 model \cite{dickson14}, 
+was determined in the beginning as less polar compared to other models. 
+
+
+
+
+
  
  
-% SAMULI:
-%\subsection{Electrometer concept} \label{section:electrometer} 
-%This section may not be required, 
-%we may just cite ECC-POPS and NMRlipids projects papers (and ongoing works)
-% 
-% 
-% 
-%\subsection{Validation of lipid bilayer structure against NMR and scattering experiments} 
-%\emph{This section probably has to stay. Following text to be modified. Taken from Ref.~\citenum{melcr18}}
-%
-%
 
 \subsection{Validation of membrane properties} 
 
