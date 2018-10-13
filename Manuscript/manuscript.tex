@@ -344,11 +344,6 @@ f_q = \frac{1}{\sqrt{\epsilon_{el}}} .
 The value of $\epsilon_{el}$ for water solutions is $\epsilon_{el} = 1.78$ \cite{leontyev09},
 hence, the scaling factor for aquaeous environments yields $f_q \approx 0.75$. 
 
-In the case of POPS, which is a monovalently negatively charged lipid, 
-we used exactly this scaling factor 
-to represent the effects of electronic polarization
-yielding a total charge of $-0.75$ in the ECC formalism. \cite{martinek17, leontyev09, melcr18}
-
 It is important to note that the value of the high frequency dielectric constant  
 is around 2 for almost any biologically relevant environment \citep{leontyev11}. 
 This means that even interfaces like biological membranes do not contain discontinuities of the electronic continuum. 
@@ -356,6 +351,14 @@ The dielectric discontinuity in a lipid bilayer thus arises only
 from the orientational polarization of the molecules, which is accounted for explicitly in standard MD simulations.  
 Therefore, the same correction for the electronic polarizability can be  
 applied throughout the lipid bilayer/aqueous solution interface. 
+
+In the case of POPS, which is a monovalently negatively charged lipid, 
+we used exactly the pre-determined scaling factor 
+to represent the effects of electronic polarization
+yielding a total charge of $-0.75$ in the ECC formalism. \cite{martinek17, leontyev09, melcr18}
+Similarly to the ECC-POPC model, we changed the charges only of the polar parts of the phospholipid,
+i.e., charges on all atoms except on alkyl tails, 
+which do not encounter direct contacts with ions. 
 
 Note that we used a different scaling factor $f_q = 0.8$ 
 to for the ECC-POPC model. \cite{melcr18}
