@@ -276,18 +276,20 @@ Spectroscopic experiments give detailed information about the
 interactions between ions and PS lipids, but the data is often indirect and difficult to
 interpret \cite{hauser77,kurland79,eisenberg79,hauser83,dluhy83,hauser85,feigenson86,mattai89,roux90,roux91,boettcher11}.
 Classical molecular dynamics (MD) simulations give
-access to all the details, but the current force fields are not
+access to all the details, but the current non-polarizable force fields are not
 sufficiently accurate to interpret the interactions between anionic
 lipid headgroups and other lipids or ions \cite{NMRlipidsIV}.
-Implicit inclusion of electronic polarizability using
-electronic continuum correction (ECC) to lipid models
-substantially improved the interactions between cations and
-zwitterionic lipids \cite{melcr18}. 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% On the simulation part .. %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%From the perspective of phospholipid bilayers,
+There are force field parameters for neutral lipids PC and PE 
+with explicit polarizability using the Classical Durde model. \cite{chowdhary13, chowdhary17}
+While such a model shows a potential improvement over non-polarizable force fields from many perspectives -- 
+for example accounting for polarizability has a significant impact on the dipole potential of a membrane \cite{harder2009} -- 
+the non-polarizable version of the same force field 
+performes comparably well at a fraction of the computational cost 
+of the models with explicit polarization. \citep{lucas12,chowdhary13} 
 
 An empirical scaling factor, which reduces electrostatic forces between molecules, 
 is a well known concept in molecular modelling;
@@ -296,33 +298,20 @@ in force fields employing explicit polarization \cite{lemkul2016empirical},
 or in the simulations of ionic liquids \cite{Bhargava2007}. 
 %An improvement of permeability of charged solutes in the gramicidin A channel 
 %is observed with a force field using charge equilibration to model polarizability. \cite{lucas2012} 
+At the same time, 
+the implicit inclusion of electronic polarizability to lipid models
+via charge re-scaling using electronic continuum correction (ECC) 
+substantially improved the interactions between cations and zwitterionic lipids \cite{melcr18}. 
 
-From the perspective of phospholipid bilayers,
-a force field with an explicit polarizability 
-using the Classical Durde model 
-is gradually being developed, however, 
-only parameters for PC and PE are available at this moment. \cite{chowdhary13, chowdhary17}
-While such a model shows a potential improvement from many perspectives -- 
-for example accounting for polarizability has a significant impact on the dipole potential of a membrane \cite{harder2009} -- 
-the non-polarizable version of the same force field 
-performes comparably well at a fraction of the computational cost 
-of the models with explicit polarization. \citep{lucas12,chowdhary13} 
 
-%To our knowledge, there is no study focusing on
-%charged lipids using polarizable force fields. 
-%nor about their interactions with cations and anions. 
-%From this perspective,
-%this work is the first pioneering study providing atomistic resolution insight 
-%into the interactions of POPS with monovalent and even divalent cations. 
-
-%Even though the software packages are more and more optimized for running simulations with explicit polarization,
-%its application still seems to be rather far from ready for common production use. \cite{jiang2011, lopes2009}
-
-Here, we extend the approach
-to anionic PS lipids to more accurately describe their interactions with ions
-and PC headgroups in mixed lipid bilayers. The results pave
-the way for more realistic MD simulations of negatively charged
-lipid bilayers to be used in wide range of applications.
+Here, we extend the approach to anionic PS lipids.
+The newly developed model termed ECC-POPS 
+not only describes the interactions of PS with ions more accurately, 
+but also improves the structure of the PS head group 
+and its interactions with PC in mixed lipid bilayers. 
+The results pave the way to more realistic MD simulations 
+of both neutral and negatively charged lipid bilayers 
+for a wide range of applications.
 
 
 
