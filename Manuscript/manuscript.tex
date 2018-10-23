@@ -76,6 +76,10 @@
 \setlength{\figwidthsmall}{6 cm} 
 \newlength{\figwidthfull}
 \setlength{\figwidthfull}{14 cm} 
+\newlength{\figheightsmall}
+\setlength{\figheightsmall}{8 cm} 
+\newlength{\figheight}
+\setlength{\figheight}{12 cm} 
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -276,23 +280,45 @@ Spectroscopic experiments give detailed information about the
 interactions between ions and PS lipids, but the data is often indirect and difficult to
 interpret \cite{hauser77,kurland79,eisenberg79,hauser83,dluhy83,hauser85,feigenson86,mattai89,roux90,roux91,boettcher11}.
 Classical molecular dynamics (MD) simulations give
-access to all the details, but the current force fields are not
+access to all the details, but the current non-polarizable force fields are not
 sufficiently accurate to interpret the interactions between anionic
 lipid headgroups and other lipids or ions \cite{NMRlipidsIV}.
-Implicit inclusion of electronic polarizability using
-electronic continuum correction (ECC) to lipid models
-substantially improved the interactions between cations and
-zwitterionic lipids \cite{melcr18}. Here, we extend the approach
-to anionic PS lipids to more accurately describe their interactions with ions
-and PC headgroups in mixed lipid bilayers. The results pave
-the way for more realistic MD simulations of negatively charged
-lipid bilayers to be used in wide range of applications.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% On the simulation part .. %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%From the perspective of phospholipid bilayers,
+There are force field parameters for neutral lipids PC and PE 
+with explicit polarizability using the Classical Durde model. \cite{chowdhary13, chowdhary17}
+While such a model shows a potential improvement over non-polarizable force fields from many perspectives -- 
+for example accounting for polarizability has a significant impact on the dipole potential of a membrane \cite{harder2009} -- 
+the non-polarizable version of the same force field 
+performes comparably well at a fraction of the computational cost 
+of the models with explicit polarization. \citep{lucas12,chowdhary13} 
+
+An empirical scaling factor, which reduces electrostatic forces between molecules, 
+is a well known concept in molecular modelling;
+such an approach was adopted in the early simulations of lipid bilayers \cite{egberts94, berendsen1996},
+in force fields employing explicit polarization \cite{lemkul2016empirical},
+or in the simulations of ionic liquids \cite{Bhargava2007}. 
+%An improvement of permeability of charged solutes in the gramicidin A channel 
+%is observed with a force field using charge equilibration to model polarizability. \cite{lucas2012} 
+At the same time, 
+the implicit inclusion of electronic polarizability to lipid models
+via charge re-scaling using electronic continuum correction (ECC) 
+substantially improved the interactions between cations and zwitterionic lipids \cite{melcr18}. 
+
+
+Here, we extend the approach to anionic PS lipids.
+The newly developed model termed ECC-POPS 
+not only describes the interactions of PS with ions more accurately, 
+but also improves the structure of the PS head group 
+and its interactions with PC in mixed lipid bilayers. 
+The results pave the way to more realistic MD simulations 
+of both neutral and negatively charged lipid bilayers 
+for a wide range of applications.
 
 
 
-\todo{ Make a literature search for any possible applications of polarizable force fields (AMOEBA and Drude) on anions/cations and lipids. 
-If found -- Does ECC provide improvment over them? 
-As for PC, the charge scaling was used in the early simulations of PS lipids from Berendsen group.  }
 
 
  
@@ -300,139 +326,16 @@ As for PC, the charge scaling was used in the early simulations of PS lipids fro
  
 \subsection{Electronic continuum correction for lipid bilayers}\label{section:ecc} 
 
-\todo{Joe: It might be a very short section -- Shall we merge it with the simulation details section?
-SAMULI: Let's write it first and then see.}
 
-\todo{SAMULI: I think that all the current content is too general for this paper. The focus should be
-in application of ECC to negatively charge lipids versus zwitterionic lipid in the previous paper.}
-
-\todo{The following contains reference, which are not added to the bibliography yet. 
-These paragraphs are not meant as a final intro -- it is rather a summary of my recent lit search. 
-Everything is to be completely rewritten. }
-
-Polarizability in classical MD simulations is a matter of an open discussion for many years. 
-While the most of the MD community uses and tries to reassure themselves
-that the lack of polarizability is not an issue for their applications,
-there are several groups which point at this apparent problem. 
-It was already demonstrated on several case problems
-that electronic polarization is a non-negligable part of the interactions between molecules. \cite{lopes2009}
-To give a few examples, 
-the community around ionic liquids considers not only polarization, 
-but also a charge transfer between moiteties an iportant effect in their simulations. \cite{borodin2009}
-Simulations of DNA suffer from overestimated interactions with divalent cations,
-which are much improved upon introduction of polarizability
-concluding that polarizability is crucial for a correct 
-characterization of structure and dynamics of DNA even without the ions. \cite{lemkul2016empirical}
-
-Using a common scaling factor is not a new approach in classical MD simulations,
-as it can be find in the early work on lipid bilayer simulation \cite{berkowitz06},
-in force fields employing explicit polarization \cite{lemkul2016empirical},
-in ionic liquids \cite{borodin2009} 
-\todo{Check these references whether they really contain scaling, especially the ionic liquid one.}
-Great improvement in permeability of charged solutes in gramicidin channel is observed with a force field using charge equilibration to model polarizability. \cite{lucas2012} 
-
-
-Classical Durde model polarizable force field for phospholipids is gradually being developed,
-however, only PC and PE are available at this moment. \cite{chowdhary13, chowdhary17}
-While the polarizable model shows a potential improvement from many perspectives -- for example
-dipole potential of a membrane is found to be changed dramaticly 
-when polarizability is considered \cite{harder2009} -- 
-its non-polarizable version still performes better in some cases (e.g., in head group structure). 
-Anyhow, to date there is no study that would show any results 
-about negatively charged lipids using polarizable force fields
-nor about their interactions with cations and anions. 
-From this perspective,
-this work is the first to study interactions of POPS with monovalent and even divalent cations. 
-
-Even though the software packages are more and more optimized for running simulations with explicit polarization,
-its application still seems to be rather far from ready for common production use. \cite{jiang2011, lopes2009}
-
-
-The lack of electronic polarizability in classical MD simulations
-has been considered a serious issue since the early days of the modeling of lipid bilayers. 
-% the commented text on polarizability in this section comes from \citep{huang2017mapping}
-There exist two main approaches for the explicit representation of electronic polarizability -- atomic induced dipoles and Drude oscillators.
-%The AMOEBA FF adopts the point induced dipole model in which each atom carries an induced dipole moment determined by the electric field and its atomic polarizability. 
-%Permanent dipole and quadrupoles are also assigned to each atomic site for a more accurate description of electrostatic interactions. 
-%The induced dipole approach models the polarizability through a point dipole moment on each atom.
-%Such an electric dipole is induced by the acting electric field proportionally to its polarizability. 
-This model is implemented in the widely adopted force field AMOEBA \citep{amoeba06, amoeba10, amoeba13}.
-
-%The Drude FF adopts the classical Drude oscillator model where auxiliary charges (Drude oscillators or particles) are attached to non-hydrogen atoms with harmonic springs, and the displacement of the Drude particle relative to its parent atom represents the response to the external electric field. 
-%Virtual particles representative of lone pairs are included in the Drude FF to improve the treatment of electrostatic interactions typically involving hydrogen bond acceptors.
-%The charge distribution between a Drude particle and its parent atom is a finite difference representation of a dipole moment. 
-%Similarly, lone pairs can be considered as real space representations of permanent multipoles. 
-%Such analogy between the classical Drude oscillator model and the multipole and induced dipole (MPID) model suggests that in theory one can interconvert polarizable FFs between the two models. 
-%The classical Drude oscillator model is inspired by a classical representation of a lone pair of electrons. 
-%It uses an auxiliary charge,
-%also termed Drude oscillator or Drude particle, 
-%which is attached to each atom through a harmonic spring.
-%The displacement of the Drude particle represents the induced polarization proportionally to the acting electric field,
-as implemented for example in the Drude force field \citep{lemkul2016empirical}. 
-
-%In this work, we convert the Drude polarizable force field from its original classical Drude oscillator formalism onto a permanent multipole and induced dipole formalism, which we refer to as MPID. 
-%We show that a direct mapping without any reparametrization can transfer the Drude FF into the MPID FF, yielding a similar level of agreement as the Drude FF in reproducing condensed phase properties of organic liquids, crystals, and interfaces. 
-%Our results thus also serve as an additional validation of these novel simulation algorithms.
-Although the two approaches, 
-the induced dipole model and the classical Drude oscillator model, 
-are very different in how they represent polarizability in simulations,
-it was shown that the classical Drude oscillator formalism can be converted to the induced dipole formalism 
-proving the two methods to be equivalent. \citep{huang2017mapping}
-From the point of view of lipids, however, the classical models with fixed charges and no explicit polarizability that are currently available 
-provide comparable accuracy at a fraction of the computational cost of the models with explicit polarization. \citep{lucas12,chowdhary13} 
-
-%The effects of polarization from rather computationally demanding simulations with explicit models 
-%can be implemented using an implicit model of polarization. 
-Instead of the computationally demanding explicit polarization approach, 
-electronic polarization can also be accounted for implicitly.
-Such an implicit mean field model of electronic polarizability 
-%was developed by \citet{leontyev09} under the name Molecular Dynamics in Electronic Continuum, MDEC. 
-termed Electronic continuum correction (ECC) 
-was first suggested by \citet{leontyev09}, 
-and was then systematically applied to solutions of ions by \citet{Pluharova2014, kohagen14, kohagen16, martinek17}. 
-Through a comparison of neutron scattering and/or \emph{ab-initio} molecular dynamics data with classical MD simulations, 
-the authors developed an array of models for cations and anions, termed here as ECC-ions,
-which provide realistic structures even for concentrated solutions of both monovalent and divalent cations. 
-%The term Electronic continuum correction, ECC, originates in the works by \citet{Pluharova2014, kohagen14, kohagen16, martinek17},
-%where the rigorously developed theory by \citet{leontyev14} was systematicaly applied to solutions of ions.
-%that use ECC to represent electronic polarizability. 
-
-%Electronic continuum correction (ECC) 
-In ECC, a system of polarizable particles is represented 
-with an equivalent system of particles with fixed charges. %\citep{leontyev09, leontyev10, leontyev11, leontyev14}
-%including the effects of electronic polarization \emph{implicitly} in a mean-field way. 
-This can be done by a simple transform of the partial charges,
-which does not change the form of the empirical force field in Equation~\ref{eq:amber}, 
-providing the effects of the electronic polarization in a mean field way at no additional computational cost. 
-Although this is technically similar to the phenomenological scaling of partial charges 
-applied in earlier studies of aqueous solutions or ionic liquids \citep{jonsson86,egberts94,beichel14},
-%where also other possible effects (e.g. charge transfer) were considered,
-ECC is a physically well justified and rigorously derived model \citep{leontyev09, leontyev10, leontyev11, leontyev14}.
-Assuming that the electronic polarizability of electrons is approximately constant in biological solutions, 
-it was shown by \citet{leontyev11} that the electrostatic interactions between atoms 
-are screened like in a dielectric continuum 
-with an electronic dielectric constant, $\epsilon _{el}$, 
-also known as the high frequency dielectric constant. 
-This can be formally written as
-%\begin{equation}  \label{eq:coulomb}
-%   %U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{r_{ij}} + \frac{1}{2} \displaystyle \sum ^N _{i,j=1} U ^{dip} _{ij} - \displaystyle \sum ^N _{i=1} E^q(r_i) d_i  \propto  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q^{ECC}_i q^{ECC}_j}{r_{ij}} 
-%   %U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{r_{ij}} + \frac{1}{2} \displaystyle \sum ^N _{i,j=1} U ^{dip-dip} _{ij} - \displaystyle \sum ^N _{i=1} U^{q-dip}_i  \propto  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{\frac{q_i}{\sqrt{\epsilon _{el}}} \frac{q_j}{\sqrt{\epsilon _{el}}}}{r_{ij}}  , 
-%   U = \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{q_i q_j}{\epsilon_{el} \, r_{ij}}  =  \frac{1}{2} \displaystyle \sum ^N _{j\neq i} \frac{\frac{q_i}{\sqrt{\epsilon _{el}}} \frac{q_j}{\sqrt{\epsilon _{el}}}}{r_{ij}}  , 
-%\end{equation} 
-%where $q_i$ is the point charge of the particle $i$,
-%and $r_{ij}$ are the distances between particles $i$ and $j$.
-%%$U^{dip-dip} _{ij}$ represent the interactions between induced dipoles and their polarization energies,
-%and the terms $U^{q-dip} _i$ are the interactions between point charges and induced dipoles. 
-%It naturally follows from the above equation that 
-%embedding all atoms into a dielectric continuum 
-%is equivalent to a formal scaling of the atomic point charges 
-%\begin{equation}  \label{eq:scaling}
-% q_i ^{ECC} = \frac{q_i}{\sqrt{\epsilon _{el}}} ,
-%\end{equation} 
-%where $q_i$ and $q_i^{ECC}$ are respectively the original partial charges and the scaled charges, 
-%which represent the effects of the electronic polarization. 
-Given that the  high frequency dielectric constant of water is 1.78 (i.e., the square of the refraction index of 1.33), 
-the scaling factor for ions in water is $\approx 0.75$. 
+The polarization of electrons in ECC-lipids uses the implicit method termed electronic continuum correction (ECC). \cite{leontyev09, Pluharova2014, martinek17, melcr18} 
+In this method, a system of polarizable particles is represented with an equivalent system of particles with fixed charges. 
+This is practically achieved rescaling the charges with a pre-determined scaling factor, $f_q$,
+which is derived from the high-frequency dielectric constant of electrons, $\epsilon_{el}$, as
+\begin{equation}
+f_q = \frac{1}{\sqrt{\epsilon_{el}}} .
+\end{equation}
+The value of $\epsilon_{el}$ for water solutions is $\epsilon_{el} = 1.78$ \cite{leontyev09},
+hence, the scaling factor for aquaeous environments yields $f_q \approx 0.75$. 
 
 It is important to note that the value of the high frequency dielectric constant  
 is around 2 for almost any biologically relevant environment \citep{leontyev11}. 
@@ -442,19 +345,30 @@ from the orientational polarization of the molecules, which is accounted for exp
 Therefore, the same correction for the electronic polarizability can be  
 applied throughout the lipid bilayer/aqueous solution interface. 
 
+In the case of POPS, which is a monovalently negatively charged lipid, 
+we used exactly the pre-determined scaling factor 
+to represent the effects of electronic polarization
+yielding a total charge of $-0.75$ in the ECC formalism. \cite{martinek17, leontyev09, melcr18}
+Similarly to the ECC-POPC model, we changed the charges only of the polar parts of the phospholipid,
+i.e., charges on all atoms except on alkyl tails, 
+which do not encounter direct contacts with ions. 
+
+Note that we used a different scaling factor $f_q = 0.8$ 
+to for the ECC-POPC model. \cite{melcr18}
+Compared to POPS, POPC is a zwitterionic neutral molecule with a zero total charge; 
+scaling it by any factor does not affect it. 
+Partial charges of the atoms in POPC are not physical observables, 
+and vary greatly between different models. \cite{botan15, catte16, nmrlipids_proj4, Pluhackova2016}
+The choice of a larger scaling factor in ECC-POPC represents the fact that 
+the set of partial charges in the initial model for ECC-POPC, the Lipid14 model \cite{dickson14}, 
+was determined in the beginning as less polar compared to other models. 
+
+
+
+
+
  
  
-% SAMULI:
-%\subsection{Electrometer concept} \label{section:electrometer} 
-%This section may not be required, 
-%we may just cite ECC-POPS and NMRlipids projects papers (and ongoing works)
-% 
-% 
-% 
-%\subsection{Validation of lipid bilayer structure against NMR and scattering experiments} 
-%\emph{This section probably has to stay. Following text to be modified. Taken from Ref.~\citenum{melcr18}}
-%
-%
 
 \subsection{Validation of membrane properties} 
 
@@ -514,33 +428,41 @@ For deposited trajectories and parameter files see Refs.~
 
 \begin{table*}[tbp]
 \centering
-\caption{  List of MD simulations with
-           numbers of individual molecules for each simulation
-           at temperature $T$. 
+\caption{  List of MD simulations reporting their respective
+           added buffer concentrations,
+           amounts of individual molecules,
+           and the deployed models.
          }
-         \todo{SAMULI: Temperature column is not necessary because it is always the same.}
-         \todo{SAMULI: Columns reporting the additional ion concentrations would be useful.}
-         \todo{SAMULI: Order of the PC:PS (5:1)/Na+ systems in little bit confusing.}
 \label{tbl:sim-list}
-\begin{tabular}{l c c r r r r r }
-  lipids/counter-ions &  \ce{K^+}  &  \ce{Na^+} & \ce{Ca^{2+}} & \ce{Cl^-} & \ce{H2O} &  PC:PS total  &  $T$~(K)  \\
+\begin{tabular}{l | r r r r | r r | c c }
+                          &  \multicolumn{4}{c}{added buffer concentration / mM}    & \multicolumn{2}{c}{no. molecules} &  \multicolumn{2}{c}{simulated with model}  \\
+PC:PS (ratio)/counterions &  \ce{K^+}  &  \ce{Na^+} & \ce{Ca^{2+}} & \ce{Cl^-}      & \ce{H2O} &  PC:PS                 &  ECC-lipids  &  Lipid17    \\
   \hline
-PC:PS (1:1)/Na+  &  0  &  64  &  0  &  0  &  5253  &  64:64  &  298 \\ 
-PC:PS (1:1)/K+  &  64  &  0  &  0  &  0  &  5253  &  64:64  &  298 \\ 
-PC:PS (10:1)/Na+  &  0  &  6  &  0  &  0  &  3600  &  60:6  &  298 \\ 
-PC:PS (10:1)/K+  &  6  &  0  &  0  &  0  &  3600  &  60:6  &  298 \\ 
-PC:PS (4:1)/Na+  &  0  &  12  &  0  &  0  &  3600  &  48:12  &  298 \\ 
-PC:PS (4:1)/K+  &  12  &  0  &  0  &  0  &  3600  &  48:12  &  298 \\ 
-PC:PS (5:1)/Na+  &  0  &  12  &  13  &  26  &  3561  &  60:12  &  298 \\ 
-PC:PS (5:1)/Na+  &  0  &  12  &  26  &  52  &  3522  &  60:12  &  298 \\ 
-PC:PS (5:1)/Na+  &  0  &  12  &  0  &  0  &  3600  &  60:12  &  298 \\ 
-PC:PS (5:1)/K+  &  12  &  0  &  0  &  0  &  3600  &  60:12  &  298 \\ 
-PC:PS (5:1)/Na+  &  0  &  12  &  39  &  78  &  3483  &  60:12  &  298 \\ 
-PC:PS (5:1)/Na+  &  39  &  12  &  0  &  39  &  3483  &  60:12  &  298 \\ 
-PC:PS (5:1)/Na+  &  0  &  51  &  0  &  39  &  3483  &  60:12  &  298 \\ 
+PC:PS (0:1)/K+   &      0  &      0  &      0  &      0  &  3600  &  0:72  &  X  &  X  \\ 
+PC:PS (0:1)/Na+  &      0  &      0  &      0  &      0  &  3600  &  0:72  &  X  &  X  \\ 
   \hline
-PS/K+  &  72  &  0  &  0  &  0  &  3600  &  0:72  &  298 \\ 
-PS/Na+  &  0  &  72  &  0  &  0  &  3600  &  0:72  &  298 \\ 
+PC:PS (10:1)/K+  &      0  &      0  &      0  &      0  &  3600  &  60:6  &  X  &  -  \\ 
+PC:PS (10:1)/Na+ &      0  &      0  &      0  &      0  &  3600  &  60:6  &  X  &  -  \\ 
+  \hline
+PC:PS (1:1)/K+   &      0  &      0  &      0  &      0  &  5253  &  64:64  &  X  &  X  \\ 
+PC:PS (1:1)/Na+  &      0  &      0  &      0  &      0  &  5253  &  64:64  &  X  &  X  \\ 
+  \hline
+PC:PS (4:1)/K+   &      0  &      0  &      0  &      0  &  3600  &  48:12  &  X  &  -  \\ 
+PC:PS (4:1)/Na+  &      0  &      0  &      0  &      0  &  3600  &  48:12  &  X  &  -  \\ 
+  \hline
+PC:PS (5:1)/K+   &      0  &      0  &      0  &      0  &  3600  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &      0  &      0  &      0  &  3600  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &      0  &     78  &     78  &  3561  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &      0  &    125  &    125  &  3561  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &      0  &    202  &    202  &  3561  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &      0  &    409  &    409  &  3522  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &      0  &    621  &    621  &  3483  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &    621  &      0  &    621  &  3483  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &   1510  &      0  &   1510  &  3377  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &   3002  &      0  &   3002  &  3213  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &    621  &      0  &      0  &    621  &  3483  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &   1510  &      0  &      0  &   1510  &  3377  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &   3002  &      0  &      0  &   3002  &  3213  &  60:12  &  X  &  X  \\ 
   \hline
 \end{tabular}
 \end{table*}
@@ -704,28 +626,21 @@ and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS co
 
 
 
-\begin{figure*}[!htb] 
+\begin{figure*}[!tbp] 
   \centering 
-  \includegraphics[width=\figwidthsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
-  \includegraphics[width=\figwidthsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
-  \includegraphics[width=\figwidthsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_kcl.pdf} 
-  \includegraphics[width=\figwidthsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_kcl.pdf} 
+  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
+  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
+  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_kcl.pdf} 
+  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_kcl.pdf} 
   \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix} 
-    Changes of the head group order parameters of a POPC:POPS (5:1) bilayer as a function of PS content
+    The head group order parameters of a POPC:POPS (5:1) bilayer as a function of PS content
     with \ce{Na^+} and \ce{K^+} counterions from simulations with ECC-lipids and Lipid17 \cite{lipid17-future} 
     and experiments (only \ce{Na^+} counterions). \cite{roux90}. 
     The underestimated response of ECC-lipids with \ce{Na^+} counterions 
     is likely due to a still slightly overestimated binding affinity of \ce{Na^+} to the phospholipids,
     which is corroborated by the series with \ce{K^+} counterions (lower affinity than \ce{Na^+}),
     where the response is closer to the experiment (which uses only \ce{Na^+} counterions). 
-    Experimental points for POPS inherently contain larger systematic error, 
-    as they come from independent experiments.
   }
-  \todo{SAMULI: Caption says Åqvist, but I guess that Dang is used also here?} \\
-  \todo{SAMULI: Do you have a simulation of Lipid14 pure POPC at 298K?
-    This is not in the table. This simulation would be useful also for NMRlipids IV.
-  } \\
-  \todo{SAMULI: Error bars for lipid14 missing.}
 \end{figure*} 
 
 
@@ -743,8 +658,8 @@ and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS co
  
 \begin{figure}[tbp!] 
   \centering 
-  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_nacl.pdf} 
-  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_nacl.pdf} 
+  \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_nacl.pdf} 
+  \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_nacl.pdf} 
   \caption{\label{fig:delta_ordPar_NaCl_PCPS} 
     Changes of the head group order parameters $\alpha$, $\beta$ and the orientations of the carboxylate group and the P-N vector  
     of POPC (left) and POPS (right) phospholipids in a POPC:POPS 5:1 bilayer as a function of \ce{NaCl} concentration 
@@ -756,20 +671,13 @@ and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS co
     The orientation of the \ce{COO^-} group is defined as 
     the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
   } 
-  \todo{SAMULI: The forking of PS alpha carbon should not be put to zero with zero salt concentrations
-    in this or in other figures. This is confusing expecially for the results with CaCl$_2$ where the forking
-    seems to increase with CaCl$_2$, which is not correct. In NMRlipids IV, I have now put the lower order parameter
-    to zero and kept the forking correct with all concentrations of ions.} \\
-  \todo{SAMULI: Ion concentrations should be updated to the concentrations in water before solvating the lipids.} \\
-  \todo{SAMULI: Error bars should be recalculated with the fixed code} \\
-  \todo{SAMULI: We should have at least one more points with higher concentration (maybe close to 2M), or maybe two more points.} \\
   \end{figure} 
 
 
 \begin{figure}[tbp!] 
   \centering 
-  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_kcl.pdf} 
-  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_kcl.pdf} 
+  \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_kcl.pdf} 
+  \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_kcl.pdf} 
   \caption{\label{fig:delta_ordPar_KCl_PCPS} 
     Changes of the head group order parameters $\alpha$, $\beta$ and the orientations of the carboxylate group and the P-N vector  
     of POPC (left) and POPS (right) phospholipids in a POPC:POPS 5:1 bilayer as a function of \ce{KCl} concentration 
@@ -777,13 +685,6 @@ and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS co
     The orientation of the \ce{COO^-} group is defined as 
     the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
   } 
-  \todo{SAMULI: The forking of PS alpha carbon should not be put to zero with zero salt concentrations
-    in this or in other figures. This is confusing expecially for the results with CaCl$_2$ where the forking
-    seems to increase with CaCl$_2$, which is not correct. In NMRlipids IV, I have now put the lower order parameter
-    to zero and kept the forking correct with all concentrations of ions.} \\              
-  \todo{SAMULI: Ion concentrations should be updated to the concentrations in water before solvating the lipids.} \\
-  \todo{SAMULI: Error bars should be recalculated with the fixed code} \\
-  \todo{SAMULI: We should have at least one more points with higher concentration (maybe close to 2M), or maybe two more points.} \\
 \end{figure} 
  
 
@@ -853,28 +754,21 @@ improves the description of the interactions even for very weakly binding cation
   \caption{\label{fig:POPS-counterions-dens}
     Number density profiles of \ce{K^{+}}, \ce{Na^{+}} counterions along the membrane normal axis 
     for the negatively charged POPS bilayers using ECC-lipids and ECC-ions.  }
-\todo{Joe: this figure requires updating and polishing, but serves the purpose of “showing the data”.}
+\todo{Joe: TO BE UPDATED + results from PC:PS mixutres to be added.}
 \end{figure} 
 
 
 \begin{figure}[tbp!] 
   \centering 
-  \includegraphics[width=\figwidth]{../img/ecc_pops/density_profiles_na_k_cl_wat_phos_models-compar_4-6_NaCl-and-KCl-series.pdf}
+  \includegraphics[width=\figwidth]{../img/ecc_pops/density_profiles_na_k_cl_wat_phos_models-compar_5-6_NaCl-and-KCl-series.pdf}
   \caption{\label{fig:nacl-dens_PCPS} 
     Number density profiles of \ce{K^{+}}, \ce{Na^{+}} and \ce{Cl^-} along the membrane normal axis 
-    for the negatively charged membranes with the composition of 5\,PC:1\,PS using ECC-lipids and ECC-ions.  
-    The top profile shows the simulation without any additional salt concentration, i.e., only with \ce{Na^+} counterions. 
-    The middle profile shows the simulation with an additional \ce{KCl} concentration and \ce{Na^+} counterions. 
+    for the negatively charged membranes with the composition of 5\,PC:1\,PS using ECC-lipids and ECC-ions
+    from simulations with added concentrations of \ce{KCl} or \ce{NaCl}.  
+    The top    profile shows the simulation with an additional \ce{KCl} concentration and \ce{Na^+} counterions. 
     The bottom profile shows the simulation with an additional \ce{NaCl} concentration and \ce{Na^+} counterions, which are not distinguished from the added salt. 
-    In order to visualize the density profiles with a scale comparable to the profile of \ce{Ca^{2+}}, 
-    the density profiles of~\ce{Cl^-}, \ce{K^+} and \ce{Na^+} ions are divided by 2, and 
-    the density profiles of phosphate groups and water are divided by 5 and 200, respectively.  
+    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
   }
-  \todo{SAMULI: Top figure should go together with figure of only K+ counterions and figure with pure PS mentioned
-    another todo point
-  } \\
-  \todo{SAMULI: Division of ion densities with 2 in figure without calcium is not necessary and makes
-  comparison to other results more difficult.}
 \end{figure} 
 
 
@@ -919,8 +813,8 @@ at comparable concentrations $C _{Ca} = 260\pm 30 \mathrm{mM} $.
 
 \begin{figure}[tbp!] 
   \centering 
-  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_cacl.pdf} 
-  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_cacl.pdf} 
+  \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_cacl.pdf} 
+  \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_cacl.pdf} 
   \caption{\label{fig:delta_ordPar_CaCl_PCPS} 
     Changes of the head group order parameters $\alpha$, $\beta$ and the orientations of the carboxylate group and the P-N vector  
     of POPC (left) and POPS (right) phospholipids in a POPC:POPS 5:1 bilayer as a function of \ce{CaCl2} concentration 
@@ -928,14 +822,6 @@ at comparable concentrations $C _{Ca} = 260\pm 30 \mathrm{mM} $.
     The orientation of the \ce{COO^-} group is defined as 
     the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
   } 
-  \todo{SAMULI: The forking of PS alpha carbon should not be put to zero with zero salt concentrations
-    in this or in other figures. This is confusing expecially for the results with CaCl$_2$ where the forking
-    seems to increase with CaCl$_2$, which is not correct. In NMRlipids IV, I have now put the lower order parameter
-    to zero and kept the forking correct with all concentrations of ions.} \\
-  \todo{SAMULI: Ion concentrations should be updated to the concentrations in water before solvating the lipids.} \\
-  \todo{SAMULI: Error bars should be recalculated with the fixed code} \\
-  \todo{SAMULI: Maybe we should have at least one more points with smaller concentration
-    (maybe close to 100mM in solution before solvating lipids).} \\
 \end{figure} 
 
 
@@ -994,7 +880,6 @@ which achieves a \emph{quantitative} agreement with the changes induced by \ce{C
     the density profiles of~\ce{Cl^-} ions are divided by 2, and 
     the density profiles of phosphate groups and water are divided by 5 and 200, respectively.  
   }
-  \todo{SAMULI: Ion concentrations should be updated to the concentrations in water before solvating the lipids.} \\
   \todo{SAMULI: We should compare to the density profiles from Lipid17 simulations. These are also needed for NMRlipids IV.}
 \end{figure} 
  
