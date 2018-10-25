@@ -317,14 +317,15 @@ The results pave the way to more realistic MD simulations
 of both neutral and negatively charged lipid bilayers 
 for a wide range of applications.
 
-
-
+\todo{SAMULI: Controversies in previous simulations (https://doi.org/10.1016/j.bpj.2018.08.044 and
+  Melcrova et al. Scientific Reports | 6:38035 | DOI: 10.1038/srep38035) should be mentioned also
+in the intro.}
 
 
  
 \section{Methods} 
  
-\subsection{Electronic continuum correction for lipid bilayers}\label{section:ecc} 
+\subsection{Electronic continuum correction for PS lipids}\label{section:ecc} 
 
 
 The polarization of electrons in ECC-lipids uses the implicit method termed electronic continuum correction (ECC). \cite{leontyev09, Pluharova2014, martinek17, melcr18} 
@@ -404,19 +405,24 @@ can be then related to the amount of bound ions.
 MD simulations were performed using the GROMACS 2018 \cite{Abraham15} simulation package. 
 The simulated system consisted of lipids (POPC and POPS) forming a single lipid bilayer,
 an amount of water molecules comparable to the hydration levels in experiments, 
-\todo{Check this claim.}
+\todo{Check this claim. SAMULI: Check discussin in the NMRlipids IV manuscript}
 and concentrations of ions (\ce{K^+}, \ce{Na^+}, \ce{Ca^{2+}} and \ce{Cl^{-}})
 in an orthorhombic simulation box with periodic boundary conditions. 
 The simulation parameters used in this work are summarized in Table~\ref{tbl:mdpar}. 
 A comprehensive list of simulations used in this work is in Table~\ref{tbl:sim-list}. 
 
-We used the SPC/E~\cite{Berendsen1987} water model 
+We used the SPC/E~\cite{Berendsen1987} water model \todo{SAMULI: The choice of water model should be justified.}
 and ECC-ions \cite{martinek17, kohagen16, Pluharova2014} 
 for the simulations with ECC-lipids.
 Force field parameters for POPC were taken from Ref.~\citenum{melcr18}. 
-The ECC-POPS model as derived again from the Lipid14 force field~\cite{dickson14, lipid17-future}, as was described above.
+The ECC-POPS model as derived again from the Lipid14
+\todo{SAMULI: References to Lipid14/Lipid17 models should be consistent here and elsewhere.
+We could also consider using term Amber lipd force field.}
+force field~\cite{dickson14, lipid17-future}, as was described above.
 For a direct comparison, 
-we also performed simulations with the Lipid14 model~\cite{dickson14},
+we also performed simulations with the Lipid14
+\todo{SAMULI: Also Lipid17 is used. The origin of Gromacs suitable files (Zenodo, acpype, etc.) should be described.}
+model~\cite{dickson14},
 the TIP3P water model~\cite{jorgensen83}, 
 and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006}.
 \todo{The usage of Dang ions should be justified here.}
@@ -433,6 +439,8 @@ For deposited trajectories and parameter files see Refs.~
            amounts of individual molecules,
            and the deployed models.
          }
+         \todo{SAMULI: All the tails are PO, right? This could be mentioned in the caption.}
+                    
 \label{tbl:sim-list}
 \begin{tabular}{l | r r r r | r r | c c }
                           &  \multicolumn{4}{c}{added buffer concentration / mM}    & \multicolumn{2}{c}{no. molecules} &  \multicolumn{2}{c}{simulated with model}  \\
@@ -569,6 +577,10 @@ PC:PS (5:1)/Na+  &   3002  &      0  &      0  &   3002  &  3213  &  60:12  &  X
   These should be discussed in this section.
 }
 
+\todo{SAMULI: For this discussion we need the counterion density profiles from pure POPS
+  simulation with Lipid17 and Dang counterions. This could be added to the figure \ref{fig:POPS-counterions-dens} and
+the figure could be moved here.}
+
 We compared X-ray scattering form factors and NMR order parameters of bilayers
 in pure water without any ions (or only counter ions)
 from simulations and experiments
@@ -670,7 +682,8 @@ and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS co
     which has a lower affinity to phospholipid bilayers compared to \ce{LiCl} \citep{roux90}. 
     The orientation of the \ce{COO^-} group is defined as 
     the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
-  } 
+  }
+  \todo{SAMULI: Use the same y-axis scale in the bottom figures showing angles for POPC and POPS to ease the comparison.}
   \end{figure} 
 
 
@@ -684,7 +697,8 @@ and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS co
     in bulk ($C_{ion}$) from simulations with different force fields and experiments at 298 K. \citep{roux90}
     The orientation of the \ce{COO^-} group is defined as 
     the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
-  } 
+  }
+  \todo{SAMULI: Use the same y-axis scale in the bottom figures showing angles for POPC and POPS to ease the comparison.}
 \end{figure} 
  
 
@@ -820,8 +834,9 @@ at comparable concentrations $C _{Ca} = 260\pm 30 \mathrm{mM} $.
     of POPC (left) and POPS (right) phospholipids in a POPC:POPS 5:1 bilayer as a function of \ce{CaCl2} concentration 
     in bulk ($C_{ion}$) from simulations with different force fields and experiments at 298~K. \citep{roux90}
     The orientation of the \ce{COO^-} group is defined as 
-    the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
-  } 
+    the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right).
+  }
+  \todo{SAMULI: Use the same y-axis scale in the bottom figures showing angles for POPC and POPS to ease the comparison.}
 \end{figure} 
 
 
@@ -860,10 +875,8 @@ which has a higher affinity to \ce{Ca^{2+}} compared to POPC.
 ECC-lipids is the first model,
 which achieves a \emph{quantitative} agreement with the changes induced by \ce{CaCl2} in experiments. 
 
-\todo{SAMULI: The qualitative iprovement of PS headgroup order parameter response to bound Ca2+
-  should be discussed. We should, however, point out that the response PS alpha carbon to bound
-  Ca2+ is not excatly reproduced even by the ECC-POPS model.
-}
+\todo{SAMULI: The new results show that we cannot actually reproduce the rapid changes with low CaCl2
+  concentrations in POPS order parameters. This should be somehow discussed.}
 
 
 
@@ -1133,7 +1146,11 @@ Provide density plots and show, where and how the cations bind to the membrane.
  
 \section{Conclusions} 
 
- 
+\todo{SAMULI: I have putted here two preliminary sentences}
+Applying ECC to POPS lipids improves cation binding affinity to membranes
+mixed with POPC and also the response of PS headgroup to the bound cations.
+However, further improvement of the parameters is needed to fully reproduce the
+details of calcium binding to PS headgroups.
  
 \listoftodos
  
