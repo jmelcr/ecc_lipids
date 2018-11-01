@@ -388,34 +388,44 @@ headgroup, glycerol backbone, and carbonyl regions.
 %applied throughout the lipid bilayer/aqueous solution interface. 
 
 
-
-
-
-
- 
- 
-
 \subsection{Validation of membrane properties} 
 
-\todo{SAMULI: Short discussion about mixtures should be added by citing the NMRlipids IV.}
-The structures of lipid bilayers in simulations without ions were validated against NMR 
-by calculating the order parameters for the C-H bonds and against \mbox{X-ray} scattering experiments by evaluating the scattering form factors
-as was done in Refs.~\citenum{catte16, melcr18, nmrlipids_proj4}.
+To validate the structures of lipid bilayers, the scattering form factors and C-H bond order parameters
+were calculated and compared against the experimental data as described previously~\cite{botan15,ollila16,melcr18,nmrlipids_proj4}.
+%in simulations without ions were validated against NMR 
+%by calculating the order parameters for the C-H bonds and against \mbox{X-ray} scattering experiments by evaluating 
+%as was done in Refs.~\citenum{catte16, melcr18, nmrlipids_proj4}.
 %NMR order parameters validate the structures sampled by the individual lipid molecules with atomic resolution. 
-The simulated order parameters were calculated for all C-H bonds in lipid molecules, 
-while all order paremeters in the head group and only some in the \ce{C-H} groups in tails were resolved experimentally
-(see next section and Fig.~\ref{simVSexpNOions_POPS}). 
+%The simulated order parameters were calculated for all C-H bonds in lipid molecules, 
+%while all order paremeters in the head group and only some in the \ce{C-H} groups in tails were resolved experimentally
+%(see next section and Fig.~\ref{simVSexpNOions_POPS}). 
+The order parameters for each C-H bond of individual lipids in the trajectory were first averaged
+over the time. Then the average over lipids was taken and the standard error of the mean of this
+average was used as an error bar \cite{botan15,,ollila16,nmrlipids_proj4}.
 
-Ion binding to lipid bilayers can be experimentally quantified
-by measuring the changes of the head group order parameters in the lipids using solid state NMR.
-In the case of the head group order parameters $S^\alpha$ and $S^\beta$ in phosphatidylcholine
-(see Fig.~\ref{simVSexpNOions_POPS} for the definition of the order parameters)
-such changes are known under the term ''electrometer concept'' \citep{seelig87,catte16, ollila16, melcr18, nmrlipids_proj4}. 
-It is experimentally observed that the \ce{C-H} bond
-order parameters of $S^\alpha$ and $S^\beta$ carbons in a PC lipid head group
-are proportional to the amount of charge, positive or negative, bound per lipid~\citep{seelig87, roux90}.
-The change of the order parameters measured with varying concentrations of aqueous ions 
-can be then related to the amount of bound ions.
+Cation binding affinity to phosphatidylcholine (PC) lipid bilayers can be evaluated using 
+the order parameters of $\alpha$ and $\beta$ carbons in the lipid headgroup 
+(see Fig.~\ref{simVSexpNOions_POPS} for the labeling
+\todo{SAMULI: Currently the figure has only PS structure while we use PC also in this work.
+We should either add also PC structure or refer to somewhere else for the labeling.}) \cite{catte16}.
+According to the ''electrometer concept'' \citep{seelig87}, these order parameters decrease
+proportionally to the bound charge and can therefore be used to quantify the cation binding
+affinity to PC lipid bilayers. The situation is more complicated for lipid bilayers containing
+PS lipids because the ion free reference state does not exist due to the counterions and additional
+ions often lead to phase transitions \cite{nmrlipids_proj4,feigenson86,mattai89,roux91,roux90}
+Here, we overcome these complications by comparing simulations to the experimental data measured
+from POPC:POPS (5:1) mixtures with additional ions\cite{roux90}, as demonstrated in the
+recent work by the NMRlipids project \cite{nmrlipids_proj4}.
+
+%experimentally quantified
+%by measuring the changes of the head group order parameters in the lipids using solid state NMR.
+%In the case of 
+%such changes are known under the term 
+%It is experimentally observed that the \ce{C-H} bond
+%order parameters of $S^\alpha$ and $S^\beta$ carbons in a PC lipid head group
+%are proportional to the amount of charge, positive or negative, bound per lipid~\citep{seelig87, roux90}.
+%The change of the order parameters measured with varying concentrations of aqueous ions 
+%can be then related to the amount of bound ions.
 
  
 
@@ -425,16 +435,28 @@ can be then related to the amount of bound ions.
  
 \subsection{Simulation details} 
 
+MD simulations of POPC:POPS lipid bilayers with different molar ratios 
+and ion concentrations (\ce{K^+}, \ce{Na^+}, \ce{Ca^{2+}} and \ce{Cl^{-}})
+were performed in an orthorhombic simulation box with periodic boundary conditions
+using the GROMACS 2018 \cite{Abraham15} simulation package. 
+%The simulated system consisted of lipids (POPC and POPS) forming a single lipid bilayer,
+%an amount of water molecules comparable to the hydration levels in experiments, 
+%\todo{Check this claim. SAMULI: Check discussin in the NMRlipids IV manuscript}
+The simulated systems are listed in Table~\ref{tbl:sim-list} and the used parameters
+in Table~\ref{tbl:mdpar}. 
+\todo{SAMULI: All the simulations were ran ?? ns and the first ?? ns were omitted as
+an equilibration period. Or some other description of simulation times and equlibration.}
+For deposited trajectories and parameter files see Refs.~
+\todo{Joe: Upload trajectories and add references here.}
 
-MD simulations were performed using the GROMACS 2018 \cite{Abraham15} simulation package. 
-The simulated system consisted of lipids (POPC and POPS) forming a single lipid bilayer,
-an amount of water molecules comparable to the hydration levels in experiments, 
-\todo{Check this claim. SAMULI: Check discussin in the NMRlipids IV manuscript}
-and concentrations of ions (\ce{K^+}, \ce{Na^+}, \ce{Ca^{2+}} and \ce{Cl^{-}})
-in an orthorhombic simulation box with periodic boundary conditions. 
-The simulation parameters used in this work are summarized in Table~\ref{tbl:mdpar}. 
-A comprehensive list of simulations used in this work is in Table~\ref{tbl:sim-list}. 
-
+In the reference simulations with the standard Amber force field,
+we used the Lipid14 parameters~\cite{dickson14} for POPC, the Lipid17 parameters for POPS \cite{gould18},
+the TIP3P water model~\cite{jorgensen83}, and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006}.
+The Lipid14 parameters in Gromacs format were downloaded from ?? \todo{SAMULI: Add this} and
+the Lipid17 parameters were \todo{SAMULI: Describe how lipid17 parameters in Gromacs were generated.}.
+The ion model by Dang and coworkers was used in these simulations because
+the default ion parameters in Amber exhibit clustering in solution with relatively
+low concentrations which complicates the evaluation of binding affinity against experiments \cite{nmrlipids_proj4}.
 We used the SPC/E~\cite{Berendsen1987} water model \todo{SAMULI: The choice of water model should be justified.}
 and ECC-ions \cite{martinek17, kohagen16, Pluharova2014} 
 for the simulations with ECC-lipids.
@@ -443,16 +465,9 @@ The ECC-POPS model as derived again from the Lipid14
 \todo{SAMULI: References to Lipid14/Lipid17 models should be consistent here and elsewhere.
 We could also consider using term Amber lipd force field.}
 force field~\cite{dickson14, lipid17-future}, as was described above.
-For a direct comparison, 
-we also performed simulations with the Lipid14
-\todo{SAMULI: Also Lipid17 is used. The origin of Gromacs suitable files (Zenodo, acpype, etc.) should be described.}
-model~\cite{dickson14},
-the TIP3P water model~\cite{jorgensen83}, 
-and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006}.
-\todo{The usage of Dang ions should be justified here.}
 
-For deposited trajectories and parameter files see Refs.~
-\todo{Joe: Upload trajectories and add references here.}
+
+
 
 
 
