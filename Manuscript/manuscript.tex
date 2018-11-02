@@ -362,7 +362,7 @@ were scaled with the factors of $f_q = 0.8$ and $f_\sigma = 0.89$, respectively 
 %the set of partial charges in the initial model for ECC-POPC, the Lipid14 model \cite{dickson14}, 
 %was determined in the beginning as less polar compared to other models. 
 
-Here, we apply the ECC to the Amber based lipid17 parameters \cite{could18} of POPS lipid with
+Here, we apply the ECC to the Amber based lipid17 parameters \cite{lipid17-future} of POPS lipid with
 a total monovalent negative charge. In this case we apply the scaling factor of $f_q = 0.75$ 
 also to the lipid because it carries a physical total charge similar to the ions in solution and
 the lipid charges has to neutralize the counterion charges in simulations.
@@ -450,22 +450,19 @@ For deposited trajectories and parameter files see Refs.~
 \todo{Joe: Upload trajectories and add references here.}
 
 In the reference simulations with the standard Amber force field,
-we used the Lipid14 parameters~\cite{dickson14} for POPC, the Lipid17 parameters for POPS \cite{gould18},
+we used the Lipid14 parameters~\cite{dickson14} for POPC, the Lipid17 parameters for POPS \cite{lipid17-future},
 the TIP3P water model~\cite{jorgensen83}, and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006}.
 The Lipid14 parameters in Gromacs format were downloaded from ?? \todo{SAMULI: Add this} and
 the Lipid17 parameters were \todo{SAMULI: Describe how lipid17 parameters in Gromacs were generated.}.
-The ion model by Dang and coworkers was used in these simulations because
-the default ion parameters in Amber exhibit clustering in solution with relatively
-low concentrations which complicates the evaluation of binding affinity against experiments \cite{nmrlipids_proj4}.
-We used the SPC/E~\cite{Berendsen1987} water model \todo{SAMULI: The choice of water model should be justified.}
-and ECC-ions \cite{martinek17, kohagen16, Pluharova2014} 
-for the simulations with ECC-lipids.
-Force field parameters for POPC were taken from Ref.~\citenum{melcr18}. 
-The ECC-POPS model as derived again from the Lipid14
-\todo{SAMULI: References to Lipid14/Lipid17 models should be consistent here and elsewhere.
-We could also consider using term Amber lipd force field.}
-force field~\cite{dickson14, lipid17-future}, as was described above.
-
+The ion model by Dang and coworkers~\cite{smith94,chang1999,dang2006} was used with Amber lipids because
+analysis of simulations with the default Amber ion parameters is complicated by the artificial
+clustering of ions in solution \cite{nmrlipids_proj4}.
+In simulations with ECC-lipids,
+we used the ECC-POPC parameters~\cite{melcr18} (available at ??\todo{Add reference}) and ECC-POPS
+parameteres derived in this work (section \ref{section:ecc}) together with the SPC/E~\cite{Berendsen1987}
+water model and ECC-ions \cite{martinek17, kohagen16, Pluharova2014}.
+The SPC/E water model is used because it lower dielectric constant is consistent with the
+ECC concept \cite{leontyev11,leontyev14}.
 
 
 
@@ -477,10 +474,8 @@ force field~\cite{dickson14, lipid17-future}, as was described above.
            added buffer concentrations,
            amounts of individual molecules,
            and the deployed models.
-         }
+         }\label{tbl:sim-list}
          \todo{SAMULI: All the tails are PO, right? This could be mentioned in the caption.}
-                    
-\label{tbl:sim-list}
 \begin{tabular}{l | r r r r | r r | c c }
                           &  \multicolumn{4}{c}{added buffer concentration / mM}    & \multicolumn{2}{c}{no. molecules} &  \multicolumn{2}{c}{simulated with model}  \\
 PC:PS (ratio)/counterions &  \ce{K^+}  &  \ce{Na^+} & \ce{Ca^{2+}} & \ce{Cl^-}      & \ce{H2O} &  PC:PS                 &  ECC-lipids  &  Lipid17    \\
