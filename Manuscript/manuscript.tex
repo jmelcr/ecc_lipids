@@ -332,6 +332,12 @@ early days of classical MD simulations of lipids \cite{jonsson86,egberts94, bere
 where the atomic charges were scaled by a factor of 1/2 to effectively
 include the electrostatic screening from the missing electronic polarizability.
 The electronic continuum correction (ECC) is a more sophisticated version of the charge scaling.
+
+The polarization of electrons in ECC-lipids uses the implicit method termed electronic continuum correction (ECC). \cite{leontyev09, Pluharova2014, martinek17, melcr18} 
+In this method, a system of polarizable particles is represented with an equivalent system of particles with fixed charges. 
+This is practically achieved rescaling the charges with a pre-determined scaling factor, $f_q$,
+which is derived from the high-frequency dielectric constant of electrons, $\epsilon_{el}$, as
+-OR-
 In ECC, the charges are rescaled with a pre-determined scaling factor, $f_q$,
 \begin{equation}
   f_q = \frac{1}{\sqrt{\epsilon_{el}}} ,
@@ -354,13 +360,6 @@ bilayer structural properties when the partial charges and Lennard-Jones $\sigma
 parameters of headgroup, glycerol backbone, and carbonyl regions of the lipid14 POPC model
 were scaled with the factors of $f_q = 0.8$ and $f_\sigma = 0.89$, respectively \cite{melcr18}.
 
-%Compared to POPS, POPC is a zwitterionic neutral molecule with a zero total charge; 
-%scaling it by any factor does not affect it. 
-%Partial charges of the atoms in POPC are not physical observables, 
-%and vary greatly between different models. \cite{botan15, catte16, nmrlipids_proj4, Pluhackova2016}
-%The choice of a larger scaling factor in ECC-POPC represents the fact that 
-%the set of partial charges in the initial model for ECC-POPC, the Lipid14 model \cite{dickson14}, 
-%was determined in the beginning as less polar compared to other models. 
 
 Here, we apply the ECC to the Amber based lipid17 parameters \cite{lipid17-future} of POPS lipid with
 a total monovalent negative charge. In this case we apply the scaling factor of $f_q = 0.75$ 
@@ -379,14 +378,10 @@ headgroup, glycerol backbone, and carbonyl regions.
 
 
 
-%It is important to note that the value of the high frequency dielectric constant  
-%is around 2 for almost any biologically relevant environment \citep{leontyev11}. 
-%This means that even interfaces like biological membranes do not contain discontinuities of the electronic continuum. 
-%The dielectric discontinuity in a lipid bilayer thus arises only 
-%from the orientational polarization of the molecules, which is accounted for explicitly in standard MD simulations.  
-%Therefore, the same correction for the electronic polarizability can be  
-%applied throughout the lipid bilayer/aqueous solution interface. 
 
+
+ 
+ 
 
 \subsection{Validation of membrane properties} 
 
@@ -401,7 +396,7 @@ were calculated and compared against the experimental data as described previous
 %(see next section and Fig.~\ref{simVSexpNOions_POPS}). 
 The order parameters for each C-H bond of individual lipids in the trajectory were first averaged
 over the time. Then the average over lipids was taken and the standard error of the mean of this
-average was used as an error bar \cite{botan15,ollila16,nmrlipids_proj4}.
+average was used as an error bar \cite{botan15,,ollila16,nmrlipids_proj4}.
 
 Cation binding affinity to phosphatidylcholine (PC) lipid bilayers can be evaluated using 
 the order parameters of $\alpha$ and $\beta$ carbons in the lipid headgroup 
@@ -464,6 +459,9 @@ parameteres derived in this work (section \ref{section:ecc}) together with the S
 water model and ECC-ions \cite{martinek17, kohagen16, Pluharova2014}.
 The SPC/E water model is used because it lower dielectric constant is consistent with the
 ECC concept \cite{leontyev11,leontyev14}.
+
+The simulation parameters used in this work are summarized in Table~\ref{tbl:mdpar}. 
+
 
 
 
