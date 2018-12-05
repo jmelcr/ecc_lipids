@@ -332,6 +332,12 @@ early days of classical MD simulations of lipids \cite{jonsson86,egberts94, bere
 where the atomic charges were scaled by a factor of 1/2 to effectively
 include the electrostatic screening from the missing electronic polarizability.
 The electronic continuum correction (ECC) is a more sophisticated version of the charge scaling.
+
+The polarization of electrons in ECC-lipids uses the implicit method termed electronic continuum correction (ECC). \cite{leontyev09, Pluharova2014, martinek17, melcr18} 
+In this method, a system of polarizable particles is represented with an equivalent system of particles with fixed charges. 
+This is practically achieved rescaling the charges with a pre-determined scaling factor, $f_q$,
+which is derived from the high-frequency dielectric constant of electrons, $\epsilon_{el}$, as
+-OR-
 In ECC, the charges are rescaled with a pre-determined scaling factor, $f_q$,
 \begin{equation}
   f_q = \frac{1}{\sqrt{\epsilon_{el}}} ,
@@ -354,13 +360,6 @@ bilayer structural properties when the partial charges and Lennard-Jones $\sigma
 parameters of headgroup, glycerol backbone, and carbonyl regions of the lipid14 POPC model
 were scaled with the factors of $f_q = 0.8$ and $f_\sigma = 0.89$, respectively \cite{melcr18}.
 
-%Compared to POPS, POPC is a zwitterionic neutral molecule with a zero total charge; 
-%scaling it by any factor does not affect it. 
-%Partial charges of the atoms in POPC are not physical observables, 
-%and vary greatly between different models. \cite{botan15, catte16, nmrlipids_proj4, Pluhackova2016}
-%The choice of a larger scaling factor in ECC-POPC represents the fact that 
-%the set of partial charges in the initial model for ECC-POPC, the Lipid14 model \cite{dickson14}, 
-%was determined in the beginning as less polar compared to other models. 
 
 Here, we apply the ECC to the Amber based lipid17 parameters \cite{lipid17-future} of POPS lipid with
 a total monovalent negative charge. In this case we apply the scaling factor of $f_q = 0.75$ 
@@ -379,14 +378,10 @@ headgroup, glycerol backbone, and carbonyl regions.
 
 
 
-%It is important to note that the value of the high frequency dielectric constant  
-%is around 2 for almost any biologically relevant environment \citep{leontyev11}. 
-%This means that even interfaces like biological membranes do not contain discontinuities of the electronic continuum. 
-%The dielectric discontinuity in a lipid bilayer thus arises only 
-%from the orientational polarization of the molecules, which is accounted for explicitly in standard MD simulations.  
-%Therefore, the same correction for the electronic polarizability can be  
-%applied throughout the lipid bilayer/aqueous solution interface. 
 
+
+ 
+ 
 
 \subsection{Validation of membrane properties} 
 
@@ -446,8 +441,9 @@ The simulated systems are listed in Table~\ref{tbl:sim-list} and the used parame
 in Table~\ref{tbl:mdpar}. 
 \todo{SAMULI: All the simulations were ran ?? ns and the first ?? ns were omitted as
 an equilibration period. Or some other description of simulation times and equlibration.}
-For deposited trajectories and parameter files see Refs.~
-\todo{Joe: Upload trajectories and add references here.}
+For deposited trajectories and parameter files see 
+Refs.~\citenum{ecclipids_pcps_nacl_kcl_series, ecclipids_pcps_cacl2_series, ecclipids_pcps_mixtures_counterions, 
+               lipid17_nacl_kcl_series, lipid17_ff99_ions, lipid17_cacl_series}
 
 In the reference simulations with the standard Amber force field,
 we used the Lipid14 parameters~\cite{dickson14} for POPC, the Lipid17 parameters for POPS \cite{lipid17-future},
@@ -463,6 +459,9 @@ parameteres derived in this work (section \ref{section:ecc}) together with the S
 water model and ECC-ions \cite{martinek17, kohagen16, Pluharova2014}.
 The SPC/E water model is used because it lower dielectric constant is consistent with the
 ECC concept \cite{leontyev11,leontyev14}.
+
+The simulation parameters used in this work are summarized in Table~\ref{tbl:mdpar}. 
+
 
 
 
@@ -798,14 +797,14 @@ improves the description of the interactions even for very weakly binding cation
 
 \begin{figure}[tbp!] 
   \centering 
-  \includegraphics[height=\figheightsmall]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS.pdf}
-  \includegraphics[height=\figheightsmall]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_5PC-1PS.pdf} \\
-  \includegraphics[height=\figheightsmall]{../img/ecc_pops/l17/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_lipid17.pdf}
-  \includegraphics[height=\figheightsmall]{../img/ecc_pops/l17/density_profiles_na-k-counterions_wat_phos_compar_5PC-1PS_lipid17.pdf}
+  \includegraphics[height=\figheight]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_ecclipids-lipid17.pdf}
+  \includegraphics[height=\figheight]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_5PC-1PS_ecclipids-lipid17.pdf}
   \caption{\label{fig:POPS-counterions-dens}
     Number density profiles of \ce{K^{+}}, \ce{Na^{+}} counterions along the membrane normal axis 
     for the negatively charged bilayers composed of only POPS (left) or POPC:POPS (5:1, right) 
-    using ECC-lipids and ECC-ions (top) and Lipid17 (bottom).  }
+    using ECC-lipids and ECC-ions (solid lines) and Lipid17 (dashed lines).  
+    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
+}
 \end{figure} 
 
 
