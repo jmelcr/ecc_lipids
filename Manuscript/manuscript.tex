@@ -257,18 +257,20 @@ Polarizability is necessarry for accurate simulations of cellular membranes at p
 \section{Introduction} 
 
 Lipids with negatively charged headgroups, like phophatidylserine
-play important role in biomembranes. Signaling domains interact with
-anionic lipid membranes due to electrostatic and specific interactions
-with negatively charged lipids \cite{lemmon08,leventis10}.
+play important role in biomembranes. 
+Signaling molecules in cells interact with lipid membranes 
+due to specific, often electrostatically driven, interactions 
+with anionic lipids \cite{lemmon08,leventis10}.
 Anionic lipids and their interactions with ions play also role in membrane
 fusion \cite{??}. \todo{Pavel can probably improve this and give a citation}
-These interactions depend on
-chemical details of lipid headgroups and binding of counter and co-ions
-to anionic membranes. 
+These interactions depend both on
+the chemical details of lipid headgroups as well as 
+on the binding of counter and co-ions to anionic membranes. 
 
 Various interaction schemes have been proposed for the negatively charged
-lipids with ions and other lipids. Some studies suggest that the
-binding constant to negatively charged lipids is similar to zwitterionic
+lipids with ions and other lipids. 
+Some studies suggest that the
+binding constant of ions to negatively charged lipids is similar to that of zwitterionic lipids,
 and the binding affinity is increased only due to the increased cation
 concentration in the vicinity of the membrane \cite{seelig90,sinn06}.
 On the other hand, calcium forms dehydrated complexes with PS headgroups
@@ -295,6 +297,11 @@ the non-polarizable version of the same force field
 performes comparably well at a fraction of the computational cost 
 of the models with explicit polarization. \citep{lucas12,chowdhary13} 
 
+Short paragraph describing previous MD-work on this topic (PS), i.e., \dots 
+\todo{SAMULI: Controversies in previous simulations (https://doi.org/10.1016/j.bpj.2018.08.044 and
+  Melcrova et al. Scientific Reports | 6:38035 | DOI: 10.1038/srep38035) should be mentioned also
+in the intro.}
+
 An empirical scaling factor, which reduces electrostatic forces between molecules, 
 is a well known concept in molecular modelling;
 such an approach was adopted in the early simulations of lipid bilayers \cite{egberts94, berendsen1996},
@@ -316,10 +323,6 @@ and its interactions with PC in mixed lipid bilayers.
 The results pave the way to more realistic MD simulations 
 of both neutral and negatively charged lipid bilayers 
 for a wide range of applications.
-
-\todo{SAMULI: Controversies in previous simulations (https://doi.org/10.1016/j.bpj.2018.08.044 and
-  Melcrova et al. Scientific Reports | 6:38035 | DOI: 10.1038/srep38035) should be mentioned also
-in the intro.}
 
 
  
@@ -396,7 +399,7 @@ were calculated and compared against the experimental data as described previous
 %(see next section and Fig.~\ref{simVSexpNOions_POPS}). 
 The order parameters for each C-H bond of individual lipids in the trajectory were first averaged
 over the time. Then the average over lipids was taken and the standard error of the mean of this
-average was used as an error bar \cite{botan15,,ollila16,nmrlipids_proj4}.
+average was used as an error bar \cite{botan15,ollila16,nmrlipids_proj4}.
 
 Cation binding affinity to phosphatidylcholine (PC) lipid bilayers can be evaluated using 
 the order parameters of $\alpha$ and $\beta$ carbons in the lipid headgroup 
