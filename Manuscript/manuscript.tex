@@ -330,6 +330,7 @@ for a wide range of applications.
  
 \subsection{Electronic continuum correction for PS lipids}\label{section:ecc} 
 
+\todo{Joe: this paragraph requires editing.}
 The lack of electronic polarizability has been a concern since the
 early days of classical MD simulations of lipids \cite{jonsson86,egberts94, berendsen1996},
 where the atomic charges were scaled by a factor of 1/2 to effectively
@@ -337,44 +338,48 @@ include the electrostatic screening from the missing electronic polarizability.
 The electronic continuum correction (ECC) is a more sophisticated version of the charge scaling.
 
 The polarization of electrons in ECC-lipids uses the implicit method termed electronic continuum correction (ECC). \cite{leontyev09, Pluharova2014, martinek17, melcr18} 
-In this method, a system of polarizable particles is represented with an equivalent system of particles with fixed charges. 
-This is practically achieved rescaling the charges with a pre-determined scaling factor, $f_q$,
+In this method, a system of polarizable particles is represented 
+with an equivalent system of particles with fixed charges,
+which account for the electronic polarizability \emph{implicitly}. 
+This is practically achieved by rescaling the charges with a pre-determined scaling factor, $f_q$,
 which is derived from the high-frequency dielectric constant of electrons, $\epsilon_{el}$, as
--OR-
-In ECC, the charges are rescaled with a pre-determined scaling factor, $f_q$,
 \begin{equation}
   f_q = \frac{1}{\sqrt{\epsilon_{el}}} ,
 \end{equation}
-where $\epsilon_{el}$ is the high-frequency dielectric constant of electrons.
 The value of $\epsilon_{el} = 1.78$ for water solutions gives the scaling
 factor of $f_q \approx 0.75$ for aquaeous environments \cite{leontyev09}.
 This has been recently applied to improve classical models for ions and
 other biomolecules \cite{Pluharova2014, martinek17, melcr18}
-\todo{Pavel can probably update this}.
+\todo{Pavel can probably update this (insulin?)}.
 
 Recently we applied the ECC also to the Amber based lipid14 force field \cite{dickson14} to
 improve the cation binding affinity to zwitterionic POPC lipid bilayers \cite{melcr18}.
-In contrast to the total charge of ions, the partial charges in force fields of zwitterionic
-depend on the methods used to derive the force field which may already partially include the
+In contrast to the total charge of ions, 
+the partial charges in force fields of zwitterionic molecules
+depend on the methods used to derive the force field, 
+which may already partially include the
 electronic polarizability effects. Therefore, the optimal scaling factor for charges in
-zwitterionic lipids may be larger than the theoretically derived $f_q \approx 0.75$.
+zwitterionic lipids may vary from (be even larger) than the theoretically derived $f_q \approx 0.75$.
 In the recent work, we found optimal results for cation binding affinity and
-bilayer structural properties when the partial charges and Lennard-Jones $\sigma$
-parameters of headgroup, glycerol backbone, and carbonyl regions of the lipid14 POPC model
-were scaled with the factors of $f_q = 0.8$ and $f_\sigma = 0.89$, respectively \cite{melcr18}.
+bilayer structural properties when the partial charges and Lennard-Jones~$\sigma$
+parameters of all non-tail atoms of the lipid14 POPC model
+(i.e., headgroup, glycerol backbone, and carbonyl regions) 
+were scaled with the factors $f_q = 0.8$ and $f_\sigma = 0.89$  \cite{melcr18}.
 
 
 Here, we apply the ECC to the Amber based lipid17 parameters \cite{lipid17-future} of POPS lipid with
-a total monovalent negative charge. In this case we apply the scaling factor of $f_q = 0.75$ 
-also to the lipid because it carries a physical total charge similar to the ions in solution and
-the lipid charges has to neutralize the counterion charges in simulations.
-For the Lennard-Jones $\sigma$ parameters, we used the same scaling factor of $f_\sigma = 0.89$
+a total monovalent negative charge. 
+In this case we treat the POPS lipids like ions
+applying to it the scaling factor of $f_q = 0.75$,
+as it carries a physical total charge similar to the ions in solution, 
+and the lipid charges has to neutralize the counterion charges in simulations.
+For the Lennard-Jones~$\sigma$ parameters, we used the same scaling factor of $f_\sigma = 0.89$
 as in the ECC-POPC model \cite{melcr18}.
 %we used exactly the pre-determined scaling factor 
 %to represent the effects of electronic polarization
 %yielding a total charge of $-0.75$ in the ECC formalism. \cite{martinek17, leontyev09, melcr18}
 Similarly to the ECC-POPC model \cite{melcr18}, we applied the ECC only to the
-headgroup, glycerol backbone, and carbonyl regions.
+non-tail atoms, i.e., to atoms in the headgroup, glycerol backbone, and carbonyl regions. 
 %polar parts of the phospholipid,
 %i.e., charges on all atoms except on alkyl tails, 
 %which do not encounter direct contacts with ions. 
