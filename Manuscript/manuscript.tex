@@ -404,21 +404,21 @@ were calculated and compared against the experimental data as described previous
 %(see next section and Fig.~\ref{simVSexpNOions_POPS}). 
 The order parameters for each C-H bond of individual lipids in the trajectory were first averaged
 over the time. Then the average over lipids was taken and the standard error of the mean of this
-average was used as an error bar \cite{botan15,ollila16,nmrlipids_proj4}.
+average was used as the error estimate of the mean \cite{botan15,ollila16,nmrlipids_proj4}.
 
 Cation binding affinity to phosphatidylcholine (PC) lipid bilayers can be evaluated using 
 the order parameters of $\alpha$ and $\beta$ carbons in the lipid headgroup 
-(see Fig.~\ref{simVSexpNOions_POPS} for the labeling
-\todo{SAMULI: Currently the figure has only PS structure while we use PC also in this work.
-We should either add also PC structure or refer to somewhere else for the labeling.}) \cite{catte16}.
+(see Fig.~\ref{fig:chemstruct_pc_ps} for the labeling) \cite{catte16}.
 According to the ''electrometer concept'' \citep{seelig87}, these order parameters decrease
 proportionally to the bound charge and can therefore be used to quantify the cation binding
-affinity to PC lipid bilayers. The situation is more complicated for lipid bilayers containing
-PS lipids because the ion free reference state does not exist due to the counterions and additional
-ions often lead to phase transitions \cite{nmrlipids_proj4,feigenson86,mattai89,roux91,roux90}
-Here, we overcome these complications by comparing simulations to the experimental data measured
-from POPC:POPS (5:1) mixtures with additional ions\cite{roux90}, as demonstrated in the
-recent work by the NMRlipids project \cite{nmrlipids_proj4}.
+affinity to lipid bilayers. The situation is more complicated for lipid bilayers containing
+PS lipids, for which there is no ion-free reference state due to the presence of counterions.
+Moreover, additional ions often lead to phase transitions in such bilayers \cite{nmrlipids_proj4,feigenson86,mattai89,roux91,roux90}
+Here, we overcome this complication by comparing simulations to the experimental data 
+measured from POPC:POPS (5:1) mixtures, 
+which are not as highly negatively charged, 
+and do not ondergo phase transitions with additional ions \cite{roux90} 
+as was also demonstrated in the recent work by the NMRlipids project \cite{nmrlipids_proj4}.
 
 %experimentally quantified
 %by measuring the changes of the head group order parameters in the lipids using solid state NMR.
@@ -461,10 +461,10 @@ using the GROMACS 2018 \cite{Abraham15} simulation package.
 %The simulated system consisted of lipids (POPC and POPS) forming a single lipid bilayer,
 %an amount of water molecules comparable to the hydration levels in experiments, 
 %\todo{Check this claim. SAMULI: Check discussin in the NMRlipids IV manuscript}
-The simulated systems are listed in Table~\ref{tbl:sim-list} and the used parameters
-in Table~\ref{tbl:mdpar}. 
-\todo{SAMULI: All the simulations were ran ?? ns and the first ?? ns were omitted as
-an equilibration period. Or some other description of simulation times and equlibration.}
+The complete set of simulated systems is listed in Table~\ref{tbl:sim-list},
+and the used simulation parameters are in Table~\ref{tbl:mdpar}. 
+All simulations were ran for a minimum of $1 \, \mu$s,
+and the first  $50 \,$ns were omitted as an equilibration period. 
 For deposited trajectories and parameter files see 
 Refs.~\citenum{ecclipids_pcps_nacl_kcl_series, ecclipids_pcps_cacl2_series, ecclipids_pcps_mixtures_counterions, 
                lipid17_nacl_kcl_series, lipid17_ff99_ions, lipid17_cacl_series}
@@ -472,19 +472,20 @@ Refs.~\citenum{ecclipids_pcps_nacl_kcl_series, ecclipids_pcps_cacl2_series, eccl
 In the reference simulations with the standard Amber force field,
 we used the Lipid14 parameters~\cite{dickson14} for POPC, the Lipid17 parameters for POPS \cite{lipid17-future},
 the TIP3P water model~\cite{jorgensen83}, and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006}.
-The Lipid14 parameters in Gromacs format were downloaded from ?? \todo{SAMULI: Add this} and
-the Lipid17 parameters were \todo{SAMULI: Describe how lipid17 parameters in Gromacs were generated.}.
+The Lipid14 parameters in Gromacs format were downloaded from Ref.~\citenum{lipid14files}. 
+The Lipid17 parameters were obtained from AmberTools18 \cite{amber18} 
+and they were converted to Gromacs format using acpype \cite{acpype}.  
 The ion model by Dang and coworkers~\cite{smith94,chang1999,dang2006} was used with Amber lipids because
 analysis of simulations with the default Amber ion parameters is complicated by the artificial
 clustering of ions in solution \cite{nmrlipids_proj4}.
-In simulations with ECC-lipids,
-we used the ECC-POPC parameters~\cite{melcr18} (available at ??\todo{Add reference}) and ECC-POPS
-parameteres derived in this work (section \ref{section:ecc}) together with the SPC/E~\cite{Berendsen1987}
-water model and ECC-ions \cite{martinek17, kohagen16, Pluharova2014}.
-The SPC/E water model is used because it lower dielectric constant is consistent with the
+In the simulations with ECC-lipids,
+we used the ECC-POPC parameters~\cite{melcr18} (available at \cite{ECC-POPC_nacl_cacl2_files}) and 
+ECC-POPS parameteres derived in this work (section \ref{section:ecc}) 
+together with the SPC/E~\cite{Berendsen1987} water model and 
+ECC-ions \cite{martinek17, kohagen16, Pluharova2014}.
+We used the SPC/E water model as its lower dielectric constant is consistent with the
 ECC concept \cite{leontyev11,leontyev14}.
 
-The simulation parameters used in this work are summarized in Table~\ref{tbl:mdpar}. 
 
 
 
@@ -662,6 +663,17 @@ In general, we can conclude that ECC-lipids
 %the presented lipid models with ECC-lipids 
 reproduce the experimental structural parameters of the lipid bilayers 
 with a comparable accuracy to existing state-of-the-art lipid models~\citep{botan15, ollila16, Pluhackova2016}. 
+
+
+\begin{figure}[tb!] 
+  \centering 
+  \includegraphics[width=\figwidth]{../Fig/lipids_chemfig_POPC_POPS.pdf} 
+  \caption{ \label{fig:chemstruct_pc_ps} 
+            The chemical structure of POPC and POPS 
+            including the labeling of the carbon segments
+            used in the measurements of order parameteres. 
+  }  
+\end{figure} 
  
 The head group and acyl chain order parameters within ECC-lipids
 are in general in a good agreement with the experimental values 
