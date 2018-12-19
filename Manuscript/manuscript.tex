@@ -454,6 +454,49 @@ For acquiring the spectra, a total number of 1024 transients were recorded for e
  
 \subsection{Simulation details} 
 
+
+\begin{table*}[tbp]
+\centering
+\caption{  List of MD simulations reporting their respective
+           added buffer concentrations,
+           amounts of individual molecules,
+           and the deployed models.
+           The fatty acid chains for all lipids are plamitoyl (sn-1) and oleoyl (sn-2).
+         }\label{tbl:sim-list}
+\begin{tabular}{l | r r r r | r r | c c }
+                          &  \multicolumn{4}{c}{added buffer concentration / mM}    & \multicolumn{2}{c}{no. molecules} &  \multicolumn{2}{c}{simulated with model}  \\
+PC:PS (ratio)/counterions &  \ce{K^+}  &  \ce{Na^+} & \ce{Ca^{2+}} & \ce{Cl^-}      & \ce{H2O} &  PC:PS                 &  ECC-lipids  &  Lipid17    \\
+  \hline
+PC:PS (0:1)/K+   &      0  &      0  &      0  &      0  &  3600  &  0:72  &  X  &  X  \\ 
+PC:PS (0:1)/Na+  &      0  &      0  &      0  &      0  &  3600  &  0:72  &  X  &  X  \\ 
+  \hline
+PC:PS (10:1)/K+  &      0  &      0  &      0  &      0  &  3600  &  60:6  &  X  &  -  \\ 
+PC:PS (10:1)/Na+ &      0  &      0  &      0  &      0  &  3600  &  60:6  &  X  &  -  \\ 
+  \hline
+PC:PS (1:1)/K+   &      0  &      0  &      0  &      0  &  5253  &  64:64  &  X  &  X  \\ 
+PC:PS (1:1)/Na+  &      0  &      0  &      0  &      0  &  5253  &  64:64  &  X  &  X  \\ 
+  \hline
+PC:PS (4:1)/K+   &      0  &      0  &      0  &      0  &  3600  &  48:12  &  X  &  -  \\ 
+PC:PS (4:1)/Na+  &      0  &      0  &      0  &      0  &  3600  &  48:12  &  X  &  -  \\ 
+  \hline
+PC:PS (5:1)/K+   &      0  &      0  &      0  &      0  &  3600  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &      0  &      0  &      0  &  3600  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &      0  &     78  &     78  &  3561  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &      0  &    125  &    125  &  3561  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &      0  &    202  &    202  &  3561  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &      0  &    409  &    409  &  3522  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &      0  &    621  &    621  &  3483  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &    621  &      0  &    621  &  3483  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &   1510  &      0  &   1510  &  3377  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &      0  &   3002  &      0  &   3002  &  3213  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &    621  &      0  &      0  &    621  &  3483  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &   1510  &      0  &      0  &   1510  &  3377  &  60:12  &  X  &  X  \\ 
+PC:PS (5:1)/Na+  &   3002  &      0  &      0  &   3002  &  3213  &  60:12  &  X  &  X  \\ 
+  \hline
+\end{tabular}
+\end{table*}
+
+
 MD simulations of POPC:POPS lipid bilayers with different molar ratios 
 and ion concentrations (\ce{K^+}, \ce{Na^+}, \ce{Ca^{2+}} and \ce{Cl^{-}})
 were performed in an orthorhombic simulation box with periodic boundary conditions
@@ -492,48 +535,6 @@ ECC concept \cite{leontyev11,leontyev14}.
 
 
 
-\begin{table*}[tbp]
-\centering
-\caption{  List of MD simulations reporting their respective
-           added buffer concentrations,
-           amounts of individual molecules,
-           and the deployed models.
-         }\label{tbl:sim-list}
-         \todo{SAMULI: All the tails are PO, right? This could be mentioned in the caption.}
-\begin{tabular}{l | r r r r | r r | c c }
-                          &  \multicolumn{4}{c}{added buffer concentration / mM}    & \multicolumn{2}{c}{no. molecules} &  \multicolumn{2}{c}{simulated with model}  \\
-PC:PS (ratio)/counterions &  \ce{K^+}  &  \ce{Na^+} & \ce{Ca^{2+}} & \ce{Cl^-}      & \ce{H2O} &  PC:PS                 &  ECC-lipids  &  Lipid17    \\
-  \hline
-PC:PS (0:1)/K+   &      0  &      0  &      0  &      0  &  3600  &  0:72  &  X  &  X  \\ 
-PC:PS (0:1)/Na+  &      0  &      0  &      0  &      0  &  3600  &  0:72  &  X  &  X  \\ 
-  \hline
-PC:PS (10:1)/K+  &      0  &      0  &      0  &      0  &  3600  &  60:6  &  X  &  -  \\ 
-PC:PS (10:1)/Na+ &      0  &      0  &      0  &      0  &  3600  &  60:6  &  X  &  -  \\ 
-  \hline
-PC:PS (1:1)/K+   &      0  &      0  &      0  &      0  &  5253  &  64:64  &  X  &  X  \\ 
-PC:PS (1:1)/Na+  &      0  &      0  &      0  &      0  &  5253  &  64:64  &  X  &  X  \\ 
-  \hline
-PC:PS (4:1)/K+   &      0  &      0  &      0  &      0  &  3600  &  48:12  &  X  &  -  \\ 
-PC:PS (4:1)/Na+  &      0  &      0  &      0  &      0  &  3600  &  48:12  &  X  &  -  \\ 
-  \hline
-PC:PS (5:1)/K+   &      0  &      0  &      0  &      0  &  3600  &  60:12  &  X  &  X  \\ 
-PC:PS (5:1)/Na+  &      0  &      0  &      0  &      0  &  3600  &  60:12  &  X  &  X  \\ 
-PC:PS (5:1)/Na+  &      0  &      0  &     78  &     78  &  3561  &  60:12  &  X  &  X  \\ 
-PC:PS (5:1)/Na+  &      0  &      0  &    125  &    125  &  3561  &  60:12  &  X  &  X  \\ 
-PC:PS (5:1)/Na+  &      0  &      0  &    202  &    202  &  3561  &  60:12  &  X  &  X  \\ 
-PC:PS (5:1)/Na+  &      0  &      0  &    409  &    409  &  3522  &  60:12  &  X  &  X  \\ 
-PC:PS (5:1)/Na+  &      0  &      0  &    621  &    621  &  3483  &  60:12  &  X  &  X  \\ 
-PC:PS (5:1)/Na+  &      0  &    621  &      0  &    621  &  3483  &  60:12  &  X  &  X  \\ 
-PC:PS (5:1)/Na+  &      0  &   1510  &      0  &   1510  &  3377  &  60:12  &  X  &  X  \\ 
-PC:PS (5:1)/Na+  &      0  &   3002  &      0  &   3002  &  3213  &  60:12  &  X  &  X  \\ 
-PC:PS (5:1)/Na+  &    621  &      0  &      0  &    621  &  3483  &  60:12  &  X  &  X  \\ 
-PC:PS (5:1)/Na+  &   1510  &      0  &      0  &   1510  &  3377  &  60:12  &  X  &  X  \\ 
-PC:PS (5:1)/Na+  &   3002  &      0  &      0  &   3002  &  3213  &  60:12  &  X  &  X  \\ 
-  \hline
-\end{tabular}
-\end{table*}
-
-
 
 \begin{table}[tbp]
   \caption{Simulation parameters}
@@ -542,8 +543,8 @@ PC:PS (5:1)/Na+  &   3002  &      0  &      0  &   3002  &  3213  &  60:12  &  X
     simulation property & parameter   \\
     \hline
     time-step           & 2~fs         \\
-    equilibration time  & tba~ns  \\
-    total simulation time     & 1.5~$\mu$s  \\
+    equilibration time  & 50~ns  \\
+    total simulation time     & 1~$\mu$s  \\
     temperature         & 298~K       \\
     thermostat          & v-rescale  \cite{bussi07}   \\
     barostat            & Parrinello-Rahman, semi-isotropic \cite{parrinello81} \\
@@ -578,14 +579,15 @@ PC:PS (5:1)/Na+  &   3002  &      0  &      0  &   3002  &  3213  &  60:12  &  X
   \includegraphics[width=\figwidth]{../img/ecc_pops/pops_chemfig.pdf} 
 \hfill
   \caption{\label{simVSexpNOions_POPS} 
-    Top: X-ray scattering form factors from simulations with the Lipid17 \citep{lipid17-future} and 
-    the ECC-POPS models compared with experiments~\citep{kucerka14} at 298~K. 
-    Middle: Order parameters of POPS head group, glycerol backbone and acyl chains  
+    \textbf{Top:} X-ray scattering form factors from simulations with Lipid17/Dang \citep{lipid17-future, dang2006} and 
+    the ECC-POPS/ECC-ions \cite{martinek17, Pluhackova2016} compared with experiments~\citep{kucerka14} at 298~K. 
+    \textbf{Middle:} Order parameters of POPS head group, glycerol backbone and acyl chains  
     from simulations with the Lipid17 \citep{lipid17-future} and the ECC-POPS models 
     compared with experiments at 298~K. \citep{nmrlipids_proj4}
     Open/closed symbols are used for palmitoyl/oleoyl chains of POPS. 
-    Bottom: The chemical structure of POPS and the labeling of the carbon segments. 
+    \textbf{Bottom:} The chemical structure of POPS and the labeling of the carbon segments. 
   }  
+\todo{J: flip the chemical structure so that it agrees with the left-to-right reading of the plot.}
 \end{figure} 
  
 
@@ -594,51 +596,20 @@ PC:PS (5:1)/Na+  &   3002  &      0  &      0  &   3002  &  3213  &  60:12  &  X
 \centering
   \caption{Values of the area per lipid (APL) of POPS bilayers 
 	   at 298~K with only \ce{Na^+} counterions and no additional ions. \label{tab:apls} } 
-  \begin{tabular}{l|c c} 
-%    \multicolumn{3}{c}{POPC} \\
-%    model          & APL / Å$^2$   & $T$ / K  \\ 
-%    \hline 
-%    Lipid14 POPC \citep{melcr18}    & 65.1$\pm$ 0.6  &  300 \\ 
-%    Lipid14 POPC \citep{dickson14}  & 65.6$\pm$ 0.5  &  303 \\ 
-%    \hline 
-%    ECC-POPC     \citep{melcr18}    & 63.2$\pm$ 0.6  &  300       \\ 
-%    \hline 
-%    experiment (SDP model) \citep{kucerka11} & 64.3  &  303    \\ 
-%    \hline 
-%    \multicolumn{3}{c}{} \\
-%    \multicolumn{3}{c}{POPE} \\
-%    model          & APL / Å$^2$   & $T$ / K  \\ 
-%    \hline 
-%    ECC-POPE                 & 56.7$\pm$ 0.8  &  298 \\ 
-%    \hline 
-%    experiment   \citep{parsegian89} & 56.6  &  310    \\ 
-%    experiment   \citep{rappolt03}   & 59--61 &  303--313  \\ 
-%    \hline 
-%    \multicolumn{3}{c}{} \\
-    \multicolumn{3}{c}{POPS} \\
-    model          & APL / Å$^2$   & $T$ / K  \\ 
+  \begin{tabular}{l|c } 
+    \multicolumn{2}{c}{POPS} \\
+    model          & APL / Å$^2$    \\ 
     \hline 
-    Lipid17 POPS              & 53.5$\pm$ 0.8  &  298 \\ 
+    Lipid17/Dang              & 53.5$\pm$ 0.8   \\ 
+    Lipid17/ff99 \todoi{add?} & XX.x$\pm$ 0.8   \\ 
     \hline 
-    ECC-POPS                & 60.3$\pm$ 0.6  &  298       \\ 
+    ECC-POPS/ECC-ions         & 60.3$\pm$ 0.6   \\ 
     \hline 
-    experiment (SDP model) \citep{kucerka14} & 62.3  &  298    \\ 
+    experiment (SDP model) \citep{kucerka14} & 62.3  \\ 
     \hline 
   \end{tabular} 
 \end{table} 
  
-\todo{SAMULI: Lipid17 simulations are too compressed, which is probably due to the
-  overbinding of Dang ions. Lipid17 with Åqvist ions (default in Amber) has larger
-  area in NMRlipids IV. This is similar to ECC-POPC paper where changing from Åqvist to
-  Dang or ECC-ions increased binding affinity in Lipid14. However, the headgroup order
-  parameters are better in ECC-POPS compared to Lipid17 simulations with any ions.
-  These should be discussed in this section.
-}
-
-\todo{SAMULI: For this discussion we need the counterion density profiles from pure POPS
-  simulation with Lipid17 and Dang counterions. This could be added to the figure \ref{fig:POPS-counterions-dens} and
-the figure could be moved here.}
-
 We compared X-ray scattering form factors and NMR order parameters of bilayers
 in pure water without any ions (or only counter ions)
 from simulations and experiments
@@ -651,6 +622,27 @@ The area per lipid is often used as a relatively simple structural parameter rep
 In experiments, modeling is used on top of the scattering factors to obtain it \citep{kucerka14}. 
 From simulations, this property is easily extracted. 
 We compare the values from experiments and simulations in Table~\ref{tab:apls}. 
+
+
+\todo{SAMULI: Lipid17 simulations are too compressed, which is probably due to the
+  overbinding of Dang ions. Lipid17 with Åqvist ions (default in Amber) has larger
+  area in NMRlipids IV. This is similar to ECC-POPC paper where changing from Åqvist to
+  Dang or ECC-ions increased binding affinity in Lipid14. However, the headgroup order
+  parameters are better in ECC-POPS compared to Lipid17 simulations with any ions.
+  These should be discussed in this section.
+}
+
+\begin{figure}[tbp!] 
+  \centering 
+  \includegraphics[height=\figheight]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_ecclipids-lipid17.pdf}
+  \includegraphics[height=\figheight]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_5PC-1PS_ecclipids-lipid17.pdf}
+  \caption{\label{fig:POPS-counterions-dens}
+    Number density profiles of \ce{K^{+}}, \ce{Na^{+}} counterions along the membrane normal axis 
+    for the negatively charged bilayers composed of only POPS (left) or POPC:POPS (5:1, right) 
+    using ECC-lipids/ECC-ions (solid lines) and Lipid17/Dang ions (dashed lines).  
+    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
+}
+\end{figure} 
 
 
 While the agreement between the scattering form factors 
@@ -830,18 +822,6 @@ improves the description of the interactions even for very weakly binding cation
 
 
 
-
-\begin{figure}[tbp!] 
-  \centering 
-  \includegraphics[height=\figheight]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_ecclipids-lipid17.pdf}
-  \includegraphics[height=\figheight]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_5PC-1PS_ecclipids-lipid17.pdf}
-  \caption{\label{fig:POPS-counterions-dens}
-    Number density profiles of \ce{K^{+}}, \ce{Na^{+}} counterions along the membrane normal axis 
-    for the negatively charged bilayers composed of only POPS (left) or POPC:POPS (5:1, right) 
-    using ECC-lipids and ECC-ions (solid lines) and Lipid17 (dashed lines).  
-    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
-}
-\end{figure} 
 
 
 \begin{figure}[tbp!] 
