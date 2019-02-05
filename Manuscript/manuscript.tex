@@ -645,13 +645,6 @@ In ocntrast, this property is easily extracted directly from simulations with fl
 We compare the values from experiments and simulations in Table~\ref{tab:apls}. 
 
 
-\todo{SAMULI: Lipid17 simulations are too compressed, which is probably due to the
-  overbinding of Dang ions. Lipid17 with Åqvist ions (default in Amber) has larger
-  area in NMRlipids IV. This is similar to ECC-POPC paper where changing from Åqvist to
-  Dang or ECC-ions increased binding affinity in Lipid14. However, the headgroup order
-  parameters are better in ECC-POPS compared to Lipid17 simulations with any ions.
-  These should be discussed in this section.
-}
 
 \begin{figure}[tbp!] 
   \centering 
@@ -694,9 +687,12 @@ as shown in Fig. \ref{simVSexpNOions_POPS}.
 The acyl chain order parameters in particular agree with the experimental data within error bars.
 The order parameters of the head groups are at an accuracy comparable to 
 other currently available classical models of lipids \citep{botan15, catte16, Pluhackova2016, nmrlipids_proj4}. 
+In particular, ECC-POPS is closer to the experimental order parameters 
+than Lipid17 with either Dang \cite{smith94,chang1999,dang2006} 
+or ff99 ions \citet{aqvist90}. 
 
-The head group order parameters $\alpha$ and $\beta$ are highly relevant for this work,
-as they are being used in the electrometer concept \cite{altenbach84, catte16, melcr18}.
+%The head group order parameters $\alpha$ and $\beta$ are highly relevant for this work,
+%as they are being used in the electrometer concept \cite{altenbach84, catte16, melcr18}.
 %For POPC in pure water, the order parameter $\beta$ agrees well with the experiment, while the order parameter $\alpha$ is somewhat lower. 
 The head group order parameters of PS are a bit more complicated 
 compared to PC as the order parameter $\alpha$ exhibits a notable forking 
@@ -712,30 +708,66 @@ Such a feature suggests that the model likely overestimates the orientational fr
  
 \subsection{Interactions between PC and PS head groups in mixed PC:PS bilayers}
 
-Changes of the lipid bilayer head group order parameters extracted from simulations and 
-experiments \cite{roux90} are shown in Figs.~\ref{fig:delta_ordPar_KCl_PCPS}, \ref{fig:delta_ordPar_NaCl_PCPS} 
-and~\ref{fig:delta_ordPar_CaC_PCPS} as functions of KCl, NaCl or CaCl$_2$ concentrations,
-and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS content. 
+According to the electrometer concept,
+the head group order parameters $\alpha$ and $\beta$ of PC lipids
+change proportionally to the amount of bound charge
+in a fixed ratio. \cite{seelig87,scherer87,roux90} 
+This was demonstrated for a bound positive charge in simulations with POPC and 
+cationic surfactants or aquaeous cations employing the ECC-POPC model \cite{melcr18}.
+In this work, we will use the electrometer concept also for a bound negative charge 
+using PS lipids as negatively charged surfactants. \cite{roux90} 
 
-\todo{EDIT: Taken from NMRlipids4 as an interesting information, to be edited.}
-The headgroup order parameters
-of negatively charged PS and PG lipids exhibit systemic, but less
-characterized dependence on the bound charge~\cite{borle85,macdonald87,roux86,roux90}.
-Therefore, the ion binding affinity to negatively charged bilayers
-can be better characterized by measuring the PC headgroup order parameters from 
-mixed bilayers~\cite{roux86,roux90,roux91},
+Unlinke in pure PC bilayers,
+Interpreting the changes of the head group order parameters of 
+mixed PC:PS lipid bilayers 
+from both simulations and experiments
+is complicated by the presence of counterions. \cite{nmrlipids_proj4}
+In order to see the effects of different counterions, 
+we performed simulations with \ce{Na+} and also with \ce{K+} counterions, 
+which bind more weakly to phospholipids. \cite{nmrlipids_proj4, melcr18}
+This can also be seen in the density plots of the counterions in Fig.~\ref{fig:POPS-counterions-dens},
+which show a significantly reduced concentration of \ce{K+} ions 
+at the membrane head group region compared to \ce{Na+}
+for both PS and mixed PC:PS (5:1) bilayers. 
 
-\todo{EDIT: Taken from NMRlipids4 as an interesting information, to be edited.}
-Previous experimental studies have concluded that
-PS headgroups are more rigid than phophocholines (PC)
-due to the hydrogen bonding network or
-electrostatic interactions \cite{browning80,buldt81}.
-%
-Dilution of bilayers with PC lipids makes PS headgroups
-less rigid and reduces propensity for the formation of
-strong complexes with multivalent ions \cite{browning80,buldt81,roux90,roux91}.
-The molecular level interpretation of these observations is,
-however, not available.
+The slopes of the response of the PC head group order parameters $\alpha$ and $\beta$ 
+in the mixed PC:PS (5:1) bilayer with \ce{K+} counterions
+(Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix})
+agree qualitatively well with experiments for both employed models,
+i.e., for both Lipid14/17 and ECC-lipids. 
+The same property from the simualtions with \ce{Na+} counterions, 
+which were used in the experimental measurement,
+are not as good, however.
+In particular,
+ECC-lipids have a weaker response of their PC head group order parameters compared to the experiments, 
+while the simulations with Lipid17 model reveal a completely opposite trend.
+This effect likely arises from an overestimated binding of the sodium cations to the phospholipids \cite{nmrlipids_proj4},
+which is likely still present in a small amount also in the simulations with ECC-lipids. 
+The large difference between the affinities of the employed lipid models to the counterions 
+is visible in the density plots in Fig~\ref{fig:POPS-counterions-dens}. 
+
+The order parameters of the PS head groups including their changes with the content of PC lipids
+are challenging to capture correctly in classical MD simulation models. \cite{nmrlipids_proj4}
+From such a perspective,
+the changes of the PS head group order parameters from ECC-lipids 
+with \ce{Na+}, and also \ce{K+}, counterions 
+agree comparably well to the experimental measurements
+(Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix}). 
+Interestingly enough, 
+although the Lipid17 model performed well with \ce{K+} counterions 
+for the PC head group order parameter changes,
+it does not agree in the equivalent changes in PS head groups
+pointing at non-negligible effects of even relatively weakly binding cations 
+on the structure of negatively charged lipids. 
+
+Despite the great improvements in the overall structure of ECC-POPS 
+and its response to PC lipids and counterions,
+there is still a large room for improving it
+to agree with the experimental measurements. 
+
+
+
+
 
 
 
@@ -747,12 +779,12 @@ however, not available.
   \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_kcl.pdf} 
   \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix} 
     The head group order parameters of a POPC:POPS (5:1) bilayer as a function of PS content
-    with \ce{Na^+} and \ce{K^+} counterions from simulations with ECC-lipids and Lipid17 \cite{lipid17-future} 
-    and experiments (only \ce{Na^+} counterions). \cite{roux90}. 
+    with \ce{Na^+} (top) and \ce{K^+} (bottom) counterions from simulations with ECC-lipids and Lipid17 \cite{lipid17-future} 
+    and experiments (only \ce{Na^+} counterions, but shown also in bottom plots). \cite{roux90}. 
     The underestimated response of ECC-lipids with \ce{Na^+} counterions 
     is likely due to a still slightly overestimated binding affinity of \ce{Na^+} to the phospholipids,
     which is corroborated by the series with \ce{K^+} counterions (lower affinity than \ce{Na^+}),
-    where the response is closer to the experiment (which uses only \ce{Na^+} counterions). 
+    where the response is closer to the experiment, which uses only \ce{Na^+} counterions. 
   }
 \end{figure*} 
 
@@ -812,6 +844,31 @@ however, not available.
 %In this section,
 %we employ ECC-lipids to simulate neutral and negatively charged bilayers 
 %in the presence of monovalent salts, namely \ce{KCl} and \ce{NaCl}. 
+
+\todo{EDIT: Taken from NMRlipids4 as an interesting information, to be edited.}
+The headgroup order parameters
+of negatively charged PS and PG lipids exhibit systemic, but less
+characterized dependence on the bound charge~\cite{borle85,macdonald87,roux86,roux90}.
+Therefore, the ion binding affinity to negatively charged bilayers
+can be better characterized by measuring the PC headgroup order parameters from 
+mixed bilayers~\cite{roux86,roux90,roux91},
+%
+Previous experimental studies have concluded that
+PS headgroups are more rigid than phophocholines (PC)
+due to the hydrogen bonding network or
+electrostatic interactions \cite{browning80,buldt81}.
+%
+Dilution of bilayers with PC lipids makes PS headgroups
+less rigid and reduces propensity for the formation of
+strong complexes with multivalent ions \cite{browning80,buldt81,roux90,roux91}.
+The molecular level interpretation of these observations is,
+however, not available.
+
+
+Figs.~\ref{fig:delta_ordPar_KCl_PCPS}, \ref{fig:delta_ordPar_NaCl_PCPS} 
+and~\ref{fig:delta_ordPar_CaCl_PCPS} as functions of KCl, NaCl or CaCl$_2$ concentrations,
+and in Figs.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix} as a function of PC and PS content. 
+
 
 The binding of \ce{Na^+} cations to phospholipid bilayers 
 is not generally agreed on between simulations 
