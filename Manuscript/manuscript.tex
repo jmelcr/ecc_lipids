@@ -612,15 +612,16 @@ ECC concept \cite{leontyev11,leontyev14}.
 \begin{table}[tb!] 
 \centering
   \caption{Values of the area per lipid (APL) of POPS bilayers 
-	   at 298~K with only \ce{Na^+} counterions and no additional ions. \label{tab:apls} } 
+	   at 298~K with only \ce{Na^+} counterions and no additional ions. 
+           Standard deviations are given. \label{tab:apls} } 
   \begin{tabular}{l|c } 
     \multicolumn{2}{c}{POPS} \\
     model          & APL / Å$^2$    \\ 
     \hline 
-    Lipid17/Dang              & 53.5$\pm$ 0.8   \\ 
-    Lipid17/ff99 \todoi{add?} & XX.x$\pm$ 0.8   \\ 
+    Lipid17/Dang              & 53.5$\pm$ 1.7   \\ 
+    Lipid17/ff99              & 57.9$\pm$ 1.7   \\ 
     \hline 
-    ECC-POPS/ECC-ions         & 60.3$\pm$ 0.6   \\ 
+    ECC-POPS/ECC-ions         & 59.8$\pm$ 1.8   \\ 
     \hline 
     experiment (SDP model) \citep{kucerka14} & 62.3  \\ 
     \hline 
@@ -636,11 +637,11 @@ while for Lipid17/Dang they are in a slight disagreement
 (see Fig.~\ref{simVSexpNOions_POPS}). 
 The agreement of Lipid17 can be improved by using different parametes for ions \cite{aqvist90},
 which, however, bring other kinds of artifacts with them 
-(e.g., incorrect pairing of ions, condensation at larger salt concentrations \cite{kohagen16, chen07}). 
+(e.g., incorrect pairing of ions, condensation at larger salt concentrations \cite{kohagen16, chen07, nmrlipids_proj4}). 
 
-The area per lipid is often used as a relatively simple structural parameter reporting on the bilayer properties and the packing of lipids. 
-In experiments, modeling is used on top of the scattering factors to obtain it \citep{kucerka14}. 
-From simulations, this property is easily extracted. 
+%The area per lipid is often used as a relatively simple structural parameter reporting on the bilayer properties and the packing of lipids. 
+In order to obtain the area per lipid from experiments, modeling is used on top of the scattering factors \citep{kucerka14}. 
+In ocntrast, this property is easily extracted directly from simulations with flat phospholipid bilayers. 
 We compare the values from experiments and simulations in Table~\ref{tab:apls}. 
 
 
@@ -690,21 +691,21 @@ with a comparable accuracy to existing state-of-the-art lipid models~\citep{bota
 The head group and acyl chain order parameters within ECC-lipids
 are in general in a good agreement with the experimental values 
 as shown in Fig. \ref{simVSexpNOions_POPS}. 
-The acyl chain order parameters in particular are almost all within the experimental error bars.
+The acyl chain order parameters in particular agree with the experimental data within error bars.
 The order parameters of the head groups are at an accuracy comparable to 
-other currently available classical models of lipids \citep{botan15, catte16, Pluhackova2016}. 
+other currently available classical models of lipids \citep{botan15, catte16, Pluhackova2016, nmrlipids_proj4}. 
 
 The head group order parameters $\alpha$ and $\beta$ are highly relevant for this work,
 as they are being used in the electrometer concept \cite{altenbach84, catte16, melcr18}.
-For POPC in pure water, the order parameter $\beta$ agrees well with the experiment, 
-while the order parameter $\alpha$ is somewhat lower. 
-In the case of POPS, the situation is a bit more complicated
-compared to POPC as the order parameter $\alpha$ exhibits a notable forking (see Fig.~\ref{simVSexpNOions_POPS}).
+%For POPC in pure water, the order parameter $\beta$ agrees well with the experiment, while the order parameter $\alpha$ is somewhat lower. 
+The head group order parameters of PS are a bit more complicated 
+compared to PC as the order parameter $\alpha$ exhibits a notable forking 
+(i.e., the hydrogen atoms in the group give rise to different order parameters, see Fig.~\ref{simVSexpNOions_POPS}).
 One of the order parameters of ECC-POPS, $\alpha_1$, agrees well with the experiment, 
 while the other, $\alpha_2$, adopts a higher value underestimating the experimentally reported forking. 
 There is only one order parameter $\beta$ in POPS, 
 which has a higher value closer to zero in the ECC-lipids model than in experiment. 
-Such a feature suggests that the model overestimates the orientational freedom of its head group. 
+Such a feature suggests that the model likely overestimates the orientational freedom of the PS head group. 
 
  
  
