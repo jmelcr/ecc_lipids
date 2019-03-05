@@ -958,19 +958,6 @@ by yielding a small positive value of $\Gamma^{w}_{Na}$.
 \subsection{Molecular interaction and binding affinities of \ce{Ca^{2+}} cations to mixed POPC:POPS (5:1) membrane} 
 \label{section:lip-ion_ca}
 
-
-\todo{EDIT: Taken from NMRlipids4 as an interesting information, to be edited.}
-The dehydrated complexes of PS headgroup and calcium ions can also lead to the
-phase separation \cite{hauser77,kurland79,hauser85,feigenson86,mattai89,roux90,roux91}.
-%
-CHARMM36 force field \cite{klauda10,venable13} combined with 2D infrared spectroscopy
-suggests that calcium ions interacts only with the carboxylate group of PS lipids \cite{valentine18}, while
-the same force field without the NBfix parameters together with the NMR chemical shifts and
-REDOR experiments suggests a significant binding affinity also to the phosphate region \cite{hallock18}.
-On the other hand, simulations with the Berger force field \cite{berger97,mukhopadhyay04}
-combined with fluorescent and vibrational sum frequency spectroscopy suggested a significant
-calcium binding also to the carbonyls in the acyl chains \cite{melcrova16}. 
-
 \begin{figure}[tbp!] 
   \centering 
   \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_cacl.pdf} 
@@ -987,44 +974,75 @@ calcium binding also to the carbonyls in the acyl chains \cite{melcrova16}.
 
 
 
-%%% Sum up what is to be presented briefly
-%The importance of treating polarizability for interactions of phospholipids with monovalent ions was demonstrated in the previous section. 
-Electronic polarization is a non-negligible contribution to the interactions of calcium even in simple aqueous solutions of \ce{CaCl2} \citep{martinek17, kohagen16, Pluharova2014}. 
-In this section,
-we will show the results from simulations of neutral and negatively charged phospholipid bilayers at varying \ce{CaCl2} concentrations
-using the recently developed models ECC-lipids and ECC-ions \citep{melcr18, martinek17}, 
-which implicitly include the effects of electronic polarization through electronic continuum correction \citep{leontyev11}. 
-Validated with the concept of a lipid electrometer in section \ref{section:electrometer_exp_sim},
-these implicitly polarizable models yield accurate description of 
-the interaction of \ce{Ca^{2+}} with both neutral and negatively charged phospholipids. 
-
-The changes of the head group order parameters $S^\alpha$ and $S^\beta$ from simulations and experiments 
-are shown in Fig.~\ref{fig:delta_ordPar_CaCl} for a neutral POPC bilayer, 
-and in Fig.~\ref{fig:delta_ordPar_CaCl_PCPS} for a negatively charged bilayer with the composition 5\,PC:1\,PS. 
-For a direct comparison and a connection to our works \citep{catte16, nmrlipids_proj4},
+The interaction of various cations including calcium 
+with  neutral and also negatively charged lipid bilayers
+was thoroughly compared between simulations and experiments 
+from the point of the electrometer concept \cite{roux90, seelig87, altenbach84}
+in the references~\citenum{catte16, nmrlipids_proj4}. 
+It was concluded that the interaction of calcium with zwitterionic PC bilayers 
+is generally overestimated in all studied models \cite{catte16},
+while none of the models was capable of interpreting the NMR structural parameters
+with the negatively charged PC:PS (5:1) bilayers \cite{nmrlipids_proj4}. 
+Accounting for the electronic polarization was identified as 
+a non-negligible correction to the interaction between cations and POPC bilayers in Ref.~\cite{melcr18}. 
+Here, we demonstrate that the same approach 
+significantly improves the description of calcium binding 
+also to the negatively charged PC:PS (5:1) bilayers. 
+In correspondence with the Ref.~\citenum{nmrlipids_proj4},
+we also use the changes of the head group order parameters $S^\alpha$ and $S^\beta$ 
+in PC and PS lipids 
+to quantify the binding affinity of the calcium cations
+and the induced structural changes
+(Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}). 
+To directly connect to the previous works \citep{catte16, nmrlipids_proj4}
+and to mark the improvement after treating electronic polarizability, 
 we show simulation results from ECC-lipids and also from Lipid17 \citep{lipid17-future}. 
-This also highlights the improvements in ECC-lipids over Lipid17 arising from the electronic polarization. 
-%Although Lipid17 already belongs to the top-performing models in terms of the responses of the head group order parameters in those studies,  
-%including electronic polarizability to form ECC-lipids improves the results even further.
-The effect is probably the most striking for POPS, 
-for which also the structure of a pure POPS bilayer with only counterions is dramatically improved with the augmentation. 
+While the response of the order parameters of PC to \ce{CaCl2} concentrations
+is qualitatively correct in the Lipid14/17 model \cite{lipid17},
+it is quantitatively comparable to the experimental trends in ECC-lipids. 
+Moreover, the structure of PS head group is fundamentaly improved
+after accounting for the electronic polarization 
+(Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}). 
 
 
-%%% Discuss the changes of OPs and vectors from neutral and neg. membranes
-%While the changes induced by \ce{CaCl2} are \emph{qualitatively} correct for Lipid14/17, 
-Increasing concentrations of \ce{CaCl2} induce a systematic decrease of the order parameters $S^\alpha$ and $S^\beta$ in POPC. 
-Although the total magnitude of the response of the PC head group order parameters 
-is only slightly higher in the negatively charged bilayers than in the neutral bilayers, 
-the shape of the changes in the latter shows a steeper onset at low concentrations. 
-This is apparently due to the presence of POPS, 
-which has a higher affinity to \ce{Ca^{2+}} compared to POPC. 
-ECC-lipids is the first model,
-which achieves a \emph{quantitative} agreement with the changes induced by \ce{CaCl2} in experiments. 
-
-\todo{SAMULI: The new results show that we cannot actually reproduce the rapid changes with low CaCl2
-  concentrations in POPS order parameters. This should be somehow discussed.}
+Increasing concentrations of \ce{CaCl2} 
+induce a systematic decrease of the order parameters $S^\alpha$ and $S^\beta$ 
+in both neutral POPC bilayers \cite{catte16, melcr18}
+as well as in the negatively charged PC:PS (5:1) bilayers \cite{nmrlipids_proj4, roux90}. 
+The change of the head group order parameters 
+are well reproduced only by ECC-lipids in Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}. 
 
 
+The structural changes in POPS induced by increasing concentrations of \ce{CaCl2} 
+are very challenging to interpret from both experiments \cite{roux90} 
+and also from MD simulations \cite{nmrlipids_proj4}. 
+The changes of the order parameters $S^\alpha$ and $S^\beta$ in PS head groups from simulations 
+are not found to follow the experimental profiles, 
+nor any common trend,
+with the currently available models \cite{nmrlipids_proj4}. 
+In Fig.~\ref{fig:delta_ordPar_CaCl_PCPS},
+we plot these structural parameters for one of the models in that work, Lipid17, 
+and for ECC-lipids. 
+Although the agreement between ECC-lipids and experiments is far from optimal,
+the general trends and behaviour even at highly concentrated solutions of \ce{CaCl2} 
+are well captured by the model. 
+For example the order parameter $\beta$ in POPS 
+adopts a saturated value in experiments and ECC-lipids,
+but it is growing with the \ce{CaCl2} concentration in Lipid17.
+In addition, 
+the forking of the order parameters $\alpha$ 
+is almost constant in the experiment and ECC-lipids,
+but it varies greatly in th Lipid17. 
+
+
+The changes of the order parameters $\alpha$ and $\beta$ at low \ce{CaCl2} concentrations
+have a steep onset at low concentrations in the negatively charged bilayers compared to neutral POPC bilayers. 
+However, such a detail is not captured by ECC-lipids
+indicating the necessity for further improvements.
+The source of this discrepancy may arise 
+from the interactions between PC and PS lipids and with \ce{Na^+} counterions,
+from the sub-optimal structure of the lipids (Fig.~\ref{simVSexpNOions_POPS},
+and also possibly from the approximate mean-field treatment of the electronic polarization. 
 
 
 \begin{figure}[htbp!] 
@@ -1162,6 +1180,19 @@ however, they are always accompanied by interactions with phosphate groups.
 \todo{Also COO- vs. phosphate binding should be discussed and the results should be
   discussed with respect to the literature: https://doi.org/10.1016/j.bpj.2018.08.044 and
   Melcrova et al. Scientific Reports | 6:38035 | DOI: 10.1038/srep38035 }
+%
+\todo{EDIT: Taken from NMRlipids4 as an interesting information, to be edited.}
+The dehydrated complexes of PS headgroup and calcium ions can also lead to the
+phase separation \cite{hauser77,kurland79,hauser85,feigenson86,mattai89,roux90,roux91}.
+%
+CHARMM36 force field \cite{klauda10,venable13} combined with 2D infrared spectroscopy
+suggests that calcium ions interacts only with the carboxylate group of PS lipids \cite{valentine18}, while
+the same force field without the NBfix parameters together with the NMR chemical shifts and
+REDOR experiments suggests a significant binding affinity also to the phosphate region \cite{hallock18}.
+On the other hand, simulations with the Berger force field \cite{berger97,mukhopadhyay04}
+combined with fluorescent and vibrational sum frequency spectroscopy suggested a significant
+calcium binding also to the carbonyls in the acyl chains \cite{melcrova16}. 
+
 
 
 \begin{figure}[tb!] 
