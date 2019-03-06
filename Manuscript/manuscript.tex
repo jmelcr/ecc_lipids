@@ -1045,6 +1045,38 @@ from the sub-optimal structure of the lipids (Fig.~\ref{simVSexpNOions_POPS},
 and also possibly from the approximate mean-field treatment of the electronic polarization. 
 
 
+It has been pointed out in previous experimental works
+that the conformational flexibility of PS head groups 
+is different from other lipids \cite{browning80}. 
+While the static shielding tensor of PS is not substantially different from PC or PE, 
+the $^{31}$P~$T_1$ relaxation times are significantly shorter for PS. 
+It is suggested that the PS head group is more rigid compared to the other phospholipids, 
+which is also corroborated by a larger chemical shielding anisotropy of PS \cite{browning80}. 
+
+We have investigated this effect using the mean orientations of P-N and \ce{COO^-} vectors 
+(defined and plotted in Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}). 
+While the mean angle between the P-N vector of PC head group and the membrane normal
+decreased by 11$^\circ$ from 64$^\circ$ to 55$^\circ$
+ at 620~mM buffer concentration of \ce{CaCl2},
+the mean orientation of the P-N vector in the PS head group has 
+decreased only by 3$^\circ$ from 67$^\circ$ to 64$^\circ$ 
+in the same concentration range. 
+
+Such a largely diminished flexibility 
+may arise from the binding of calcium to the \ce{COO^-} group in PS. 
+Whe have measured the mean orientation of the \ce{COO^-} group 
+as the connector of the carbon atoms 
+forming the bond between the group and the $\beta$-carbon of the phospholipid. 
+The mean angle between the \ce{COO^-} vector and the membrane normal
+changes by $11^\circ$ from $62^\circ$ to $73^\circ$ (more towards the membrane interior)
+ at 620~mM buffer concentration of \ce{CaCl2}.
+The conformational flexibility of the PS head group is hence restrained 
+by the binding of calcium cations to the \ce{COO^-} group, 
+which reorients towards the membrane interior and to the phosphate region, 
+where calcium cations bind predominantly. 
+
+
+
 \begin{figure}[htbp!] 
   \centering 
   \includegraphics[width=\figwidth]{../img/ecc_pops/density_profiles_ca_na_cl_wat_phos_models-compar_1-3_CaCl2-series.pdf}
@@ -1061,76 +1093,34 @@ and also possibly from the approximate mean-field treatment of the electronic po
 \end{figure} 
  
 
+The binding of calcium cations to the phospholipid bilayer is shown 
+in the density profiles of \ce{Ca^{2+}}, \ce{Na^+} counterions 
+and also \ce{Cl^-} ions in Fig.~\ref{fig:cacl-dens_PCPS}. 
+Clearly, after accounting for the electronic polarizability, 
+the population of the cations in the phosphate region is significantly diminished. 
+\todo{JOE: The density plot still needs to be changed to show both Lipid17 and ECC-lipids, and to support this argument.}
+Still, the dominant contribution to the binding of calcium comes from the phosphate groups. 
+Interestingly enough,
+although the \ce{COO^-} groups increase the affinity of calcium towards PS compared to PC,
+ there is no extra density at the outmost surface of the membrane. 
+This can be understood from the point of the structural rearangements of the \ce{COO^-} group, 
+which take place during the interactions with calcium cations
+described above and in Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}. 
 
 
-
-
-%%% Present the density profiles (different concentrations for both POPC and mixed)
-The increase in the amount of bound calcium cations from pure POPC \cite{melcr18}
-to the mixed negatively charged bilayer containing POPS
+The higher affinity of calcium to PS head groups compared to PC
 is well demonstrated using the relative surface excess, $\Gamma ^w _{Ca}$,
 summarized in Table~\ref{tab:binding}. 
-Distributions of \ce{Ca^{2+}}, \ce{Na^+} counterions and also \ce{Cl^-} 
-are plotted in Fig.~\ref{fig:cacl-dens_PCPS} for the negatively charged bilayer. 
-In contrast to \ce{KCl} or added concentrations of \ce{NaCl}, 
-\ce{Na^+} counterions are substituted with \ce{Ca^{2+}} even at low concentrations of \ce{CaCl2}. 
-The increasing concentration of \ce{CaCl2} and, hence, a higher amount of bound \ce{Ca^{2+}}
-also attracts \ce{Cl^-} anions to the bilayer 
-as can be seen from its growing density at the interface. 
+While $\Gamma^{w}_{Ca}$ at a neutral POPC bilayer
+is       $\Gamma^{w}_{Ca} = 0.06\mathrm{nm^{-2}}$, 
+its value for the PC:PS (5:1) bilayer is $\Gamma^{w}_{Ca} = 0.24\mathrm{nm^{-2}}$
+at comparable buffer concentrations  $350 \, \mathrm{mM}$ resp. $400\, \mathrm{mM}$. 
 
-The relative surface excess of calcium, $\Gamma^{w}_{Ca}$, also reflects
-the higher affinity of the negatively charged PC:PS (5:1) membrane compared to a neutral POPC bilayer; 
-its value for the latter is       $\Gamma^{w}_{Ca} = 0.06\mathrm{nm^{-2}}$, 
-while for the PC:PS mixture it is $\Gamma^{w}_{Ca} = 0.24\mathrm{nm^{-2}}$
-at comparable concentrations $C _{Ca} = 260\pm 30 \mathrm{mM} $. 
-
-\todo{SAMULI: This paragraph in unclear. Should be clarified and the changes
-  of headgroup orientations in PC and PS clearly discussed.
-}
-%%% discuss the table with Gammas and follow up with molecular details, where do cations bind? Support with the spatial density figure
-The density profiles of ions suggest that
-the dominant contribution to the binding of \ce{Ca^{2+}} to phospholipid bilayers
-comes from the interactions with the phosphate groups in both POPC and POPS. 
-%The population analysis also suggests 
-%that the calcium cations prefer to reside in the phosphate region of the membrane. 
-%Such a finding is further validated with a more detailed analysis using Markov state modeling (MSM) \citep{Pande_MSM_paper} \todoi{Add papers reviewing MSM, e.g. recent Pande's paper.}. 
-%The set of states of a calcium cation 
-%encompassed all possible combinations of up to three surrounding lipids. 
-%In the case of PC, we used only the phosphate moitety, which forms the dominant contribution for calcium binding.
-%For PS we also distinguished configurations in which calcium interacts with the carboxylate moiety. 
-%All possible combinations of such states were used to build a Markov model at a lag time $25\,\mathrm{ns}$ using pyEMMA code by \citet{pyemma} \todoi{add citation for pyemma}. 
-%The resulting MSM was validated using Chapman-Kolmogorov test \citep{FrankNoe_papers_MSM} \todoi{Add citation for Noe's papers on MSM, especially Chapman Kolmogorov test.}. 
-%The stationary distribution of the states reveals a strong preference of the calcium cations to reside in the phosphate region of the mixed PC-PS membrane. 
-%When interacting with PS, configurations with the phosphate moiety from either PC or PS dominate the population.
-%Moreover, states containing interactions with the carboxylate group in PS 
-%bear higher probability when interacting also with the phosphate group of the same lipid or other lipids. 
-This is also reflected in the shift of the mean orientation 
-of the \ce{COO^-} group from $62^\circ$ to $73^\circ$ (420~mM \ce{CaCl2})
-which was measured as the connector of the carbon atoms 
-forming the bond between the group and the $\beta$-carbon of the phospholipid. 
-The interactions of the carboxylate group in PS with calcium and other phosphate groups
-shed light into the qualitatively different response of the head group order parameters $\alpha$ and $\beta$ in PS compared to PC 
-(see Figs.~\ref{fig:delta_ordPar_CaCl} and~\ref{fig:delta_ordPar_CaCl_PCPS}). 
-We find that the complex response of the head group order parameters of POPS 
-is affected by the conformational changes of the carboxylate group,
-which is attracted more towards the phosphate region, 
-where the calcium cations dominantly bind. 
-In line with the experimental work by \citet{browning80},
-this is also very likely the reason, 
-why the magnitude of the P-N vector change in POPS is diminished compared to POPC, 
-which is not restrained by an additional cation binding group like \ce{COO^-} in POPS. 
-
-
-Further details about the interactions of \ce{Ca^{2+}} with various moieties in POPC or POPS
-were obtained by counting contacts between the cations and the oxygen atoms of the lipids
-similarly as was done in \cite{melcr18}. 
-The threshold for counting a contact was set to $0.3\,\mathrm{nm}$, 
-which encompasses the first peak of the radial distribution function between the cations and the oxygen atoms of the lipids. 
 
 
 \begin{table}[tb!] 
 \centering
-  \caption{Bulk concentrations, $C _{Ca}$, and molar fractions, $C' _{Ca}$, of Ca$^{2+}$;
+  \caption{Bulk concentrations, $C _{Ca}$, and buffer concentrations, $C' _{Ca}$, of Ca$^{2+}$;
            relative surface excess of calcium with respect to water ($\Gamma_{Ca}^{\rm water}$); 
            and percentages of the population 
            of bound Ca$^{2+}$ to various moieties 
@@ -1163,6 +1153,12 @@ which encompasses the first peak of the radial distribution function between the
 
 
 
+
+Further details about the interactions of \ce{Ca^{2+}} with various moieties in POPC or POPS
+were obtained by counting contacts between the cations and the oxygen atoms of the lipids
+similarly as was done in \cite{melcr18}. 
+The threshold for counting a contact was set to $0.3\,\mathrm{nm}$, 
+which encompasses the first peak of the radial distribution function between the cations and the oxygen atoms of the lipids. 
 
 
 
