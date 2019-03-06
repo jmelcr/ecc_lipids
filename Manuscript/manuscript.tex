@@ -19,7 +19,7 @@
 
 \usepackage[x11names]{xcolor}  % typesetting in color
 %% Generate PDF/A-2u
-\usepackage[a-2u]{pdfx}
+%\usepackage[a-2u]{pdfx}
  
 \usepackage[super]{natbib}         % citation style AUTHOR (YEAR), or AUTHOR [NUMBER]
 
@@ -36,7 +36,10 @@
 \usepackage{chemfig} 
 \usepackage[obeyFinal]{easy-todo}
 \usepackage[english]{babel}
- 
+\usepackage{xr}
+\externaldocument{manuscriptSUPPL}
+
+
 \usepackage{subfig}
 \usepackage{dcolumn}        % improved alignment of table columns
 \usepackage{booktabs}       % improved horizontal lines in tables
@@ -51,9 +54,9 @@
 %% The hyperref package for clickable links in PDF and also for storing
 %% metadata to PDF (including the table of contents).
 %% Most settings are pre-set by the pdfx package.
-\hypersetup{unicode}
-\hypersetup{breaklinks=true}
-\hypersetup{colorlinks,allcolors=DodgerBlue4}
+%\hypersetup{unicode}
+%\hypersetup{breaklinks=true}
+%\hypersetup{colorlinks,allcolors=DodgerBlue4}
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% If issues arise when submitting your manuscript, you may want to 
@@ -176,7 +179,9 @@ Prague 6, Czech Republic}
           polarizability, polarization,
           phospholipids, phosphatidylserine} 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% The manuscript does not need to include \maketitle, which is 
 %% executed automatically. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -393,19 +398,6 @@ non-tail atoms, i.e., to atoms in the headgroup, glycerol backbone, and carbonyl
 
 \subsection{Validation of membrane properties} 
 
-To validate the structures of lipid bilayers, the scattering form factors and C-H bond order parameters
-were calculated and compared against the experimental data as described previously~\cite{botan15,ollila16,melcr18,nmrlipids_proj4}.
-%in simulations without ions were validated against NMR 
-%by calculating the order parameters for the C-H bonds and against \mbox{X-ray} scattering experiments by evaluating 
-%as was done in Refs.~\citenum{catte16, melcr18, nmrlipids_proj4}.
-%NMR order parameters validate the structures sampled by the individual lipid molecules with atomic resolution. 
-%The simulated order parameters were calculated for all C-H bonds in lipid molecules, 
-%while all order paremeters in the head group and only some in the \ce{C-H} groups in tails were resolved experimentally
-%(see next section and Fig.~\ref{simVSexpNOions_POPS}). 
-The order parameters for each C-H bond of individual lipids in the trajectory were first averaged
-over the time. Then the average over lipids was taken and the standard error of the mean of this
-average was used as the error estimate of the mean \cite{botan15,ollila16,nmrlipids_proj4}.
-
 Cation binding affinity to phosphatidylcholine (PC) lipid bilayers can be evaluated using 
 the order parameters of $\alpha$ and $\beta$ carbons in the lipid headgroup 
 (see Fig.~\ref{fig:chemstruct_pc_ps} for the labeling) \cite{catte16}.
@@ -546,10 +538,9 @@ ECC-ions \cite{martinek17, kohagen16, Pluharova2014}.
 We used the SPC/E water model as its lower dielectric constant is consistent with the
 ECC concept \cite{leontyev11,leontyev14}.
 
-
-
-
-
+The C--H bond order parameters were first averaged over the time for individual lipids and
+then the standard error of the mean of the average over lipids was used as the error estimate
+of the mean \cite{botan15,ollila16,nmrlipids_proj4}.
 
 
 
@@ -574,11 +565,6 @@ ECC concept \cite{leontyev11,leontyev14}.
   \end{tabular}
 \end{table}
  
-
- 
-
-
-
 
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -627,9 +613,27 @@ ECC concept \cite{leontyev11,leontyev14}.
     \hline 
   \end{tabular} 
 \end{table} 
- 
-We compared X-ray scattering form factors and NMR order parameters of bilayers
-in pure water without any ions (or only counter ions)
+
+The form factors from scattering and C-H bond order parameters from NMR experiments are good measures to validate
+the lipid bilayer structure in MD simulations against experiments because they
+are related to the bilayer dimensions (area per molecule and thickness) and
+conformational fluctuations of individual lipids, respectively, and 
+can be directly calculated from MD simulations~\cite{ollila16}.
+The X-ray scattering form factors and C-H bond order parameters in
+the headgroup and glycerol backbone region of POPS lipid bilayer are already available in the literature \cite{pan14,nmrlipids_proj4}.
+Here, we extend the available experimental dataset of POPS lipids by measuring the C--H bond
+order parameters also from the acyl chain region using R-PDLF experiments as described previously \cite{ferreira13}.
+We first determined the order parameters of each peak corresponding different C--H bonds detected
+in the first dimension (Fig. \ref{R-PDLF}) from the dipolar slices in the indirect dimension (Fig. \ref{R-PDLFslices}).
+Because the exact assignment of these peaks was not possible, we assigned the
+acyl chain order parameters to mimic the profile predicted by the MD simulations (Fig. \ref{simVSexpNOions_POPS}).
+\todo{Tiago has to check and update this and figures in SI.}
+
+To evaluate the effect of ECC on the structural properties of POPS lipid bilayer properties in MD simulations,
+we compared the results from a simulation with original Lipid17 \cite{??} combined with the Dang ion parameters \cite{??}
+with the results from ECC-POPS simulation and experiments (Fig. \ref{simVSexpNOions_POPS}).
+with sodium counterions are prevously publihed
+(or only counter ions)
 from simulations and experiments. 
 The experimental X-ray scattering form factors 
 of a bilayer are well reproduced by ECC-POPS, 
