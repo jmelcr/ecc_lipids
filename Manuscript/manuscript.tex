@@ -1097,7 +1097,7 @@ The binding of calcium cations to the phospholipid bilayer is shown
 in the density profiles of \ce{Ca^{2+}}, \ce{Na^+} counterions 
 and also \ce{Cl^-} ions in Fig.~\ref{fig:cacl-dens_PCPS}. 
 Clearly, after accounting for the electronic polarizability, 
-the population of the cations in the phosphate region is significantly diminished. 
+the population of the cations at the membrane interface is significantly diminished. 
 \todo{JOE: The density plot still needs to be changed to show both Lipid17 and ECC-lipids, and to support this argument.}
 Still, the dominant contribution to the binding of calcium comes from the phosphate groups. 
 Interestingly enough,
@@ -1108,13 +1108,8 @@ which take place during the interactions with calcium cations
 described above and in Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}. 
 
 
-The higher affinity of calcium to PS head groups compared to PC
-is well demonstrated using the relative surface excess, $\Gamma ^w _{Ca}$,
-summarized in Table~\ref{tab:binding}. 
-While $\Gamma^{w}_{Ca}$ at a neutral POPC bilayer
-is       $\Gamma^{w}_{Ca} = 0.06\mathrm{nm^{-2}}$, 
-its value for the PC:PS (5:1) bilayer is $\Gamma^{w}_{Ca} = 0.24\mathrm{nm^{-2}}$
-at comparable buffer concentrations  $350 \, \mathrm{mM}$ resp. $400\, \mathrm{mM}$. 
+\todo{JOE: suggestion -- what is the charge at the membrane interface of memb+counterions -vs- memb+CaCl2 concnetration?
+                         this could relate well to the zeta potential measurements and the Fig 1 in \cite{melcrova16}. }
 
 
 
@@ -1151,132 +1146,82 @@ at comparable buffer concentrations  $350 \, \mathrm{mM}$ resp. $400\, \mathrm{m
 \end{table} 
 
 
+% Gamma and higher affinity of PS to CA2+
+The higher affinity of calcium to PS head groups compared to PC
+is well demonstrated using the relative surface excess, $\Gamma ^w _{Ca}$,
+summarized in Table~\ref{tab:binding}. 
+While $\Gamma^{w}_{Ca}$ at a neutral POPC bilayer
+is       $\Gamma^{w}_{Ca} = 0.06\mathrm{nm^{-2}}$ \cite{melcr18}, 
+its value for the PC:PS (5:1) bilayer is $\Gamma^{w}_{Ca} = 0.24\mathrm{nm^{-2}}$
+at comparable buffer concentrations  $350 \, \mathrm{mM}$ resp. $400\, \mathrm{mM}$. 
 
 
 % Description of no. conctacts counting
-Further details about the interactions of \ce{Ca^{2+}} with various moieties in POPC or POPS
-were obtained by counting contacts between the cations and the oxygen atoms of the lipids
-similarly as was done in \cite{melcr18}. 
+Such a significantly increased binding also has an impact 
+on the structure and populations of the bound calcium cations. 
+We have counted contacts between the cations and the oxygen atoms of the lipids
+similarly as was done in \cite{melcr18} 
+to obtain such a detailed information 
+about the interactions of \ce{Ca^{2+}} with various moieties in POPC or POPS. 
 The threshold for counting a contact was set to $0.3\,\mathrm{nm}$, 
 which encompasses the first peak of the radial distribution function between the cations and the oxygen atoms of the lipids. 
-
 
 % Populations from contacts
 The percentages of the populations of membrane-bound calcium cations for various membrane moieties 
 are summarized in Table~\ref{tab:binding}.
 Even though the negatively charged membrane contains only 18\% of POPS, 
-approximately 41\% of the total population of bound calcium cations is in contact with PS lipids
+on average 41\% of the total population of bound calcium cations is in contact with PS lipids
 with 8\% bound only to them. 
-This corroborates the intrinsically higher affinity of PS lipids to calcium cations compared to neutral PC lipids. 
 % Where Calcium interacts
-POPC interacts with the calcium cations almost entirely through its phosphate group 
-in both neutral \cite{melcr18} and negatively charged membranes. 
-Interactions of \ce{Ca^{2+}} with carbonyl groups are also present, 
+While POPC interacts with the calcium cations almost entirely through its phosphate group 
+in both neutral \cite{melcr18} and negatively charged membranes, 
+the inteaction with POPS lipids happens more through the \ce{COO^-} group than through the \ce{PO4} group. 
+Interactions of \ce{Ca^{2+}} with carbonyl groups are also present for both POPC and POPS,
 however, they are always accompanied by interactions with phosphate groups. 
-%but a very small negligable amount much below 1\%. 
+This is in contrast to 
+simulations with the Berger force field \cite{berger97,mukhopadhyay04}
+combined with fluorescent and vibrational sum frequency spectroscopy,
+which suggest a significant
+calcium binding also to the carbonyls groups \cite{melcrova16}. 
+This feature arises likely from the inaccuracy of the Berger model 
+and its overestimated binding of cations to that region \cite{nmrlipids_proj4}. 
 
-
-Relative probabilities of \ce{Ca^{2+}} complexes with a certain number of lipids are presented in Fig.~\ref{fig:cacl_complexes}. 
-Calcium cations that are bound only to PC in the mixed bilayer with PS 
-behave similarly as in the pure PC bilayer
-maintaining comparable probabilities for clustering one, two, or even three PC lipids together. 
-In contrast, PS lipids prefer 1:1 ratio with \ce{Ca^{2+}},
-which may also be due to their low molar fraction in the the mixed bilayer. 
-In total, however, the negatively charged membrane has its stoichiometry 
+Recent simulations reveal similar trends for the populations at various PS moieties. \cite{valentine18, hallock18}
+The results from infrared spectroscopy combined with 
+simulations with the CHARMM36 model 
+including a correction for overestimated binding of calcium \cite{valentine18}
+suggest that POPS interacts mostly through it \ce{COO^-} group. 
+In contrast, the combination of NMR experiments 
+and MD simulations with the same model but without the correction 
+also reveal long-lived interactions of \ce{Ca^{2+}} with \ce{PO4} groups. \cite{hallock18}
+The content of POPS in the bilayers in that work is, however, 
+much higher above the threshold after which 
+\ce{Ca^{2+}} cations induce lipid clustering. \cite{hauser77,kurland79,hauser85,feigenson86,mattai89,roux90,roux91}
+At such highly charged membranes,
+POPS lipids are found to form even four-membered clusters \cite{hallock18}. 
+Our simulations are, however, at different conditions,
+in which the clustering of POPS does not happen, 
+and PS lipids prefer 1:1 ratio with \ce{Ca^{2+}}
+as plotted in Fig.~\ref{fig:cacl_complexes}
+showing relative probabilities of \ce{Ca^{2+}} complexes with a certain number of PC or PS lipids. 
+Compared to a neutral POPC bilayer
+the negatively charged bilayer has its stoichiometry 
 shifted towards complexes with three phospholipids and one calcium. 
 This is obviously due to the presence of POPS, 
 which also contributes to the pre-formed one- and two-membered clusters of POPC. 
 Clusters of four or more lipids were not observed in either membrane. 
 
-%This is also reflected in the increased probability 
-%of a single phospholipid interacting with two \ce{Ca^{2+}} cations 
-%compared to the neutral POPC bilayer, 
-%where such a probability is almost negligable. 
-% Not shown through numbers, however, I have the plots to back it. 
 
-Timescales associated with the binding of calcium cations from solution to the membrane
-are plotted for each binding event as a histogram in Fig.~\ref{fig:hist_residence_times}. 
-Using these plots, we can estimate that 90\% of the residence times of any calcium cation 
-will be lower than $60\,\mathrm{ns}$ for pure POPC neutral bilayer 
-and shorter than $200\,\mathrm{ns}$ for the mixed 5\,PC:1\,PS negatively charged bilayer. 
-The longest observed residence times in the simulations were $141\,\mathrm{ns}$ for the neutral membrane 
-and $485\,\mathrm{ns}$ for the negatively charged membrane. 
-Both estimates of the residence times come from simulations with comparable concentrations of around $250\mathrm{mM}$;
-the simulation with the neutral membrane has a bulk concentration of calcium $C_{ion} = 280\mathrm{mM}$, 
-whereas the simulation with the negatively charged membrane has a bulk concentration of calcium $C_{ion} = 240\mathrm{mM}$. 
-
-In summary, the results from ECC-lipids suggest 
-that the exchange of calcium between the POPC bilayer and the solvent 
-occurs at the order of $\sim$10--100~ns, 
-which is significantly faster than observed in simulations 
-with other presently available non-polarizable models of lipids and ions~\citep{javanainen17, catte16}. 
-Our results suggest 
-that simulation trajectories with a characteristic length of several hundreds of nanoseconds 
-are necessary to capture the binding of calcium to neutral POPC bilayers 
-in equilibrium when more realistic \emph{polarizable} force fields are used. 
-Interestingly enough, almost an order of magnitude longer simulations
-are required for the negatively charged bilayers. 
 
  
-%In addition to such estimates of the time scales, we used the Markov model on top of the simulation with the negatviely charged mixed bilayer
-%to calculate the time of the mean first passage of calcium from solution to the membrane (and in reverse) resulting in $55\,\mathrm{ns}$  ($165\,\mathrm{ns}$). 
-
-%\todo{Fluxes: committor analysis, dominant fluxes (table and figure)}
-%From the spectrum of the transition matrix, we also observe that 
-%the slowest transitions are associated with the binding to two or three phosphate moieties from either PC or PS,
-%which are also among the states with the highest probabilities.
-%The net fluxes of calcium cations from solution to such states also form a large contribution to the total flux ($\approx 45\%$). 
-%\todo{Make a table and a figure of the state probabilities and fluxes to support this statement.}. 
-%Analysis of the possible binding pathways of calcium cations to the negatively charged mixed bilayer 
-%reveal that the cations mostly enter the membrane bound states directly from solution 
-%without complicated transitions at the time scales of the order of the lag time of the Markov state model, $25\,\mathrm{ns}$. 
+THE REMAINING PIECES TO BE DISCUSSED:
 
 
-FOLLOWING: lit. search on recent literature, which shall be discussed in this work. 
-
-
-\todo{EDIT: Taken from NMRlipids4 as an interesting information, to be edited.}
-The dehydrated complexes of PS headgroup and calcium ions can also lead to the
-phase separation \cite{hauser77,kurland79,hauser85,feigenson86,mattai89,roux90,roux91}.
-%
-CHARMM36 force field \cite{klauda10,venable13} combined with 2D infrared spectroscopy
-suggests that calcium ions interacts only with the carboxylate group of PS lipids \cite{valentine18}, while
-the same force field without the NBfix parameters together with the NMR chemical shifts and
-REDOR experiments suggests a significant binding affinity also to the phosphate region \cite{hallock18}.
-On the other hand, simulations with the Berger force field \cite{berger97,mukhopadhyay04}
-combined with fluorescent and vibrational sum frequency spectroscopy suggested a significant
-calcium binding also to the carbonyls in the acyl chains \cite{melcrova16}. 
-
-
-% Details of interactions between calcium and phospholipids (PC and PS) .
-% Major conclusions correct, only the model (Berger) over-exaggerates certain features. 
-From abstract of \cite{melcrova16}://
-Namely, time-resolved fluorescent spectroscopy of lipid vesicles 
-and vibrational sum frequency spectroscopy of lipid
-monolayers are used to characterize local binding sites of calcium in zwitterionic and anionic model
-lipid assemblies, while dynamic light scattering and zeta potential measurements are employed for
-macroscopic characterization of lipid vesicles in calcium-containing environments. To gain additional
-atomic-level information, the experiments are complemented by molecular simulations that utilize an
-accurate force field for calcium ions with scaled charges effectively accounting for electronic polarization
-effects. We demonstrate that lipid membranes have substantial calcium-binding capacity, with several
-types of binding sites present. Significantly, the binding mode depends on calcium concentration with
-important implications for calcium buffering, synaptic plasticity, and protein-membrane association. 
-
-And From conclustions of \cite{melcrova16}://
-Calcium ion binding sites are heterogeneous both from the point of view of binding affinity and their positioning
-in the membrane. The character of the calcium binding varies with calcium concentration; this issue is of par-
-ticular importance as significant concentration spikes of calcium ions occur along calcium signaling pathways.
-The present results support the conjecture that lipid membranes, in particular the negatively charged inner leaflet
-of the plasma membrane, can act as effective calcium buffers upon calcium ions entering the cytosol. Of equal
-importance is the fact that the strong binding of this ion significantly alters the membranes by means of reduction
-of their hydration, lipid mobility, and lateral inter-lipid distance. Such local conformational membrane remod-
-eling may play a significant role in modulation of lipid-protein interactions as well as membrane-membrane
-interactions. Overall, the phenomena related to calcium ions-membrane interactions demonstrated here point to
-their diverse roles in biological systems.
 
 
 % Ca2+ induces much slower dynamics of lipids when PS is present,
 % this does not happen with PC
+% uses NBFIX
 From Ref.~\cite{valentine18}://
 To summarize, calcium binding to PS lipids slows the dynamics at the ester position and introduces more heterogeneous molecular environments. 
 The slowdown cannot be attributed to complete ester dehydration or decreased hydrogen bonding to water, so we interpret these results as evidence that the lipid headgroups adopt more rigid but disordered conformations on the molecular level. 
@@ -1286,45 +1231,10 @@ We have investigated the molecular origin of the rigidification and decreased la
 There is considerable room for further improvement in the force fields for ion-membrane interactions. Particularly, small differences in short-range interactions may determine the local geometries (34
 ). Most of our conclusions are, however, based on long-range effects (i.e., electric field generated by the ion at significant distances from the carbonyl groups), which are less sensitive to the details of the force field. 
 
- Ca2+ primarily binds carboxylates
-MD trajectories indicate that Ca2+ primarily binds to the carboxylates. These results are consistent with previous literature (19 , 22 , 32 , 33) but are surprising in the context of the IR results. Previous FTIR results show minimal changes to the carboxylate peaks and large changes to the phosphate and ester peaks (25
-). Even though the calcium ions primarily bind with the carboxylates in our MD trajectories, their effect on the electric field around the carboxylates is minimal because of screening by water molecules and averaging of orientations. In contrast, the less polar domain of the carbonyl experiences more significant electric field (Fig. 6). This is consistent with recent 2D IR and ab initio MD simulations by Kuroda and co-workers in which no changes in the IR spectra or relaxation dynamics of the acetate carboxylate were observed in solutions up to 6 M NaCl (69
-). Recent results from our own group also point toward larger changes in carboxylate frequencies with a monodentate binding configuration (70). Likewise, in our study, carboxylates are fully hydrated and primarily experience electric field fluctuations from the surrounding water, and the ion does not appear to modify the local dynamics. Calcium ions exert a larger effect on the partially hydrated ester groups at the lipid-water interface, even though the esters rarely bind Ca2+. Further investigation is required to experimentally determine the location of Ca2+ ions.
-
-Ca2+ changes the dynamics and structure of the membrane-water interface
- The ester region remains hydrated
-Previous experiments show that Ca2+ impacts the overall hydration of bilayers. Binder et al. found that dried lipid films hydrate differently in the presence of Ca2+ (71
-), calorimetric data suggests that PS-Ca2+ binding is driven entropically by both Ca2+ and lipid dehydration (21
-), and PS-Ca2+ binding changes the antisymmetric phosphate group’s IR absorption the same way that lipid dehydration does (7
-, 26
-). PS-rich membranes can even form a separate dehydrated phase, forming cylindrical aggregates, with excessive calcium ions (28
-, 44
-). The small changes in our measured ester line shapes, both FTIR and 2D IR, indicate that the carboxylate region remains hydrated. In fact, hydrogen-bond populations increase slightly with Ca2+, which points toward a slight increase in hydration.
 
 
 
-% 2 major head group configurations of PS in 30-70 PC-PS mix -- paper 1
-From Ref.~\cite{boettcher11}://
- In this study, combining magic angle spinning (MAS) solid-state NMR (SSNMR) measurements of isotopically labeled serine headgroups in mixed lipid bilayers with molecular dynamics (MD) simulations of PS lipid bilayers in the presence of different counterions, we provide site-resolved insights into the effects of Ca2+ on the structure and dynamics of lipid bilayers. Ca2+-induced conformational changes of PS in mixed bilayers are observed in both liposomes and Nanodiscs, a nanoscale membrane mimetic of bilayer patches. Site-resolved multidimensional correlation SSNMR spectra of bilayers containing 13C,15N-labeled PS demonstrate that Ca2+ ions promote two major PS headgroup conformations, which are well resolved in two-dimensional 13C-13C, 15N-13C, and 31P-13C spectra. The results of MD simulations performed on PS lipid bilayers in the presence or absence of Ca2+ provide an atomic view of the conformational effects underlying the observed spectra.
-but the NMR ...
- Spectra were acquired of 70\% POPS* and 30\% POPC Nanodiscs with 2 mM Ca2+ using an MAS rate of 10 kHz on a 600 MHz (1H frequency) spectrometer
-and but the MD sim was done only for pure POPS bilayer and no other counterions but Ca2+ with CaCl2 concentration.
-
-% 2 major head group configurations of PS in 30-70 PC-PS mix -- paper 2
-% extended analysis and insight. 
-From Ref.~\cite{hallock18}://
-(conclusions) We investigated the atomistic details of how membranes containing anionic PS lipids are shaped into their functional state by Ca2+ ions. The lipid phosphate groups and the captured ions are made readily accessible to interact with proteins. Using extensive MD simulations with a lipid-accelerated membrane representation, we demonstrated that PS lipid nanoclusters are formed by two distinct PS headgroup conformations that are induced by Ca2+ ions, which bind to the lipids in a specific manner. Importantly, detailed characterization of MD-derived lipid nanoclusters and geometries of individual PS lipids agree with SSNMR measurements on two different spatial scales. (1) The chemical shifts show the accuracy of capturing the chemical environment around a single lipid in either of the two long-lived conformations, and (2) the Ca2+-coordinated PS lipid tetramer is a basic structural unit that is involved in membrane sculpturing. By studying the effects of ions on membranes containing anionic lipids, we have characterized a baseline behavior and structures of the lipids. These results will be important in interpreting the role of lipids in future protein–membrane studies, and they demonstrate that MD HMMM simulations combined and validated by SSNMR methodologies are effective at capturing high-resolution signature lipid structures that are stabilized by membrane-active agents in complex membrane environments.
-but ... again, the experiment with nanodiscs (and also the bilayer simulation with HMMM) 
-uses 70:30 PS:PC ratio, which induces PS clustering.
- -> hence the markable difference between their figure 3 and our figure \ref{fig:cacl_complexes}
- - they observe most probable Ca2+ clusters of 2, then 3, 1 and 4 PS together
- - while we see rather only 1PS per ca2+ in Figure \ref{fig:cacl_complexes}
-On the other hand, I see correspondence with the observed longer life time ( stronger interaction?)
-with \ce{COO-} group in PS in \cite{hallock18} in Fig 4, for both Ca2+ and Na+. 
-This is followed by PO4 in both cases. 
-In the case of Ca2+, the ratio of the observed life time is also in line with our findings, that 
-the interaction with the PO4  and COO- together is of a smaller abundance compared to the interactions of the individual groups themselves, yet comparable to that of PO4. 
-Their Figure 5 shows the distributions of O-Ca-Cb-N dihedral angle
+Their Figure 5 \cite{hallock18} shows the distributions of O-Ca-Cb-N dihedral angle
 revealing separate populations of the PS head groups. 
 These two structures are also compared in therm of P-Cg distances, 
 which can be measured from NMR REDOR exp. 
@@ -1424,8 +1334,39 @@ Applying ECC to POPS lipids improves cation binding affinity to membranes
 mixed with POPC and also the response of PS headgroup to the bound cations.
 However, further improvement of the parameters is needed to fully reproduce the
 details of calcium binding to PS headgroups.
- 
+
+
+
 \listoftodos
+
+
+
+\section{SI}
+
+Timescales associated with the binding of calcium cations from solution to the membrane
+are plotted for each binding event as a histogram in Fig.~\ref{fig:hist_residence_times}. 
+Using these plots, we can estimate that 90\% of the residence times of any calcium cation 
+will be lower than $60\,\mathrm{ns}$ for pure POPC neutral bilayer 
+and shorter than $200\,\mathrm{ns}$ for the mixed 5\,PC:1\,PS negatively charged bilayer. 
+The longest observed residence times in the simulations were $141\,\mathrm{ns}$ for the neutral membrane 
+and $485\,\mathrm{ns}$ for the negatively charged membrane. 
+Both estimates of the residence times come from simulations with comparable concentrations of around $250\mathrm{mM}$;
+the simulation with the neutral membrane has a bulk concentration of calcium $C_{ion} = 280\mathrm{mM}$, 
+whereas the simulation with the negatively charged membrane has a bulk concentration of calcium $C_{ion} = 240\mathrm{mM}$. 
+
+
+In summary, the results from ECC-lipids suggest 
+that the exchange of calcium between the POPC bilayer and the solvent 
+occurs at the order of $\sim$10--100~ns, 
+which is significantly faster than observed in simulations 
+with other presently available non-polarizable models of lipids and ions~\citep{javanainen17, catte16}. 
+Our results suggest 
+that simulation trajectories with a characteristic length of several hundreds of nanoseconds 
+are necessary to capture the binding of calcium to neutral POPC bilayers 
+in equilibrium when more realistic \emph{polarizable} force fields are used. 
+Interestingly enough, almost an order of magnitude longer simulations
+are required for the negatively charged bilayers. 
+ 
  
 
 % If you have acknowledgments, this puts in the proper section head. 
