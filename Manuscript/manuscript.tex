@@ -390,39 +390,8 @@ non-tail atoms, i.e., to atoms in the headgroup, glycerol backbone, and carbonyl
 %which do not encounter direct contacts with ions. 
 
 
-
-
-
- 
- 
-
-\subsection{Validation of membrane properties} 
-
-Cation binding affinity to phosphatidylcholine (PC) lipid bilayers can be evaluated using 
-the order parameters of $\alpha$ and $\beta$ carbons in the lipid headgroup 
-(see Fig.~\ref{fig:chemstruct_pc_ps} for the labeling) \cite{catte16}.
-According to the ''electrometer concept'' \citep{seelig87}, these order parameters decrease
-proportionally to the bound charge and can therefore be used to quantify the cation binding
-affinity to lipid bilayers. The situation is more complicated for lipid bilayers containing
-PS lipids, for which there is no ion-free reference state due to the presence of counterions.
-Moreover, additional ions often lead to phase transitions in such bilayers \cite{nmrlipids_proj4,feigenson86,mattai89,roux91,roux90}
-Here, we overcome this complication by comparing simulations to the experimental data 
-measured from POPC:POPS (5:1) mixtures, 
-which are not as highly negatively charged, 
-and do not ondergo phase transitions with additional ions \cite{roux90} 
-as was also demonstrated in the recent work by the NMRlipids project \cite{nmrlipids_proj4}.
-
-%experimentally quantified
-%by measuring the changes of the head group order parameters in the lipids using solid state NMR.
-%In the case of 
-%such changes are known under the term 
-%It is experimentally observed that the \ce{C-H} bond
-%order parameters of $S^\alpha$ and $S^\beta$ carbons in a PC lipid head group
-%are proportional to the amount of charge, positive or negative, bound per lipid~\citep{seelig87, roux90}.
-%The change of the order parameters measured with varying concentrations of aqueous ions 
-%can be then related to the amount of bound ions.
-
- 
+%\subsection{Validation of membrane properties}
+% SAMULI: I have dissolved this section into results and discussion
 
 \subsection{Measurements of acyl chain order parameters}
 A R-type Proton Detected Local Field (R-PDLF) experiment was performed to determine C--H bond order
@@ -656,31 +625,6 @@ are within each others error bars.
     I also changed the experimental value to correspond the value in the cited paper and added the error bar.}
 \end{table} 
 
-\begin{figure}[tbp!] 
-  \centering 
-  \includegraphics[height=\figheight]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_ecclipids-lipid17.pdf}
-  \includegraphics[height=\figheight]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_5PC-1PS_ecclipids-lipid17.pdf}
-  \caption{\label{fig:POPS-counterions-dens}
-    Number density profiles of \ce{K^{+}}, \ce{Na^{+}} counterions along the membrane normal axis 
-    for the negatively charged bilayers composed of only POPS (left) or POPC:POPS (5:1, right) 
-    using ECC-lipids/ECC-ions (solid lines) and Lipid17/Dang ions (dashed lines).  
-    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
-}
-\todo{JOE: add labels with the relative surface excess $\Gamma$, which are promised to be present in the text.}
-\todo{JOE: split this figure into two: separate for POPS (to SI) and PC:PS 5:1 (main text)?}
-\end{figure} 
-
-
-\begin{figure}[tb!] 
-  \centering 
-  \includegraphics[width=\figwidth]{../Fig/lipids_chemfig_POPC_POPS.pdf} 
-  \caption{ \label{fig:chemstruct_pc_ps} 
-            The chemical structure of POPC and POPS 
-            including the labeling of the carbon segments
-            used in the measurements of order parameteres. 
-  }  
-\end{figure} 
-
 Despite the success in simulating bilayer dimensions and acyl chain conformations,
 lipid force fields have typically problems in capturing the correct glycerol backbone and
 headgroup order parameters and conformations \cite{botan15,ollila16,nmrlipids_proj4}.
@@ -706,16 +650,28 @@ its structural accuracy is in the same level as in other state-of-the-art
 lipid force fields \cite{botan15, ollila16, Pluhackova2016, nmrlipids_proj4}.
  
  
-\subsection{Binding of counterions to negatively charged PC:PS bilayers and interactions between PC and PS head groups}
+\subsection{Counterion binding affinity and interactions between PC and PS head groups}
 
-According to the electrometer concept,
-the head group order parameters $\alpha$ and $\beta$ of PC lipids
-change proportionally to the amount of bound charge
-in a fixed ratio. \cite{seelig87,scherer87,roux90} 
-This was demonstrated for a bound positive charge in simulations with POPC and 
-cationic surfactants or aquaeous cations employing the ECC-POPC model \cite{melcr18}.
-In this work, we will use the electrometer concept also for a bound negative charge 
-using PS lipids as negatively charged surfactants. \cite{roux90} 
+Binding affinity of monovalent ions to lipid bilayers depends strongly on
+force field parameters \cite{catte16,melcr18,nmrlipids_proj4},
+which is the case also here as the sodium binding affinity to
+POPS lipid bilayer is stronger in Lipid17 simulation with Dang ions than in
+ECC-POPS simulation (Fig. \ref{fig:POPS-counterions-dens}).
+The different cation binding affinities to lipid bilayers have been previously evaluated
+against experiments using the order parameters of $\alpha$ and $\beta$ carbons in the
+phosphatidylcholine (PC) lipid headgroup (see Fig.~\ref{fig:chemstruct_pc_ps} for the labeling) \cite{catte16,melcr18,nmrlipids_proj4}.
+According to the ''electrometer concept'' \citep{seelig87}, these order parameters decrease
+proportionally to the bound charge and can therefore be used to quantify the cation binding
+affinity to lipid bilayers. Because the response of PS lipid headgroup order parameters to the bound charge
+is less well undestood and addition of cation may cause phase transitions in negatively charged
+bilayers \cite{feigenson86,mattai89,roux91,roux90}, the cation binding affinity to bilayers with
+PS lipids has evaluated measuring the PC headgroup order parameters from POPC:POPS (5:1)
+mixtures\cite{roux90,nmrlipids_proj4}.
+
+
+The situation is more complicated for lipid bilayers containing
+PS lipids, for which there is no ion-free reference state due to the presence of counterions.
+Moreover, additional ions often lead to phase transitions in such bilayers \cite{nmrlipids_proj4,feigenson86,mattai89,roux91,roux90}
 
 Unlinke in pure PC bilayers,
 Interpreting the changes of the head group order parameters of 
@@ -729,6 +685,84 @@ This can also be seen in the density plots of the counterions in Fig.~\ref{fig:P
 which show a significantly reduced concentration of \ce{K+} ions 
 at the membrane head group region compared to \ce{Na+}
 for both PS and mixed PC:PS (5:1) bilayers. 
+
+
+
+%According to the electrometer concept,
+%the head group order parameters $\alpha$ and $\beta$ of PC lipids
+%change proportionally to the amount of bound charge
+%in a fixed ratio. \cite{seelig87,scherer87,roux90} 
+%This was demonstrated for a bound positive charge in simulations with POPC and 
+%cationic surfactants or aquaeous cations employing the ECC-POPC model \cite{melcr18}.
+%In this work, we will use the electrometer concept also for a bound negative charge 
+%using PS lipids as negatively charged surfactants. \cite{roux90} 
+
+%is the
+%is not generally agreed on between simulations 
+%\citep{bockmann03,sachs04,berkowitz06,cordomi09}
+%and experiments 
+%\citep{cevc90,tocanne90,hauser76,herbette84,uhrikova08}.
+%We attempted to find a model, 
+%which would successfully interpret the experiments on binding of \ce{Na^+}
+%to neutral and negatively charged phospholipid bilayers \citep{akutsu81, roux90} 
+%in our works \citep{catte16, nmrlipids_proj4}.
+%After testing the currently available force fields for phospholipids,
+%we concluded
+%that the interactions are generally overestimated in magnitude in almost all models 
+%but Lipid14 (PC) \citep{dickson14}, resp. Lipid17 (PS) \citep{lipid17-future}. 
+%This model yields a semi-quantitative agreement with the experimentally measured small changes of the order parameters \cite{catte16}
+%when used with the model of ions by \citet{aqvist90}. 
+%However, when used with a more accurate model of ions by \citet{Pluharova2014, martinek17},
+%the model overestimates the binding affinity of \ce{Na^+}
+%measured with lipid electrometer concept. \citep{melcr18}
+%In total, these results suggest that improvements 
+%in the lipid parameters are required for more accurate interactions even with monovalent cations. 
+%\citep{catte16, melcr18, nmrlipids_proj4}
+
+\begin{figure}[tbp!] 
+  \centering 
+  \includegraphics[height=\figheight]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_ecclipids-lipid17.pdf}
+  \includegraphics[height=\figheight]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_5PC-1PS_ecclipids-lipid17.pdf}
+  \caption{\label{fig:POPS-counterions-dens}
+    Number density profiles of \ce{K^{+}}, \ce{Na^{+}} counterions along the membrane normal axis 
+    for the negatively charged bilayers composed of only POPS (left) or POPC:POPS (5:1, right) 
+    using ECC-lipids/ECC-ions (solid lines) and Lipid17/Dang ions (dashed lines).  
+    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
+}
+\todo{JOE: add labels with the relative surface excess $\Gamma$, which are promised to be present in the text.} \\
+\todo{JOE: split this figure into two: separate for POPS (to SI) and PC:PS 5:1 (main text)? SAMULI: Should be POPS in main text, mixture in SI.}
+\end{figure} 
+
+\begin{figure}[tb!] 
+  \centering 
+  \includegraphics[width=\figwidth]{../Fig/lipids_chemfig_POPC_POPS.pdf} 
+  \caption{ \label{fig:chemstruct_pc_ps} 
+            The chemical structure of POPC and POPS 
+            including the labeling of the carbon segments
+            used in the measurements of order parameteres. 
+          }
+          \todo{The POPS structure and labeling is already in figure \ref{simVSexpNOions_POPS}.
+            The POPC structure and labeling could be added on top of the new version of figure \ref{fig:delta_ordPar_NaCl_PC-PS_mix} with only PC,
+          where PC results occur in the first time, and this figure could be removed.}
+\end{figure} 
+
+
+
+
+
+Generally improved behaviour 
+of the POPC and POPS head group order parameters 
+with \ce{NaCl} or \ce{KCl} concentrations 
+was achieved through the combination of models 
+ECC-lipids and ECC-ions \citep{martinek17, kohagen16, Pluharova2014}. 
+Simulations with these models 
+reveal a good agreement with the NMR experiments 
+for both neutral and negatively charged membranes.
+The results are plotted for \ce{NaCl} in Fig. \ref{fig:delta_ordPar_NaCl_PCPS}, 
+and for \ce{KCl} in Fig. \ref{fig:delta_ordPar_KCl_PCPS}. 
+
+
+
 
 The slopes of the response of the PC head group order parameters $\alpha$ and $\beta$ 
 in the mixed PC:PS (5:1) bilayer with \ce{K+} counterions
@@ -768,9 +802,6 @@ to agree with the experimental measurements.
 
 
 
-
-
-
 \begin{figure*}[!tbp] 
   \centering 
   \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
@@ -791,16 +822,8 @@ and change the PS-plot x-axis to reflect the dilution of POPS by PC (now shows t
 The experimental lines in the bottom plot shall be different to make clear that they are not with K counterions (gray dashed?).}
 \end{figure*} 
 
-
-
-
- 
- 
- 
-
-
-\subsection{Molecular interaction and binding affinities of K$^+$ and Na$^+$ cations to mixed POPC:POPS (5:1) membrane} 
-\label{sec:K_Na_added} 
+%\subsection{Molecular interaction and binding affinities of K$^+$ and Na$^+$ cations to mixed POPC:POPS (5:1) membrane} 
+%\label{sec:K_Na_added} 
  
  
 \begin{figure}[tbp!] 
@@ -838,48 +861,6 @@ The experimental lines in the bottom plot shall be different to make clear that 
   \todo{SAMULI: Use the same y-axis scale in the bottom figures showing angles for POPC and POPS to ease the comparison.}
 \end{figure} 
  
-
-% This§: 
-% NA/K binding status, 
-% how we tried finding a model (NMRlipids4), and 
-% how it was futile
-% 
-The binding of \ce{Na^+} cations to phospholipid bilayers 
-is not generally agreed on between simulations 
-\citep{bockmann03,sachs04,berkowitz06,cordomi09}
-and experiments 
-\citep{cevc90,tocanne90,hauser76,herbette84,uhrikova08}.
-We attempted to find a model, 
-which would successfully interpret the experiments on binding of \ce{Na^+}
-to neutral and negatively charged phospholipid bilayers \citep{akutsu81, roux90} 
-in our works \citep{catte16, nmrlipids_proj4}.
-After testing the currently available force fields for phospholipids,
-we concluded
-that the interactions are generally overestimated in magnitude in almost all models 
-but Lipid14 (PC) \citep{dickson14}, resp. Lipid17 (PS) \citep{lipid17-future}. 
-This model yields a semi-quantitative agreement with the experimentally measured small changes of the order parameters \cite{catte16}
-when used with the model of ions by \citet{aqvist90}. 
-However, when used with a more accurate model of ions by \citet{Pluharova2014, martinek17},
-the model overestimates the binding affinity of \ce{Na^+}
-measured with lipid electrometer concept. \citep{melcr18}
-In total, these results suggest that improvements 
-in the lipid parameters are required for more accurate interactions even with monovalent cations. 
-\citep{catte16, melcr18, nmrlipids_proj4}
-
-
-% This§: 
-% we have developed a model that can describe the NMR exp. using ECC
-% 
-Generally improved behaviour 
-of the POPC and POPS head group order parameters 
-with \ce{NaCl} or \ce{KCl} concentrations 
-was achieved through the combination of models 
-ECC-lipids and ECC-ions \citep{martinek17, kohagen16, Pluharova2014}. 
-Simulations with these models 
-reveal a good agreement with the NMR experiments 
-for both neutral and negatively charged membranes.
-The results are plotted for \ce{NaCl} in Fig. \ref{fig:delta_ordPar_NaCl_PCPS}, 
-and for \ce{KCl} in Fig. \ref{fig:delta_ordPar_KCl_PCPS}. 
 
 
 % This§: 
