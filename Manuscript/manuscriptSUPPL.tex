@@ -1,0 +1,216 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% This is a (brief) model paper using the achemso class 
+%% The document class accepts keyval options, which should include 
+%% the target journal and optionally the manuscript type. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\documentclass[journal=jpcbfk,manuscript=article]{achemso} 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% Place any additional packages needed here.  Only include packages 
+%% which are essential, to avoid problems later. Do NOT use any 
+%% packages which require e-TeX (for example etoolbox): the e-TeX 
+%% extensions are not currently available on the ACS conversion 
+%% servers. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%% Workaround for malfunctioning textsuperscript with pdfx and T1 encoding
+\let\tmpa\textsuperscript
+\DeclareTextCommandDefault{\textsuperscript}{\tmpa}
+
+\usepackage[x11names]{xcolor}  % typesetting in color
+%% Generate PDF/A-2u
+%\usepackage[a-2u]{pdfx}
+ 
+\usepackage[super]{natbib}         % citation style AUTHOR (YEAR), or AUTHOR [NUMBER]
+
+\usepackage{achemso}  
+\usepackage{rotating}  
+%\usepackage{times} 
+%\usepackage{lmodern}    %% Prefer Latin Modern fonts
+\usepackage{graphicx} 
+\usepackage{setspace} 
+\usepackage{amsmath} 
+\usepackage{epstopdf} 
+\usepackage{csquotes} 
+\usepackage{mhchem} 
+\usepackage{chemfig} 
+\usepackage[obeyFinal]{easy-todo}
+\usepackage[english]{babel}
+\usepackage{xr}
+\externaldocument{manuscript}
+
+
+\usepackage{subfig}
+\usepackage{dcolumn}        % improved alignment of table columns
+\usepackage{booktabs}       % improved horizontal lines in tables
+\usepackage{paralist}       % improved enumerate and itemize
+
+%% Character encoding: usually latin2, cp1250 or utf8:
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%\usepackage{markdown}  
+ 
+%% The hyperref package for clickable links in PDF and also for storing
+%% metadata to PDF (including the table of contents).
+%% Most settings are pre-set by the pdfx package.
+%\hypersetup{unicode}
+%\hypersetup{breaklinks=true}
+%\hypersetup{colorlinks,allcolors=DodgerBlue4}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% If issues arise when submitting your manuscript, you may want to 
+%% un-comment the next line.  This provides information on the 
+%% version of every file you have used. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%\listfiles 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% Place any additional macros here.  Please use \newcommand* where 
+%% possible, and avoid layout-changing macros (which are not used 
+%% when typesetting). 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\newcommand*\mycommand[1]{\texttt{\emph{#1}}} 
+%%% Custom variables
+% width suitable for fitting into a column in 1-column page layout
+\newlength{\figwidth}
+\setlength{\figwidth}{9 cm} 
+\newlength{\figwidthsmall}
+\setlength{\figwidthsmall}{6 cm} 
+\newlength{\figwidthfull}
+\setlength{\figwidthfull}{14 cm} 
+\newlength{\figheightsmall}
+\setlength{\figheightsmall}{8 cm} 
+\newlength{\figheight}
+\setlength{\figheight}{12 cm} 
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% Meta-data block 
+%% --------------- 
+%% Each author should be given as a separate \author command. 
+%% 
+%% Corresponding authors should have an e-mail given after the author 
+%% name as an \email command. Phone and fax numbers can be given 
+%% using \phone and \fax, respectively; this information is optional. 
+%% 
+%% The affiliation of authors is given after the authors; each 
+%% \affiliation command applies to all preceding authors not already 
+%% assigned an affiliation. 
+%% 
+%% The affiliation takes an option argument for the short name.  This 
+%% will typically be something like "University of Somewhere". 
+%% 
+%% The \altaffiliation macro should be used for new address, etc. 
+%% On the other hand, \alsoaffiliation is used on a per author basis 
+%% when authors are associated with multiple institutions. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+\author{Josef Melcr} 
+\email{melcr@uochb.cas.cz} 
+%%\homepage[]{https://jmelcr.github.io/}
+\affiliation{Institute of Organic Chemistry and Biochemistry, 
+Academy of Sciences of the Czech Republic,  
+Prague 6, Czech Republic} 
+\author{Pavel Jungwirth} 
+%%\homepage[]{http://jungwirth.uochb.cas.cz/}
+\affiliation{Institute of Organic Chemistry and Biochemistry, 
+Academy of Sciences of the Czech Republic,  
+Prague 6, Czech Republic} 
+\alsoaffiliation{Department of Physics, Tampere University of Technology, P.O. Box 692, FI-33101 
+Tampere, Finland} 
+%SAMULI: We need to put tiago because the experimental acyl chain order parameters
+\author{Tiago Ferreira}
+\affiliation{Halle} 
+\author{O. H. Samuli Ollila} 
+\email{samuli.ollila@helsinki.fi} 
+%%\homepage[]{Your web page} 
+\affiliation{Institute of Organic Chemistry and Biochemistry, 
+Academy of Sciences of the Czech Republic,  
+Prague 6, Czech Republic} 
+\alsoaffiliation{Institute of Biotechnology, University of Helsinki} 
+ 
+ 
+%\author{Andrew N. Other} 
+%\altaffiliation{A shared footnote} 
+%\author{Fred T. Secondauthor} 
+%\altaffiliation{Current address: Some other place, Othert\"own, 
+%Germany} 
+%\author{I. Ken Groupleader} 
+%\altaffiliation{A shared footnote} 
+%\email{i.k.groupleader@unknown.uu} 
+%\phone{+123 (0)123 4445556} 
+%\fax{+123 (0)123 4445557} 
+%\affiliation[Unknown University] 
+%{Department of Chemistry, Unknown University, Unknown Town} 
+%\alsoaffiliation[Second University] 
+%{Department of Chemistry, Second University, Nearby Town} 
+%\author{Susanne K. Laborator} 
+%\email{s.k.laborator@bigpharma.co} 
+%\affiliation[BigPharma] 
+%{Lead Discovery, BigPharma, Big Town, USA} 
+%\author{Kay T. Finally} 
+%\affiliation[Unknown University] 
+%{Department of Chemistry, Unknown University, Unknown Town} 
+%\alsoaffiliation[Second University] 
+%{Department of Chemistry, Second University, Nearby Town} 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% The document title should be given as usual. Some journals require 
+%% a running title from the author: this should be supplied as an 
+%% optional argument to \title. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\title[] 
+%  {Accurate interactions of cations with 
+%   neutral and negatively charged membranes 
+%   via combination of experiments and molecular simulation}
+
+%%SAMULI: new suggestion for the preliminary title
+\title[] 
+  {SUPPLEMENTARY INFORMATION: Effective Inclusion of Electronic Polarization to a Negatively Charged Membrane}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% Some journals require a list of abbreviations or keywords to be 
+%% supplied. These should be set up here, and will be printed after 
+%% the title and author information, if needed. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\abbreviations{IR,NMR,UV,MD,ECC,PC,PS,POPS,POPS} 
+\keywords{MD simulation, molecular modeling, 
+          polarizability, polarization,
+          phospholipids, phosphatidylserine} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% The manuscript does not need to include \maketitle, which is 
+%% executed automatically. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\renewcommand{\thetable}{S\arabic{table}}%
+\renewcommand{\thefigure}{S\arabic{figure}}%
+\renewcommand{\thesection}{S\arabic{section}}%
+\renewcommand{\thepage}{S\arabic{page}}%
+
+
+\begin{document} 
+ 
+\section{NMR experiments}
+\begin{figure}[tbp!] 
+  \centering 
+  \includegraphics[width=\textwidth]{../Fig/crowded_region.pdf}
+  \caption{\label{R-PDLF}
+    2D-NMR R-PDLF spectra from the acyl chain region of POPS lipid bilayer.
+  }
+\end{figure}
+
+\begin{figure}[tbp!] 
+  \centering 
+  \includegraphics[width=\textwidth]{../Fig/slices_used.eps}
+  \caption{\label{R-PDLFslices}
+    Dipolar slices from the R-PDLF spectra used to determine the acyl chain order parameters of POPS.
+  }
+\end{figure} 
+ 
+\bibliography{refs.bib} 
+ 
+\end{document} 
+ 
+
