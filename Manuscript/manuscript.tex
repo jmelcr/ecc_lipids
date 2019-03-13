@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% This is a (brief) model paper using the achemso class 
 %% The document class accepts keyval options, which should include 
 %% the target journal and optionally the manuscript type. 
@@ -866,17 +866,20 @@ the binding affinity of potassium is better described by both force fields.
   \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_nacl.pdf} 
   \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_nacl.pdf} 
   \caption{\label{fig:delta_ordPar_NaCl_PCPS} 
-    Changes of the head group order parameters, the P--N and C$_\beta$--C$_\gamma$ vector angles (stars)
+    Changes of the head group order parameters, and the angles of P--N and C$_\beta$--C$_\gamma$ (stars) vectors
     with respect to the membrane normal of POPC (left) and POPS (right) in a POPC:POPS (5:1) bilayer 
-    as a function of \ce{NaCl} concentration from ECC-lipid and Lipid17/Dang simulations at 298 K \cite{roux90}.
-    Because data with \ce{NaCl} are not available for POPC, 
-    we show experimental data for \ce{LiCl} (dashed line, left) 
-    as an upper bound for the magnitude of the response to \ce{NaCl}, 
-    which has a lower affinity to phospholipid bilayers compared to \ce{LiCl} \citep{roux90}. 
+    as a function of \ce{NaCl} concentration from ECC-lipid and Lipid17/Dang simulations at 298 K.
+    The y-axis for the $\alpha$-carbon results of POPS (middle right) is transferred
+    with the same value for both order parameters such that the lower order
+    parameter value from pure POPS is at zero to correctly illustrate the significant forking.
+    Because experimental data with \ce{NaCl} is not available for POPC, the data for KCl and \ce{LiCl} (dashed line, left)
+    are shown as lower and upper bounds for the response to \ce{NaCl}, respectively.
+    The magnitudes of experimental order parameters are from Ref. \citenum{roux90} and signs from Ref. \citenum{ferreira16}.
+    %which has a lower affinity to phospholipid bilayers compared to \ce{LiCl} \citep{roux90}. 
     %The orientation of the \ce{COO^-} group is defined as 
     %the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
   }
-  \todo{We should plot the experimental results with KCl also in this figure.} \\
+  \todo{We should plot also the experimental results for POPC with KCl in this figure for the lower bound.} \\
   \todo{Why there are no error bars for ECC-POPS in this and other figures?} \\
   \todo{SAMULI: Use the same y-axis scale in the bottom figures showing angles for POPC and POPS to ease the comparison.}
   \end{figure} 
@@ -886,13 +889,14 @@ the binding affinity of potassium is better described by both force fields.
   \centering 
   \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_kcl.pdf} 
   \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_kcl.pdf} 
-  \caption{\label{fig:delta_ordPar_KCl_PCPS} 
-    Changes of the head group order parameters $\alpha$, $\beta$ and the orientations of the carboxylate group and the P-N vector  
-    of POPC (left) and POPS (right) phospholipids in a POPC:POPS 5:1 bilayer 
-    as a function of \ce{KCl} concentration in the buffer 
-    from simulations with different force fields and experiments at 298 K. \citep{roux90}
-    The orientation of the \ce{COO^-} group is defined as 
-    the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right). 
+  \caption{\label{fig:delta_ordPar_KCl_PCPS}
+    Changes of the head group order parameters, and the angles of P--N and C$_\beta$--C$_\gamma$ (stars) vectors 
+    with respect to the membrane normal of POPC (left) and POPS (right) in a POPC:POPS (5:1) bilayer 
+    as a function of \ce{KCl} concentration from ECC-lipid and Lipid17/Dang simulations 
+    compared with experimental values from Ref. \citenum{roux90} (signs from Ref. \citenum{ferreira16}) at 298 K.
+    The y-axis for the $\alpha$-carbon results of POPS (middle right) is transferred
+    with the same value for both order parameters such that the lower order
+    parameter value from pure POPS is at zero to correctly illustrate the significant forking.
   }
   \todo{SAMULI: Use the same y-axis scale in the bottom figures showing angles for POPC and POPS to ease the comparison.}
 \end{figure} 
@@ -934,22 +938,6 @@ In conclusion, using ECC to POPS lipid headgroup improves its
 interactions with monovalent ions and POPC headgroups when compared with NMR order parameter data,
 althought there is room for improvement in the sodium binding affinity.
 
-
-\begin{figure}[tbp!] 
-  \centering 
-  \includegraphics[width=\figwidth]{../img/ecc_pops/density_profiles_na_k_cl_wat_phos_models-compar_5-6_NaCl-and-KCl-series.pdf}
-  \caption{\label{fig:nacl-dens_PCPS} 
-    Number density profiles of \ce{K^{+}}, \ce{Na^{+}} and \ce{Cl^-} along the membrane normal axis 
-    for the negatively charged membranes with the composition of 5\,PC:1\,PS using ECC-lipids and ECC-ions
-    from simulations with added concentrations of \ce{KCl} or \ce{NaCl}.  
-    The top    profile shows the simulation with an additional \ce{KCl} concentration and \ce{Na^+} counterions. 
-    The bottom profile shows the simulation with an additional \ce{NaCl} concentration and \ce{Na^+} counterions, which are not distinguished from the added salt. 
-    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
-  }
-  \todo{I am not sure if we need this figure at all or should we move it to SI.}
-  \todo{The concentrations in the figure do not match with the table.}
-\end{figure} 
-
 % This§: 
 % adsorption and affinities of Na and K to PC:PS memb
 % from densities and rel.surf.excess
@@ -962,13 +950,14 @@ be estimated by comparing the relative surface excesses with respect to water, $
 between POPC:POPS (5:1) mixture and pure POPC \cite{melcr18}.
 %Such a quantity compares the adsorption of ions to the adsorption of water molecules at an interface 
 %without the necessity of defining a Gibbs dividing surface. \citep{melcr18, chattorajBOOK}
-The value of $\Gamma ^{w} _{\rm Na}=-0.11 \pm 0.01$ nm$^{-2}$ for 1 M sodium in pure POPC, calculated from
-ECC-POPC simulation, was reported in the previous work \cite{melcr18}. Here, the ECC-lipid simulations
-give
-%$\Gamma ^{w} _{\rm K}=-0.12 \pm ??$ nm$^{-2}$ and
-$\Gamma ^{w} _{\rm Na}=0.09 \pm ??$ nm$^{-2}$ \todo{Error bar should be added.} for 0.621 M sodium in pure POPC:POPS (5:1) mixture.
-Therefore, the presence of $\sim$17\% POPS in POPC bilayer increases the relative surface
-excess of sodium with respect to water from negative to positive. As discussed above,
+The value of $\Gamma ^{w} _{\rm Na}=-0.11 \pm 0.01$ nm$^{-2}$ for 1 M sodium in pure POPC
+was reported from a ECC-POPC simulation in the previous work \cite{melcr18}.
+The presence of $\sim$17\% POPS in POPC bilayer increases the
+%relative surface excess of sodium with respect to water from negative
+value to $\Gamma ^{w} _{\rm Na}=0.09 \pm ??$ nm$^{-2}$ \todo{Error bar should be added}
+for 0.621 M sodium, while value for potassium remains negative,
+$\Gamma ^{w} _{\rm K}=-0.12 \pm ??$ nm$^{-2}$ \todo{Error bar should be added} in POPC:POPS (5:1) mixture (Fig. \ref{fig:nacl-dens_PCPS}).
+As discussed above,
 the sodium binding to POPC:POPS (5:1) mixture may be slightly overestimated also in
 ECC-lipid simulations. However, the difference may not be affected because similar small
 overestimation seem to occur also in pure POPC simulation where the headgroup order parameter
@@ -1017,11 +1006,13 @@ observed especially in the negatively charged bilayers is not captured by the EC
   \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_cacl.pdf} 
   \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_cacl.pdf} 
   \caption{\label{fig:delta_ordPar_CaCl_PCPS} 
-    Changes of the head group order parameters $\alpha$, $\beta$ and the orientations of the carboxylate group and the P-N vector  
-    of POPC (left) and POPS (right) phospholipids in a POPC:POPS 5:1 bilayer as a function of \ce{CaCl2} concentration 
-    in bulk ($C_{ion}$) from simulations with different force fields and experiments at 298~K. \citep{roux90}
-    The orientation of the \ce{COO^-} group is defined as 
-    the connector from the $\beta$ carbon to the carbon in \ce{COO^-} (stars, bottom right).
+    Changes of the head group order parameters, and the angles of P--N and C$_\beta$--C$_\gamma$ (stars) vectors 
+    with respect to the membrane normal of POPC (left) and POPS (right) in a POPC:POPS (5:1) bilayer 
+    as a function of \ce{CaCl} concentration from ECC-lipid and Lipid17/Dang simulations 
+    compared with experimental values from Ref. \citenum{roux90} (signs from Ref. \citenum{ferreira16}) at 298 K.
+    The y-axis for the $\alpha$-carbon results of POPS (middle right) is transferred
+    with the same value for both order parameters such that the lower order
+    parameter value from pure POPS is at zero to correctly illustrate the significant forking.
   }
   \todo{SAMULI: Use the same y-axis scale in the bottom figures showing angles for POPC and POPS to ease the comparison.}
 \end{figure} 
@@ -1077,7 +1068,7 @@ inaccurate structures of the lipid headgroup (Fig.~\ref{simVSexpNOions_POPS}).
     the density profiles of~\ce{Cl^-} ions are divided by 2, and 
     the density profiles of phosphate groups and water are divided by 5 and 200, respectively.  
   }
-  \todo{SAMULI: We should compare to the density profiles from Lipid17 simulations. These are also needed for NMRlipids IV.}
+  \todo{SAMULI: We should compare to the density profiles from Lipid17 simulations.}
 \end{figure} 
 
 %SAMULI: We will not go to the spin relaxation time analysis in this work
@@ -1192,7 +1183,7 @@ underestimated calcium binding affinity to lipid bilayer with this force field \
   \includegraphics[width=\figwidth]{../img/stoichiometry_CaCl2_comparison_Ecc-lipids_PC-vs-PCPS.pdf} \\ 
   \caption{\label{fig:cacl_complexes} 
     Relative probabilities of \ce{Ca^{2+}} ions to coordinate with a certain number of lipids
-    in pure POPC bilayer with 350 mM CaCl$_2$ and POPC:POPS (5:1) mixture with 400 mM CaCl$_2$.  
+    in pure POPC bilayer with 350 mM CaCl$_2$ and in POPC:POPS (5:1) mixture with 400 mM CaCl$_2$.  
     Analysis was done for both systems by considering all lipids (blue and violet) and
     for POPC:POPS (5:1) mixture also by considering POPC and POPS lipids separately (green and orange).
     %All lipids were taken into account with the exception of the complexes in light green and orange, 
@@ -1202,7 +1193,8 @@ underestimated calcium binding affinity to lipid bilayer with this force field \
     Clusters of four or more lipids were not observed in either membrane.
     Previously published simulation data \cite{melcr18} for pure POPC bilayers were taken directly from ?? Add Zenodo reference, if available. 
   }
-  \todo{Add definition used for coordination and link to the Zenodo, if available.}
+  \todo{Add definition used for the coordination} \\
+  \todo{Add link to the Zenodo, if available.}
 \end{figure} 
 
 
