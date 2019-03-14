@@ -261,8 +261,8 @@ Polarizability is necessarry for accurate simulations of cellular membranes at p
  
 \section{Introduction} 
 
-The most common negatively charged lipids in eukaryotic membranes bearing
-phophatidylserine (PS) headgroup are important signaling molecules \cite{lemmon08,leventis10,li14}.
+The phophatidylserine (PS) lipids are most common negatively charged lipids in eukaryotic membranes
+and important signaling molecules \cite{lemmon08,leventis10,li14}.
 They interact with signaling proteins \cite{leventis10},
 regulate surface charge and protein localization \cite{yeung08}, 
 induce protein aggregation \cite{zhao04,gorbenko06} and membrane fusion \cite{??}.
@@ -272,6 +272,9 @@ the detailed interactions between PS lipids and biological cations, like calcium
 
 %Various interaction schemes have been proposed for the negatively charged
 %lipids with ions and other lipids. 
+Spectroscopic experiments give detailed information about the
+interactions between ions and PS lipids, but the data is often indirect and difficult to
+interpret \cite{hauser77,kurland79,eisenberg79,hauser83,dluhy83,hauser85,feigenson86,mattai89,roux90,roux91}.
 Some studies suggest that the
 binding constant of ions to negatively charged lipids is similar to that of zwitterionic lipids,
 and the binding affinity is increased only due to the increased cation
@@ -280,77 +283,79 @@ On the other hand, calcium forms dehydrated complexes with PS headgroups
 which cause phase separation \cite{hauser77,kurland79,hauser85,feigenson86,mattai89,roux90,roux91,boettcher11}.
 Different theories are difficult to evaluate experimentally,
 especially with physiological ion concentrations which are typically quite low.
+More recently, classical molecular dynamics (MD) simulations
+have been used to support the interpretation of spectroscopic experiments,
+but the results strongly depend on the force field parameters \cite{boettcher11,kucerka14,melcrova16,hallock18,valentine18}.
+In simulations with the CHARMM36 force field \cite{klauda10,venable13} using the NBfix parameters for calcium \cite{kim16}, 
+calcium ions interact only with the carboxylate group of PS lipids \cite{valentine18}.
+However, the same force field without the NBfix parameters, gives a significant binding affinity also to the phosphate region \cite{hallock18}.
+On the other hand, simulations with the Berger force field \cite{berger97,mukhopadhyay04}
+suggest a significant calcium binding also to the carbonyls in the acyl chains \cite{melcrova16}.
 
-Spectroscopic experiments give detailed information about the
-interactions between ions and PS lipids, but the data is often indirect and difficult to
-interpret \cite{hauser77,kurland79,eisenberg79,hauser83,dluhy83,hauser85,feigenson86,mattai89,roux90,roux91,boettcher11}.
-Classical molecular dynamics (MD) simulations give
-access to all the details, but the current non-polarizable force fields are not
-sufficiently accurate to interpret the interactions between anionic
-lipid headgroups and other lipids or ions \cite{NMRlipidsIV}.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% On the simulation part .. %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%From the perspective of phospholipid bilayers,
-There are force field parameters for neutral lipids PC and PE 
-with explicit polarizability using the Classical Durde model. \cite{chowdhary13, chowdhary17}
-While such a model shows a potential improvement over non-polarizable force fields from many perspectives -- 
-for example accounting for polarizability has a significant impact on the dipole potential of a membrane \cite{harder2009} -- 
-the non-polarizable version of the same force field 
-performes comparably well at a fraction of the computational cost 
-of the models with explicit polarization. \citep{lucas12,chowdhary13} 
+The NMRlipids project \url{nmrlipids.blogspot.fi} has recently demonstrated
+that such controversies can be resolved by using the headgroup order parameters
+of phosphatidylcholine (PC) lipids \cite{catte16, nmrlipids_proj4}, which can
+be related to cation binding affinity to lipid bilayers using the electrometer
+concept \cite{akutsu81,altenbach84,seelig87}. The main advantage of the approach
+is the direct comparison between experimental and calculated order parameters,
+which reduced the ambiguity arising from the interpretation of the data.
+Unfortunately, none of the readily available force fields was sufficiently accurate to correctly reproduce the
+cation binding affinity to zwitterionic PC bilayers \cite{catte16} or to the
+mixtures with negatively charge PS lipids \cite{nmrlipids_proj4}.
+In our recent work~\cite{melcr18}, we were able to improve the cation binding affinity
+to zwitterionic 1-palmitoyl-2-oleoyl-sn-glycero-3-phosphocholine (POPC) lipid bilayer
+by implicitly including electronic polarizability using the electronic continuum
+correction (ECC) \cite{leontyev09}. The good agreement between the resulting ECC-POPC
+model and experiments enable detailed interpretation of calcium binding details to POPC lipid bilayer.
 
-Short paragraph describing previous MD-work on this topic (PS), i.e., \dots 
-\todo{SAMULI: Controversies in previous simulations (https://doi.org/10.1016/j.bpj.2018.08.044 and
-  Melcrova et al. Scientific Reports | 6:38035 | DOI: 10.1038/srep38035) should be mentioned also
-in the intro.}
+%There are force field parameters for neutral lipids PC and PE 
+%with explicit polarizability using the Classical Durde model. \cite{chowdhary13, chowdhary17}
+%While such a model shows a potential improvement over non-polarizable force fields from many perspectives -- 
+%for example accounting for polarizability has a significant impact on the dipole potential of a membrane \cite{harder2009} -- 
+%the non-polarizable version of the same force field 
+%performes comparably well at a fraction of the computational cost 
+%of the models with explicit polarization. \citep{lucas12,chowdhary13} 
 
-The interaction of various cations including calcium 
-with  neutral and also negatively charged lipid bilayers
-was thoroughly compared between simulations and experiments 
-from the point of the electrometer concept \cite{roux90, seelig87, altenbach84}
-in the references~\citenum{catte16, nmrlipids_proj4}. 
-It was concluded that the interaction of calcium with zwitterionic PC bilayers 
-is generally overestimated in all studied models \cite{catte16},
-while none of the models was capable of interpreting the NMR structural parameters
-with the negatively charged PC:PS (5:1) bilayers \cite{nmrlipids_proj4}. 
-Accounting for the electronic polarization was identified as 
-a non-negligible correction to the interaction between cations and POPC bilayers in Ref.~\cite{melcr18}. 
-
-Here, we demonstrate that the same approach 
-significantly improves the description of calcium binding 
-also to the negatively charged PC:PS (5:1) bilayers. 
-In correspondence with the Ref.~\citenum{nmrlipids_proj4},
-we also use the changes of the head group order parameters $S^\alpha$ and $S^\beta$ 
-in PC and PS lipids 
-to quantify the binding affinity of the calcium cations
-and the induced structural changes
-(Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}). 
-To directly connect to the previous works \citep{catte16, nmrlipids_proj4}
-and to mark the improvement after treating electronic polarizability, 
-we show simulation results from the newly developed ECC-lipids and also from Lipid17 \citep{lipid17-future}. 
-
-An empirical scaling factor, which reduces electrostatic forces between molecules, 
-is a well known concept in molecular modelling;
-such an approach was adopted in the early simulations of lipid bilayers \cite{egberts94, berendsen1996},
-in force fields employing explicit polarization \cite{lemkul2016empirical},
-or in the simulations of ionic liquids \cite{Bhargava2007}. 
-%An improvement of permeability of charged solutes in the gramicidin A channel 
-%is observed with a force field using charge equilibration to model polarizability. \cite{lucas2012} 
-At the same time, 
-the implicit inclusion of electronic polarizability to lipid models
-via charge re-scaling using electronic continuum correction (ECC) 
-substantially improved the interactions between cations and zwitterionic lipids \cite{melcr18}. 
-
-
-Here, we extend the approach to anionic PS lipids.
-The newly developed model termed ECC-POPS 
+Here, we extend the ECC approach also to negatively charged 1-palmitoyl-2-oleoyl-sn-glycero-3-phospho-L-serine (POPS) lipid.
+The quality of the newly developed ECC-POPS force field parameters is
+evaluated against previously published X-ray scattering form factors\cite{kucerka14}
+and NMR \cite{roux90,nmrlipids_proj4} data for lipid headgroup C--H bond order parameters in various ionic conditions,
+as well as against acyl chain C--H bond order parameters reported in this work.
+as well as 
 not only describes the interactions of PS with ions more accurately, 
 but also improves the structure of the PS head group 
 and its interactions with PC in mixed lipid bilayers. 
 The results pave the way to more realistic MD simulations 
 of both neutral and negatively charged lipid bilayers 
 for a wide range of applications.
+
+%Here, we demonstrate that the same approach 
+%significantly improves the description of calcium binding 
+%also to the negatively charged PC:PS (5:1) bilayers. 
+%In correspondence with the Ref.~\citenum{nmrlipids_proj4},
+%we also use the changes of the head group order parameters $S^\alpha$ and $S^\beta$ 
+%in PC and PS lipids 
+%to quantify the binding affinity of the calcium cations
+%and the induced structural changes
+%(Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}). 
+%To directly connect to the previous works \citep{catte16, nmrlipids_proj4}
+%and to mark the improvement after treating electronic polarizability, 
+%we show simulation results from the newly developed ECC-lipids and also from Lipid17 \citep{lipid17-future}. 
+
+%An empirical scaling factor, which reduces electrostatic forces between molecules, 
+%is a well known concept in molecular modelling;
+%such an approach was adopted in the early simulations of lipid bilayers \cite{egberts94, berendsen1996},
+%in force fields employing explicit polarization \cite{lemkul2016empirical},
+%or in the simulations of ionic liquids \cite{Bhargava2007}. 
+%%An improvement of permeability of charged solutes in the gramicidin A channel 
+%%is observed with a force field using charge equilibration to model polarizability. \cite{lucas2012} 
+%At the same time, 
+%the implicit inclusion of electronic polarizability to lipid models
+%via charge re-scaling using electronic continuum correction (ECC) 
+%substantially improved the interactions between cations and zwitterionic lipids \cite{melcr18}. 
+
+
+
 
 
  
