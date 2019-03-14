@@ -261,19 +261,17 @@ Polarizability is necessarry for accurate simulations of cellular membranes at p
  
 \section{Introduction} 
 
-Lipids with negatively charged headgroups, like phophatidylserine
-play important role in biomembranes. 
-Signaling molecules in cells interact with lipid membranes 
-due to specific, often electrostatically driven, interactions 
-with anionic lipids \cite{lemmon08,leventis10}.
-Anionic lipids and their interactions with ions play also role in membrane
-fusion \cite{??}. \todo{Pavel can probably improve this and give a citation}
-These interactions depend both on
-the chemical details of lipid headgroups as well as 
-on the binding of counter and co-ions to anionic membranes. 
+The most common negatively charged lipids in eukaryotic membranes bearing
+phophatidylserine (PS) headgroup are important signaling molecules \cite{lemmon08,leventis10,li14}.
+They interact with signaling proteins \cite{leventis10},
+regulate surface charge and protein localization \cite{yeung08}, 
+induce protein aggregation \cite{zhao04,gorbenko06} and membrane fusion \cite{??}.
+Because these functions are also often regulated by biological cations \cite{leventis10},
+the detailed interactions between PS lipids and biological cations, like calcium, are under great interest.
+\todo{Pavel can probably improve and complement this}
 
-Various interaction schemes have been proposed for the negatively charged
-lipids with ions and other lipids. 
+%Various interaction schemes have been proposed for the negatively charged
+%lipids with ions and other lipids. 
 Some studies suggest that the
 binding constant of ions to negatively charged lipids is similar to that of zwitterionic lipids,
 and the binding affinity is increased only due to the increased cation
@@ -360,56 +358,54 @@ for a wide range of applications.
  
 \subsection{Electronic continuum correction for PS lipids}\label{section:ecc} 
 
-\todo{Joe: this paragraph requires editing.}
-The lack of electronic polarizability has been a concern since the
-early days of classical MD simulations of lipids \cite{jonsson86,egberts94, berendsen1996},
-where the atomic charges were scaled by a factor of 1/2 to effectively
-include the electrostatic screening from the missing electronic polarizability.
-The electronic continuum correction (ECC) is a more sophisticated version of the charge scaling.
+The electronic continuum correction (ECC) is a simple method to implicitly include
+the electronic polarizability into classical molecular dynamics (MD) simulations
+by scaling the electric charges defined in force fields.
+%The polarization of electrons in ECC-lipids
+%uses the implicit method termed electronic continuum correction (ECC). \cite{leontyev09, Pluharova2014, martinek17, melcr18} 
+%In this method, a system of polarizable particles is represented 
+%with an equivalent system of particles with fixed charges,
+%which account for the electronic polarizability \emph{implicitly}.
+For simple ions in water, the electronic polarizability
+can be taken into account by scaling the charge with a constant factor 
+%This is practically achieved by rescaling the charges with a pre-determined scaling factor, $f_q$,
+%\begin{equation}
+ $ f_q = \frac{1}{\sqrt{\epsilon_{el}}} \approx 0.75$,
+%\end{equation}
+where  $\epsilon_{el} = 1.78$ is the high-frequency dielectric constant of electrons in water \cite{leontyev09}.
+%,, as
+%The value of $\epsilon_{el} = 1.78$ for water solutions gives the scaling
+%factor of $f_q \approx 0.75$ for aquaeous environments \cite{leontyev09}.
+The scaling of charges with this factor has been recently applied to improve classical models for ions and
+other biomolecules \cite{Pluharova2014, martinek17} \todo{Pavel can probably update this (insulin?)}.
+In addition to the charge, the Lennard-Jones~$\sigma$ was scaled with a factor of $f_\sigma = ??$
+to improve the hydration properties of ions with respect to scattering data in these studies
+\todo{Pavel can probably deliver the state of the art information about these parameters and sharpen the discussion}.
 
-The polarization of electrons in ECC-lipids uses the implicit method termed electronic continuum correction (ECC). \cite{leontyev09, Pluharova2014, martinek17, melcr18} 
-In this method, a system of polarizable particles is represented 
-with an equivalent system of particles with fixed charges,
-which account for the electronic polarizability \emph{implicitly}. 
-This is practically achieved by rescaling the charges with a pre-determined scaling factor, $f_q$,
-which is derived from the high-frequency dielectric constant of electrons, $\epsilon_{el}$, as
-\begin{equation}
-  f_q = \frac{1}{\sqrt{\epsilon_{el}}} ,
-\end{equation}
-The value of $\epsilon_{el} = 1.78$ for water solutions gives the scaling
-factor of $f_q \approx 0.75$ for aquaeous environments \cite{leontyev09}.
-This has been recently applied to improve classical models for ions and
-other biomolecules \cite{Pluharova2014, martinek17, melcr18}
-\todo{Pavel can probably update this (insulin?)}.
+Derivation of the correct scaling factor for lipids is more complicated, because
+%In contrast to the total charge of ions,
+the partial charges depend on the methods used to derive the force field.
+For example, the partial charges may already include some electronic polarizability effects
+and the scaling factor should then be larger than the theoretically derived value for ions in water, $f_q \approx 0.75$.
+Before the ECC theory was rigorously derived, similar idea was employed in early classical 
+MD simulations of lipids and surfactants using the scaling factor of 0.5 for atomic charges  \cite{jonsson86,egberts94, berendsen1996}. 
+In our recent work, we applied the ECC to the Amber based lipid14 force field of zwitterionic POPC lipid \cite{dickson14}
+by scaling the partial charges and Lennard-Jones~$\sigma$ parameters of headgroup, glycerol backbone,
+and carbonyl regions \cite{melcr18}. The scaling factors were optimized to reproduce 
+the calcium binding affinity to POPC lipid bilayers, evaluated using the headgroup order parameters
+and the electrometer concept \cite{akutsu81,altenbach84,seelig87,catte16}, and the X-ray scattering form factor
+without additional ions \cite{kucerka11}, which resulted to the scaling factor values of $f_q = 0.8$ and $f_\sigma = 0.89$  \cite{melcr18}.
 
-Recently we applied the ECC also to the Amber based lipid14 force field \cite{dickson14} to
-improve the cation binding affinity to zwitterionic POPC lipid bilayers \cite{melcr18}.
-In contrast to the total charge of ions, 
-the partial charges in force fields of zwitterionic molecules
-depend on the methods used to derive the force field, 
-which may already partially include the
-electronic polarizability effects. Therefore, the optimal scaling factor for charges in
-zwitterionic lipids may vary from (be even larger) than the theoretically derived $f_q \approx 0.75$.
-In the recent work, we found optimal results for cation binding affinity and
-bilayer structural properties when the partial charges and Lennard-Jones~$\sigma$
-parameters of all non-tail atoms of the lipid14 POPC model
-(i.e., headgroup, glycerol backbone, and carbonyl regions) 
-were scaled with the factors $f_q = 0.8$ and $f_\sigma = 0.89$  \cite{melcr18}.
-
-
-Here, we apply the ECC to the Amber based lipid17 parameters \cite{lipid17-future} of POPS lipid with
-a total monovalent negative charge. 
-In this case we treat the POPS lipids like ions
-applying to it the scaling factor of $f_q = 0.75$,
-as it carries a physical total charge similar to the ions in solution, 
-and the lipid charges has to neutralize the counterion charges in simulations.
-For the Lennard-Jones~$\sigma$ parameters, we used the same scaling factor of $f_\sigma = 0.89$
-as in the ECC-POPC model \cite{melcr18}.
-%we used exactly the pre-determined scaling factor 
+Here, we apply the ECC to the Amber based lipid17 parameters \cite{lipid17-future} of POPS lipid with a monovalent negative charge.
+Because POPS carries a physical total charge as ions in water, we apply the theoretically derived scaling factor for
+ions $f_q = 0.75$ \cite{leontyev09} to the partial charges of POPS. The lipids with a total charge of -0.75 also neutralize
+the counterion charges of +0.75 in simulations with ECC-ions \cite{kohagen16}.
+Following our previous work for POPC, we use the scaling factor of $f_\sigma = 0.89$ for the Lennard-Jones~$\sigma$ parameters and
+scale the parameters of atoms only in the headgroup, glycerol backbone, and carbonyl regions \cite{melcr18}.
+Furhter optimization of parameters was not done in this work.
+% we used exactly the pre-determined scaling factor 
 %to represent the effects of electronic polarization
 %yielding a total charge of $-0.75$ in the ECC formalism. \cite{martinek17, leontyev09, melcr18}
-Similarly to the ECC-POPC model \cite{melcr18}, we applied the ECC only to the
-non-tail atoms, i.e., to atoms in the headgroup, glycerol backbone, and carbonyl regions. 
 %polar parts of the phospholipid,
 %i.e., charges on all atoms except on alkyl tails, 
 %which do not encounter direct contacts with ions. 
@@ -420,23 +416,33 @@ non-tail atoms, i.e., to atoms in the headgroup, glycerol backbone, and carbonyl
 
 \subsection{Measurements of acyl chain order parameters}
 A R-type Proton Detected Local Field (R-PDLF) experiment was performed to determine C--H bond order
-parameters, $S_{\rm{CH}}=1/2\langle3cos^2\theta-1\rangle$, where $\theta$ denotes the angle of the C--H bond
+parameters
+\begin{equation}\label{OPequation}
+  S_{\rm{CH}}=\frac{1}{2}\langle3\cos^2\theta-1\rangle,
+\end{equation}
+  where $\theta$ denotes the angle of the C--H bond
 with the bilayer normal and the angular brackets define a time average on a time scale of approximately 1 microsecond.
 The experiment was done using a Bruker Avance III 400 spectrometer operating at a 1H Larmor frequency of 400.03 MHz
 equipped with a standard 4 mm CP-MAS HXY probe. The set up of the R-PDLF experiment was the following
-(using the notation as in figures 1c and 2c of the original reference for the R-PDLF
-experiment [S. V. Dvinskikh, H. Zimmermann, A. Maliniak and D. Sandström, J. Mag. Res. 168, 194 (2004)]).
+(using the notation from figures 1c and 2c in the original publication describing the R-PDLF experiment \cite{dvinskikh04}).
 The magic angle spinning (MAS) frequency used was 5.15 kHz. The recoupling pulses in the R18 blocks had
 therefore a length of 10.79 us which correspond to a nutation frequency of 46.35 kHz. Increments of 18x2 recoupling
 pulses where used giving a spectral width of 2.6 kHz in the indirect dimension and a total number of 32 points in
 the indirect dimension were recorded. These settings enable to record dipolar slices with a C--H bond order parameter
 resolution of +- 0.01. The C--H bond order parameter determined from a given dipolar
-splitting, $\Delta\nu$ (see e.g. Figure XX as SI) is equal to $\Delta\nu/(0.315\times21.5 kHz)$, where 0.315 is
-the scaling factor of the R18 recoupling sequence and 21.5 kHz is the maximum 1H-13C dipolar coupling for a C--H bond.
-The refocused-INEPT transfer [G. Morris and R. Freeman, J. Am. Chem. Soc. 101, 760 (1979); D. Burum, R. Ernst, J. Mag. Res. 39, 163 (1980)]
-was used for transferring the polarization from 1H nuclei to the covalently bond 13C nuclei with the delays $\tau_1$ = 1.94 ms and $\tau_2$ = 0.97 ms
+splitting, $\Delta\nu$ (see e.g. Fig. \ref{R-PDLFslices} \todo{Is this reference to the correct figure?})
+is equal to $\Delta\nu/(0.315\times21.5 kHz)$, where 0.315 is
+the scaling factor of the R18 recoupling sequence and 21.5 kHz is the maximum $^1$H-$^{13}$C dipolar coupling for a C--H bond.
+The refocused-INEPT transfer \cite{morris79,burum80} %[G. Morris and R. Freeman, J. Am. Chem. Soc. 101, 760 (1979);
+\todo{ I could not find this reference [D. Burum, R. Ernst, J. Mag. Res. 39, 163 (1980)]}
+was used for transferring the polarization from $^1$H nuclei to the covalently bond $^{13}$C nuclei with the delays $\tau_1$ = 1.94 ms and $\tau_2$ = 0.97 ms
 (set as multiples of the MAS rotation period). The pulses for the refocused-INEPT sequence had a nutation frequency equal to 63.45 kHz.
-For acquiring the spectra, a total number of 1024 transients were recorded for each point in the indirect dimension, using an acquisition time of 0.1 s under SPINAL64 1H decoupling [B. Fung, A. Khitrin, K.Ermolaev, J. Mag. Res. 142, 97 (2000)] with a nutation frequency of 50 kHz, and with dwell time giving a spectral width of 200 ppm for the 13C chemical shift dimension. The set of free induction decays recorded were then processed as described e.g. in [T. M. Ferreira, B. Medronho, R. W. Martin, D. Topgaard, Phys. Chem. Chem. Phys. 10, 6033 (2008)]. For assigning the dipolar splittings in the crowded spectral region between 29 and 30 ppm both the assignments made for POPC in [ T. M. Ferreira, F. Coreta- Gomes, O. H. S. Ollila, M. J. Moreno, W. L. C. Vaz, D. Topgaard, Phys. Chem. Chem. Phys. 15, 1976-1989 (2013)] and the POPS order parameters simulated and reported in this work were taken as a reference. 
+For acquiring the spectra, a total number of 1024 transients were recorded for each point in the indirect dimension, using an acquisition
+time of 0.1 s under SPINAL64 $^1$H decoupling \cite{fung00} with a nutation frequency of 50 kHz, and with dwell time giving a spectral
+width of 200 ppm for the $^{13}$C chemical shift dimension. The set of free induction decays recorded were then processed as
+described e.g. in Ref. \citenum{ferreira08}. The dipolar splittings in the crowded spectral region
+between 29 and 30 ppm were assigned based on the previous assignments for POPC \cite{ferreira13} 
+and the POPS order parameters calculated from simulations in this work.
  
 \subsection{Simulation details} 
 
@@ -487,57 +493,28 @@ MD simulations of POPC:POPS lipid bilayers with different molar ratios
 and ion concentrations (\ce{K^+}, \ce{Na^+}, \ce{Ca^{2+}} and \ce{Cl^{-}})
 were performed in an orthorhombic simulation box with periodic boundary conditions
 using the GROMACS 2018 \cite{Abraham15} simulation package. 
-%The simulated system consisted of lipids (POPC and POPS) forming a single lipid bilayer,
-%an amount of water molecules comparable to the hydration levels in experiments, 
-%\todo{Check this claim. SAMULI: Check discussin in the NMRlipids IV manuscript}
-The complete set of simulated systems is listed in Table~\ref{tbl:sim-list},
-and the used simulation parameters are in Table~\ref{tbl:mdpar}. 
+The simulated systems are listed in Table~\ref{tbl:sim-list}
+and the used simulation parameters in Table~\ref{tbl:mdpar}. 
 All simulations were ran for a minimum of $1 \, \mu$s,
 and the first  $50 \,$ns were omitted as an equilibration period. 
 For deposited trajectories and parameter files see 
 Refs.~\citenum{ecclipids_pcps_nacl_kcl_series, ecclipids_pcps_cacl2_series, ecclipids_pcps_mixtures_counterions, 
                lipid17_nacl_kcl_series, lipid17_ff99_ions, lipid17_cacl_series}
 
-
-\todo{EDIT: Taken from NMRlipids4 as an interesting information, to be edited.}
-In the experimental $^2$H NMR literature data used in this work~\cite{browning80,roux90},
-the lipids were first soluted to the buffer and then centrifuged to a pellet which
-was used in the measurements. Such samples have lower lipid concentration
-(approximately 10~wt~\% of lipids~\cite{browning80,roux88,roux90}) than 
-gravimetric samples (60~wt~\%) and simulations (approximately 50-60~wt~\%) in this work.
-Larger multilamellar repeat distances are expected in the samples with lower lipid
-concentrations due to the swelling caused by electrostatic repulsion in pure PS lipid systems~\cite{millman82}.
-However, the PS headgroup order parameters measured from gravimetric sample in this work
-are in good agreement with the results from centrifuged sample in the literature \cite{browning80} (Fig. \ref{HGorderParameters}).
-Furthermore, the equlibrium repeat distance rapidly decreases with the addtion of monovalent
-salts and is close to the simulation box sizes already above 500~mM concentrations~\cite{millman82,rand89}.
-Therefore, the hydration levels of multilamellae are expected to be sufficiently similar
-in the used simulations and reference experiments.
-
-
 In the reference simulations with the standard Amber force field,
-we used the Lipid14 parameters~\cite{dickson14} for POPC, the Lipid17 parameters for POPS \cite{lipid17-future},
-the TIP3P water model~\cite{jorgensen83}, and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006}.
-The Lipid14 parameters in Gromacs format were downloaded from Ref.~\citenum{lipid14files}. 
+the Lipid14 parameters~\cite{dickson14} for POPC, the Lipid17 parameters for POPS \cite{lipid17-future},
+the TIP3P water model~\cite{jorgensen83}, and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006} were used.
+The previously generated \cite{botan15} Lipid14 parameters in Gromacs format were downloaded from Ref.~\citenum{lipid14files}. 
 The Lipid17 parameters were obtained from AmberTools18 \cite{amber18} 
-and they were converted to Gromacs format using acpype \cite{acpype}.  
+and converted to Gromacs format using acpype \cite{acpype}.  
 The ion model by Dang and coworkers~\cite{smith94,chang1999,dang2006} was used with Amber lipids because
-analysis of simulations with the default Amber ion parameters is complicated by the artificial
-clustering of ions in solution \cite{nmrlipids_proj4}.
-In the simulations with ECC-lipids,
-we used the ECC-POPC parameters~\cite{melcr18} (available at \cite{ECC-POPC_nacl_cacl2_files}) and 
-ECC-POPS parameteres derived in this work (section \ref{section:ecc}) 
-together with the SPC/E~\cite{Berendsen1987} water model and 
-ECC-ions \cite{martinek17, kohagen16, Pluharova2014}.
-We used the SPC/E water model as its lower dielectric constant is consistent with the
+the default Amber ion parameters \cite{aqvist90} led to the artificial clustering of ions in solution \cite{nmrlipids_proj4}.
+In the ECC-lipid simulations,
+the ECC-POPC parameters~\cite{melcr18} (available from Ref. \citenum{ECC-POPC_nacl_cacl2_files}), 
+the ECC-POPS parameteres derived in this work (section \ref{section:ecc}), 
+the SPC/E~\cite{Berendsen1987} water model, and ECC-ions \cite{martinek17, kohagen16, Pluharova2014} were used.
+The SPC/E water model was selected because its lower dielectric constant is consistent with the
 ECC concept \cite{leontyev11,leontyev14}.
-
-The C--H bond order parameters were first averaged over the time for individual lipids and
-then the standard error of the mean of the average over lipids was used as the error estimate
-of the mean \cite{botan15,ollila16,nmrlipids_proj4}.
-
-
-
 \begin{table}[tbp]
   \caption{Simulation parameters}
   \label{tbl:mdpar}
@@ -559,6 +536,45 @@ of the mean \cite{botan15,ollila16,nmrlipids_proj4}.
   \end{tabular}
 \end{table}
  
+The C--H bond order parameters were calculated directly from Eq. \ref{OPequation}.
+Average over the time for individual lipids was calculated first and
+the standard error of the mean of the average over lipids was then used as the
+error estimate \cite{botan15,ollila16,nmrlipids_proj4}.
+Python program ({\tt scripts/calcOrderParameters.py}) that uses the
+MDAnalysis library \cite{agrawal11,gowers16} is available in Ref. \citenum{MATCHgit}. 
+The ion number density profiles were calculated using the {\tt gmx density} tool
+of the Gromacs sofware package \cite{gromacsMANUAL}.
+The salt concentrations in buffer before solvating the lipids, reported in the used experimental data set \cite{roux90},
+were calculated as $[{\rm salt}]=N_{\rm c} \times[{\rm water}]\,/\,N_{\rm w}$,
+where $N_{\rm c}$ is the number of cations in simulation, $[{\rm water}]$\,=\,55.5~M and $N_{\rm w}$
+is the number of water molecules in the simulation.
+As discussed in our previous work \cite{nmrlipids_proj4}, the hydration levels of
+multilamellae are expected to be sufficiently similar in the used simulations and reference experiments \cite{roux90}.
+
+%The simulated system consisted of lipids (POPC and POPS) forming a single lipid bilayer,
+%an amount of water molecules comparable to the hydration levels in experiments, 
+%\todo{Check this claim. SAMULI: Check discussin in the NMRlipids IV manuscript}
+%\todo{EDIT: Taken from NMRlipids4 as an interesting information, to be edited.}
+%In the experimental $^2$H NMR literature data used in this work~\cite{browning80,roux90},
+%the lipids were first soluted to the buffer and then centrifuged to a pellet which
+%was used in the measurements. Such samples have lower lipid concentration
+%(approximately 10~wt~\% of lipids~\cite{browning80,roux88,roux90}) than 
+%gravimetric samples (60~wt~\%) and simulations (approximately 50-60~wt~\%) in this work.
+%Larger multilamellar repeat distances are expected in the samples with lower lipid
+%concentrations due to the swelling caused by electrostatic repulsion in pure PS lipid systems~\cite{millman82}.
+%However, the PS headgroup order parameters measured from gravimetric sample in this work
+%are in good agreement with the results from centrifuged sample in the literature \cite{browning80} (Fig. \ref{HGorderParameters}).
+%Furthermore, the equlibrium repeat distance rapidly decreases with the addtion of monovalent
+%salts and is close to the simulation box sizes already above 500~mM concentrations~\cite{millman82,rand89}.
+%Therefore, the hydration levels of multilamellae are expected to be sufficiently similar
+%in the used simulations and reference experiments.
+
+
+
+
+
+
+
 
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -575,7 +591,7 @@ are related to the bilayer dimensions (area per molecule and thickness) and
 conformational fluctuations of individual lipids, respectively, and 
 can be directly calculated from MD simulations~\cite{ollila16}.
 The X-ray scattering form factors and C-H bond order parameters in
-the headgroup and glycerol backbone region of POPS lipid bilayer are already available in the literature \cite{pan14,nmrlipids_proj4}.
+the headgroup and glycerol backbone region of POPS lipid bilayer are already available in the literature \cite{kucerka14,nmrlipids_proj4}.
 Here, we extend the available experimental dataset of POPS lipids by measuring the C--H bond
 order parameters also from the acyl chain region using the R-PDLF experiments as described previously \cite{ferreira13}.
 We first determined the order parameters of each peak corresponding different C--H bonds detected
@@ -961,7 +977,7 @@ As discussed above,
 the sodium binding to POPC:POPS (5:1) mixture may be slightly overestimated also in
 ECC-lipid simulations. However, the difference may not be affected because similar small
 overestimation seem to occur also in pure POPC simulation where the headgroup order parameter
-response to NaCl is also slightly overestimated \cite{meclr18}.
+response to NaCl is also slightly overestimated \cite{melcr18}.
 %Interestingly enough, \ce{K^+} maintains negative values of $\Gamma^{w}_{K}$ even for the negatively charged PC:PS~(5:1) bilayer.
 %This is also evident from the density plots in  Fig.~\ref{fig:nacl-dens_PCPS}
 %showing that the density profile of \ce{K^+} along the membrane normal 
