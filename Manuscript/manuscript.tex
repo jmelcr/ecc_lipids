@@ -409,7 +409,8 @@ ions $f_q = 0.75$ \cite{leontyev09} to the partial charges of POPS. The lipids w
 the counterion charges of +0.75 in simulations with ECC-ions \cite{kohagen16}.
 Following our previous work for POPC, we use the scaling factor of $f_\sigma = 0.89$ for the Lennard-Jones~$\sigma$ parameters and
 scale the parameters of atoms only in the headgroup, glycerol backbone, and carbonyl regions \cite{melcr18}.
-Furhter optimization of parameters was not done in this work.
+Further optimization of parameters was not done in this work.
+\todo{Add here a reference to the parameters.}
 % we used exactly the pre-determined scaling factor 
 %to represent the effects of electronic polarization
 %yielding a total charge of $-0.75$ in the ECC formalism. \cite{martinek17, leontyev09, melcr18}
@@ -511,14 +512,14 @@ Refs.~\citenum{ecclipids_pcps_nacl_kcl_series, ecclipids_pcps_cacl2_series, eccl
 In the reference simulations with the standard Amber force field,
 the Lipid14 parameters~\cite{dickson14} for POPC, the Lipid17 parameters for POPS \cite{lipid17-future},
 the TIP3P water model~\cite{jorgensen83}, and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006} were used.
-The previously generated \cite{botan15} Lipid14 parameters in Gromacs format were downloaded from Ref.~\citenum{lipid14files}. 
-The Lipid17 parameters were obtained from AmberTools18 \cite{amber18} 
+The previously generated \cite{botan15} Lipid14 parameters for POPC in Gromacs format were downloaded from Ref.~\citenum{lipid14files}. 
+The Lipid17 parameters for POPS were obtained from AmberTools18 \cite{amber18} 
 and converted to Gromacs format using acpype \cite{acpype}.  
 The ion model by Dang and coworkers~\cite{smith94,chang1999,dang2006} was used with Amber lipids because
 the default Amber ion parameters \cite{aqvist90} led to the artificial clustering of ions in solution \cite{NMRlipidsIV}.
 In the ECC-lipid simulations,
 the ECC-POPC parameters~\cite{melcr18} (available from Ref. \citenum{ECC-POPC_nacl_cacl2_files}), 
-the ECC-POPS parameteres derived in this work (section \ref{section:ecc}), 
+the ECC-POPS parameteres derived in this work (see above), 
 the SPC/E~\cite{Berendsen1987} water model, and ECC-ions \cite{martinek17, kohagen16, Pluharova2014} were used.
 The SPC/E water model was selected because its lower dielectric constant is consistent with the
 ECC concept \cite{leontyev11,leontyev14}.
