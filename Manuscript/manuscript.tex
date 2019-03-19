@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% This is a (brief) model paper using the achemso class 
 %% The document class accepts keyval options, which should include 
 %% the target journal and optionally the manuscript type. 
@@ -19,7 +19,7 @@
 
 \usepackage[x11names]{xcolor}  % typesetting in color
 %% Generate PDF/A-2u
-%\usepackage[a-2u]{pdfx}
+\usepackage[a-2u]{pdfx}
  
 \usepackage[super]{natbib}         % citation style AUTHOR (YEAR), or AUTHOR [NUMBER]
 
@@ -121,7 +121,6 @@ Academy of Sciences of the Czech Republic,
 Prague 6, Czech Republic} 
 \alsoaffiliation{Department of Physics, Tampere University of Technology, P.O. Box 692, FI-33101 
 Tampere, Finland} 
-%SAMULI: We need to put tiago because the experimental acyl chain order parameters
 \author{O. H. Samuli Ollila} 
 \email{samuli.ollila@helsinki.fi} 
 %%\homepage[]{Your web page} 
@@ -179,9 +178,7 @@ Prague 6, Czech Republic}
           polarizability, polarization,
           phospholipids, phosphatidylserine} 
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% The manuscript does not need to include \maketitle, which is 
 %% executed automatically. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -414,6 +411,8 @@ Further optimization of parameters was not done in this work.
 % we used exactly the pre-determined scaling factor 
 %to represent the effects of electronic polarization
 %yielding a total charge of $-0.75$ in the ECC formalism. \cite{martinek17, leontyev09, melcr18}
+Similarly to the ECC-POPC model \cite{melcr18}, we applied the ECC only to the
+non-tail atoms, i.e., to atoms in the headgroup, glycerol backbone, and carbonyl regions. 
 %polar parts of the phospholipid,
 %i.e., charges on all atoms except on alkyl tails, 
 %which do not encounter direct contacts with ions. 
@@ -751,6 +750,16 @@ to lipid bilayer in simulations containing PS using two different approaches.
             where PC results occur in the first time, and this figure could be removed.} \\
           \todo{$\gamma$ carbon of POPS is the COO- minus carbon. The $\gamma$ label should be moved there.}
 \end{figure} 
+ 
+The head group and acyl chain order parameters within ECC-lipids
+are in general in a good agreement with the experimental values 
+as shown in Fig. \ref{simVSexpNOions_POPS}. 
+The acyl chain order parameters in particular agree with the experimental data within error bars.
+The order parameters of the head groups are at an accuracy comparable to 
+other currently available classical models of lipids \citep{botan15, catte16, Pluhackova2016, nmrlipids_proj4}. 
+In particular, ECC-POPS is closer to the experimental order parameters 
+than Lipid17 with either Dang \cite{smith94,chang1999,dang2006} 
+or ff99 ions \citet{aqvist90}. 
 
 %This was demonstrated for a bound positive charge in simulations with POPC and 
 %cationic surfactants or aquaeous cations employing the ECC-POPC model \cite{melcr18}.
