@@ -792,16 +792,23 @@ or ff99 ions \citet{aqvist90}.
 \begin{figure*}[!tbp] 
   \centering 
   \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
-  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
   \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_kcl.pdf} 
-  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_kcl.pdf} 
-  \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix} 
-    CAPTION FOR THE FIGURE WITH POPC: The POPC head group order parameters and the P--N vector angle
+  \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix_PC} 
+    The POPC head group order parameters and the P--N vector angle
     with respect to the membrane normal as a function of POPS content in a bilayer
     from ECC-lipid and Lipid17/Dang simulations with \ce{Na^+} (top) and \ce{K^+} (bottom) counterions.
     Experimental order parameter values are from Ref. \citenum{scherer87}
     and the signs from Ref. \citenum{ferreira16} (only \ce{Na^+} counterions, but shown also in bottom plots).
-    CAPTION FOR THE FIGURE WITH POPS: The POPS head group order parameters, the P--N and C$_\beta$--C$_\gamma$ vector angles (stars)
+  }
+\end{figure*} 
+
+
+\begin{figure*}[!tbp] 
+  \centering 
+  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
+  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_kcl.pdf} 
+  \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix_PS} 
+    The POPS head group order parameters, the P--N and C$_\beta$--C$_\gamma$ vector angles (stars)
     with respect to the membrane normal as a function of POPC content in a bilayer
     from ECC-lipid and Lipid17/Dang simulations with \ce{Na^+} (top) and \ce{K^+} (bottom) counterions.
     Experimental order parameter values and signs for pure POPS are from Ref. \citenum{NMRlipidsIV} and values
@@ -811,8 +818,9 @@ or ff99 ions \citet{aqvist90}.
     %which is corroborated by the series with \ce{K^+} counterions (lower affinity than \ce{Na^+}),
     %where the response is closer to the experiment, which uses only \ce{Na^+} counterions. 
   }
-  \todo{JOE+SAMULI: split this figure into separate plots for PC and PS}
 \end{figure*} 
+
+
 First, we monitor the response of POPC headgroup order parameters to the increasing amount of POPS (Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix}).
 According to the electrometer concept, the head group order parameters of PC lipids increase
 with the increasing amount of negatively charged PS lipids in experiments, because the headgroup P--N dipole
@@ -968,9 +976,9 @@ The value of $\Gamma ^{w} _{\rm Na}=-0.11 \pm 0.01$ nm$^{-2}$ for 1 M sodium in 
 simulation was reported in the previous work \cite{melcr18}.
 The presence of $\sim$17\% POPS in POPC bilayer increases the
 %relative surface excess of sodium with respect to water from negative
-value to $\Gamma ^{w} _{\rm Na}=0.09 \pm ??$ nm$^{-2}$ \todo{Error bar should be added}
+value to $\Gamma ^{w} _{\rm Na}=0.092 \pm 0.005 nm$^{-2}$ 
 for 0.621 M sodium, while value for potassium remains negative,
-$\Gamma ^{w} _{\rm K}=-0.12 \pm ??$ nm$^{-2}$ \todo{Error bar should be added} in POPC:POPS (5:1) mixture (Fig. \ref{fig:nacl-dens_PCPS}).
+$\Gamma ^{w} _{\rm K}=-0.123 \pm 0.005 nm$^{-2}$ in POPC:POPS (5:1) mixture (Fig. \ref{fig:nacl-dens_PCPS}).
 As discussed above, the sodium binding to POPC:POPS (5:1) mixture may be slightly overestimated also in
 ECC-lipid simulations. The response of headgroup order parameters to the addition of NaCl are
 slightly overestimated also in ECC-POPC simulations (Fig 3 in Ref. \citenum{melcr18}),
@@ -1007,7 +1015,6 @@ and all the other tested force fields, except CHARMM36 with the recently introdu
 which underestimated the headgroup order parameter response.
 In ECC-lipid simulations, the headgroup responses are in better agreement with experiments (Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}),
 indicating that the lower binding affinity than in Lipid17/Dang simulations is more realistic (Fig.~\ref{fig:cacl-dens_PCPS}).
-\todo{JOE: The density plot still needs to be changed to show both Lipid17 and ECC-lipids, and to support this argument.}
 %However, the steep decrease of the order parameters at low calcium concentrations,
 %observed especially in negatively charged bilayers \cite{borle85,macdonald87,roux90},
 %may not be fully captured by the ECC-lipid simulations.
@@ -1114,17 +1121,16 @@ Therefore, calcium ions bind more likely to negatively charged PS lipids than ne
 
 \begin{figure}[htbp!] 
   \centering 
-  \includegraphics[width=\figwidth]{../img/ecc_pops/density_profiles_ca_na_cl_wat_phos_models-compar_1-3_CaCl2-series.pdf}
+  \includegraphics[width=\figwidth]{../img/ecc_pops/density_profiles_ca_na_k_cl_wat_phos_ecclipids_lipid17_compar_80and200mMCaCl2.pdf}
   \caption{\label{fig:cacl-dens_PCPS} 
-    Number density profiles of \ce{Ca^{2+}}, \ce{Na^{+}} and \ce{Cl^-} along the normal of the membrane starting at the centre
+    Number density profiles of \ce{Ca^{2+}} and \ce{Cl^-} ions and \ce{Na^{+}} counterions 
+    along the normal of the membrane starting at the centre
     for the negatively charged membrane with the composition 5\,PC:1\,PS
-    at various bulk concentrations of \ce{CaCl2} from simulations with ECC-lipids. 
-    All profiles contain \ce{Na^+} counterions and an additional concentration of \ce{CaCl2}. 
-    In order to visualize the density profiles with a scale comparable to the profile of \ce{Ca^{2+}},  
-    the density profiles of~\ce{Cl^-} ions are divided by 2, and 
-    the density profiles of phosphate groups and water are divided by 5 and 200, respectively.  
+    at 80~mM (top) and 200~mM (bottom) added buffer concentrations of \ce{CaCl2} from simulations with ECC-lipids (solid) and Lipid17 (dashed). 
+    In order to visualize the density profiles with a comparable scale 
+    the density profile of~\ce{Ca^{2+}} ions are divided by 2, and 
+    the density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
   }
-  \todo{SAMULI: We should compare to the density profiles from Lipid17 simulations.}
 \end{figure} 
 
 %SAMULI: We will not go to the spin relaxation time analysis in this work
