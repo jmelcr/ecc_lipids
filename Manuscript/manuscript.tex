@@ -406,8 +406,7 @@ ions $f_q = 0.75$ \cite{leontyev09} to the partial charges of POPS. The lipids w
 the counterion charges of +0.75 in simulations with ECC-ions \cite{kohagen16}.
 Following our previous work for POPC, we use the scaling factor of $f_\sigma = 0.89$ for the Lennard-Jones~$\sigma$ parameters and
 scale the parameters of atoms only in the headgroup, glycerol backbone, and carbonyl regions \cite{melcr18}.
-Further optimization of parameters was not done in this work.
-\todo{Add here a reference to the parameters.}
+Further optimization of parameters was not done in this work. \cite{ECC-POPC_nacl_cacl2_files}
 % we used exactly the pre-determined scaling factor 
 %to represent the effects of electronic polarization
 %yielding a total charge of $-0.75$ in the ECC formalism. \cite{martinek17, leontyev09, melcr18}
@@ -437,7 +436,7 @@ therefore a length of 10.79 us which correspond to a nutation frequency of 46.35
 pulses where used giving a spectral width of 2.6 kHz in the indirect dimension and a total number of 32 points in
 the indirect dimension were recorded. These settings enable to record dipolar slices with a C--H bond order parameter
 resolution of +- 0.01. The C--H bond order parameter determined from a given dipolar
-splitting, $\Delta\nu$ (see e.g. Fig. \ref{R-PDLFslices} \todo{Is this reference to the correct figure?})
+splitting, $\Delta\nu$ (see e.g. Fig. \ref{R-PDLFslices} in SI)
 is equal to $\Delta\nu/(0.315\times21.5 kHz)$, where 0.315 is
 the scaling factor of the R18 recoupling sequence and 21.5 kHz is the maximum $^1$H-$^{13}$C dipolar coupling for a C--H bond.
 The refocused-INEPT transfer \cite{morris79,burum80} %[G. Morris and R. Freeman, J. Am. Chem. Soc. 101, 760 (1979);
@@ -605,6 +604,8 @@ in the first dimension (Fig. \ref{R-PDLF}) from the dipolar slices in the indire
 Because the exact assignment of these peaks was not possible, we assigned the
 acyl chain order parameters to mimic the profile predicted by the MD simulations (Fig. \ref{simVSexpNOions_POPS}).
 \todo{Tiago has to check and update this and figures in SI.}
+
+
 \begin{figure}[tb!] 
   \centering 
   \includegraphics[width=\figwidth]{../img/ecc_pops/Order-parameters_form-factors_exp-L17-ECC-lipids.pdf}
@@ -621,9 +622,9 @@ acyl chain order parameters to mimic the profile predicted by the MD simulations
   }  
   \todo{J: flip the chemical structure so that it agrees with the left-to-right reading of the plot.} \\
   \todo{The experimental order parameters from sn-1 chain are missing from the figure.} \\
-  \todo{We should use the same color coding for the models as in ECC-POPC paper, now it is opposite.} \\
   \todo{Inverted axis and positive value as label would be more clear for the order parameter figure.}
 \end{figure} 
+
 
 The Lipid17/Dang simulation give larger acyl chain order parameters and smaller area per molecule than the
 experimental values (Fig. \ref{simVSexpNOions_POPS} and table \ref{tab:apls}),
@@ -664,9 +665,6 @@ are within each others error bars.
     experiment (SDP model) \citep{kucerka14} & 62.7$\pm$ 1.3  \\ 
 %    \hline 
   \end{tabular} \\
-  \todo{I removed the value from Lipid17/ff99 simulation because this was not listed in Table I
-    and I think that it is more clear if we refer only to the NMRlipids IV result in the text.
-    I also changed the experimental value to correspond the value in the cited paper and added the error bar.}
 \end{table} 
 
 Despite the success in simulating bilayer dimensions and acyl chain conformations,
@@ -705,11 +703,6 @@ lipid force fields \cite{botan15, ollila16, Pluhackova2016, NMRlipidsIV}.
     in ECC-lipid (solid lines) and Lipid17/Dang (dashed lines) simulations of pure POPS (left) or POPC:POPS (5:1, right) bilayers.  
     The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
 }
-\todo{JOE: add labels with the relative surface excess $\Gamma$, which are promised to be present in the text.
-  SAMULI: I think that these are not promised in the current text and addition is not necessary.} \\
-\todo{JOE: split this figure into two: separate for POPS (to SI) and PC:PS 5:1 (main text)?
-  SAMULI: I feel now that we should keep the figure as it is. Also the POPC:POPS (5:1) results are now referred in the text.
-  However, if something is moved to SI, it should be POPS in main text, mixture in SI.}
 \end{figure} 
 Binding affinity of monovalent ions to lipid bilayers depends strongly on
 force field parameters \cite{catte16,NMRlipidsIV},
@@ -972,13 +965,13 @@ be estimated by comparing the relative surface excesses with respect to water, $
 between POPC:POPS (5:1) mixture and pure POPC \cite{melcr18}.
 %Such a quantity compares the adsorption of ions to the adsorption of water molecules at an interface 
 %without the necessity of defining a Gibbs dividing surface. \citep{melcr18, chattorajBOOK}
-The value of $\Gamma ^{w} _{\rm Na}=-0.11 \pm 0.01$ nm$^{-2}$ for 1 M sodium in pure ECC-POPC
+The value of $\Gamma ^{w} _{\rm Na}=-0.11 \pm 0.01 \mathrm{nm}^{-2}$ for 1 M sodium in pure ECC-POPC
 simulation was reported in the previous work \cite{melcr18}.
-The presence of $\sim$17\% POPS in POPC bilayer increases the
+The presence of $\sim$17\$ POPS in POPC bilayer increases the
 %relative surface excess of sodium with respect to water from negative
-value to $\Gamma ^{w} _{\rm Na}=0.092 \pm 0.005 nm$^{-2}$ 
+value to $\Gamma ^{w} _{\rm Na}=0.092 \pm 0.005 \mathrm{nm}^{-2}$ 
 for 0.621 M sodium, while value for potassium remains negative,
-$\Gamma ^{w} _{\rm K}=-0.123 \pm 0.005 nm$^{-2}$ in POPC:POPS (5:1) mixture (Fig. \ref{fig:nacl-dens_PCPS}).
+$\Gamma ^{w} _{\rm K}=-0.123 \pm 0.005 \mathrm{nm}^{-2}$ in POPC:POPS (5:1) mixture (Fig. \ref{fig:nacl-dens_PCPS}).
 As discussed above, the sodium binding to POPC:POPS (5:1) mixture may be slightly overestimated also in
 ECC-lipid simulations. The response of headgroup order parameters to the addition of NaCl are
 slightly overestimated also in ECC-POPC simulations (Fig 3 in Ref. \citenum{melcr18}),
@@ -1241,10 +1234,10 @@ underestimated calcium binding affinity to lipid bilayer with this force field \
     %The calculated probabilities of the calcium-lipid complexes also reflect only POPC (light green) resp POPS (orange). 
     % Probabilities were taken from simulations with comparable bulk concentrations of calcium around 250~mM. 
     Clusters of four or more lipids were not observed in either membrane.
-    Previously published simulation data \cite{melcr18} for pure POPC bilayers were taken directly from ?? Add Zenodo reference, if available. 
+    The threshold for counting coordinated lipids in a complex with \ce{Ca^{2+}} was set to $0.3\,\mathrm{nm}$, 
+    as the distance between the cation and the oxygen atoms of the lipids. 
+    Previously published simulation data \cite{melcr18} for pure POPC bilayers were taken directly from \cite{ECC-POPC_nacl_cacl2_files}. 
   }
-  \todo{Add definition used for the coordination} \\
-  \todo{Add link to the Zenodo, if available.}
 \end{figure} 
 
 
