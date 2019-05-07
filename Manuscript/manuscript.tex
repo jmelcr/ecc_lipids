@@ -166,7 +166,7 @@ Prague 6, Czech Republic}
 
 %%SAMULI: new suggestion for the preliminary title
 \title[] 
-  {Effective Inclusion of Electronic Polarization to a Negatively Charged Membrane}
+  { Non-negligible Effects of Electronic Polarization at Negatively Charged Membranes and ions }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% Some journals require a list of abbreviations or keywords to be 
@@ -258,7 +258,7 @@ Polarizability is necessarry for accurate simulations of cellular membranes at p
  
 \section{Introduction} 
 
-The phophatidylserine (PS) lipids are most common negatively charged lipids in eukaryotic membranes
+Phosphatidylserine (PS) lipids are the most common negatively charged lipids in eukaryotic membranes
 and important signaling molecules \cite{lemmon08,leventis10,li14}.
 They interact with signaling proteins \cite{leventis10},
 regulate surface charge and protein localization \cite{yeung08}, 
@@ -278,11 +278,15 @@ and the binding affinity is increased only due to the increased cation
 concentration in the vicinity of the membrane \cite{seelig90,sinn06}.
 On the other hand, calcium forms dehydrated complexes with PS headgroups
 which cause phase separation \cite{hauser77,kurland79,hauser85,feigenson86,mattai89,roux90,roux91,boettcher11}.
-Different theories are difficult to evaluate experimentally,
-especially with physiological ion concentrations which are typically quite low.
+Theories about the interaction between calcium and PS 
+are difficult to evaluate experimentally,
+especially at physiological ion concentrations,
+which are typically too low to yield measurable effects.
+
 More recently, classical molecular dynamics (MD) simulations
 have been used to support the interpretation of spectroscopic experiments,
 but the results strongly depend on the force field parameters \cite{boettcher11,kucerka14,melcrova16,hallock18,valentine18}.
+For instance, the moieties of PS lipids that interact with calcium cations vary greatly.
 In simulations with the CHARMM36 force field \cite{klauda10,venable13} using the NBfix parameters for calcium \cite{kim16}, 
 calcium ions interact only with the carboxylate group of PS lipids \cite{valentine18}.
 However, the same force field without the NBfix parameters, gives a significant binding affinity also to the phosphate region \cite{hallock18}.
@@ -298,7 +302,7 @@ is the direct comparison between experimental and calculated order parameters,
 which reduced the ambiguity arising from the interpretation of the data.
 Unfortunately, none of the readily available force fields was sufficiently accurate to correctly reproduce the
 cation binding affinity to zwitterionic PC bilayers \cite{catte16} or to the
-mixtures with negatively charge PS lipids \cite{NMRlipidsIV}.
+mixtures with negatively charged PS lipids \cite{NMRlipidsIV}.
 In our recent work~\cite{melcr18}, we were able to improve the cation binding affinity
 to zwitterionic 1-palmitoyl-2-oleoyl-sn-glycero-3-phosphocholine (POPC) lipid bilayer
 by implicitly including electronic polarizability using the electronic continuum
@@ -313,7 +317,7 @@ model and experiments enable detailed interpretation of calcium binding details 
 %performes comparably well at a fraction of the computational cost 
 %of the models with explicit polarization. \citep{lucas12,chowdhary13} 
 
-Here, we extend the ECC approach also to negatively charged 1-palmitoyl-2-oleoyl-sn-glycero-3-phospho-L-serine (POPS) lipid.
+Here, we extend the ECC approach also to the negatively charged 1-palmitoyl-2-oleoyl-sn-glycero-3-phospho-L-serine (POPS) lipid.
 We also complement the available experimental data for the the force field quality
 evaluation by measuring the acyl chain C--H bond order parameters of POPS in bilayer using natural abundance $^{13}$C NMR.
 In addition to the acyl chain order parameters measured here, the quality of the newly developed ECC-POPS force field parameters is
