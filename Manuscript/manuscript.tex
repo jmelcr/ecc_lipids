@@ -559,7 +559,7 @@ multilamellae are expected to be sufficiently similar in the used simulations an
 
 \section{Results and Discussion} 
  
-\subsection{Structural parameters of a pure ECC-POPS model membrane: Agreement with experiments} 
+\subsection{ECC-POPS improves agreement in experimental structural parameters of a pure POPS bilayer } 
  
 The X-ray scattering form factors and C-H bond order parameters from NMR experiments are good measures to validate
 the lipid bilayer structure in MD simulations against experiments because they
@@ -569,7 +569,7 @@ can be directly calculated from MD simulations~\cite{ollila16}.
 The X-ray scattering form factors and C-H bond order parameters in
 the headgroup and glycerol backbone region of POPS lipid bilayer are already available in the literature \cite{kucerka14,NMRlipidsIV}.
 Here, we measure also the C--H bond order parameters of the acyl chain region using natural abundance $^{13}$C NMR.
-We first determined the order parameters of each peak corresponding different C--H bonds detected
+We first determined the order parameters of each peak corresponding to different C--H bonds detected
 in the first dimension (Fig. \ref{R-PDLF}) from the dipolar slices in the indirect dimension (Fig. \ref{R-PDLFslices}).
 Because the exact assignment of these peaks was not possible, we assigned the
 acyl chain order parameters to mimic the profile predicted by the MD simulations (Fig. \ref{simVSexpNOions_POPS}).
@@ -599,31 +599,24 @@ experimental values (Fig. \ref{simVSexpNOions_POPS} and table \ref{tab:apls}),
 indicating that this simulation predicts too dense POPS lipid bilayer. This is also in line with
 the discrepancy observed in the X-ray form factor between this simulation and experiment (Fig. \ref{simVSexpNOions_POPS}).
 In previous study \cite{NMRlipidsIV}, the Lipid17 force field with {\AA}qvist ions~\cite{aqvist90}
-gave a larger area per molecule (57 \AA$^2$) for POPS being closer to the experimental value,
+gave a larger area per molecule (57~\AA$^2$) for POPS being closer to the experimental value,
 which is probably due to the weaker counterion binding affinity of {\AA}qvist ions.
 However,  {\AA}qvist ions exhibit artificial aggregation of ions at larger salt concentrations \cite{kohagen16, chen07, NMRlipidsIV}.
 Therefore, the Dang ions with more realisitic bulk properties are used here to analyze the effect of ECC to the properties of POPS lipid bilayer. 
 The ECC-POPS simulation gives a good agreement with the X-ray scattering form factors and experimental
-acyl chain order parameters (see Fig.~\ref{simVSexpNOions_POPS}), indicating the the bilayer dimensions and acyl chain
+acyl chain order parameters (see Fig.~\ref{simVSexpNOions_POPS}), indicating that the bilayer dimensions and acyl chain
 conformations are well described by the force field. The area per lipid from ECC-POPS simulation is slightly
 smaller than the value reported from SDP model \cite{kucerka14} (table \ref{tab:apls}), but the values
-are within each others error bars. 
+agree within their error estimates. 
 
 
-% In order to obtain the area per lipid from experiments, modeling is used on top of the scattering factors \citep{kucerka14}. 
-%In ocntrast, this property is easily extracted directly from simulations with flat phospholipid bilayers. 
-%We compare the values from experiments and simulations in Table~\ref{tab:apls}. 
-%While the agreement between the scattering form factors from the simulation of a pure POPS bilayer and experiment 
-%are excellent (Fig.~\ref{simVSexpNOions_POPS}), there is a non-negligible difference between the values of the area per lipid in Table~\ref{tab:apls}. 
-%Since both values are derived from the scattering form factors through modeling of the electron density of the bilayer,
-%we cannot decide, which of the values is more reliable. 
 
 \begin{table}[tb!] 
 \centering
-  \caption{Area per lipid (APL) of POPS bilayers from simulations with different force fields at 298~K with \ce{Na^+} counterions. \label{tab:apls} } 
+  \caption{Area per lipid of POPS bilayers, $A_L$, from simulations with different force fields at 298~K with \ce{Na^+} counterions. \label{tab:apls} } 
   \begin{tabular}{l|c } 
     \multicolumn{2}{c}{POPS} \\
-    model          & APL / Å$^2$    \\ 
+    model          & $A_L$ / Å$^2$    \\ 
     \hline 
     Lipid17/Dang              & 53.5$\pm$ 1.7   \\ 
 %    Lipid17/ff99              & 57.9$\pm$ 1.7   \\ 
@@ -641,23 +634,23 @@ headgroup order parameters and conformations \cite{botan15,ollila16,NMRlipidsIV}
 This is the case also for Lipid17 POPS simulations, where the headgroup and glycerol backbone
 order parameters are quite far from experimental values with both Dang (Fig. \ref{simVSexpNOions_POPS})
 and {\AA}qvist \cite{NMRlipidsIV} ions. The values from ECC-POPS simulation are closer,
-but not in full agreement with experiments (Fig. \ref{simVSexpNOions_POPS}).
+but not in full agreement with experiments (Fig.~\ref{simVSexpNOions_POPS}).
 Especially, the experimentally observed more negative values of the $\beta$-carbon
 and the larger forking (difference of order parameters between hydrogens attached to the
 same carbon \cite{ollila16}) of the $\alpha$-carbon in POPS than in POPC \cite{NMRlipidsIV}
-are not reproduced by neither of the models here. These differences are previously related
-to a more rigid structure of PS headgroup and the stiffness of the C$_\alpha$-C$_\beta$-C$_\gamma$-O$_\gamma$
-dihedral, which is \todo{the dihedral should be plotted and sentence finished.}
-
-%The head group order parameters $\alpha$ and $\beta$ are highly relevant for this work,
-%as they are being used in the electrometer concept \cite{altenbach84, catte16, melcr18}.
-%For POPC in pure water, the order parameter $\beta$ agrees well with the experiment, while the order parameter $\alpha$ is somewhat lower. 
-
-In conclusion, the ECC-POPS model reproduces the lipid bilayer dimensions and
-acyl chain conformations in good agreement with experiments, but has room for
-improvement in the glycerol backbone and headgroup region. Therefore,
-its structural accuracy is in the same level as in other state-of-the-art
-lipid force fields \cite{botan15, ollila16, Pluhackova2016, NMRlipidsIV}.
+are not reproduced by neither of the models here. 
+These differences are previously related
+to a more rigid structure of PS headgroup and 
+the stiffness of the C$_\alpha$-C$_\beta$-C$_\gamma$-O$_\gamma$ dihedral. 
+Interestingely, this dihedral angle is more flexible in ECC-POPS compared to Lipid17 
+suggesting that its rigidity is overestimated in Lipid17 due to the lack of electronic polarizability,
+while the same dihedral parameters yield too small forking in ECC-POPS.
+\todo{the dihedral to be plotted.}
+Although the ECC-POPS model reproduces the lipid bilayer dimensions and
+acyl chain conformations in a good agreement with experiments, 
+there is a room for improvements especially in the glycerol backbone and headgroup region,
+e.g. in the parameters of the associated dihedral angles. 
+\cite{botan15, ollila16, Pluhackova2016, NMRlipidsIV}.
  
  
 \subsection{Counterion binding affinity and interactions between PC and PS head groups}
