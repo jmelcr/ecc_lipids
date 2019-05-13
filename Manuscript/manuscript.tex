@@ -370,36 +370,25 @@ for a wide range of applications.
  
 \subsection{Electronic continuum correction for PS lipids}\label{section:ecc} 
 
-The electronic continuum correction (ECC) is a simple method to implicitly include
-the electronic polarizability into classical molecular dynamics (MD) simulations
-by scaling the electric charges defined in force fields.
-%The polarization of electrons in ECC-lipids
-%uses the implicit method termed electronic continuum correction (ECC). \cite{leontyev09, Pluharova2014, martinek17, melcr18} 
-%In this method, a system of polarizable particles is represented 
-%with an equivalent system of particles with fixed charges,
-%which account for the electronic polarizability \emph{implicitly}.
+Electronic continuum correction (ECC) is an implicit mean-field representation of 
+the electronic polarization in classical MD simulations. 
 For simple ions in water, the electronic polarizability
 can be taken into account by scaling the charge with a constant factor 
-%This is practically achieved by rescaling the charges with a pre-determined scaling factor, $f_q$,
 %\begin{equation}
- $ f_q = \frac{1}{\sqrt{\epsilon_{el}}} \approx 0.75$,
+ \mbox{$ f_q = \frac{1}{\sqrt{\epsilon_{el}}} \approx 0.75$,}
 %\end{equation}
 where  $\epsilon_{el} = 1.78$ is the high-frequency dielectric constant of electrons in water \cite{leontyev09}.
-%,, as
-%The value of $\epsilon_{el} = 1.78$ for water solutions gives the scaling
-%factor of $f_q \approx 0.75$ for aquaeous environments \cite{leontyev09}.
 The scaling of charges with this factor has been recently applied to improve classical models for ions and
-other biomolecules \cite{Pluharova2014, martinek17} \todo{Pavel can probably update this (insulin?)}.
-In addition to the charge, the Lennard-Jones~$\sigma$ was scaled with a factor of $f_\sigma = ??$
+other biomolecules \cite{Pluharova2014, martinek17, duboue2018insulin, Mason2019, Duboue2018MgZn} \todo{Pavel can probably update this (insulin?)}.
+In addition to the charge, the Lennard-Jones~$\sigma$ was scaled with a factor $f_\sigma \leq 1$
 to improve the hydration properties of ions with respect to scattering data in these studies
 \todo{Pavel can probably deliver the state of the art information about these parameters and sharpen the discussion}.
 
 Derivation of the correct scaling factor for lipids is more complicated, because
-%In contrast to the total charge of ions,
-the partial charges depend on the methods used to derive the force field.
-For example, the partial charges may already include some electronic polarizability effects
-and the scaling factor should then be larger than the theoretically derived value for ions in water, $f_q \approx 0.75$.
-Before the ECC theory was rigorously derived, similar idea was employed in early classical 
+the partial charges depend on the methods used to derive the respective force fields.
+For example, the partial charges may already include the effects of electronic polarizability to some extent,
+and hence, the scaling factor can be larger than the theoretically derived value for ions in water, $f_q \approx 0.75$.
+Before the ECC theory was rigorously derived, similar idea was already employed in early classical 
 MD simulations of lipids and surfactants using the scaling factor of 0.5 for atomic charges  \cite{jonsson86,egberts94, berendsen1996}. 
 In our recent work, we applied the ECC to the Amber based lipid14 force field of zwitterionic POPC lipid \cite{dickson14}
 by scaling the partial charges and Lennard-Jones~$\sigma$ parameters of headgroup, glycerol backbone,
@@ -408,25 +397,16 @@ the calcium binding affinity to POPC lipid bilayers, evaluated using the headgro
 and the electrometer concept \cite{akutsu81,altenbach84,seelig87,catte16}, and the X-ray scattering form factor
 without additional ions \cite{kucerka11}, which resulted to the scaling factor values of $f_q = 0.8$ and $f_\sigma = 0.89$  \cite{melcr18}.
 
-Here, we apply the ECC to the Amber based lipid17 parameters \cite{lipid17-future} of POPS lipid with a monovalent negative charge.
-Because POPS carries a physical total charge as ions in water, we apply the theoretically derived scaling factor for
-ions $f_q = 0.75$ \cite{leontyev09} to the partial charges of POPS. The lipids with a total charge of -0.75 also neutralize
-the counterion charges of +0.75 in simulations with ECC-ions \cite{kohagen16}.
+Here, we apply the ECC to the Amber-based lipid17 parameters \cite{lipid17-future} of POPS lipid with a monovalent negative charge.
+Because POPS carries a physical total charge as aqueous ions, we apply the theoretically derived scaling factor for
+ions $f_q = 0.75$ \cite{leontyev09} to the partial charges of POPS. 
+The lipids with a total charge of -0.75 are also neutralized
+by the counterion charges of +0.75 in simulations with ECC-ions \cite{Pluharova2014, kohagen16, martinek17}.
 Following our previous work for POPC, we use the scaling factor of $f_\sigma = 0.89$ for the Lennard-Jones~$\sigma$ parameters and
-scale the parameters of atoms only in the headgroup, glycerol backbone, and carbonyl regions \cite{melcr18}.
-Further optimization of parameters was not done in this work. \cite{ECC-POPC_nacl_cacl2_files}
-% we used exactly the pre-determined scaling factor 
-%to represent the effects of electronic polarization
-%yielding a total charge of $-0.75$ in the ECC formalism. \cite{martinek17, leontyev09, melcr18}
-Similarly to the ECC-POPC model \cite{melcr18}, we applied the ECC only to the
-non-tail atoms, i.e., to atoms in the headgroup, glycerol backbone, and carbonyl regions. 
-%polar parts of the phospholipid,
-%i.e., charges on all atoms except on alkyl tails, 
-%which do not encounter direct contacts with ions. 
+use it to scale the parameters of atoms only in the headgroup, glycerol backbone, and carbonyl regions \cite{melcr18, ECC-POPC_nacl_cacl2_files}.
+Further optimization of parameters was not done in this work. 
 
 
-%\subsection{Validation of membrane properties}
-% SAMULI: I have dissolved this section into results and discussion
 
 \subsection{Measurements of acyl chain order parameters}
 A R-type Proton Detected Local Field (R-PDLF) experiment was performed to determine C--H bond order
