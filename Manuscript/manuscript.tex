@@ -583,13 +583,15 @@ acyl chain order parameters to mimic the profile predicted by the MD simulations
 \hfill
   \caption{\label{simVSexpNOions_POPS} 
     \textbf{Top:} X-ray scattering form factors from simulations with Lipid17/Dang \citep{lipid17-future, dang2006} and 
-    the ECC-POPS/ECC-ions \cite{martinek17, Pluhackova2016} compared with experiments~\citep{kucerka14} at 298~K. 
+    ECC-POPS/ECC-ions \cite{martinek17, Pluhackova2016} compared with experiments~\citep{kucerka14} at 298~K. 
     \textbf{Middle:} Order parameters of POPS head group, glycerol backbone and acyl chains  
-    from simulations with the Lipid17 \citep{lipid17-future} and the ECC-POPS models 
+    from the same simulations 
     compared with experiments at 298~K. \citep{NMRlipidsIV}
     Open/closed symbols are used for palmitoyl/oleoyl chains of POPS. 
     \textbf{Bottom:} The chemical structure of POPS and the labeling of the carbon segments. 
   }  
+\todo{Add label $\gamma$ to the figure -- it is used in Fig with the dihedral angle, 
+and it can be also used in the description of COO- vector. }
 \end{figure} 
 
 
@@ -657,6 +659,7 @@ e.g. in the parameters of the associated dihedral angles.
   \caption{\label{fig:dihedral}
     Distribution of dihedral angle \ce{C_\alpha-C_\beta-C_\gamma-O_\gamma} in POPS 
     from simulations of a pure POPS bilayer with \ce{Na+} counterions using Lipid17 and ECC-lipids. 
+    Labelling of POPS segments is in Fig.~\ref{simVSexpNOions_POPS}. 
 }
 \end{figure} 
 
@@ -1110,13 +1113,8 @@ Recent analyzes of interaction sites between calcium and PS lipids combining
 MD simulations with various experimental techniques have been 
 controversial because the results strongly depend on force fields parameters \cite{melcrova16,valentine18,hallock18}.
 In ECC-lipids simulation of POPC:POPS (5:1) mixture with 409 mM CaCl$_2$,
-<<<<<<< HEAD
 the calcium ions bind more likely 
 to the carboxylate than to phosphate moiety of POPS headgroup (Table \ref{tab:binding}),
-=======
-the calcium ions bind twice more likely to the carboxylate than to phosphate moiety of POPS headgroup
-\todo{I am not sure if this is correct, because I do not understand the numbers in the table.} (Table \ref{tab:binding}),
->>>>>>> 37792e9a7b5fd40fe2d15e49d0b40571047888b0
 in line with the results without the NBfix corrections in CHARMM36 \cite{hallock18}.
 However, in CHARMM36 simulations without the NBfix correction for calcium \cite{kim16},
 calcium ions significantly overbind to PC lipids  \cite{catte16} and calcium ions coordinate
@@ -1155,15 +1153,17 @@ underestimated calcium binding affinity to lipid bilayer with this force field \
   \includegraphics[width=\figwidthsmall]{../img/bound_ca_populations.pdf} 
   \includegraphics[width=\figwidthsmall]{../img/stoichiometry_CaCl2_comparison_Ecc-lipids_PC-vs-PCPS.pdf} \\ 
   \caption{ \label{fig:cacl_complexes} 
-  Left: Percentages of the population of bound Ca$^{2+}$ 
+  \textbf{Left:} Percentages of the population of bound Ca$^{2+}$ 
 in exclusive contact with various lipid moieties 
 in a POPC:POPS (5:1) bilayer with 409 mM CaCl$_2$. 
+The bar representing total populations of bound \ce{Ca^{2+}} to PC, PS, or PC and PS (blue),
+is in part covered by areas representing contributions of individual moieties (shades of orange and red). 
 In the case of mixed simultaneous binding to PC and PS
 we distinguish different moieties only in PS.
 %i.e., PC can interact with any considered moiety. 
 For comparison, in a pure POPC bilayer with 350 mM CaCl$_2$, 
 67\% of bound \ce{Ca^{2+}} is exclusively in contact with \ce{PO_4} group. \cite{melcr18} 
-    Right: Relative probabilities of \ce{Ca^{2+}} ions to coordinate with a certain number of lipids
+    \textbf{Right:} Relative probabilities of \ce{Ca^{2+}} ions to coordinate with a certain number of lipids
     in pure POPC bilayer with 350 mM CaCl$_2$ and in POPC:POPS (5:1) mixture with 400 mM CaCl$_2$.  
     Analysis was done for both systems by considering all lipids (blue and violet) and
     for POPC:POPS (5:1) mixture also by considering POPC and POPS lipids separately (green and orange). 
