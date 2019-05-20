@@ -80,7 +80,7 @@
 \newlength{\figwidthfull}
 \setlength{\figwidthfull}{14 cm} 
 \newlength{\figheightsmall}
-\setlength{\figheightsmall}{8 cm} 
+\setlength{\figheightsmall}{6 cm} 
 \newlength{\figheight}
 \setlength{\figheight}{12 cm} 
 
@@ -676,23 +676,13 @@ e.g. in the parameters of the associated dihedral angles.
  
 \subsection{Binding of counterions to POPS and POPC and interactions between their head groups}
 
-\begin{figure}[tbp!] 
-  \centering 
-  \includegraphics[height=\figheight]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_ecclipids-lipid17.pdf}
-  \includegraphics[height=\figheight]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_5PC-1PS_ecclipids-lipid17.pdf}
-  \caption{\label{fig:POPS-counterions-dens}
-    Number density profiles of \ce{K^{+}} and \ce{Na^{+}} counterions along the membrane normal axis
-    in ECC-lipids (solid lines) and Lipid17/Dang (dashed lines) simulations of pure POPS (left) or POPC:POPS (5:1, right) bilayers.  
-    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
-}
-\end{figure} 
-
 
 In simulations, binding affinity of monovalent ions to lipid bilayers depends strongly on
 force field parameters \cite{catte16,NMRlipidsIV}.
-For instance in the present work the affinity of sodium counterions to a POPS bilayer 
-is stronger in Lipid17/Dang simulations 
-than in simulations with ECC-POPS (Fig.~\ref{fig:POPS-counterions-dens}).
+% J: I think the following sentence can be omitted
+%For instance in the present work the affinity of sodium counterions to a POPS bilayer 
+%is stronger in Lipid17/Dang simulations 
+%than in simulations with ECC-POPS (Fig.~\ref{fig:POPS-counterions-dens} and~\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PC}).
 The cation binding affinities to lipid bilayers in simulations have been previously evaluated
 against experiments using the order parameters of $\alpha$ and $\beta$ carbons in the
 phosphatidylcholine (PC) lipid headgroup (see Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PC} for the labeling) \cite{catte16,melcr18,NMRlipidsIV},
@@ -709,38 +699,27 @@ to a lipid bilayer containing PS in simulations using two approaches.
 
 \begin{figure*}[!tbp] 
   \centering 
+  \includegraphics[height=\figheightsmall]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_5PC-1PS_ecclipids-lipid17.pdf}
   \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
   \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_kcl.pdf} 
   \includegraphics[height=\figheightsmall]{../img/POPCstructure.pdf} 
   \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix_PC} 
-    The POPC head group order parameters and the P--N vector angle
+    \textbf{Left:} Number density profiles of \ce{K^{+}} and \ce{Na^{+}} counterions along the membrane normal axis
+    in ECC-lipids (solid lines) and Lipid17/Dang (dashed lines) simulations of POPC:POPS (5:1) bilayers.  
+    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
+    \textbf{Middle:} The POPC head group order parameters and the P--N vector angle
     with respect to the membrane normal as a function of POPS content in a bilayer
     from ECC-lipids and Lipid17/Dang simulations with \ce{Na^+} (left) and \ce{K^+} (right) counterions.
     Experimental order parameter values are from Ref. \citenum{scherer87}
     and the signs from Ref. \citenum{ferreira16} 
     (only \ce{Na^+} counterions, but shown also in the right plots for \ce{K+}).
+    \textbf{Right: Chemical structure and labelling of carbon segments of POPC. }
   }
+\todo{J: Will manually improve this figure with panels A, B, C and D 
+and will erase the duplicate y-axis description 
+and will add ticks to the right side of the plotting area. }
 \end{figure*} 
 
-
-\begin{figure*}[!tbp] 
-  \centering 
-  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
-  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_kcl.pdf} 
-  \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix_PS} 
-    The POPS head group order parameters, the P--N and C$_\beta$--C$_\gamma$ vector angles (stars)
-    with respect to the membrane normal as a function of POPC content in a bilayer
-    from ECC-lipids and Lipid17/Dang simulations with \ce{Na^+} (left) and \ce{K^+} (right) counterions.
-    Experimental order parameter values and signs for pure POPS are from Ref. \citenum{NMRlipidsIV} and values
-    for POPC:POPS (5:1) mixture from Ref. \citenum{roux90} 
-    (only \ce{Na^+} counterions, but shown also in the right plots for \ce{K+}).
-    % No translation in y-axis done in this plot:
-    %The underestimated response of ECC-lipids with \ce{Na^+} counterions 
-    %is likely due to a still slightly overestimated binding affinity of \ce{Na^+} to the phospholipids,
-    %which is corroborated by the series with \ce{K^+} counterions (lower affinity than \ce{Na^+}),
-    %where the response is closer to the experiment, which uses only \ce{Na^+} counterions. 
-  }
-\end{figure*} 
 
 
 First, we monitor the response of POPC headgroup order parameters to the increasing amount of POPS (Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix}).
@@ -751,7 +730,7 @@ The trend is observed with both force fields in simulations with \ce{K+} counter
 in ECC-POPS simulation with \ce{Na+} counterions, but not in Lipid17/Dang ion simulations with \ce{Na+} counterions,
 where the order parameters are unchanged or decrease and the P--N vector tilts more perpendicular to the membrane interface.
 The result can be explained by the higher binding affinity of sodium in the
-Lipid17/Dang ion simulations (Fig~\ref{fig:POPS-counterions-dens}), which
+Lipid17/Dang ion simulations (Fig~\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PC}), which
 compensates the negative charge of PS lipids at the interface.
 In contrast, ECC-lipids represent this trend correctly
 with only slightly underestimated slopes of the order parameters 
@@ -766,14 +745,14 @@ According to the electrometer concept, the decrease of PC lipid head group order
 correlates with the amount of bound cations \cite{akutsu81,altenbach84,seelig87,roux90,catte16,NMRlipidsIV},
 thus the binding affinity of the ions to POPC:POPS (5:1) mixtures increase in order K$^{+}$ $<$ Li$^{+}$  $<$ Mg$^{2+}$  $<$ Ca$^{2+}$.
 The response of PC headgroup order parameters to the increasing amount of KCl is close to experiments
-and the change in P--N vector is negligible in both force fields (Fig. \ref{fig:delta_ordPar_KCl_PCPS}), athough the change of the $\alpha$-carbon
+and the change in P--N vector is negligible in both force fields (Fig. \ref{fig:delta_ordPar_monoval_PCPS}), athough the change of the $\alpha$-carbon
 order parameter may be slightly overestimated by the Lipid17/Dang simulations. 
-This could be explained by the slightly deeper penetration of potassium into the bilayer (Fig. \ref{fig:POPS-counterions-dens}).
+This could be explained by the slightly deeper penetration of potassium into the bilayer (Fig. \ref{fig:delta_ordPar_NaCl_PC-PS_mix_PC}).
 
 Because experimental data with the additional amount of sodium in POPC:POPS (5:1) mixture was not available,
 we compared the simulation results to the experimental data with the additional amounts of
 lithium and potassium ions, which should give the lower and upper bounds to the sodium binding
-affinity (Fig. \ref{fig:delta_ordPar_NaCl_PCPS}). The PC headgroup response to the additional
+affinity (Fig. \ref{fig:delta_ordPar_monoval_PCPS}). The PC headgroup response to the additional
 amount of sodium is clearly overestimated by the Lipid17/Dang simulation and
 the response in ECC-lipids simulations is probably too close to the experimental results for lithium.
 % The following conclusion is already in the previous sentence, so I commented it out
@@ -791,41 +770,52 @@ the response in ECC-lipids simulations is probably too close to the experimental
  
 \begin{figure}[tbp!] 
   \centering 
-  \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_nacl.pdf} 
-  \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_nacl.pdf} 
-  \caption{\label{fig:delta_ordPar_NaCl_PCPS} 
-    Changes of the head group order parameters, and the angles of P--N and C$_\beta$--C$_\gamma$ (stars) vectors
+  \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_kcl.pdf} 
+  \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_nacl.pdf} 
+  \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_kcl.pdf} 
+  \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_nacl.pdf} 
+  \caption{\label{fig:delta_ordPar_monoval_PCPS}
+    Changes of the head group order parameters, and the angles of P--N and \ce{C_\beta-C_\gamma} (stars) vectors 
     with respect to the membrane normal of POPC (left) and POPS (right) in a POPC:POPS (5:1) bilayer 
-    as a function of \ce{NaCl} concentration from ECC-lipids and Lipid17/Dang simulations at 298 K.
+    as a function of \ce{KCl} and \ce{NaCl} concentration from ECC-lipids and Lipid17/Dang simulations 
+    compared with experimental values from Ref. \citenum{roux90} (signs from Ref. \citenum{ferreira16}) at 298 K.
     The y-axis for the $\alpha$-carbon results of POPS (middle right) is transferred
     with the same value for both order parameters such that the lower order
     parameter value from pure POPS is at zero to correctly illustrate the significant forking.
     Because experimental data with \ce{NaCl} is not available for POPC, the data for KCl and \ce{LiCl} (dashed line, left)
     are shown as lower and upper bounds for the response to \ce{NaCl}, respectively.
-    The magnitudes of experimental order parameters are from Ref. \citenum{roux90} and signs from Ref. \citenum{ferreira16}.
   }
-  \end{figure} 
-
-
-\begin{figure}[tbp!] 
-  \centering 
-  \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_kcl.pdf} 
-  \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_kcl.pdf} 
-  \caption{\label{fig:delta_ordPar_KCl_PCPS}
-    Changes of the head group order parameters, and the angles of P--N and C$_\beta$--C$_\gamma$ (stars) vectors 
-    with respect to the membrane normal of POPC (left) and POPS (right) in a POPC:POPS (5:1) bilayer 
-    as a function of \ce{KCl} concentration from ECC-lipids and Lipid17/Dang simulations 
-    compared with experimental values from Ref. \citenum{roux90} (signs from Ref. \citenum{ferreira16}) at 298 K.
-    The y-axis for the $\alpha$-carbon results of POPS (middle right) is transferred
-    with the same value for both order parameters such that the lower order
-    parameter value from pure POPS is at zero to correctly illustrate the significant forking.
-  }
+\todo{J: Will improve this figure with panels A, B, C and D 
+and put POPC together, POPS together 
+and remove the duplicate y-axis titles 
+and make a common legend. }
 \end{figure} 
 
  
+\begin{figure*}[!tbp] 
+  \centering 
+  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
+  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_kcl.pdf} 
+  \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix_PS} 
+    The POPS head group order parameters, the P--N and C$_\beta$--C$_\gamma$ vector angles (stars)
+    with respect to the membrane normal as a function of POPC content in a bilayer
+    from ECC-lipids and Lipid17/Dang simulations with \ce{Na^+} (left) and \ce{K^+} (right) counterions.
+    Experimental order parameter values and signs for pure POPS are from Ref. \citenum{NMRlipidsIV} and values
+    for POPC:POPS (5:1) mixture from Ref. \citenum{roux90} 
+    (only \ce{Na^+} counterions, but shown also in the right plots for \ce{K+}).
+    % No translation in y-axis done in this plot:
+    %The underestimated response of ECC-lipids with \ce{Na^+} counterions 
+    %is likely due to a still slightly overestimated binding affinity of \ce{Na^+} to the phospholipids,
+    %which is corroborated by the series with \ce{K^+} counterions (lower affinity than \ce{Na^+}),
+    %where the response is closer to the experiment, which uses only \ce{Na^+} counterions. 
+  }
+\todo{J: I suggest to put this to SI. }
+\end{figure*} 
+
+
 The changes of POPS headgroup order parameters are almost negligible in experiments with increasing POPC fraction in bilayer
 or monovalent ion concentration in solvent
-(Figs. \ref{fig:delta_ordPar_NaCl_PCPS}, \ref{fig:delta_ordPar_KCl_PCPS} and \ref{fig:delta_ordPar_NaCl_PC-PS_mix}).
+(Figs. \ref{fig:delta_ordPar_monoval_PCPS}, \ref{fig:delta_ordPar_monoval_PCPS} and \ref{fig:delta_ordPar_NaCl_PC-PS_mix}).
 %while calcium leads to relatively large changes with low concentrations followed by a rapid saturation below 100mM (Fig. \ref{fig:delta_ordPar_CaCl_PCPS}) \cite{scherer87,roux90}.
 %The interaction with \ce{K^+}, which binds very weakly to both neutral and negatively charged membranes, 
 %renders a qualitatively different response of the order parameter $S^\beta$ in POPS 
@@ -843,7 +833,7 @@ was also observed in previous simulations with other force fields \cite{NMRlipid
 ECC-POPS simulation, where also the changes in the PS headgroup orientation are more modest (Fig. \ref{fig:delta_ordPar_NaCl_PC-PS_mix}).
 The POPS headgroup orientation and order parameters are more sensitive also to the additional amount
 of sodium and potassium in Lipid17/Dang simulations, while dependence is weaker and closer to experiments
-in ECC-POPS simulations (Figs. \ref{fig:delta_ordPar_NaCl_PCPS} and \ref{fig:delta_ordPar_KCl_PCPS}).
+in ECC-POPS simulations (Figs. \ref{fig:delta_ordPar_monoval_PCPS} and \ref{fig:delta_ordPar_monoval_PCPS}).
 These structural changes can relate to variations in the interactions between PC and PS head groups 
 and also to the changing amount of counterions and PS in the composition. 
 %In contrast, ECC-lipids with ECC-ions capture the different response 
