@@ -107,7 +107,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
 \author{Josef Melcr} 
-\email{melcr@uochb.cas.cz} 
+\email{melcr@marge.uochb.cas.cz} 
 %%\homepage[]{https://jmelcr.github.io/}
 \affiliation{Institute of Organic Chemistry and Biochemistry, 
 Academy of Sciences of the Czech Republic,  
@@ -167,7 +167,11 @@ Prague 6, Czech Republic}
 
 %%SAMULI: new suggestion for the preliminary title
 \title[] 
-  {SUPPLEMENTARY INFORMATION: Effective Inclusion of Electronic Polarization to a Negatively Charged Membrane}
+  { SUPPLEMENTARY INFORMATION: 
+    Detailed structure of negatively charged membranes 
+    of phosphatidylserine and phosphatidylcholine 
+    at concentrations of calcium, sodium and potassium salts
+    from molecular dynamics simulations with electronic polarization }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% Some journals require a list of abbreviations or keywords to be 
@@ -201,13 +205,30 @@ Prague 6, Czech Republic}
   }
 \end{figure}
 
-\begin{figure}[tbp!] 
+\begin{figure}[hbp!] 
   \centering 
   \includegraphics[width=\textwidth]{../Fig/slices_used.eps}
   \caption{\label{R-PDLFslices}
     Dipolar slices from the R-PDLF spectra used to determine the acyl chain order parameters of POPS.
   }
 \end{figure} 
+
+
+
+\pagebreak
+
+\section{Distribution of dihedral angle \ce{C_\alpha-C_\beta-C_\gamma-O_\gamma} in POPS}
+\begin{figure}[hbp!] 
+  \centering 
+  \includegraphics[width=\figwidth]{../img/dihedral_angle_distribution_Ca-Cb-Cg-Og_ECC-L17.pdf}
+  \caption{\label{fig:dihedral}
+    Distribution of dihedral angle \ce{C_\alpha-C_\beta-C_\gamma-O_\gamma} in POPS 
+    from simulations of a pure POPS bilayer with \ce{Na+} counterions using Lipid17 and ECC-lipids. 
+    Labelling of POPS segments is in Fig.~\ref{simVSexpNOions_POPS}. 
+}
+\todo{Cannot get rid of the copy of the Fig.1 cation}
+\end{figure} 
+
 
 \pagebreak
 \section{Density profiles of additional monovalent cations in POPC:POPS (5:1) mixtures}
