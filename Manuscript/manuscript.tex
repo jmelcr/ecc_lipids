@@ -790,7 +790,7 @@ the response in ECC-lipids simulations is probably too close to the experimental
 \todo{J: Will improve this figure with panels A, B, C and D 
 and put POPC together, POPS together 
 and remove the duplicate y-axis titles 
-and make a common legend. }
+and make a common legend distinguishing different experiments better. }
 \end{figure} 
 
 
@@ -906,9 +906,27 @@ to $\Gamma^{w}_{Ca} = 0.24\mathrm{nm^{-2}}$ ($\sim 4.8$ phospholipids per bound 
 
 \begin{figure}[tbp!] 
   \centering 
-  \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_cacl.pdf} 
-  \includegraphics[height=\figheight]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_cacl.pdf} 
+  \begin{tabular}{ c }
+  \includegraphics[height=\figheightsmall]{../img/ecc_pops/density_profiles_ca_na_k_cl_wat_phos_ecclipids_lipid17_compar_80and200mMCaCl2.pdf}
+  \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_cacl.pdf} 
+  \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_cacl.pdf} 
+  \end{tabular}
+  \begin{tabular}{ c }
+  \includegraphics[width=3cm]{../img/bound_ca_populations.pdf} \\
+  \includegraphics[width=3cm]{../img/stoichiometry_CaCl2_comparison_Ecc-lipids_PC-vs-PCPS.pdf} 
+  \end{tabular}
+  \caption{\label{fig:cacl-dens_PCPS} 
+    \textbf{Left panel:}
+    Number density profiles of \ce{Ca^{2+}} and \ce{Cl^-} ions and \ce{Na^{+}} counterions 
+    along the normal of the membrane starting at the centre
+    for the negatively charged membrane with the composition 5\,PC:1\,PS
+    at 80~mM (top) and 200~mM (bottom) added buffer concentrations of \ce{CaCl2} from simulations with ECC-lipids (solid) and Lipid17 (dashed). 
+    In order to visualize the density profiles with a comparable scale 
+    the density profile of~\ce{Ca^{2+}} ions are divided by 2, and 
+    the density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
+  }
   \caption{\label{fig:delta_ordPar_CaCl_PCPS} 
+    \textbf{Middle panels:}
     Changes of the head group order parameters, and the angles of P--N and C$_\beta$--C$_\gamma$ (stars) vectors 
     with respect to the membrane normal of POPC (left) and POPS (right) in a POPC:POPS (5:1) bilayer 
     as a function of \ce{CaCl} concentration from ECC-lipids and Lipid17/Dang simulations 
@@ -917,7 +935,40 @@ to $\Gamma^{w}_{Ca} = 0.24\mathrm{nm^{-2}}$ ($\sim 4.8$ phospholipids per bound 
     with the same value for both order parameters such that the lower order
     parameter value from pure POPS is at zero to correctly illustrate the significant forking.
   }
+  \caption{ \label{fig:cacl_complexes} 
+  \textbf{Right top:} Percentages of the population of bound Ca$^{2+}$ 
+	in exclusive contact with the given oxygen moiety
+	in a POPC:POPS (5:1) bilayer with 409 mM CaCl$_2$. 
+	The areas represent populations of bound \ce{Ca^{2+}} 
+	only to the given moieties exclusively (shades of orange and red)
+	or their combinations (CHANGE:blue)
+	separately for PC, PS, or PC and PS simultaneously. 
+	The areas sum up to total populations at the respective lipids. 
+	In the case of mixed simultaneous binding to PC and PS
+	we distinguish different moieties only in PS.
+	%i.e., PC can interact with any considered moiety. 
+	For comparison, in a pure POPC bilayer with 350 mM CaCl$_2$, 
+	67\% of bound \ce{Ca^{2+}} is exclusively in contact with \ce{PO_4} group. \cite{melcr18} 
+    \textbf{Right bottom:} Relative probabilities of \ce{Ca^{2+}} ions to coordinate with a certain number of lipids
+    in pure POPC bilayer with 350 mM CaCl$_2$ and in POPC:POPS (5:1) mixture with 400 mM CaCl$_2$.  
+    Analysis was done for both systems by considering all lipids (blue and violet) and
+    for POPC:POPS (5:1) mixture also by considering POPC and POPS lipids separately (green and orange). 
+    %All lipids were taken into account with the exception of the complexes in light green and orange, 
+    %for which we counted only contacts with POPC resp POPS from the mixed 5\,PC:1\,PS negatively charged bilayer. 
+    %The calculated probabilities of the calcium-lipid complexes also reflect only POPC (light green) resp POPS (orange). 
+    % Probabilities were taken from simulations with comparable bulk concentrations of calcium around 250~mM. 
+    Clusters of four or more lipids were not observed in either membrane.
+    The threshold for counting coordinated lipids in a complex with \ce{Ca^{2+}} was set to $0.3\,\mathrm{nm}$, 
+    as the distance between the cation and the oxygen atoms of the lipids. 
+    Previously published simulation data \cite{melcr18} for pure POPC bilayers were taken directly from \cite{ECC-POPC_nacl_cacl2_files}. 
+  }
+\todo{J: Will adjust the Fig into a nice panel and change the captions accordingly. 
+Ad bar plots -- change total to combinations as described in caption, 
+add simultaneously to "PC and PS", 
+add ticks to the right side of the plot and
+change the colour of "combinations" from blue to any other so that it is different from the legend in the other plot. }
 \end{figure} 
+
 
 Experimentally measured headgroup order parameters of POPS exhibit a strong dependence
 on low CaCl$_2$ concentrations with a rapid saturation below 100~mM \cite{roux90}.
@@ -953,20 +1004,6 @@ Interestingly, the calcium residence times are 3-4 times longer in POPC:POPS (5:
 
 
 
-
-\begin{figure}[htbp!] 
-  \centering 
-  \includegraphics[width=\figwidth]{../img/ecc_pops/density_profiles_ca_na_k_cl_wat_phos_ecclipids_lipid17_compar_80and200mMCaCl2.pdf}
-  \caption{\label{fig:cacl-dens_PCPS} 
-    Number density profiles of \ce{Ca^{2+}} and \ce{Cl^-} ions and \ce{Na^{+}} counterions 
-    along the normal of the membrane starting at the centre
-    for the negatively charged membrane with the composition 5\,PC:1\,PS
-    at 80~mM (top) and 200~mM (bottom) added buffer concentrations of \ce{CaCl2} from simulations with ECC-lipids (solid) and Lipid17 (dashed). 
-    In order to visualize the density profiles with a comparable scale 
-    the density profile of~\ce{Ca^{2+}} ions are divided by 2, and 
-    the density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
-  }
-\end{figure} 
 
 %SAMULI: We will not go to the spin relaxation time analysis in this work
 %and average angles do not give information about dynamics
@@ -1034,43 +1071,6 @@ underestimated calcium binding affinity to lipid bilayer with this force field \
 %the lengths of simulation trajectories are insufficient 
 %to yield converged results in this aspect (see SI and Refs.~\cite{catte16, melcr18, NMRlipidsIV}). 
 
-\begin{figure}[tb!] 
-  \centering 
-  \includegraphics[width=\figwidthsmall]{../img/bound_ca_populations.pdf} 
-  \includegraphics[width=\figwidthsmall]{../img/stoichiometry_CaCl2_comparison_Ecc-lipids_PC-vs-PCPS.pdf} \\ 
-  \caption{ \label{fig:cacl_complexes} 
-  \textbf{Left:} Percentages of the population of bound Ca$^{2+}$ 
-in exclusive contact with the given oxygen moiety
-in a POPC:POPS (5:1) bilayer with 409 mM CaCl$_2$. 
-The areas represent populations of bound \ce{Ca^{2+}} 
-only to the given moieties exclusively (shades of orange and red)
-or their combinations (CHANGE:blue)
-separately for PC, PS, or PC and PS simultaneously. 
-The areas sum up to total populations at the respective lipids. 
-In the case of mixed simultaneous binding to PC and PS
-we distinguish different moieties only in PS.
-%i.e., PC can interact with any considered moiety. 
-For comparison, in a pure POPC bilayer with 350 mM CaCl$_2$, 
-67\% of bound \ce{Ca^{2+}} is exclusively in contact with \ce{PO_4} group. \cite{melcr18} 
-    \textbf{Right:} Relative probabilities of \ce{Ca^{2+}} ions to coordinate with a certain number of lipids
-    in pure POPC bilayer with 350 mM CaCl$_2$ and in POPC:POPS (5:1) mixture with 400 mM CaCl$_2$.  
-    Analysis was done for both systems by considering all lipids (blue and violet) and
-    for POPC:POPS (5:1) mixture also by considering POPC and POPS lipids separately (green and orange). 
-    %All lipids were taken into account with the exception of the complexes in light green and orange, 
-    %for which we counted only contacts with POPC resp POPS from the mixed 5\,PC:1\,PS negatively charged bilayer. 
-    %The calculated probabilities of the calcium-lipid complexes also reflect only POPC (light green) resp POPS (orange). 
-    % Probabilities were taken from simulations with comparable bulk concentrations of calcium around 250~mM. 
-    Clusters of four or more lipids were not observed in either membrane.
-    The threshold for counting coordinated lipids in a complex with \ce{Ca^{2+}} was set to $0.3\,\mathrm{nm}$, 
-    as the distance between the cation and the oxygen atoms of the lipids. 
-    Previously published simulation data \cite{melcr18} for pure POPC bilayers were taken directly from \cite{ECC-POPC_nacl_cacl2_files}. 
-  }
-\todo{J: ad bar plots -- change total to combinations as described in caption, 
-add simultaneously to "PC and PS", 
-add ticks to the right side of the plot and
-change the colour of "combinations" from blue to any other so that it is different from the legend in the other plot. }
-\end{figure} 
-
 
 
 
@@ -1085,30 +1085,30 @@ change the colour of "combinations" from blue to any other so that it is differe
  
 \section{Conclusions} 
 
-\todo{SAMULI: I have putted here two preliminary sentences
-JOSEF: I can write conclusions, but I would prefer to wait with that after your comments and edits. }
+\todo{J: I have moved several paragraphs from the body to here and added a bit of glue. This section still requires to be written properly.  }
+
+We have developed a classical MD model of POPS, ECC-POPS, 
+which accurately describes features of both pure POPS membrane and its mixes with POPC. 
+This was achieved by applying ECC which accounts for electronic polarization. 
 Applying ECC to POPS lipids improves cation binding affinity to membranes
 mixed with POPC and also the response of PS headgroup to the bound cations.
-However, further improvement of the parameters is needed to fully reproduce the
-details of calcium binding to PS headgroups.
-
+This was compared to accurate NMR measurements of the changes of headgroup order parameter within the ``electrometer concept''. 
 The advantage of the NMR order parameters used in this work is the direct connection between
 measured and simulation data, which enables more unambiguous evaluation of the force field quality \cite{catte16,ollila16}
 than more indirect comparison in previous studies using 2D infrared spectroscopy \cite{valentine18}, NMR chemical shifts and
 rotational-echo double-resonance (REDOR) experiments \cite{hallock18} or fluorescent and vibrational sum frequency spectroscopy \cite{melcrova16}.
 Because the ECC-lipids model gives the best agreement with the experimental headgroup order parameters
 with various ion conctenrations among the available models, we believe that it also gives the currently best available
-interpretation of the experimental data. Athough the ECC-lipids model gives the most realistic picture of calcium binding to
-lipid bilayers containing PS lipids with respect to NMR order parameters, it does not
-correctly capture the rapid changes with small concentrations. Therefore, further
-force field optimization is required for even more accurate MD simulations of cations
-in the vicinity of negatively charged lipid bilayers.
-% and also possibly from the approximate mean-field treatment of the electronic polarization. 
+interpretation of the experimental data. 
 
 In conclusion, applying ECC to Amber Lipid17 POPS force field parameters improves its
 interactions with both monovalent ions and POPC headgroups when compared with the NMR order parameter data.
-However, further optimization may be needed to fully reproduce the interactions between lipids and
-sodium ions.
+Although the ECC-lipids model gives the most realistic picture of calcium binding to
+lipid bilayers containing PS lipids with respect to NMR order parameters, it does not
+correctly capture the rapid changes with small concentrations. 
+Therefore, further force field optimization is required for even more accurate MD simulations of cations
+in the vicinity of negatively charged lipid bilayers.
+
 
 
 \listoftodos
