@@ -80,7 +80,7 @@
 \newlength{\figwidthfull}
 \setlength{\figwidthfull}{14 cm} 
 \newlength{\figheightsmall}
-\setlength{\figheightsmall}{8 cm} 
+\setlength{\figheightsmall}{6 cm} 
 \newlength{\figheight}
 \setlength{\figheight}{12 cm} 
 
@@ -107,7 +107,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
 \author{Josef Melcr} 
-\email{melcr@uochb.cas.cz} 
+\email{melcr@marge.uochb.cas.cz} 
 %%\homepage[]{https://jmelcr.github.io/}
 \affiliation{Institute of Organic Chemistry and Biochemistry, 
 Academy of Sciences of the Czech Republic,  
@@ -167,7 +167,11 @@ Prague 6, Czech Republic}
 
 %%SAMULI: new suggestion for the preliminary title
 \title[] 
-  {SUPPLEMENTARY INFORMATION: Effective Inclusion of Electronic Polarization to a Negatively Charged Membrane}
+  { SUPPLEMENTARY INFORMATION: 
+    Detailed structure of negatively charged membranes 
+    of phosphatidylserine and phosphatidylcholine 
+    at concentrations of calcium, sodium and potassium salts
+    from molecular dynamics simulations with electronic polarization }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% Some journals require a list of abbreviations or keywords to be 
@@ -201,7 +205,7 @@ Prague 6, Czech Republic}
   }
 \end{figure}
 
-\begin{figure}[tbp!] 
+\begin{figure}[hbp!] 
   \centering 
   \includegraphics[width=\textwidth]{../Fig/slices_used.eps}
   \caption{\label{R-PDLFslices}
@@ -209,8 +213,57 @@ Prague 6, Czech Republic}
   }
 \end{figure} 
 
+
+
 \pagebreak
+
+\section{Distribution of dihedral angle \ce{C_\alpha-C_\beta-C_\gamma-O_\gamma} in POPS}
+\begin{figure}[hbp!] 
+  \centering 
+  \includegraphics[width=\figwidth]{../img/dihedral_angle_distribution_Ca-Cb-Cg-Og_ECC-L17.pdf}
+  \caption{\label{fig:dihedral}
+    Distribution of dihedral angle \ce{C_\alpha-C_\beta-C_\gamma-O_\gamma} in POPS 
+    from simulations of a pure POPS bilayer with \ce{Na+} counterions using Lipid17 and ECC-lipids. 
+    Labelling of POPS segments is in Fig.~\ref{simVSexpNOions_POPS}. 
+}
+\todo{Cannot get rid of the copy of the Fig.1 cation}
+\end{figure} 
+
+
+\pagebreak
+\section{Interactions of POPS with \ce{K+} and \ce{Na+} counterions and POPC}
+
+\begin{figure}[hbp!] 
+  \centering 
+  \includegraphics[height=\figheightsmall]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_ecclipids-lipid17.pdf}
+  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
+  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_kcl.pdf} 
+  \caption{\label{fig:POPS-counterions-dens}
+    \textbf{Left panel:} Number density profiles of \ce{K^{+}} and \ce{Na^{+}} counterions along the membrane normal axis
+    in ECC-lipids (solid lines) and Lipid17/Dang (dashed lines) simulations of pure POPS bilayers.  
+    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
+}
+  \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix_PS} 
+    \textbf{Right panels:} The POPS head group order parameters, the P--N and C$_\beta$--C$_\gamma$ vector angles (stars)
+    with respect to the membrane normal as a function of POPC content in a bilayer
+    from ECC-lipids and Lipid17/Dang simulations with \ce{Na^+} (left) and \ce{K^+} (right) counterions.
+    Experimental order parameter values and signs for pure POPS are from Ref. \citenum{NMRlipidsIV} and values
+    for POPC:POPS (5:1) mixture from Ref. \citenum{roux90} 
+    (only \ce{Na^+} counterions, but shown also in the right plots for \ce{K+}).
+    % No translation in y-axis done in this plot:
+    %The underestimated response of ECC-lipids with \ce{Na^+} counterions 
+    %is likely due to a still slightly overestimated binding affinity of \ce{Na^+} to the phospholipids,
+    %which is corroborated by the series with \ce{K^+} counterions (lower affinity than \ce{Na^+}),
+    %where the response is closer to the experiment, which uses only \ce{Na^+} counterions. 
+  }
+\end{figure} 
+
+
+
+\pagebreak
+
 \section{Density profiles of additional monovalent cations in POPC:POPS (5:1) mixtures}
+
 \begin{figure}[!h] 
   \centering 
   \includegraphics[width=\figwidth]{../img/ecc_pops/density_profiles_na_k_cl_wat_phos_models-compar_5-6_NaCl-and-KCl-series.pdf}
@@ -222,6 +275,50 @@ Prague 6, Czech Republic}
     The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
   }
 \end{figure} 
+
+
+\pagebreak
+\section{Populations of bound \ce{Ca^{2+}} cations to the PC:PS (5:1) bilayer}
+
+\begin{table}[h!] 
+\centering
+\caption{%Bulk concentrations, $C _{Ca}$, and buffer concentrations, $C' _{Ca}$, of Ca$^{2+}$;
+  % relative surface excess of calcium with respect to water ($\Gamma_{Ca}^{\rm water}$); 
+  % and
+  Percentages of the population of bound Ca$^{2+}$ to various lipid moieties in a pure POPC bilayer with 350 mM CaCl$_2$
+  and in a POPC:POPS (5:1) mixture with 409 mM CaCl$_2$. The threshold for counting a contact was set to $0.3\,\mathrm{nm}$, which encompasses the
+  first peak of the radial distribution function between the cations and the oxygen atoms of the lipids. 
+  \label{tab:binding}} 
+\begin{tabular}{ l | c c } 
+ exclusive interacting moiety &  \multicolumn{2}{c}{percentage of bound \ce{Ca^{2+}} } \\
+%	\hline
+%	$C _{Ca}\,/\,\mathrm{mM}$  &  $240\pm 10 $  &  $280\pm 10 $  \\
+%	$C'_{Ca}\,/\,\mathrm{mM}$  &  $400\pm 10 $  &  $350\pm 10 $  \\
+%	$\Gamma_{Ca}^{\rm water}\, / \,\mathrm{nm}^{-2}$  &  $0.24 \pm 0.01 $  &  $0.06 \pm 0.01 $  \\
+%	\hline
+%                             &  \multicolumn{2}{c}{ } \\
+                             &  5\,POPC:1\,POPS &  POPC   \\
+    \hline
+    \textbf{PC}              &   59   &  100   \\
+	     PO$_4$    in PC &   41   &   67   \\
+	     carbonyls in PC &   <1   &   ~1   \\
+    \hline
+    \textbf{PS}              &    8   &        \\ 
+	     PO$_4$  in PS   &    2   &        \\
+	     COO$^-$ in PS   &    4   &        \\
+	     carbonyls in PS &   <1   &        \\
+    \hline
+    \textbf{both PC and PS}  &   33   &        \\
+      PC and PO$_4$  in PS   &    9   &        \\
+      PC and COO$^-$ in PS   &   17   &        \\
+      PC and carbonyls in PS &   <1   &        \\
+  \end{tabular} \\
+  %\todo{I have commented out the surface excess values (available in text) and concentrations (now in caption) from the table.} \\
+  %\todo{I do not understand the numbers for different moieties. Are these probabilities that the calcium binds only to these moieties and
+  %  nothing else? In total, 41 \% binds to PS lipids, but only 2 \% and 4 \% to phosphates and COO$^-$, respectively? Where do the rest bind?
+  %  I think that we should show the total probabilities to bind to different moieties.}
+\end{table} 
+
 
 \pagebreak
 \section{Residence times of cations}
