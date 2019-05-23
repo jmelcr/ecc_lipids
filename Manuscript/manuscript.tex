@@ -327,7 +327,7 @@ model and experiments enable detailed interpretation of calcium binding details 
 %of the models with explicit polarization. \citep{lucas12,chowdhary13} 
 
 Here, we extend the ECC approach also to the negatively charged 1-palmitoyl-2-oleoyl-sn-glycero-3-phospho-L-serine (POPS) lipid.
-We also complement the available experimental data for the the force field quality
+We also complement the available experimental data for the force field quality
 evaluation by measuring the acyl chain C--H bond order parameters of POPS in bilayer using natural abundance $^{13}$C NMR.
 In addition to the acyl chain order parameters measured here, the quality of the newly developed ECC-POPS force field parameters is
 evaluated using previously published C--H bond order parameters of glycerol backbone and headgroup in various ionic
@@ -408,7 +408,7 @@ ions $f_q = 0.75$ \cite{leontyev09} to the partial charges of POPS.
 The lipids with a total charge of -0.75 are also neutralized
 by the counterion charges of +0.75 in simulations with ECC-ions \cite{Pluharova2014, kohagen16, martinek17}.
 Following our previous work for POPC, we use the scaling factor of $f_\sigma = 0.89$ for the Lennard-Jones~$\sigma$ parameters and
-use it to scale the parameters of atoms only in the headgroup, glycerol backbone, and carbonyl regions \cite{melcr18, ECC-POPC_nacl_cacl2_files}.
+use it to scale the parameters of atoms only in the headgroup, glycerol backbone, and carbonyl regions \cite{melcr18}.
 Further optimization of parameters was not done in this work. 
 The generated ECC-POPS parameters are available from Ref.~\citenum{??}
 \todo{We need here a permanent citation with DOI.
@@ -543,8 +543,8 @@ The C--H bond order parameters were calculated directly from Eq.~\ref{OPequation
 The time average was first calculated for each lipid, and
 the standard error of the mean from these individual values was then used as the
 error estimate \cite{botan15,ollila16,NMRlipidsIV}.
-Python program ({\tt scripts/calcOrderParameters.py}) that uses the
-MDAnalysis library \cite{agrawal11,gowers16} is available in Ref.~\citenum{MATCHgit}. 
+Python program that uses the
+MDAnalysis library \cite{agrawal11,gowers16} is available in Ref.~\citenum{MATCHgit} ({\tt scripts/calcOrderParameters.py}). 
 The ion number density profiles were calculated using the {\tt gmx density} tool
 of the Gromacs sofware package \cite{gromacsMANUAL}.
 The salt concentrations in buffer before solvating the lipids, reported in the used experimental data set \cite{roux90},
@@ -602,21 +602,29 @@ acyl chain order parameters to mimic the profile predicted by the MD simulations
 \end{figure} 
 
 
-The Lipid17/Dang simulation gives larger acyl chain order parameters and smaller area per molecule than the
-experimental values (Fig.~\ref{simVSexpNOions_POPS} and table~\ref{tab:apls}),
-indicating that this simulation predicts a too compact POPS lipid bilayer. This is also in line with
-the discrepancy observed in the X-ray form factor between the simulation and experiment (Fig.~\ref{simVSexpNOions_POPS}).
-In previous study \cite{NMRlipidsIV}, the Lipid17 force field with {\AA}qvist ions~\cite{aqvist90}
-gave a larger area per molecule (57~\AA$^2$) for POPS being closer to the experimental value,
-which is probably due to the weaker counterion binding affinity of {\AA}qvist ions to phospholipids. \cite{catte16, NMRlipidsIV}
-However,  {\AA}qvist ions produce known artifacts, 
-e.g. they exhibit artificial aggregation of ions at larger salt concentrations \cite{kohagen16, chen07, NMRlipidsIV}.
-Therefore, the Dang ions with more realisitic bulk properties are used here to analyze the effect of ECC to the properties of a POPS lipid bilayer. 
-The ECC-POPS simulation gives a good agreement with the X-ray scattering form factors and experimental
-acyl chain order parameters (see Fig.~\ref{simVSexpNOions_POPS}) indicating that the bilayer dimensions and acyl chain
+The Lipid17/Dang simulation gives 
+discrepancies with the experimental X-ray form factor,
+larger acyl chain order parameters,
+and smaller area per molecule than the experimental values (Fig.~\ref{simVSexpNOions_POPS} and table~\ref{tab:apls}),
+indicating that this simulation predicts a too compact POPS lipid bilayer. 
+The ECC-POPS simulation gives better agreement with experiments for the X-ray scattering form factors and 
+acyl chain order parameters (Fig.~\ref{simVSexpNOions_POPS}),
+indicating that the bilayer dimensions and acyl chain
 conformations are well described by the force field. The area per lipid from ECC-POPS simulation is slightly
 smaller than the value reported from SDP model \cite{kucerka14} (table~\ref{tab:apls}), but the values
-agree within their error estimates. 
+agree within their error estimates. The larger area in ECC-POPS simulation can be
+explained by increased headgroup repulsion due to lower counterion binding affinity (Fig. \ref{??}).
+This explains also the larger area per molecule (57~\AA$^2$) reported for Lipid17 POPS simulations
+%being closer to the experimental value, 
+%In previous study \cite{NMRlipidsIV}, the Lipid17 force field
+with {\AA}qvist ions~\cite{NMRlipidsIV}.
+%gave a 
+%which is probably due to the weaker counterion binding affinity of {\AA}qvist ions to phospholipids. \cite{catte16, NMRlipidsIV}
+However, the Dang ions %with more realisitic bulk properties
+are used here to analyze the effect of ECC to the properties of a POPS lipid bilayer because
+{\AA}qvist ions produce known artifacts, like artificial aggregation of ions at larger salt concentrations \cite{kohagen16, chen07, NMRlipidsIV}.
+
+
 
 
 
