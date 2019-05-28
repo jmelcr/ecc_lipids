@@ -613,7 +613,7 @@ indicating that the bilayer dimensions and acyl chain
 conformations are well described by the force field. The area per lipid from ECC-POPS simulation is slightly
 smaller than the value reported from SDP model \cite{kucerka14} (table~\ref{tab:apls}), but the values
 agree within their error estimates. The larger area in ECC-POPS simulation can be
-explained by increased headgroup repulsion due to lower counterion binding affinity (Fig. \ref{??}).
+explained by increased headgroup repulsion due to lower counterion binding affinity (Fig. \ref{fig:POPS-counterions-dens}).
 This explains also the larger area per molecule (57~\AA$^2$) reported for Lipid17 POPS simulations
 %being closer to the experimental value, 
 %In previous study \cite{NMRlipidsIV}, the Lipid17 force field
@@ -624,7 +624,17 @@ However, the Dang ions %with more realisitic bulk properties
 are used here to analyze the effect of ECC to the properties of a POPS lipid bilayer because
 {\AA}qvist ions produce known artifacts, like artificial aggregation of ions at larger salt concentrations \cite{kohagen16, chen07, NMRlipidsIV}.
 
-
+%SAMULI: I have moved this figure back to the main text
+\begin{figure}[hbp!] 
+  \centering 
+  \includegraphics[width=8cm]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_ecclipids-lipid17.pdf}
+  \caption{\label{fig:POPS-counterions-dens}
+    Number density profiles of \ce{K^{+}} and \ce{Na^{+}} counterions along the membrane normal axis
+    in ECC-lipids (solid lines) and Lipid17/Dang (dashed lines) simulations of pure POPS bilayers.  
+    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
+  }
+  \todo{This figure might be more clear without the lipids in background.}
+\end{figure}
 
 
 
@@ -650,37 +660,43 @@ Despite the success in simulating bilayer dimensions and acyl chain conformation
 lipid force fields have typically problems in capturing the correct glycerol backbone and
 headgroup order parameters and conformations \cite{botan15,ollila16,NMRlipidsIV}.
 This is the case also for Lipid17 POPS simulations, where the headgroup and glycerol backbone
-order parameters are quite far from experimental values with both Dang (Fig.~\ref{simVSexpNOions_POPS})
-and {\AA}qvist ions. \cite{NMRlipidsIV} The values from ECC-POPS simulation are closer,
+order parameters are quite far from experimental values with Dang (Fig.~\ref{simVSexpNOions_POPS}),
+{\AA}qvist and Joung-Cheatham ions~\cite{NMRlipidsIV}. The values from ECC-POPS simulation are closer,
 but not in full agreement with experiments (Fig.~\ref{simVSexpNOions_POPS}).
-Especially, the experimentally observed more negative values of the $\beta$-carbon
-and the larger forking (difference of order parameters between hydrogens attached to the
-same carbon \cite{ollila16}) of the $\alpha$-carbon in POPS than in POPC \cite{NMRlipidsIV}
-are not reproduced by neither of the models here. 
-These differences are previously related
-to a more rigid structure of PS headgroup \cite{browning80,buldt81} and 
-the stiffness of the C$_\alpha$-C$_\beta$-C$_\gamma$-O$_\gamma$ dihedral \cite{NMRlipidsIV}
-plotted in Fig.~\ref{fig:dihedral}. 
-Interestingely, this dihedral angle is more flexible in ECC-POPS compared to Lipid17 
-suggesting that its rigidity is overestimated in Lipid17 due to the lack of electronic polarizability,
-while the same dihedral parameters yield too small forking in ECC-POPS.
 
 
-Overall,
-the head group and acyl chain order parameters within ECC-lipids
-are in a good agreement with the experimental values 
-as shown in Fig.~\ref{simVSexpNOions_POPS}. 
-The acyl chain order parameters in particular agree with the experimental data within error bars.
-The order parameters of the head groups are at an accuracy comparable to 
-other currently available classical models of lipids \citep{botan15, catte16, Pluhackova2016, nmrlipids_proj4}. 
-In particular, ECC-POPS is closer to the experimental order parameters 
-than Lipid17 with either Dang \cite{smith94,chang1999,dang2006} 
-or {\AA}qvist ions \cite{aqvist90}. 
-Although the ECC-POPS model reproduces the lipid bilayer dimensions and
-acyl chain conformations in a good agreement with experiments, 
-there is a room for improvements especially in the glycerol backbone and headgroup region,
-e.g. in the parameters of the associated dihedral angles. 
-\cite{botan15, ollila16, Pluhackova2016, NMRlipidsIV}
+% SAMULI: I commented this out to simplify the manuscript
+%
+%Especially, the experimentally observed more negative values of the $\beta$-carbon
+%and the larger forking (difference of order parameters between hydrogens attached to the
+%same carbon \cite{ollila16}) of the $\alpha$-carbon in POPS than in POPC \cite{NMRlipidsIV}
+%are not reproduced by neither of the models here. 
+%These differences are previously related
+%to a more rigid structure of PS headgroup \cite{browning80,buldt81} and 
+%the stiffness of the C$_\alpha$-C$_\beta$-C$_\gamma$-O$_\gamma$ dihedral \cite{NMRlipidsIV}
+%plotted in Fig.~\ref{fig:dihedral}. 
+%Interestingely, this dihedral angle is more flexible in ECC-POPS compared to Lipid17 
+%suggesting that its rigidity is overestimated in Lipid17 due to the lack of electronic polarizability,
+%while the same dihedral parameters yield too small forking in ECC-POPS.
+
+%Overall,
+%the head group and acyl chain order parameters within ECC-lipids
+%are in a good agreement with the experimental values 
+%as shown in Fig.~\ref{simVSexpNOions_POPS}. 
+In conclusion,
+%the acyl chain order parameters in particular agree with the experimental data within error bars.
+%The order parameters of the head groups are at an accuracy comparable to 
+the stuctural quality of ECC-POPS is similar to the other currently available
+lipid force fields \cite{botan15, catte16, Pluhackova2016, nmrlipids_proj4},
+%In particular, ECC-POPS is closer to the experimental order parameters 
+%than Lipid17 with either Dang \cite{smith94,chang1999,dang2006} 
+%or {\AA}qvist ions \cite{aqvist90}. 
+%Although the ECC-POPS model reproduces the lipid bilayer dimensions and
+giving good agreement with experiments for acyl chain conformations and bilayer dimensions,
+while there is a room for improvement in the glycerol backbone and headgroup region
+conformations.
+%e.g. in the parameters of the associated dihedral angles. 
+%\cite{botan15, ollila16, Pluhackova2016, NMRlipidsIV}
 
 
 
@@ -689,12 +705,8 @@ e.g. in the parameters of the associated dihedral angles.
 \subsection{Binding of counterions to POPS and POPC and interactions between their head groups}
 
 
-In simulations, binding affinity of monovalent ions to lipid bilayers depends strongly on
-force field parameters \cite{catte16,NMRlipidsIV}.
-% J: I think the following sentence can be omitted
-%For instance in the present work the affinity of sodium counterions to a POPS bilayer 
-%is stronger in Lipid17/Dang simulations 
-%than in simulations with ECC-POPS (Fig.~\ref{fig:POPS-counterions-dens} and~\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PC}).
+Binding affinity of monovalent ions to lipid bilayers depends strongly on
+force field parameters in simulations \cite{catte16,NMRlipidsIV}.
 The cation binding affinities to lipid bilayers in simulations have been previously evaluated
 against experiments using the order parameters of $\alpha$ and $\beta$ carbons in the
 phosphatidylcholine (PC) lipid headgroup (see Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PC} for the labeling) \cite{catte16,melcr18,NMRlipidsIV},
@@ -703,10 +715,14 @@ Although the response of PS lipid headgroup order parameters to the bound charge
 it is less well undestood and the addition of cations may cause phase transitions in negatively charged
 bilayers \cite{feigenson86,mattai89,roux91,roux90}. Therefore, the cation binding affinity to bilayers with
 PS lipids has been evaluated measuring the PC headgroup order parameters from POPC:POPS (5:1)
-mixtures\cite{roux90,NMRlipidsIV}.
-Following our previous work \cite{NMRlipidsIV}, we evaluate the counterion binding affinity
-to a lipid bilayer containing PS in simulations using two approaches.
-
+mixtures\cite{roux90,NMRlipidsIV}. The evaluation of monovalent ion binding affinity to
+lipid bilayers containing PS lipids is complicated also by the lack of ion-free state due to the 
+counterions, which are always present with negatively charged lipids~\cite{NMRlipidsIV}.
+Therefore, we evaluate the counterion binding affinity to POPC:POPS mixtures by monitoring
+the response of POPC headgroup order parameters to both increasing mole fraction of PS lipids and
+to the increasing monovalent ion concetrations. %, as 
+%to a lipid bilayer containing PS in simulations using two approaches.
+%Following our previous work \cite{NMRlipidsIV},
  
 
 \begin{figure*}[!tbp] 
@@ -734,15 +750,21 @@ and will add ticks to the right side of the plotting area. }
 
 
 
-First, we monitor the response of POPC headgroup order parameters to the increasing amount of POPS (Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PC}).
+%First, we monitor the response of POPC headgroup order parameters to the increasing amount of POPS (Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PC}).
 According to the electrometer concept, the head group order parameters of PC lipids increase
 with the increasing amount of negatively charged PS lipids in experiments, because the headgroup P--N dipole
 tilts more parallel to the membrane interface \cite{seelig87,scherer87}.
-The trend is observed with both force fields in simulations with \ce{K+} counterions and
-in ECC-lipids simulation with \ce{Na+} counterions. 
+However, in simulations with strong counterion binding affinity, the charge of bound
+counterions cancel the influence of negatively charged lipids and the increase in PC headgroup
+order parameters is not observed \cite{NMRlipidsIV}. This is observed in 
+Lipid17/Dang ion simulations with \ce{Na+} counterions (Fig~\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PC}),
+while in ECC-lipids simulations with \ce{Na+} counterions and in Lipid17/Dang
+%The trend is observed with both force fields in simulations
+with \ce{K+} counterions the order parameters increase
+in 
 In contrast, the order parameters are unchanged or decrease 
 and the P--N vector tilts more perpendicular to the membrane interface.
-in Lipid17/Dang ion simulations with \ce{Na+} counterions.
+in 
 The result can be explained by the higher binding affinity of sodium in the
 Lipid17/Dang ion simulations (Fig~\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PC}), which
 compensates the negative charge of PS lipids at the interface.
