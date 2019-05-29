@@ -959,14 +959,14 @@ Interestingly, the calcium residence times are 3-4 times longer in POPC:POPS (5:
 \begin{figure}[tbp!] 
   \centering 
   \begin{tabular}{ c }
-  \includegraphics[height=\figheightsmall]{../img/ecc_pops/density_profiles_ca_na_k_cl_wat_phos_ecclipids_lipid17_compar_80and200mMCaCl2.pdf}
-  \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_cacl.pdf} 
-  \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_cacl.pdf} 
+  \includegraphics[height=1.5\figheightsmall]{../img/ecc_pops/density_profiles_ca_na_k_cl_wat_phos_ecclipids_lipid17_compar_80and200mMCaCl2.pdf}
+  \includegraphics[height=1.5\figheightsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPC_cacl.pdf} 
+  \includegraphics[height=1.5\figheightsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_cacl.pdf} 
   \end{tabular}
-  \begin{tabular}{ c }
-  \includegraphics[width=3cm]{../img/bound_ca_populations.pdf} \\
-  \includegraphics[width=3cm]{../img/stoichiometry_CaCl2_comparison_Ecc-lipids_PC-vs-PCPS.pdf} 
-  \end{tabular}
+%  \begin{tabular}{ c }
+%  \includegraphics[width=3cm]{../img/bound_ca_populations.pdf} \\
+%  \includegraphics[width=3cm]{../img/stoichiometry_CaCl2_comparison_Ecc-lipids_PC-vs-PCPS.pdf} 
+%  \end{tabular}
   \caption{\label{fig:cacl-dens_PCPS} 
     \textbf{Left panel:}
     Number density profiles of \ce{Ca^{2+}} and \ce{Cl^-} ions and \ce{Na^{+}} counterions 
@@ -988,6 +988,45 @@ Interestingly, the calcium residence times are 3-4 times longer in POPC:POPS (5:
     parameter value from pure POPS is at zero to correctly illustrate the significant forking.
     Error bars are not visible for ECC-lipids simulations because they are smaller than the point size.
   }
+%  \caption{ \label{fig:cacl_complexes} 
+%    \textbf{Right top:} Percentages of the bound Ca$^{2+}$ 
+%    in exclusive contact with the given oxygen moiety
+%    when bound to PC only, PS only or simultaneously to both
+%    calculated from ECC-lipids simulation of POPC:POPS (5:1) bilayer with 409 mM CaCl$_2$. 
+%%	The areas represent populations of bound \ce{Ca^{2+}} 
+%%	only to the given moieties exclusively (shades of orange and red)
+%%	or their combinations (CHANGE:blue)
+%%	separately for PC, PS, or PC and PS simultaneously. 
+%%	The areas sum up to total populations at the respective lipids. %
+%	In the case of simultaneous binding to both PC and PS%,
+%	the percentages refer to the moieties in PS.
+%	% i.e., PC can interact with any considered moiety.
+%        For numerical values, see table~\ref{tab:binding}.
+%    \textbf{Right bottom:} Relative probabilities of \ce{Ca^{2+}} ions to coordinate with a certain number of lipids
+%    in pure POPC bilayer with 350 mM CaCl$_2$ and in POPC:POPS (5:1) mixture with 400 mM CaCl$_2$.  
+%    Analysis was done for both systems by considering all lipids (blue and violet) and
+%    for POPC:POPS (5:1) mixture also by considering POPC and POPS lipids separately (green and orange). 
+%    %All lipids were taken into account with the exception of the complexes in light green and orange, 
+%    %for which we counted only contacts with POPC resp POPS from the mixed 5\,PC:1\,PS negatively charged bilayer. 
+%    %The calculated probabilities of the calcium-lipid complexes also reflect only POPC (light green) resp POPS (orange). 
+%    % Probabilities were taken from simulations with comparable bulk concentrations of calcium around 250~mM. 
+%    Clusters of four or more lipids were not observed in either membrane.
+%    The threshold for counting coordinated lipids in a complex with \ce{Ca^{2+}} was set to $0.3\,\mathrm{nm}$, 
+%    as the distance between the cation and the oxygen atoms of the lipids. 
+%    Previously published simulation data \cite{melcr18} for pure POPC bilayers were taken directly from \cite{ECC-POPC_nacl_cacl2_files}. 
+%  }
+  \todo{J: Will adjust the Fig into a nice panel and change the captions accordingly. } \\
+\end{figure}
+
+% SAMULI: I separated the figure below, because it was too small to be read when combined with others.
+% It might be too much to all of these into the same.
+
+\begin{figure}[tbp!] 
+  \centering 
+  \begin{tabular}{ c }
+  \includegraphics[width=8cm]{../img/bound_ca_populations.pdf} \\
+  \includegraphics[width=8cm]{../img/stoichiometry_CaCl2_comparison_Ecc-lipids_PC-vs-PCPS.pdf} 
+  \end{tabular}
   \caption{ \label{fig:cacl_complexes} 
     \textbf{Right top:} Percentages of the bound Ca$^{2+}$ 
     in exclusive contact with the given oxygen moiety
@@ -1015,9 +1054,7 @@ Interestingly, the calcium residence times are 3-4 times longer in POPC:POPS (5:
     as the distance between the cation and the oxygen atoms of the lipids. 
     Previously published simulation data \cite{melcr18} for pure POPC bilayers were taken directly from \cite{ECC-POPC_nacl_cacl2_files}. 
   }
-  \todo{J: Will adjust the Fig into a nice panel and change the captions accordingly. } \\
-  \todo{All these in the same figure might be too much, maybe the most right panel into a separate figure?} \\
-  \todo{In the most right panel, the x-axis label should be changed to ''number of lipids directly bound to Ca$^{2+}$''.
+  \todo{The x-axis label should be changed to ''number of lipids directly bound to Ca$^{2+}$''.
     The current label has currently another meaning in the text.}
 \end{figure} 
 
@@ -1046,10 +1083,6 @@ tilts to the opposite direction by $11^\circ$ in the same system.
 %In Lipid17/Dang simulations, the changes in both headroup orientations and order parameters
 %are larger and less systematic for the PS headgroup, especially with lower concentrations (Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}).
 
-
-
-
-
 %SAMULI: We will not go to the spin relaxation time analysis in this work
 %and average angles do not give information about dynamics
 %
@@ -1061,55 +1094,52 @@ tilts to the opposite direction by $11^\circ$ in the same system.
 %It is suggested that the PS head group is more rigid compared to the other phospholipids, 
 %which is also corroborated by a larger chemical shielding anisotropy of PS \cite{browning80}. 
 
-% Description of no. conctacts counting
-%Such a significantly increased binding also has an impact 
-%on the structure and populations of the bound calcium cations. 
-%We have counted contacts between the cations and the oxygen atoms of the lipids
-%similarly as was done in \cite{melcr18} 
-%to obtain such a detailed information 
-%about the interactions of \ce{Ca^{2+}} with various moieties in POPC or POPS. 
-
-% Populations from contacts
 
 Recent analyzes of interaction sites between calcium and PS lipids combining
 MD simulations with various experimental techniques have been 
 controversial because the results strongly depend on force fields parameters \cite{melcrova16,valentine18,hallock18}.
-In ECC-lipids simulation of POPC:POPS (5:1) mixture with 409 mM CaCl$_2$,
-on average 41\% of the total population of bound calcium cations is in contact with PS lipids
-with 8\% bound exclusively only to them even though the negatively charged membrane contains only 17\% of POPS (Fig.~\ref{fig:cacl_complexes}).
-%Therefore, calcium ions bind more likely to negatively charged PS lipids than neutral PC lipid in a mixed bilayer, as expected.
-	For comparison, in a pure POPC bilayer with 350 mM CaCl$_2$, 
-	67\% of bound \ce{Ca^{2+}} is exclusively in contact with \ce{PO_4} group. \cite{melcr18} 
-Also, calcium ions bind more likely 
-to the carboxylate than to the phosphate moiety of POPS headgroup (Fig.~\ref{fig:cacl_complexes}),
-in line with the results without the NBfix corrections in CHARMM36 \cite{hallock18}.
-This can explain the diminished flexibility of the PS head group 
-from simultaneous binding of \ce{Ca^{2+}} to the \ce{COO^-} group in PS and a phosphate group in PC 
-as the most probable configuration (Fig.~\ref{fig:cacl_complexes}). 
-
-However, in CHARMM36 simulations without the NBfix correction for calcium \cite{kim16},
-calcium ions significantly overbind to PC lipids  \cite{catte16} and calcium ions coordinate
-with even four distinct PS lipids \cite{hallock18}, while coordination with more than two PS lipids
+Here, we analyze the calcium binding details from ECC-lipids simulation of POPC:POPS (5:1) mixture with 409 mM CaCl$_2$,
+because it surpasses the quality of other force fields in direct comparison with experimental order parameter data.
+In the ECC-lipid simulation, calcium ions binds approximately twice more likely 
+to the carboxylate than to the phosphate moiety of POPS headgroup,
+while binding to acyl chain carbonyls is almost negligible (Fig.~\ref{fig:cacl_complexes} and table~\ref{tab:binding}).
+The result is consistent with CHARMM36 simulations without the NBfix correction \cite{hallock18},
+but CHARMM36 simulations with the NBfix correction \cite{kim16} predict almost exclusive binding on carboxylate group \cite{valentine18}
+and Berger simulations signifincant binding affinity also on acyl chain carbonyls \cite{melcrova16}.
+On the other hand, calcium ions bind too strongly on bilayers simulated using CHARMM36 without the NBfix correction
+or Berger models, and too weakly on CHARMM36 bilayers with the NBfix correction \cite{catte16,NMRlipidsIV}.
+Furthermore, in CHARMM36 simulations without the NBfix,
+calcium ions coordinate with even four distinct PS lipids \cite{hallock18}, while coordination with more than two PS lipids
 was very rare in our ECC-lipids simulations (Fig.~\ref{fig:cacl_complexes}).
-Furthermore, the POPS:POPC:Ca$^{2+}$ (7:3:7) mixture with relatively high
-PS lipid fraction and calcium concentration was used in the previous work \cite{hallock18},
-which may lead to the complexation of \ce{Ca^{2+}} cations and PS lipids that is
-not observed with lower PS content used in ECC-lipids simulations in this work \cite{hauser77,kurland79,hauser85,feigenson86,mattai89,roux90,roux91}.
+%Furthermore, the POPS:POPC:Ca$^{2+}$ (7:3:7) mixture with relatively high
+%PS lipid fraction and calcium concentration was used in the previous work \cite{hallock18},
+%which may lead to the complexation of \ce{Ca^{2+}} cations and PS lipids that is
+%not observed with lower PS content used in ECC-lipids simulations in this work \cite{hauser77,kurland79,hauser85,feigenson86,mattai89,roux90,roux91}.
 %While POPC interacts with the calcium cations almost entirely through its phosphate group 
 %in both neutral \cite{melcr18} and negatively charged membranes, 
 %the inteaction with POPS lipids happens more through the \ce{COO^-} group than through the \ce{PO4} group. 
 %Interactions of \ce{Ca^{2+}} with carbonyl groups are also present for both POPC and POPS,
 %however, they are always accompanied by interactions with phosphate groups. 
 
+%Significant coordination of calcium with carbonyl groups of PS and PC lipids observed in previous
+%simulations with the Berger force field \cite{melcrova16} %\cite{berger97,mukhopadhyay04}
+%was not observed in ECC-lipids simulations in here nor in the previous work with pure POPC \cite{melcr18}.
+%Overestimated coordination of cations with carbonyl groups is a potential source for
+%the overestimated cation binding in Berger force field \cite{catte16,NMRlipidsIV}. 
+%In CHARMM36 simulations with the NBfix, calcium mainly interacted with only
+%carboxylate of PS lipids  \cite{valentine18}, which is a potential source for the
+%underestimated calcium binding affinity to lipid bilayer with this force field \cite{NMRlipidsIV}. 
 
-Significant coordination of calcium with carbonyl groups of PS and PC lipids observed in previous
-simulations with the Berger force field \cite{melcrova16} %\cite{berger97,mukhopadhyay04}
-was not observed in ECC-lipids simulations in here nor in the previous work with pure POPC \cite{melcr18}.
-Overestimated coordination of cations with carbonyl groups is a potential source for
-the overestimated cation binding in Berger force field \cite{catte16,NMRlipidsIV}. 
-In CHARMM36 simulations with the NBfix, calcium mainly interacted with only
-carboxylate of PS lipids  \cite{valentine18}, which is a potential source for the
-underestimated calcium binding affinity to lipid bilayer with this force field \cite{NMRlipidsIV}. 
+%on average 41\% of the total population of bound calcium cations is in contact with PS lipids
+%with 8\% bound exclusively only to them even though the negatively charged membrane contains only 17\% of POPS (Fig.~\ref{fig:cacl_complexes}).
+%%Therefore, calcium ions bind more likely to negatively charged PS lipids than neutral PC lipid in a mixed bilayer, as expected.
+%	For comparison, in a pure POPC bilayer with 350 mM CaCl$_2$, 
+%	67\% of bound \ce{Ca^{2+}} is exclusively in contact with \ce{PO_4} group. \cite{melcr18} 
+
+
+%This can explain the diminished flexibility of the PS head group 
+%from simultaneous binding of \ce{Ca^{2+}} to the \ce{COO^-} group in PS and a phosphate group in PC 
+%as the most probable configuration (Fig.~\ref{fig:cacl_complexes}). 
 
 %In contrast, the combination of NMR experiments 
 %and MD simulations with the same model, CHARMM36, but without the correction for calcium binding
@@ -1118,18 +1148,6 @@ underestimated calcium binding affinity to lipid bilayer with this force field \
 %the lengths of simulation trajectories are insufficient 
 %to yield converged results in this aspect (see SI and Refs.~\cite{catte16, melcr18, NMRlipidsIV}). 
 
-
-
-
-
-
-
-
-
-
-
-
- 
 \section{Conclusions} 
 
 \todo{J: I have moved several paragraphs from the body to here and added a bit of glue. This section still requires to be written properly.  }
