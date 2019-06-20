@@ -110,20 +110,22 @@
 \email{melcr@marge.uochb.cas.cz} 
 %%\homepage[]{https://jmelcr.github.io/}
 \affiliation{Institute of Organic Chemistry and Biochemistry, 
-Czech Academy of Sciences,  
+Academy of Sciences of the Czech Republic,  
 Prague 6, Czech Republic} 
 \author{Tiago Ferreira}
 \affiliation{NMR group - Institut for Physics, Martin-Luther University Halle-Wittenberg} 
 \author{Pavel Jungwirth} 
 %%\homepage[]{http://jungwirth.uochb.cas.cz/}
 \affiliation{Institute of Organic Chemistry and Biochemistry, 
-Czech Academy of Sciences,  
+Academy of Sciences of the Czech Republic,  
 Prague 6, Czech Republic} 
+\alsoaffiliation{Department of Physics, Tampere University of Technology, P.O. Box 692, FI-33101 
+Tampere, Finland} 
 \author{O. H. Samuli Ollila} 
 \email{samuli.ollila@helsinki.fi} 
 %%\homepage[]{Your web page} 
 \affiliation{Institute of Organic Chemistry and Biochemistry, 
-Czech Academy of Sciences,  
+Academy of Sciences of the Czech Republic,  
 Prague 6, Czech Republic} 
 \alsoaffiliation{Institute of Biotechnology, University of Helsinki} 
  
@@ -163,7 +165,7 @@ Prague 6, Czech Republic}
 %   via combination of experiments and molecular simulation}
 
 \title[] 
-{Improved Description of Cation Binding to Lipid Bilayer with Negatively Charged POPS by Effective Inclusion of Electronic Polarization}
+{Improved Cation Binding to Lipid Bilayer with Negatively Charged POPS by Effective Inclusion of Electronic Polarization}
   %Detailed structure of negatively charged membranes 
   %  of phosphatidylserine and phosphatidylcholine 
   %  at concentrations of calcium, sodium and potassium salts
@@ -268,11 +270,9 @@ and important signaling molecules \cite{lemmon08,leventis10,li14}.
 They interact with signaling proteins \cite{leventis10},
 regulate surface charge and protein localization \cite{yeung08}, 
 induce protein aggregation \cite{zhao04,gorbenko06} and membrane fusion \cite{??}.
-As these functions are also often regulated by ions \cite{leventis10},
-a detailed understanding of interactions between negatively charged lipids and biologically relevant cations such as calcium is of a great importance.
-As a recent example, we have shown by a combination of spectroscopic experiments, biochemical essays, and molecular simulations, that binding of
-calcium to PIP2 lipids inhibits their recognition by a phospolipase C, which demonstrates that not only proteins but also lipids can get involved in calcium 
-signaling \cite{DOI: 10.1021/jacs.6b11760}.
+Because these functions are also often regulated by biological cations \cite{leventis10},
+the detailed interactions between PS lipids and biological cations, like calcium, are under great interest.
+\todo{Pavel can probably improve and complement this}
 
 Spectroscopic experiments give detailed information about the
 interactions between ions and PS lipids, but the data is often indirect and difficult to
@@ -345,10 +345,11 @@ can be taken into account by scaling the charge with a constant factor
  \mbox{$ f_q = \frac{1}{\sqrt{\epsilon_{el}}} \approx 0.75$,}
 %\end{equation}
 where  $\epsilon_{el} = 1.78$ is the high-frequency dielectric constant of electrons in water \cite{leontyev09}.
-The scaling of charges with this factor has been recently applied to improve empirical models for ions and
- biomolecules containing charged groups such as proteins\cite{Pluharova2014, martinek17, duboue2018insulin, Mason2019, Duboue2018MgZn}.
-In addition to the charge, the Lennard-Jones~$\sigma$ was scaled with a factor $ 0.9 < f_\sigma \leq 1$
-to improve the description of hydration properties of ions with respect to scattering data in these studies. The reason for the small readjustment of the ionic radii is that the original force fields were often developed such that the first peak on the experimental ion-water oxygen radial distribution function was reproduced. Upon charge scaling this peak typically moved to slightly larger distances and the agreement with experiment was then restored by a small decrease of the Lennard-Jones~$\sigma$ parameter.
+The scaling of charges with this factor has been recently applied to improve classical models for ions and
+other biomolecules \cite{Pluharova2014, martinek17, duboue2018insulin, Mason2019, Duboue2018MgZn} \todo{Pavel can probably update this (insulin?)}.
+In addition to the charge, the Lennard-Jones~$\sigma$ was scaled with a factor $f_\sigma \leq 1$
+to improve the hydration properties of ions with respect to scattering data in these studies
+\todo{Pavel can probably deliver the state of the art information about these parameters and sharpen the discussion}.
 
 Derivation of the correct scaling factor for lipids is more complicated, because
 the partial charges depend on the methods used to derive the respective force fields.
@@ -412,8 +413,7 @@ and the POPS order parameters calculated from simulations in this work.
 
 \begin{table*}[tbp]
 \centering
-\caption{  MOVE THE WHOLE TABLE TO SI!!!
-           List of MD simulations reporting their respective
+\caption{  List of MD simulations reporting their respective
            lipid composition,
            used counterions,
            added buffer concentrations,
@@ -481,8 +481,7 @@ the SPC/E~\cite{Berendsen1987} water model, and ECC-ions \cite{martinek17, kohag
 The SPC/E water model was selected because its lower dielectric constant is consistent with the
 ECC concept \cite{leontyev11,leontyev14}.
 \begin{table}[tbp]
-  \caption{MOVE TABLE TO SI AND MENTION ONLY THE KEY INFO IN 1 SENTENCE IN THE MAIN TEXT
-Simulation parameters}
+  \caption{Simulation parameters}
   \label{tbl:mdpar}
   \begin{tabular}{ll}
     simulation property & parameter   \\
@@ -904,8 +903,6 @@ but the strong dependence on low concetrations of CaCl$_2$ is not fully reproduc
 In addition to possibly suboptimal interactions between calcium ions and PS headgroup, the potential sources of this
 discrepancy include the above observed sligth overestimation of \ce{Na^+} counterions and
 imperfect structures of the lipid headgroup (Fig.~\ref{simVSexpNOions_POPS}).
-
-MOVE THIS WHOLE PARAGRAPH TO SI
 The POPS headgroup order parameters are also related to the changes of average orientation of P--N and
 C$_{\beta}$--C$_{\gamma}$ vectors in the PS headgroup, which are smaller and more systematic
 in ECC-lipids than in Lipid7/Dang simulations (Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}).
@@ -1001,8 +998,9 @@ using different force fields~\cite{melcrova16,valentine18,hallock18}.
 %with various ion conctenrations among the available models, we believe that it also gives the currently best available
 %interpretation of the experimental data. 
 Furthermore, our results pave the way for more realistic MD simulations of anionic biological membranes,
-and demonstrate the usefulness of ECC also for charged lipids. The general philosophy behind our approach is to build upon existing non-polarizable force fields making the minimum of necessary changes by scaling only groups bearing a sizable (partial) charge, followed by slight readjustments of van der Waals radii and possibly also other parameters such as those concerning dihedral angle terms. The present work thus represents another piece in the mosaic that leads to development of an accurate empirical force field for biomolecular simulations involving aqueous salt solutions, proteins, peptides, lipid membranes, and/or nucleic acids, which include electronic polarization effects in a mean field way via charge scaling without extra computational costs compared to standard non-polarizable simulations. 
-
+and demonstrate the usefulness of ECC also for charged lipids.
+\todo{Maybe Pavel could extend this by mentioning something that this is yet another case where ECC works and/or
+  mentioning some concrete biological examples where anionic membrane/calcium interactions are important?}
 
 %Therefore, further force field optimization is required for even more accurate MD simulations of cations
 %in the vicinity of negatively charged lipid bilayers.
@@ -1015,7 +1013,8 @@ and demonstrate the usefulness of ECC also for charged lipids. The general philo
 % If you have acknowledgments, this puts in the proper section head. 
 \begin{acknowledgement} 
 % Put your acknowledgments here. 
-P.J. acknowledges support from the Czech Science Foundation via an EXPRO grant no. 19-26854X. 
+P.J. acknowledges support from the Czech Science Foundation (grant no. 16-01074S)  
+and from the Academy of Finland via the FiDiPro award. 
 Computational resources were supplied by the Ministry of Education, Youth and Sports 
 of the Czech Republic under the Projects CESNET (Project No. LM2015042) and CERIT-Scientific 
 Cloud (Project No. LM2015085) provided within the program Projects of Large Research, 
