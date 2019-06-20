@@ -532,12 +532,7 @@ conformational fluctuations of individual lipids, respectively, and
 can be directly calculated from MD simulations~\cite{ollila16}.
 The X-ray scattering form factors and C-H bond order parameters in
 the headgroup and glycerol backbone region of a POPS lipid bilayer are already available in the literature \cite{kucerka14,NMRlipidsIV}.
-Here, we measure also the C--H bond order parameters of the acyl chain region using natural abundance $^{13}$C NMR.
-We first determined the order parameters of each peak corresponding to different C--H bonds detected
-in the first dimension (Fig.~\ref{R-PDLF}) from the dipolar slices in the indirect dimension (Fig.~\ref{R-PDLFslices}).
-Because the exact assignment of these peaks was not possible, we assigned the
-acyl chain order parameters to mimic the profile predicted by the MD simulations (Fig.~\ref{simVSexpNOions_POPS}).
-\todo{Tiago should check and update this and figures in SI.}
+Here, we measure also the C--H bond order parameters of the acyl chain region from a sample of POPS multi-lamellar vesicles by means of a $^1$H--$^{13}$C dipolar recoupling 2D NMR experiment. More specifically, as described in detail in the Methods section, we performed R-PDLF 2D spectroscopy~\cite{dvinskikh04} to obtain spectra correlating chemical shifts (direct dimension) and C--H bond dipolar couplings (indirect dimension) from which the C--H bond order parameters defined in eq.~\ref{OPequation} can be determined. The assignment of the peaks in the $^{13}$C chemical shift dimension to acyl chain carbon sites was done based on previous work {\cite{ferreira13}} and is shown in Figs.~\ref{INEPT}~and~\ref{R-PDLF}. The dipolar splittings for the assigned carbons that were used to calculate their C--H bond order parameter magnitudes are shown in Fig.~\ref{R-PDLFslices}. Because the complete assignment of the peaks in the crowded spectral region between 29-31 ppm was not possible due to the chemical shift overlap of different carbons (~\ref{R-PDLF}), we partially assigned the acyl chain order parameters of this region to mimic the profile predicted by the MD simulations (Fig.~\ref{simVSexpNOions_POPS}).
 
 
 \begin{figure}[tb!] 
@@ -662,7 +657,7 @@ the response of POPC headgroup order parameters to the increasing mole fraction 
   \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_kcl.pdf} 
   \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_ecc-lip_L14_A-B-PN-COO_POPS_nacl.pdf} 
   \caption{\label{fig:delta_ordPar_monoval_PCPS}
-    Changes of the head group order parameters, and the angles of P--N and \ce{C_\beta-C_\gamma} (stars) vectors 
+    Changes of the head group order parameters, and the angles of P--N and ${\rm{C}}_\beta-{\rm{C}}_\gamma$ (stars) vectors
     with respect to the membrane normal of POPC (left) and POPS (right) in a POPC:POPS (5:1) bilayer 
     as a function of \ce{KCl} and \ce{NaCl} concentration from ECC-lipids and Lipid17/Dang simulations 
     compared with experimental values from Ref. \citenum{roux90} (signs from Ref. \citenum{ferreira16}) at 298 K.
@@ -670,9 +665,7 @@ the response of POPC headgroup order parameters to the increasing mole fraction 
     with the same value for both order parameters such that the lower order
     parameter value from pure POPS is at zero to correctly illustrate the significant forking.
     Because experimental data with \ce{NaCl} is not available for POPC, the data for KCl and \ce{LiCl} (dashed line, left)
-    are shown as lower and upper bounds, respectively, for the response to \ce{NaCl}.
-    Error bars are not visible for ECC-lipids simulations because they are smaller than the point size.
-  }
+    are shown as lower and upper bounds, respectively, for the response to \ce{NaCl}. Error bars are not visible for ECC-lipids simulations because they are smaller than the point size.}
 \todo{J: Will improve this figure with panels A, B, C and D 
 and put POPC together, POPS together 
 and remove the duplicate y-axis titles 
