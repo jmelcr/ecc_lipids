@@ -537,17 +537,19 @@ Here, we measure also the C--H bond order parameters of the acyl chain region fr
 
 \begin{figure}[tb!] 
   \centering 
-  \includegraphics[width=\figwidth]{../img/ecc_pops/Order-parameters_form-factors_exp-L17-ECC-lipids.pdf}
-  \includegraphics[width=\figwidth]{../img/POPSstructure.pdf} 
+  %\includegraphics[width=\figwidth]{../img/ecc_pops/Order-parameters_form-factors_exp-L17-ECC-lipids.pdf}
+  %\includegraphics[width=\figwidth]{../img/POPSstructure.pdf} 
+  \includegraphics[width=\figwidth]{../img/formF_OPs_APLinset_POPSchemfig.pdf} 
 \hfill
   \caption{\label{simVSexpNOions_POPS} 
-    \textbf{Top:} X-ray scattering form factors from simulations with Lipid17/Dang \citep{lipid17-future, dang2006} and 
+    \textbf{(A)} X-ray scattering form factors and area per phospholipid of a POPS bilayer
+    from simulations with Lipid17/Dang \citep{lipid17-future, dang2006} and 
     ECC-POPS/ECC-ions \cite{martinek17, Pluhackova2016} compared with experiments~\citep{kucerka14} at 298~K. 
-    \textbf{Middle:} Order parameters of POPS head group, glycerol backbone and acyl chains  
+    \textbf{(B)} Order parameters of POPS head group, glycerol backbone and acyl chains  
     from the same simulations 
     compared with experiments at 298~K. \citep{NMRlipidsIV}
     Open/closed symbols are used for palmitoyl/oleoyl chains of POPS. 
-    \textbf{Bottom:} The chemical structure of POPS and the labeling of the carbon segments. 
+    \textbf{(C)} Chemical structure of POPS and labeling of carbon segments. 
   }  
 \end{figure} 
 
@@ -555,13 +557,13 @@ Here, we measure also the C--H bond order parameters of the acyl chain region fr
 The Lipid17/Dang simulation gives 
 discrepancies with the experimental X-ray form factor,
 larger acyl chain order parameters,
-and smaller area per molecule than the experimental values (Fig.~\ref{simVSexpNOions_POPS} and table~\ref{tab:apls}),
+and smaller area per molecule than the experimental values (Fig.~\ref{simVSexpNOions_POPS}),
 indicating that this simulation predicts a too compact POPS lipid bilayer. 
 The ECC-POPS simulation gives better agreement with experiments for the X-ray scattering form factors and 
 acyl chain order parameters (Fig.~\ref{simVSexpNOions_POPS}),
 indicating that the bilayer dimensions and acyl chain
 conformations are well described by the force field. The area per lipid from ECC-POPS simulation is slightly
-smaller than the value reported from SDP model \cite{kucerka14} (table~\ref{tab:apls}), but the values
+smaller than the value reported from SDP model \cite{kucerka14} (Fig.~\ref{simVSexpNOions_POPS}), but the values
 agree within their error estimates. The larger area in ECC-POPS simulation can be
 explained by increased headgroup repulsion due to lower counterion binding affinity (Fig. \ref{fig:POPS-counterions-dens}).
 This explains also the larger area per molecule (57~\AA$^2$) reported for Lipid17 POPS simulations
@@ -579,28 +581,28 @@ However, the Dang ions are used here to analyze the effect of ECC to the propert
     in ECC-lipids (solid lines) and Lipid17/Dang (dashed lines) simulations of pure POPS bilayers.  
     The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
   }
-  \todo{This figure might be more clear without the lipids in background.}
 \end{figure}
 
 
-
-\begin{table}[tb!] 
-\centering
-  \caption{Area per lipid of POPS bilayers, $A_L$, from simulations with different force fields at 298~K with \ce{Na^+} counterions. \label{tab:apls} } 
-  \begin{tabular}{l|c } 
-    \multicolumn{2}{c}{POPS} \\
-    model          & $A_L$ / Å$^2$    \\ 
-    \hline 
-    Lipid17/Dang              & 53.5$\pm$ 1.7   \\ 
-%    Lipid17/ff99              & 57.9$\pm$ 1.7   \\ 
-%    \hline 
-    ECC-POPS/ECC-ions         & 59.8$\pm$ 1.8   \\ 
-%    \hline 
-    experiment (SDP model) \citep{kucerka14} & 62.7$\pm$ 1.3  \\ 
-%    \hline 
-  \end{tabular} \\
-\todo{J: This table will become a small inset plot in the top of Fig.~\ref{simVSexpNOions_POPS} }
-\end{table} 
+%% moved into the figure 1 as an inset
+%\begin{table}[tb!] 
+%\centering
+  %\caption{Area per lipid of POPS bilayers, $A_L$, from simulations with different force fields at 298~K with \ce{Na^+} counterions. \label{tab:apls} } 
+  %\begin{tabular}{l|c } 
+    %\multicolumn{2}{c}{POPS} \\
+    %model          & $A_L$ / Å$^2$    \\ 
+    %\hline 
+    %Lipid17/Dang              & 53.5$\pm$ 1.7   \\ 
+%%    Lipid17/ff99              & 57.9$\pm$ 1.7   \\ 
+%%    \hline 
+    %ECC-POPS/ECC-ions         & 59.8$\pm$ 1.8   \\ 
+%%    \hline 
+    %experiment (SDP model) \citep{kucerka14} & 62.7$\pm$ 1.3  \\ 
+%%    \hline 
+  %\end{tabular} \\
+%\todo{J: This table will become a small inset plot in the top of Fig.~\ref{simVSexpNOions_POPS} }
+%%\end{table} 
+%
 
 Despite the success in simulating bilayer dimensions and acyl chain conformations,
 lipid force fields have typically problems in capturing the correct glycerol backbone and
@@ -703,8 +705,8 @@ order parameters is not observed.% \cite{NMRlipidsIV}.
 \begin{figure*}[!tbp] 
   \centering 
   \includegraphics[height=\figheightsmall]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_5PC-1PS_ecclipids-lipid17.pdf}
-  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
-  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPC_kcl.pdf} 
+  \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_A-B_PC-PS_mix_POPC_nacl.pdf} 
+  \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_A-B_PC-PS_mix_POPC_kcl.pdf} 
   \includegraphics[height=\figheightsmall]{../img/POPCstructure.pdf} 
   \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix_PC} 
     \textbf{Left:} Number density profiles of \ce{K^{+}} and \ce{Na^{+}} counterions along the membrane normal axis
