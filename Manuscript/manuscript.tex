@@ -420,7 +420,7 @@ and the POPS order parameters calculated from simulations in this work.
 
 \begin{table*}[tbp]
 \centering
-\caption{  MOVE THE WHOLE TABLE TO SI!!!
+\caption{  MOVE THE WHOLE TABLE TO SI!!! % J: I do not have a strong opinion on this. I think it can stay within the main text in a JCTC paper.
            List of MD simulations reporting their respective
            lipid composition,
            used counterions,
@@ -470,9 +470,9 @@ The simulated systems are listed in Table~\ref{tbl:sim-list}
 and the used simulation parameters in Table~\ref{tbl:mdpar}. 
 All simulations were ran for a minimum of $1 \, \mu$s,
 and the first  $50 \,$ns were omitted as an equilibration period. 
-For deposited trajectories and parameter files see 
+Generated trajectories and parameter files are available from 
 Refs.~\citenum{ecclipids_pcps_nacl_kcl_series, ecclipids_pcps_cacl2_series, ecclipids_pcps_mixtures_counterions, 
-               lipid17_nacl_kcl_series, lipid17_ff99_ions, lipid17_cacl_series}
+               lipid17_nacl_kcl_series, lipid17_ff99_ions, lipid17_cacl_series}. 
 
 In the reference simulations with the standard Amber force field,
 the Lipid14 parameters~\cite{dickson14} for POPC, the Lipid17 parameters for POPS \cite{lipid17-future},
@@ -482,6 +482,7 @@ The Lipid17 parameters for POPS were obtained from AmberTools18 \cite{amber18}
 and converted to Gromacs format using acpype \cite{acpype}.  
 The ion model by Dang and coworkers~\cite{smith94,chang1999,dang2006} was used with Amber lipids because
 the default Amber ion parameters \cite{aqvist90} led to the artificial clustering of ions in solution \cite{NMRlipidsIV}.
+
 In the ECC-lipids simulations,
 the ECC-POPC parameters~\cite{melcr18} (available from Ref. \citenum{ECC-POPC_nacl_cacl2_files}), 
 the ECC-POPS parameteres derived in this work (see above), 
@@ -489,7 +490,7 @@ the SPC/E~\cite{Berendsen1987} water model, and ECC-ions \cite{martinek17, kohag
 The SPC/E water model was selected because its lower dielectric constant is consistent with the
 ECC concept \cite{leontyev11,leontyev14}.
 \begin{table}[tbp]
-  \caption{MOVE TABLE TO SI AND MENTION ONLY THE KEY INFO IN 1 SENTENCE IN THE MAIN TEXT
+  \caption{MOVE TABLE TO SI AND MENTION ONLY THE KEY INFO IN 1 SENTENCE IN THE MAIN TEXT  % J: I am fine with this, the simulation parameters are rather standard. There is nothing to be done in the text, the reference to this table will only obtain prefix "S".
 Simulation parameters}
   \label{tbl:mdpar}
   \begin{tabular}{ll}
