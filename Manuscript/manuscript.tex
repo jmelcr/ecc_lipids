@@ -355,12 +355,15 @@ where  $\epsilon_{el} = 1.78$ is the high-frequency dielectric constant of elect
 The scaling of charges with this factor has been recently applied to improve empirical models for ions and
  biomolecules containing charged groups such as proteins\cite{Pluharova2014, martinek17, duboue2018insulin, Mason2019, Duboue2018MgZn}.
 In addition to the charge, the Lennard-Jones~$\sigma$ was scaled with a factor $ 0.9 < f_\sigma \leq 1$
+\todo{The given range is not correct, e.g. scaling of POPC (0.89), Mg2+ (0.72 and 0.82). 
+Extending the lower bound to 0.8 fits the cases I know of with the exception of the small-Mg2+. }
 to improve the description of hydration properties of ions with respect to scattering data in these studies. The reason for the small readjustment of the ionic radii is that the original force fields were often developed such that the first peak on the experimental ion-water oxygen radial distribution function was reproduced. Upon charge scaling this peak typically moved to slightly larger distances and the agreement with experiment was then restored by a small decrease of the Lennard-Jones~$\sigma$ parameter.
 
 Derivation of the correct scaling factor for lipids is more complicated, because
 the partial charges depend on the methods used to derive the respective force fields.
-For example, the partial charges may already include the effects of electronic polarizability to some extent,
-and hence, the scaling factor can be larger than the theoretically derived value for ions in water, $f_q \approx 0.75$.
+For example, the partial charges of overall neutral molecules may already include the effects of electronic polarizability to some extent,
+and hence, the scaling factor can be larger than the theoretically derived value for ions in water, $f_q \approx 0.75$.  
+% above does not apply to molecules and moieties with non-zero total charge (hence the edit). 
 Before the ECC theory was rigorously derived, similar idea was already employed in early classical 
 MD simulations of lipids and surfactants using the scaling factor of 0.5 for atomic charges  \cite{jonsson86,egberts94, berendsen1996}. 
 In our recent work, we applied the ECC to the Amber based lipid14 force field of zwitterionic POPC lipid \cite{dickson14}
@@ -371,12 +374,15 @@ and the electrometer concept \cite{akutsu81,altenbach84,seelig87,catte16}, and t
 without additional ions \cite{kucerka11}, which resulted to the scaling factor values of $f_q = 0.8$ and $f_\sigma = 0.89$  \cite{melcr18}.
 
 Here, we apply the ECC to the Amber-based lipid17 parameters \cite{lipid17-future} of POPS lipid with a monovalent negative charge.
-Because POPS carries a physical total charge as aqueous ions, we apply the theoretically derived scaling factor for
-ions $f_q = 0.75$ \cite{leontyev09} to the partial charges of POPS. 
+Because POPS is anionic at physiological pH$\approx 7$ carrying a physical total charge as aqueous ions, 
+we apply the theoretically derived scaling factor\cite{leontyev09} for
+ions $f_q = 0.75$ to the partial charges of POPS 
+only in the headgroup, glycerol backbone, and carbonyl regions. % added because the information where we scale charges was missing before.
 The lipids with a total charge of -0.75 are also neutralized
 by the counterion charges of +0.75 in simulations with ECC-ions \cite{Pluharova2014, kohagen16, martinek17}.
-Following our previous work for POPC, we use the scaling factor of $f_\sigma = 0.89$ for the Lennard-Jones~$\sigma$ parameters and
-use it to scale the parameters of atoms only in the headgroup, glycerol backbone, and carbonyl regions \cite{melcr18}.
+Following our previous work for POPC, we use the scaling factor $f_\sigma = 0.89$ for the Lennard-Jones~$\sigma$ parameters 
+to scale the corresponding parameters of atoms 
+only in the headgroup, glycerol backbone, and carbonyl regions \cite{melcr18}. % Can be shortened by saying it is the same set as that for scaling charges.
 Further optimization of parameters was not done in this work. 
 The generated ECC-POPS parameters are available from Ref.~\citenum{ecclipids_pcps_nacl_kcl_series}. 
 
