@@ -228,7 +228,9 @@ separate page at the end of the document.
  
 \begin{abstract} 
   Phosphatidylserine (PS) lipids are important signaling molecules and the most common negatively charged lipids in eukaryotic membranes.
-  The signaling can be often regulated with calcium, but its interactions with PS headgroups are not fully understood.
+  The signaling can be often regulated by calcium, but its interactions with PS headgroups are not fully understood.
+  \todo{The way we write "head groups" resp. "headgroups" has to be united. 
+        I prefer "head groups" as it is gramatically correct, but I am fine with either of the options.}
   Classical molecular dynamics (MD) simulations can potentially give detailed description of lipid-ion interactions,
   but the results strongly depend on the used force field.
   Here, we apply the electronic continuum correction (ECC) to the Amber Lipid17 parameters of POPS lipid to improve its
@@ -236,11 +238,11 @@ separate page at the end of the document.
   The partial charges of headgroup, glycerol backbone and carbonyls of POPS, bearing a unit negative charge, were scaled with a
   factor of 0.75, derived for monovalent ions and the Lennard-Jones $\sigma$ parameters of the same segments were scaled with a factor of 0.89.
   The resulting ECC-POPS models, gives more realistic interactions with Na$^+$ and Ca$^{2+}$ cations than the original Amber Lipid17 parameters,
-  when validated using the headgroup order parameters and ''electrometer concept''.
-  In ECC-lipids simulations, the Ca$^{2+}$ cations do not simultaneously interact with more than two PS lipids, and interactions 
-  carboxylate groups is twice more likely than with phosphate group, while interaction with carbonyls is almost negligible.
-  Our results pave the way for more realistic MD simulations of anionic biological membranes and demonstrate the ECC
-  approach is useful also for charged lipids.
+  when validated using headgroup order parameters and ''electrometer concept''.
+  In ECC-lipids simulations, Ca$^{2+}$ cations do not simultaneously interact with more than two PS lipids, and interactions 
+  with carboxylate groups is twice more likely than with phosphate groups, while interaction with carbonyls is almost negligible.
+  Our results pave the way for more realistic MD simulations of anionic biological membranes and demonstrate the 
+  usefulness of ECC also to charged lipids.
 \end{abstract} 
  
  
