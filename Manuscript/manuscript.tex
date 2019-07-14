@@ -228,7 +228,9 @@ separate page at the end of the document.
  
 \begin{abstract} 
   Phosphatidylserine (PS) lipids are important signaling molecules and the most common negatively charged lipids in eukaryotic membranes.
-  The signaling can be often regulated with calcium, but its interactions with PS headgroups are not fully understood.
+  The signaling can be often regulated by calcium, but its interactions with PS headgroups are not fully understood.
+  \todo{The way we write "head groups" resp. "headgroups" has to be united. 
+        I prefer "head groups" as it is gramatically correct, but I am fine with either of the options.}
   Classical molecular dynamics (MD) simulations can potentially give detailed description of lipid-ion interactions,
   but the results strongly depend on the used force field.
   Here, we apply the electronic continuum correction (ECC) to the Amber Lipid17 parameters of POPS lipid to improve its
@@ -236,11 +238,11 @@ separate page at the end of the document.
   The partial charges of headgroup, glycerol backbone and carbonyls of POPS, bearing a unit negative charge, were scaled with a
   factor of 0.75, derived for monovalent ions and the Lennard-Jones $\sigma$ parameters of the same segments were scaled with a factor of 0.89.
   The resulting ECC-POPS models, gives more realistic interactions with Na$^+$ and Ca$^{2+}$ cations than the original Amber Lipid17 parameters,
-  when validated using the headgroup order parameters and ''electrometer concept''.
-  In ECC-lipids simulations, the Ca$^{2+}$ cations do not simultaneously interact with more than two PS lipids, and interactions 
-  carboxylate groups is twice more likely than with phosphate group, while interaction with carbonyls is almost negligible.
-  Our results pave the way for more realistic MD simulations of anionic biological membranes and demonstrate the ECC
-  approach is useful also for charged lipids.
+  when validated using headgroup order parameters and ''electrometer concept''.
+  In ECC-lipids simulations, Ca$^{2+}$ cations do not simultaneously interact with more than two PS lipids, and interactions 
+  with carboxylate groups is twice more likely than with phosphate groups, while interaction with carbonyls is almost negligible.
+  Our results pave the way for more realistic MD simulations of anionic biological membranes and demonstrate the 
+  usefulness of ECC also to charged lipids.
 \end{abstract} 
  
  
@@ -271,13 +273,15 @@ and important signaling molecules \cite{lemmon08,leventis10,li14}.
 They interact with signaling proteins \cite{leventis10},
 regulate surface charge and protein localization \cite{yeung08}, 
 induce protein aggregation \cite{zhao04,gorbenko06} and membrane fusion \cite{wilschut1981calcium, papahadjopoulos90, verma2018cell}.
-As these functions are also often regulated by ions \cite{leventis10},
+Recently, we have shown by a combination of spectroscopic experiments, biochemical essays, and molecular simulations, that binding of
+calcium to \ce{PIP_2} lipids inhibits their recognition by a phospolipase~C, 
+which demonstrates that not only proteins but also lipids can get involved in calcium signaling \cite{Bilkova2017Calcium}.
+As such \todo{lipid-related functions resp. signalling (choose more suitable)} are also often regulated by ions \cite{leventis10},
 a detailed understanding of interactions between negatively charged lipids and biologically relevant cations such as calcium is of a great importance.
-As a recent example, we have shown by a combination of spectroscopic experiments, biochemical essays, and molecular simulations, that binding of
-calcium to \ce{PIP_2} lipids inhibits their recognition by a phospolipase C, which demonstrates that not only proteins but also lipids can get involved in calcium 
-signaling \cite{Bilkova2017Calcium}.
 
-Spectroscopic experiments give detailed information about the
+Spectroscopic experiments give \todo{detailed .vs. accurate (better?). 
+Reason: I did not like that the sentence says that experiments give detailed information and at the same time such information is indirect and difficult to interpret.} 
+information about the
 interactions between ions and PS lipids, but the data is often indirect and difficult to
 interpret \cite{hauser77,kurland79,eisenberg79,hauser83,dluhy83,hauser85,feigenson86,mattai89,roux90,roux91}.
 Some studies suggest that the
@@ -307,7 +311,7 @@ of phosphatidylcholine (PC) lipids \cite{catte16, NMRlipidsIV}, which can
 be related to cation binding affinity to lipid bilayers using the electrometer
 concept \cite{akutsu81,altenbach84,seelig87}. The main advantage of the approach
 is the direct comparison between experimental and calculated order parameters,
-which reduced the ambiguity arising from the interpretation of the data.
+which reduce the ambiguity arising from the interpretation of the data.
 Unfortunately, none of the readily available force fields was sufficiently accurate to correctly reproduce the
 cation binding affinity to zwitterionic PC bilayers \cite{catte16} or to the
 mixtures with negatively charged PS lipids \cite{NMRlipidsIV}.
@@ -315,7 +319,7 @@ In our recent work~\cite{melcr18}, we were able to improve the cation binding af
 to zwitterionic 1-palmitoyl-2-oleoyl-sn-glycero-3-phosphocholine (POPC) lipid bilayer
 by implicitly including electronic polarizability using the electronic continuum
 correction (ECC) \cite{leontyev09}. The good agreement between the resulting ECC-POPC
-model and experiments enable detailed interpretation of calcium binding details to POPC lipid bilayer.
+model and experiments enable detailed interpretation of calcium binding details to a POPC lipid bilayer.
 
 %There are force field parameters for neutral lipids PC and PE 
 %with explicit polarizability using the Classical Durde model. \cite{chowdhary13, chowdhary17}
@@ -351,12 +355,15 @@ where  $\epsilon_{el} = 1.78$ is the high-frequency dielectric constant of elect
 The scaling of charges with this factor has been recently applied to improve empirical models for ions and
  biomolecules containing charged groups such as proteins\cite{Pluharova2014, martinek17, duboue2018insulin, Mason2019, Duboue2018MgZn}.
 In addition to the charge, the Lennard-Jones~$\sigma$ was scaled with a factor $ 0.9 < f_\sigma \leq 1$
+\todo{The given range is not correct, e.g. scaling of POPC (0.89), Mg2+ (0.72 and 0.82). 
+Extending the lower bound to 0.8 fits the cases I know of with the exception of the small-Mg2+. }
 to improve the description of hydration properties of ions with respect to scattering data in these studies. The reason for the small readjustment of the ionic radii is that the original force fields were often developed such that the first peak on the experimental ion-water oxygen radial distribution function was reproduced. Upon charge scaling this peak typically moved to slightly larger distances and the agreement with experiment was then restored by a small decrease of the Lennard-Jones~$\sigma$ parameter.
 
 Derivation of the correct scaling factor for lipids is more complicated, because
 the partial charges depend on the methods used to derive the respective force fields.
-For example, the partial charges may already include the effects of electronic polarizability to some extent,
-and hence, the scaling factor can be larger than the theoretically derived value for ions in water, $f_q \approx 0.75$.
+For example, the partial charges of overall neutral molecules may already include the effects of electronic polarizability to some extent,
+and hence, the scaling factor can be larger than the theoretically derived value for ions in water, $f_q \approx 0.75$.  
+% above does not apply to molecules and moieties with non-zero total charge (hence the edit). 
 Before the ECC theory was rigorously derived, similar idea was already employed in early classical 
 MD simulations of lipids and surfactants using the scaling factor of 0.5 for atomic charges  \cite{jonsson86,egberts94, berendsen1996}. 
 In our recent work, we applied the ECC to the Amber based lipid14 force field of zwitterionic POPC lipid \cite{dickson14}
@@ -367,12 +374,15 @@ and the electrometer concept \cite{akutsu81,altenbach84,seelig87,catte16}, and t
 without additional ions \cite{kucerka11}, which resulted to the scaling factor values of $f_q = 0.8$ and $f_\sigma = 0.89$  \cite{melcr18}.
 
 Here, we apply the ECC to the Amber-based lipid17 parameters \cite{lipid17-future} of POPS lipid with a monovalent negative charge.
-Because POPS carries a physical total charge as aqueous ions, we apply the theoretically derived scaling factor for
-ions $f_q = 0.75$ \cite{leontyev09} to the partial charges of POPS. 
+Because POPS is anionic at physiological pH$\approx 7$ carrying a physical total charge as aqueous ions, 
+we apply the theoretically derived scaling factor\cite{leontyev09} for
+ions $f_q = 0.75$ to the partial charges of POPS 
+only in the headgroup, glycerol backbone, and carbonyl regions. % added because the information where we scale charges was missing before.
 The lipids with a total charge of -0.75 are also neutralized
 by the counterion charges of +0.75 in simulations with ECC-ions \cite{Pluharova2014, kohagen16, martinek17}.
-Following our previous work for POPC, we use the scaling factor of $f_\sigma = 0.89$ for the Lennard-Jones~$\sigma$ parameters and
-use it to scale the parameters of atoms only in the headgroup, glycerol backbone, and carbonyl regions \cite{melcr18}.
+Following our previous work for POPC, we use the scaling factor $f_\sigma = 0.89$ for the Lennard-Jones~$\sigma$ parameters 
+to scale the corresponding parameters of atoms 
+only in the headgroup, glycerol backbone, and carbonyl regions \cite{melcr18}. % Can be shortened by saying it is the same set as that for scaling charges.
 Further optimization of parameters was not done in this work. 
 The generated ECC-POPS parameters are available from Ref.~\citenum{ecclipids_pcps_nacl_kcl_series}. 
 
@@ -410,7 +420,7 @@ and the POPS order parameters calculated from simulations in this work.
 
 \begin{table*}[tbp]
 \centering
-\caption{  MOVE THE WHOLE TABLE TO SI!!!
+\caption{  MOVE THE WHOLE TABLE TO SI!!! % J: I do not have a strong opinion on this. I think it can stay within the main text in a JCTC paper.
            List of MD simulations reporting their respective
            lipid composition,
            used counterions,
@@ -460,9 +470,9 @@ The simulated systems are listed in Table~\ref{tbl:sim-list}
 and the used simulation parameters in Table~\ref{tbl:mdpar}. 
 All simulations were ran for a minimum of $1 \, \mu$s,
 and the first  $50 \,$ns were omitted as an equilibration period. 
-For deposited trajectories and parameter files see 
+Generated trajectories and parameter files are available from 
 Refs.~\citenum{ecclipids_pcps_nacl_kcl_series, ecclipids_pcps_cacl2_series, ecclipids_pcps_mixtures_counterions, 
-               lipid17_nacl_kcl_series, lipid17_ff99_ions, lipid17_cacl_series}
+               lipid17_nacl_kcl_series, lipid17_ff99_ions, lipid17_cacl_series}. 
 
 In the reference simulations with the standard Amber force field,
 the Lipid14 parameters~\cite{dickson14} for POPC, the Lipid17 parameters for POPS \cite{lipid17-future},
@@ -472,6 +482,7 @@ The Lipid17 parameters for POPS were obtained from AmberTools18 \cite{amber18}
 and converted to Gromacs format using acpype \cite{acpype}.  
 The ion model by Dang and coworkers~\cite{smith94,chang1999,dang2006} was used with Amber lipids because
 the default Amber ion parameters \cite{aqvist90} led to the artificial clustering of ions in solution \cite{NMRlipidsIV}.
+
 In the ECC-lipids simulations,
 the ECC-POPC parameters~\cite{melcr18} (available from Ref. \citenum{ECC-POPC_nacl_cacl2_files}), 
 the ECC-POPS parameteres derived in this work (see above), 
@@ -479,7 +490,7 @@ the SPC/E~\cite{Berendsen1987} water model, and ECC-ions \cite{martinek17, kohag
 The SPC/E water model was selected because its lower dielectric constant is consistent with the
 ECC concept \cite{leontyev11,leontyev14}.
 \begin{table}[tbp]
-  \caption{MOVE TABLE TO SI AND MENTION ONLY THE KEY INFO IN 1 SENTENCE IN THE MAIN TEXT
+  \caption{MOVE TABLE TO SI AND MENTION ONLY THE KEY INFO IN 1 SENTENCE IN THE MAIN TEXT  % J: I am fine with this, the simulation parameters are rather standard. There is nothing to be done in the text, the reference to this table will only obtain prefix "S".
 Simulation parameters}
   \label{tbl:mdpar}
   \begin{tabular}{ll}
@@ -562,7 +573,7 @@ acyl chain order parameters (Fig.~\ref{simVSexpNOions_POPS}),
 indicating that the bilayer dimensions and acyl chain
 conformations are well described by the force field. The area per lipid from ECC-POPS simulation is slightly
 smaller than the value reported from SDP model \cite{kucerka14} (Fig.~\ref{simVSexpNOions_POPS}), but the values
-agree within their error estimates. The larger area in ECC-POPS simulation can be
+agree within their error estimates. The larger area in ECC-POPS compared to Lipid17/Dang simulation can be
 explained by increased headgroup repulsion due to lower counterion binding affinity (Fig. \ref{fig:POPS-counterions-dens}).
 This explains also the larger area per molecule (57~\AA$^2$) reported for Lipid17 POPS simulations
 %being closer to the experimental value, 
@@ -571,9 +582,9 @@ However, the Dang ions are used here to analyze the effect of ECC to the propert
 {\AA}qvist ions produce known artifacts, like artificial aggregation of ions at larger salt concentrations \cite{kohagen16, chen07, NMRlipidsIV}.
 
 %SAMULI: I have moved this figure back to the main text
-\begin{figure}[hbp!] 
+\begin{figure}[tbp!] 
   \centering 
-  \includegraphics[width=8cm]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_ecclipids-lipid17.pdf}
+  \includegraphics[width=\figwidthsmall]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_ecclipids-lipid17.pdf}
   \caption{\label{fig:POPS-counterions-dens}
     Number density profiles of \ce{K^{+}} and \ce{Na^{+}} counterions along the membrane normal axis
     in ECC-lipids (solid lines) and Lipid17/Dang (dashed lines) simulations of pure POPS bilayers.  
@@ -636,7 +647,7 @@ Binding affinity of monovalent ions to lipid bilayers depends strongly on
 force field parameters in simulations \cite{catte16,NMRlipidsIV}.
 The cation binding affinities to lipid bilayers in simulations have been previously evaluated
 against experiments using the order parameters of $\alpha$ and $\beta$ carbons in the
-phosphatidylcholine (PC) lipid headgroup (see Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PC} for the labeling) \cite{catte16,melcr18,NMRlipidsIV},
+phosphatidylcholine (PC) lipid headgroup (see Fig.~\ref{fig:delta_ordPar_monoval_PCPS} for the labeling) \cite{catte16,melcr18,NMRlipidsIV},
 which decrease proportionally to the bound charge according to the ''electrometer concept'' \citep{seelig87}.
 Although the response of PS lipid headgroup order parameters to the bound charge is also systematic,
 it is less well undestood and the addition of cations may cause phase transitions in negatively charged
@@ -648,7 +659,8 @@ electrometer concept~\cite{akutsu81,altenbach84,seelig87,roux90,catte16,NMRlipid
 Because the evaluation of monovalent ion binding affinity to bilayers with
 PS lipids is complicated by the lack of ion-free state (counterions are always present with negatively charged lipids),
 we evaluate the counterion binding affinity to POPC:POPS mixtures also by monitoring
-the response of POPC headgroup order parameters to the increasing mole fraction of PS lipids~\cite{NMRlipidsIV}.
+the response of POPC headgroup order parameters to the increasing molar fraction of PS lipids~\cite{NMRlipidsIV} 
+(Fig.~\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PC}).
 
 \begin{figure}[tbp!] 
   \centering 
@@ -662,13 +674,13 @@ the response of POPC headgroup order parameters to the increasing mole fraction 
     with respect to the membrane normal of POPC (A, B) and POPS (C, D) in a POPC:POPS (5:1) bilayer 
     as a function of \ce{KCl} and \ce{NaCl} concentration from ECC-lipids and Lipid17/Dang simulations 
     compared with experimental values from Ref. \citenum{roux90} (signs from Ref. \citenum{ferreira16}) at 298 K.
-    The y-axis for the $\alpha$-carbon results of POPS (middle right) is transferred
+    The y-axis for the $\alpha$-carbon results of POPS (C and D, middle) is shifted
     with the same value for both order parameters such that the lower order
     parameter value from pure POPS is at zero to correctly illustrate the significant forking.
-    Because experimental data with \ce{NaCl} is not available for POPC, the data for KCl and \ce{LiCl} (dashed line, left)
+    Because experimental data with \ce{NaCl} is not available for POPC, the data for KCl and \ce{LiCl} (B, dashed lines)
     are shown as lower and upper bounds, respectively, for the response to \ce{NaCl}. 
     Error bars are not visible for ECC-lipids simulations because they are smaller than the point size.
-    Inset shows the labeling of carbon segments in a POPC head group.}
+    Inset in A shows the labeling of carbon segments in a POPC head group.}
 \end{figure} 
 
 
@@ -722,16 +734,17 @@ order parameters is not observed.% \cite{NMRlipidsIV}.
 
 The behaviour of POPS headgroup can be further characterized by monitoring its order parameters in different
 lipid mixtures and ionic conditions~\cite{NMRlipidsIV,roux90}.
-In experiments, the headgroup order parameters of POPS are almost unchanged upon increasing the POPC content or monovalent ion concetration
-(\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PS} and Figs.~\ref{fig:delta_ordPar_monoval_PCPS}).
-In Lipid17/Dang simulations, the changes of POPS headgroup order parameters with increasing amount of
-both POPC or monovalent salts (\ce{KCl} and \ce{NaCl}) are overestimated (\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PS} and Figs.~\ref{fig:delta_ordPar_monoval_PCPS}).
+In experiments, the headgroup order parameters of POPS are almost unchanged upon increasing the POPC content or monovalent ion concentration, 
+while in Lipid17/Dang simulations the changes of POPS headgroup order parameters with increasing amount of
+both POPC or monovalent salts (\ce{KCl} and \ce{NaCl}) are overestimated 
+(Figs.~\ref{fig:delta_ordPar_monoval_PCPS} and \ref{fig:delta_ordPar_NaCl_PC-PS_mix_PS}).
 Similar results also for other force fields are reported elsewhere~\cite{NMRlipidsIV}.
 In ECC-lipids simulations, the response of POPS headgroup order parameters to both POPC and monovalent salt concentration (\ce{KCl} and \ce{NaCl})
-are more modest and closer to experiments (\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PS} and Figs.~\ref{fig:delta_ordPar_monoval_PCPS}).
+are more modest and closer to experiments. 
 The changes in order parameters can be related to the orientations of the P--N and C$_{\beta}$--C$_{\gamma}$
 vectors in POPC and POPS, which change much less and more systematically in ECC-lipids
-than in Lipid17/Dang simulations (\ref{fig:delta_ordPar_NaCl_PC-PS_mix_PS} and Figs.~\ref{fig:delta_ordPar_monoval_PCPS}). 
+than in Lipid17/Dang simulations 
+(Figs.~\ref{fig:delta_ordPar_monoval_PCPS} and \ref{fig:delta_ordPar_NaCl_PC-PS_mix_PS}).
 
 We estimate the influence of negatively charged POPS on the counterion binding affinity
 by comparing the relative surface excesses with respect to water, $\Gamma ^{w} _{\rm ion}$,
@@ -747,12 +760,22 @@ The presence of $\sim$17\% POPS in a POPC bilayer increases the
 value to $\Gamma ^{w} _{\rm Na}=0.092 \pm 0.005 \mathrm{nm}^{-2}$ 
 for 0.621 M sodium, while value for potassium remains negative,
 $\Gamma ^{w} _{\rm K}=-0.123 \pm 0.005 \mathrm{nm}^{-2}$ in POPC:POPS (5:1) mixture (Fig.~\ref{fig:nacl-dens_PCPS}).
-As discussed above, the sodium binding to POPC:POPS (5:1) mixture may be slightly overestimated also in
-ECC-lipids simulations. The response of headgroup order parameters to the addition of NaCl are
-slightly overestimated also in ECC-POPC simulations (Fig 3 in Ref. \citenum{melcr18}),
-suggesting that similar small overestimation of sodium binding may also occur to a pure POPC bilayer.
-Therefore, the overestimation may arise from the sodium interactions with PC headgroup and
-increase in binding affinity due to PS lipids would not be affected.
+%
+% J: I deemed the following sentences need improvement, my suggestion is below.
+%
+%As discussed above, the sodium binding to POPC:POPS (5:1) mixture may be slightly overestimated also in
+%ECC-lipids simulations. The response of headgroup order parameters to the addition of NaCl are
+%slightly overestimated also in ECC-POPC simulations (Fig 3 in Ref.~\citenum{melcr18}),
+%suggesting that similar small overestimation of sodium binding may also occur to a pure POPC bilayer.
+%Therefore, the overestimation may arise from the sodium interactions with PC headgroup and
+%increase in binding affinity due to PS lipids would not be affected.
+Slightly overestimated binding of \ce{Na+} to a POPC bilayer can be deduced from
+the response of headgroup order parameters to the addition of NaCl (Fig~3 in Ref.~\citenum{melcr18}) 
+and similarly also that to a POPC:POPS (5:1) mixture from the discussion above. 
+In spite of this small inaccuracy
+the increase in binding affinity of \ce{Na+} due to PS lipids remains unaffected.
+
+
 
 \subsection{Molecular interaction and binding affinity of \ce{Ca^{2+}} cations to mixed POPC:POPS (5:1) membrane} 
 \label{section:lip-ion_ca}
@@ -763,7 +786,7 @@ The decrease of the PC headgroup order parameters in this mixture upon addition 
 were overestimated by the Lipid17/Dang simulations (Fig.~\ref{fig:delta_ordPar_CaCl_PCPS})
 and all other tested force fields except CHARMM36 with the recently introduced NBfix for calcium \cite{kim16},
 which underestimated the headgroup order parameter response.
-In ECC-lipids simulations, the headgroup responses are in better agreement with experiments (Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}),
+In ECC-lipids simulations, the headgroup responses are in better agreement with experiments,
 indicating that the lower binding affinity than in Lipid17/Dang simulations is more realistic (Fig.~\ref{fig:cacl-dens_PCPS}).
 Therefore, we use ECC-lipids simulations to estimate the influence of negative charged POPS on
 calcium binding affinity to lipid bilayers.
@@ -776,11 +799,12 @@ $\Gamma^{w}_{Ca} = 0.24\mathrm{nm^{-2}}$ ($\sim 4.8$ phospholipids per bound \ce
 Besides lower binding affinity, ECC-lipids simulations yield smaller error bars for order parameters and shorter residence times (Fig.~\ref{fig:hist_residence_times}) 
 than those typically observed in simulations with other force fields \cite{javanainen17,melcr18,NMRlipidsIV},
 suggesting that the ECC accelerates the equilibration of ions at lipid bilayer interface.
-Therefore, our 1 $\mu$s simulations seem to be sufficiently long for the ECC-lipids simulations, because
+Therefore, our 1 $\mu$s simulations are sufficiently long for the ECC-lipids simulations, because
 90\% of the calcium residence times are shorter than $60\,\mathrm{ns}$ for pure POPC bilayer
 and shorter than $200\,\mathrm{ns}$ for POPC:POPS (5:1) mixture, while the
 longest observed residence times are $141\,\mathrm{ns}$ and $485\,\mathrm{ns}$, respectively (Fig.~\ref{fig:hist_residence_times}).
-Interestingly, the calcium residence times are 3-4 times longer in POPC:POPS (5:1) mixture than in pure POPC.
+Interestingly, the calcium residence times are 3-4 times longer in POPC:POPS (5:1) mixture than in pure POPC
+in line with increased relaxation times of fluorescence probes from experiments. \cite{melcrova16}
 
 
 \begin{figure}[tbp!] 
@@ -800,18 +824,17 @@ Interestingly, the calcium residence times are 3-4 times longer in POPC:POPS (5:
     \label{fig:delta_ordPar_CaCl_PCPS} 
     \textbf{(A)}
     Number density profiles of \ce{Ca^{2+}} and \ce{Cl^-} ions and \ce{Na^{+}} counterions 
-    along the normal of the membrane starting at the centre
-    for the negatively charged membrane with the composition 5\,PC:1\,PS
-    at 80~mM (top) and 200~mM (bottom) added buffer concentrations of \ce{CaCl2} from simulations with ECC-lipids (solid) and Lipid17 (dashed). 
+    along the normal of the negatively charged membrane with the composition 5\,PC:1\,PS
+    at 80~mM (A, top) and 200~mM (A, bottom) added buffer concentrations of \ce{CaCl2} from simulations with ECC-lipids (solid) and Lipid17 (dashed). 
     In order to visualize the density profiles with a comparable scale 
     the density profile of~\ce{Ca^{2+}} ions are divided by 2, and 
     the density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
     \textbf{(B, C)}
     Changes of the head group order parameters, and the angles of P--N (circles) and C$_\beta$--C$_\gamma$ (stars) vectors 
     with respect to the membrane normal of POPC (B) and POPS (C) in a POPC:POPS (5:1) bilayer 
-    as a function of \ce{CaCl$_2$} concentration from ECC-lipids and Lipid17/Dang simulations 
+    as a function of \ce{CaCl$_2$} added buffer concentration from ECC-lipids and Lipid17/Dang simulations 
     compared with experimental values from Ref. \citenum{roux90} (signs from Refs. \citenum{ferreira16} and \citenum{NMRlipidsIV}) at 298 K.
-    The y-axis for the $\alpha$-carbon results of POPS (middle right) is transferred
+    The y-axis for the $\alpha$-carbon results of POPS (C, right) is shifted
     with the same value for both order parameters such that the lower order
     parameter value from pure POPS is at zero to correctly illustrate the significant forking.
     Error bars are not visible for ECC-lipids simulations because they are smaller than the point size.
@@ -858,14 +881,14 @@ Interestingly, the calcium residence times are 3-4 times longer in POPC:POPS (5:
     \textbf{(A)} Percentages of the bound Ca$^{2+}$ 
     in exclusive contact with the given oxygen moiety
     when bound to PC only, PS only or simultaneously to both
-    calculated from ECC-lipids simulation of POPC:POPS (5:1) bilayer with 409 mM CaCl$_2$. 
+    calculated from ECC-lipids simulation of POPC:POPS (5:1) bilayer with 409 mM CaCl$_2$ added buffer concentration. 
 	In the case of simultaneous binding to both PC and PS,
 	the percentages refer to the moieties in PS.
         For numerical values, see table~\ref{tab:binding}.
     \textbf{(B)} Relative probabilities of \ce{Ca^{2+}} ions to coordinate with a certain number of lipids
     in pure POPC bilayer with 350 mM CaCl$_2$ and in POPC:POPS (5:1) mixture with 400 mM CaCl$_2$.  
     Analysis was done for both systems by considering all lipids (blue and violet) and
-    for POPC:POPS (5:1) mixture also by considering POPC and POPS lipids separately (green and orange). 
+    for POPC:POPS (5:1) mixture also by considering only POPC and POPS lipids separately (green and orange). 
     %All lipids were taken into account with the exception of the complexes in light green and orange, 
     %for which we counted only contacts with POPC resp POPS from the mixed 5\,PC:1\,PS negatively charged bilayer. 
     %The calculated probabilities of the calcium-lipid complexes also reflect only POPC (light green) resp POPS (orange). 
@@ -873,7 +896,7 @@ Interestingly, the calcium residence times are 3-4 times longer in POPC:POPS (5:
     Clusters of four or more lipids were not observed in either membrane.
     The threshold for counting coordinated lipids in a complex with \ce{Ca^{2+}} was set to $0.3\,\mathrm{nm}$, 
     as the distance between the cation and the oxygen atoms of the lipids. 
-    Previously published simulation data \cite{melcr18} for pure POPC bilayers were taken directly from \cite{ECC-POPC_nacl_cacl2_files}. 
+    Previously published simulation data \cite{melcr18} for pure POPC bilayers were taken directly from Ref.~\citenum{ECC-POPC_nacl_cacl2_files}. 
   }
 \end{figure} 
 
@@ -886,12 +909,13 @@ and other tested force fields in our recent work \cite{NMRlipidsIV},
 including CHARMM36 with the NBfix correction for calcium
 which underestimated the binding affinity.
 In ECC-lipids simulations, the changes of the PS headgroup order parameters are not overestimated,
-but the strong dependence on low concetrations of CaCl$_2$ is not fully reproduced (Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}).
+but the strong dependence on low concentrations of CaCl$_2$ is not fully reproduced (Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}).
 In addition to possibly suboptimal interactions between calcium ions and PS headgroup, the potential sources of this
-discrepancy include the above observed sligth overestimation of \ce{Na^+} counterions and
+discrepancy include the above observed slight overestimation of \ce{Na^+} counterions and
 imperfect structures of the lipid headgroup (Fig.~\ref{simVSexpNOions_POPS}).
 
-MOVE THIS WHOLE PARAGRAPH TO SI
+% I do not think it is necessary to
+\todo{MOVE THIS WHOLE PARAGRAPH TO SI}
 The POPS headgroup order parameters are also related to the changes of average orientation of P--N and
 C$_{\beta}$--C$_{\gamma}$ vectors in the PS headgroup, which are smaller and more systematic
 in ECC-lipids than in Lipid7/Dang simulations (Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}).
@@ -900,7 +924,8 @@ the average orientation of P--N vectors in both POPC and POPS headgroups tilts m
 by 11$^\circ$ and  3$^\circ$, respectively, in ECC-lipids simulations (Fig.~\ref{fig:delta_ordPar_CaCl_PCPS}),
 suggesting that the PS headgroup orientation is less sensitive to the bound calcium than PC.
 On the other hand, the average orientation of the C$_{\beta}$--C$_{\gamma}$ vector in PS headgroup
-tilts to the opposite direction by $11^\circ$ in the same system.
+tilts to the opposite direction by $11^\circ$ in the same system
+due to the attraction between \ce{COO^-} groups in PS and the cations adsorbed at the phosphate region.
 
 Recent analyzes of interaction sites between calcium and PS lipids combining
 MD simulations with various experimental techniques have been 
@@ -909,10 +934,10 @@ Here, we analyze the calcium binding details from ECC-lipids simulation of POPC:
 because it surpasses the quality of other force fields in direct comparison with experimental order parameter data.
 In the ECC-lipid simulation, calcium ions binds approximately twice more likely 
 to the carboxylate than to the phosphate moiety of POPS headgroup,
-while binding to acyl chain carbonyls is almost negligible (Fig.~\ref{fig:cacl_complexes} and table~\ref{tab:binding}).
+while binding to acyl chain carbonyls is almost negligible (Fig.~\ref{fig:cacl_complexes} and Table~\ref{tab:binding}).
 The result is consistent with CHARMM36 simulations without the NBfix correction \cite{hallock18},
-but CHARMM36 simulations with the NBfix correction \cite{kim16} predict almost exclusive binding on carboxylate group \cite{valentine18}
-and Berger simulations signifincant binding affinity also on acyl chain carbonyls \cite{melcrova16}.
+but CHARMM36 simulations with the NBfix correction \cite{kim16} predict almost exclusive binding to carboxylate group \cite{valentine18}
+and Berger simulations show signifincant binding affinity also to acyl chain carbonyls \cite{melcrova16}.
 On the other hand, calcium ions bind too strongly on bilayers simulated using CHARMM36 without the NBfix correction
 or Berger models, and too weakly on CHARMM36 bilayers with the NBfix correction \cite{catte16,NMRlipidsIV}.
 Furthermore, in CHARMM36 simulations without the NBfix,
@@ -976,9 +1001,9 @@ small concentrations of CaCl$_2$.
 
 In our ECC-lipids simulation, Ca$^{2+}$ ions bind twice more likely to carboxylate groups
 of PS headgroups than to phosphate groups, while binding to carbonyls is almost negligible.
-Binding of Ca$^{2+}$ ions to more than two POPS lipids simultaneously is very rare in ECC-lipids simulations.
-Because ECC-lipids parameters give the best results in direct comparison with NMR order parameters, 
-we believe that our results help in resoving controversial interpretations of more indirect experiments
+Binding of Ca$^{2+}$ ions to more than two POPS lipids simultaneously is very rare in \mbox{ECC-lipids} simulations.
+Because \mbox{ECC-lipids} parameters give the best results in direct comparison with NMR order parameters, 
+we believe that our results help in resolving controversial interpretations of more indirect experiments
 using different force fields~\cite{melcrova16,valentine18,hallock18}.
 %measured and simulation data, which enables more unambiguous evaluation of the force field quality \cite{catte16,ollila16}
 %than more indirect comparison in previous studies using 2D infrared spectroscopy \cite{valentine18}, NMR chemical shifts and
@@ -987,7 +1012,7 @@ using different force fields~\cite{melcrova16,valentine18,hallock18}.
 %with various ion conctenrations among the available models, we believe that it also gives the currently best available
 %interpretation of the experimental data. 
 Furthermore, our results pave the way for more realistic MD simulations of anionic biological membranes,
-and demonstrate the usefulness of ECC also for charged lipids. The general philosophy behind our approach is to build upon existing non-polarizable force fields making the minimum of necessary changes by scaling only groups bearing a sizable (partial) charge, followed by slight readjustments of van der Waals radii and possibly also other parameters such as those concerning dihedral angle terms. The present work thus represents another piece in the mosaic that leads to development of an accurate empirical force field for biomolecular simulations involving aqueous salt solutions, proteins, peptides, lipid membranes, and/or nucleic acids, which include electronic polarization effects in a mean field way via charge scaling without extra computational costs compared to standard non-polarizable simulations. 
+and demonstrate the usefulness of ECC also for charged lipids. The general philosophy behind our approach is to build upon existing non-polarizable force fields making the minimum of necessary changes by scaling only groups bearing a sizeable (partial) charge, followed by slight readjustments of van der Waals radii and possibly also other parameters such as those concerning dihedral angle terms. The present work thus represents another piece in the mosaic that leads to development of an accurate empirical force field for biomolecular simulations involving aqueous salt solutions, proteins, peptides, lipid membranes, and/or nucleic acids, which include electronic polarization effects in a mean field way via charge scaling without extra computational costs compared to standard non-polarizable simulations. 
 
 
 %Therefore, further force field optimization is required for even more accurate MD simulations of cations
