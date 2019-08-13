@@ -157,32 +157,22 @@ Prague 6, Czech Republic}
 %% a running title from the author: this should be supplied as an 
 %% optional argument to \title. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%\title[] 
-%  {Accurate interactions of cations with 
-%   neutral and negatively charged membranes 
-%   via combination of experiments and molecular simulation}
-
-%%SAMULI: new suggestion for the preliminary title
 \title[] 
-  { SUPPLEMENTARY INFORMATION: 
-Accurate Description of 
-Cation Binding to Lipid Bilayers 
-with Negatively Charged Phosphatidylserine 
-Requires Accounting for Electronic Polarization}
-%    Detailed structure of negatively charged membranes 
-%    of phosphatidylserine and phosphatidylcholine 
-%    at concentrations of calcium, sodium and potassium salts
-%    from molecular dynamics simulations with electronic polarization }
+      { SUPPLEMENTARY INFORMATION: 
+        Improved Cation Binding to Lipid Bilayer with
+        Negatively Charged POPS by Effective
+        Inclusion of Electronic Polarization
+      }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% Some journals require a list of abbreviations or keywords to be 
 %% supplied. These should be set up here, and will be printed after 
 %% the title and author information, if needed. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\abbreviations{IR,NMR,UV,MD,ECC,PC,PS,POPS,POPS} 
-\keywords{MD simulation, molecular modeling, 
-          polarizability, polarization,
-          phospholipids, phosphatidylserine} 
+%\abbreviations{IR,NMR,UV,MD,ECC,PC,PS,POPS,POPS} 
+%\keywords{MD simulation, molecular modeling, 
+%          polarizability, polarization,
+%          phospholipids, phosphatidylserine} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% The manuscript does not need to include \maketitle, which is 
@@ -196,14 +186,38 @@ Requires Accounting for Electronic Polarization}
 
 
 \begin{document} 
- 
+
+\section{Simulation details}
+\begin{table}[!h]
+  \caption{Simulation parameters}
+  \label{tbl:mdpar}
+  \begin{tabular}{ll}
+    simulation property & parameter   \\
+    \hline
+    time-step           & 2~fs         \\
+    equilibration time  & 50~ns  \\
+    total simulation time     & $\geq 1 \mu$s  \\
+    temperature         & 298~K       \\
+    thermostat          & v-rescale  \cite{bussi07}   \\
+    barostat            & Parrinello-Rahman, semi-isotropic \cite{parrinello81} \\
+    long-range electrostatics & PME  \cite{darden93}  \\
+    cut-off scheme      & Verlet \cite{Pall13}      \\
+    Coulomb and VdW cut-off & 1.0~nm \\
+    constraints         & LINCS, only hydrogen atoms \cite{hess97} \\
+    constraints for water & SETTLE  \cite{miyamoto92} \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\clearpage
 \section{NMR experiments}
 
 \begin{figure}[!h] 
   \centering 
   \includegraphics[width=\textwidth]{../Fig/POPSINEPT.pdf}
   \caption{\label{INEPT}
-    Refocused-INEPT $^{13}$C spectrum of POPS multilamellar vesicles.
+    Refocused-INEPT $^{13}$C spectrum of multilamellar POPS vesicles at 298 K
+    with peak assignments for non--crowded spectral region ({\it sn}-1 chain in parenthesis).
   }
 \end{figure}
 
@@ -211,7 +225,8 @@ Requires Accounting for Electronic Polarization}
   \centering 
   \includegraphics[width=\textwidth]{../Fig/crowded_region.pdf}
   \caption{\label{R-PDLF}
-    2D-NMR R-PDLF spectra from the acyl chain region of POPS lipid bilayer.
+    2D-NMR R-PDLF spectra from the crowded spectral region of multilamellar POPS vesicles with the peak
+    assignment. Apostrophes refer to the palmitoyl ({\it sn}-1) chain.
   }
 \end{figure}
 
@@ -219,7 +234,8 @@ Requires Accounting for Electronic Polarization}
   \centering 
   \includegraphics[width=\textwidth]{../Fig/slices_used.eps}
   \caption{\label{R-PDLFslices}
-    Dipolar slices from the R-PDLF spectra used to determine the acyl chain order parameters of POPS.
+    Dipolar slices from the R-PDLF spectra of multilamellar POPS vesicles used to determine the acyl chain order parameters.
+    Numbers of on top of figures refer to the chemical shift (left) and order parameter value (right).
   }
 \end{figure} 
 
