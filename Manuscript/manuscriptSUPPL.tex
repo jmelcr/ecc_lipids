@@ -78,7 +78,7 @@
 \newlength{\figwidthsmall}
 \setlength{\figwidthsmall}{6 cm} 
 \newlength{\figwidthfull}
-\setlength{\figwidthfull}{14 cm} 
+\setlength{\figwidthfull}{16 cm} 
 \newlength{\figheightsmall}
 \setlength{\figheightsmall}{6 cm} 
 \newlength{\figheight}
@@ -261,29 +261,21 @@ Prague 6, Czech Republic}
 \section{Interactions of POPS with \ce{K+} and \ce{Na+} counterions and POPC}
 
 % SAMULI: I have moded the density profile figure in the main text
-\begin{figure}[hbp!] 
+\begin{figure}[!h] 
   \centering 
-%  \includegraphics[height=\figheightsmall]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_ecclipids-lipid17.pdf}
-  \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
-  \includegraphics[height=\figheightsmall]{../img/ecc_pops/order_parameters_changes_A-B_PC-PS_mix_POPS_kcl.pdf} 
-%  \caption{\label{fig:POPS-counterions-dens}
-%    \textbf{Left panel:} Number density profiles of \ce{K^{+}} and \ce{Na^{+}} counterions along the membrane normal axis
-%    in ECC-lipids (solid lines) and Lipid17/Dang (dashed lines) simulations of pure POPS bilayers.  
-%    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
-%}
+  \includegraphics[width=\figwidthfull]{../img/deltaOP_mix_PC-PS_SupplInf-POPS-OP.pdf} 
   \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix_PS} 
-    %\textbf{Right panels:}
-    The POPS head group order parameters, the P--N (circles) and C$_\beta$--C$_\gamma$ vector angles (stars)
+    \textbf{(A)} Number density profiles of \ce{K^{+}} and \ce{Na^{+}} counterions along the membrane normal axis
+    in ECC-lipids (solid lines) and Lipid17/Dang (dashed lines) simulations of POPC:POPS (5:1) bilayers.  
+    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
+    \textbf{(B, C)} The POPS head group order parameters, the P--N (circles) and C$_\beta$--C$_\gamma$ vector angles (stars) 
     with respect to the membrane normal as a function of POPC content in a bilayer
-    from ECC-lipids and Lipid17/Dang simulations with \ce{Na^+} (left) and \ce{K^+} (right) counterions.
-    Experimental order parameter values and signs for pure POPS are from Ref.~\citenum{NMRlipidsIV} and values
-    for POPC:POPS (5:1) mixture from Ref. \citenum{roux90} 
-    (only \ce{Na^+} counterions, but shown with dashed lines also in the right hand side plots for \ce{K+}).
-    % No translation in y-axis done in this plot:
-    %The underestimated response of ECC-lipids with \ce{Na^+} counterions 
-    %is likely due to a still slightly overestimated binding affinity of \ce{Na^+} to the phospholipids,
-    %which is corroborated by the series with \ce{K^+} counterions (lower affinity than \ce{Na^+}),
-    %where the response is closer to the experiment, which uses only \ce{Na^+} counterions. 
+    from ECC-lipids and Lipid17/Dang simulations with \ce{Na^+} (C) and \ce{K^+} (B) counterions.
+    Experimental order parameter values are from Ref. \citenum{scherer87}
+    and the signs from Ref.~\citenum{ferreira16} 
+    (only \ce{Na^+} counterions, but shown also in the left plots (B) for \ce{K+} with dashed lines).
+    Error bars are not visible for most of the simulation points because they are smaller than the point size.
+    Chemical structure and labelling of carbon segments of POPC is shown in Fig.~\ref{fig:delta_ordPar_monoval_PCPS} in the main text. 
   }
 \end{figure} 
 
