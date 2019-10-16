@@ -301,17 +301,22 @@ for a wide range of applications.
 \subsection{Electronic continuum correction for PS lipids}\label{section:ecc} 
 
 Electronic continuum correction (ECC) is an implicit mean-field representation of 
-the electronic polarization in classical MD simulations. 
+the electronic polarization in classical MD simulations, 
+which has been recently applied to improve empirical models for ions and
+ biomolecules containing charged groups such as proteins and lipids. 
+\cite{melcr18, Pluharova2014, martinek17, duboue2018insulin, Mason2019, Duboue2018MgZn}
 For simple ions in water, the electronic polarizability
 can be taken into account by scaling the charge with a constant factor 
 %\begin{equation}
  \mbox{$ f_q = \frac{1}{\sqrt{\epsilon_{el}}} \approx 0.75$,}
 %\end{equation}
 where  $\epsilon_{el} = 1.78$ is the high-frequency dielectric constant of electrons in water \cite{leontyev09}.
-The scaling of charges with this factor has been recently applied to improve empirical models for ions and
- biomolecules containing charged groups such as proteins\cite{Pluharova2014, martinek17, duboue2018insulin, Mason2019, Duboue2018MgZn}.
-In addition to the charge, the Lennard-Jones~$\sigma$ was scaled with a factor $ 0.72 < f_\sigma \leq 1$
-to improve the description of hydration properties of ions with respect to scattering data in these studies. The reason for the small readjustment of the ionic radii is that the original force fields were often developed such that the first peak on the experimental ion-water oxygen radial distribution function was reproduced. Upon charge scaling this peak typically moved to slightly larger distances and the agreement with experiment was then restored by a small decrease of the Lennard-Jones~$\sigma$ parameter.
+In addition to the charge, the Lennard-Jones parameter~$\sigma$ of the ions needed to be modified 
+to improve the description of hydration properties of ions with respect to scattering data in these studies 
+by scaling with a factor $ 0.72 < f_\sigma \leq 1$.
+The reason for the small readjustment of the ionic radii is that the original force fields were often developed such that the first peak on the experimental ion-water oxygen radial distribution function was reproduced. 
+Upon charge scaling this peak typically moved to slightly larger distances and the agreement with experiment was then restored by a small decrease of the Lennard-Jones~$\sigma$ parameter.
+More details about ECC are contained in references \citenum{melcr18, martinek17, leontyev09, leontyev11, leontyev14}. 
 
 Derivation of the correct scaling factor for lipids is more complicated, because
 the partial charges depend on the methods used to derive the respective force fields.
