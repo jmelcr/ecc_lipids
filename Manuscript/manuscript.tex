@@ -361,7 +361,7 @@ therefore a length of $10.79 \, \mu \mathrm{s}$, which correspond to a nutation 
 pulses where used giving a spectral width of 2.6~kHz in the indirect dimension and a total number of 32 points in
 the indirect dimension were recorded. These settings enable to record dipolar slices with a C--H bond order parameter
 resolution of $\pm$0.01. The C--H bond order parameter determined from a given dipolar
-splitting, $\Delta\nu$ (see e.g. Fig. \ref{R-PDLFslices} in supplementary information) is equal to $\Delta\nu/(0.315\times21.5 kHz)$, where 0.315 is
+splitting, $\Delta\nu$ (see e.g. Fig.~\ref{R-PDLFslices} in supplementary information) is equal to $\Delta\nu/(0.315\times21.5 kHz)$, where 0.315 is
 the scaling factor of the R18 recoupling sequence and 21.5 kHz is the maximum $^1$H-$^{13}$C dipolar coupling for a C--H bond.
 The refocused-INEPT transfer \cite{morris79,burum80} 
 was used for transferring the polarization from $^1$H nuclei to the covalently bond $^{13}$C nuclei with the delays of $\tau_1 = 1.94$~ms and $\tau_2 = 0.97$~ms
@@ -447,26 +447,28 @@ and converted to Gromacs format using acpype \cite{acpype}.
 The ion model by Dang and coworkers~\cite{smith94,chang1999,dang2006} was used with Amber lipids because
 the default Amber ion parameters, derived by {\AA}qvist \cite{aqvist90}, led to the artificial clustering of ions in solution \cite{NMRlipidsIV}.
 
-In the ECC-lipids simulations,
+In the ECC-lipids simulations, we used
 the ECC-POPC parameters~\cite{melcr18} (available from Ref. \citenum{ECC-POPC_nacl_cacl2_files}), 
 the ECC-POPS parameteres derived in this work (see above for details and Ref. \citenum{ecclipids_pcps_nacl_kcl_series} for parameters), 
-the SPC/E~\cite{Berendsen1987} water model, and ECC-ions \cite{martinek17, kohagen16, Pluharova2014} were used.
+the SPC/E~\cite{Berendsen1987} water model, and ECC-ions \cite{martinek17, kohagen16, Pluharova2014}. 
 The SPC/E water model was selected because its lower dielectric constant is consistent with the
 ECC concept \cite{leontyev11,leontyev14}.
 
  
-The C--H bond order parameters were calculated directly from Eq.~\ref{OPequation}.
+The C--H bond order parameters were calculated directly from Eq.~\ref{OPequation}
+using a Python code openly available at Ref.~\citenum{MATCHgit} ({\tt scripts/calcOrderParameters.py}) 
+that uses the MDAnalysis library \cite{agrawal11,gowers16}.  
 The time average was first calculated for each lipid, and
 the standard error of the mean from these individual values was then used as the
 error estimate \cite{botan15,ollila16,NMRlipidsIV}.
-Python program that uses the
-MDAnalysis library \cite{agrawal11,gowers16} is available in Ref.~\citenum{MATCHgit} ({\tt scripts/calcOrderParameters.py}). 
 The ion number density profiles were calculated using the {\tt gmx density} tool
 of the Gromacs sofware package \cite{gromacsMANUAL}.
-The salt concentrations in buffer before solvating the lipids, reported in the used experimental data set \cite{roux90},
+In simulations, the salt concentrations in a buffer before solvating the lipids, 
+as reported in the used experimental data set \cite{roux90},
 were calculated as $[{\rm salt}]=N_{\rm c} \times[{\rm water}]\,/\,N_{\rm w}$,
-where $N_{\rm c}$ is the number of cations in simulation, $[{\rm water}]$\,=\,55.5~M and $N_{\rm w}$
-is the number of water molecules in the simulation.
+where $N_{\rm c}$ is the number of additional cations, 
+$N_{\rm w}$ is the number of water molecules,
+and $[{\rm water}]$\,=\,55.5~M. 
 As discussed in our previous work \cite{NMRlipidsIV}, the hydration levels of
 multilamellae are expected to be sufficiently similar in the used simulations and reference experiments \cite{roux90}.
 
