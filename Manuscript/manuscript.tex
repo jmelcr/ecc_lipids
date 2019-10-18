@@ -108,10 +108,12 @@
  
 \author{Josef Melcr} 
 \email{melcr@marge.uochb.cas.cz} 
-%%\homepage[]{https://jmelcr.github.io/}
-\affiliation{Institute of Organic Chemistry and Biochemistry, 
-Czech Academy of Sciences,  
-Prague 6, Czech Republic} 
+\affiliation[Czech Academy of Sciences]{Institute of Organic Chemistry and Biochemistry of the 
+Czech Academy of Sciences, Flemingovo n\'{a}m. 542/2, CZ-16610 Prague 6, Czech Republic}
+\alsoaffiliation{Groningen Biomolecular Sciences and Biotechnology Institute 
+and The Zernike Institute for Advanced Materials, 
+University of Groningen, 9747 AG Groningen, The Netherlands}
+
 \author{Tiago Ferreira}
 \affiliation{NMR group - Institut for Physics, Martin-Luther University Halle-Wittenberg} 
 \author{Pavel Jungwirth} 
@@ -299,17 +301,22 @@ for a wide range of applications.
 \subsection{Electronic continuum correction for PS lipids}\label{section:ecc} 
 
 Electronic continuum correction (ECC) is an implicit mean-field representation of 
-the electronic polarization in classical MD simulations. 
+the electronic polarization in classical MD simulations, 
+which has been recently applied to improve empirical models for ions and
+ biomolecules containing charged groups such as proteins and lipids. 
+\cite{melcr18, Pluharova2014, martinek17, duboue2018insulin, Mason2019, Duboue2018MgZn}
 For simple ions in water, the electronic polarizability
 can be taken into account by scaling the charge with a constant factor 
 %\begin{equation}
  \mbox{$ f_q = \frac{1}{\sqrt{\epsilon_{el}}} \approx 0.75$,}
 %\end{equation}
 where  $\epsilon_{el} = 1.78$ is the high-frequency dielectric constant of electrons in water \cite{leontyev09}.
-The scaling of charges with this factor has been recently applied to improve empirical models for ions and
- biomolecules containing charged groups such as proteins\cite{Pluharova2014, martinek17, duboue2018insulin, Mason2019, Duboue2018MgZn}.
-In addition to the charge, the Lennard-Jones~$\sigma$ was scaled with a factor $ 0.72 < f_\sigma \leq 1$
-to improve the description of hydration properties of ions with respect to scattering data in these studies. The reason for the small readjustment of the ionic radii is that the original force fields were often developed such that the first peak on the experimental ion-water oxygen radial distribution function was reproduced. Upon charge scaling this peak typically moved to slightly larger distances and the agreement with experiment was then restored by a small decrease of the Lennard-Jones~$\sigma$ parameter.
+In addition to the charge, the Lennard-Jones parameter~$\sigma$ of the ions needed to be modified 
+to improve the description of hydration properties of ions with respect to scattering data in these studies 
+by scaling with a factor $ 0.72 < f_\sigma \leq 1$.
+The reason for the small readjustment of the ionic radii is that the original force fields were often developed such that the first peak on the experimental ion-water oxygen radial distribution function was reproduced. 
+Upon charge scaling this peak typically moved to slightly larger distances and the agreement with experiment was then restored by a small decrease of the Lennard-Jones~$\sigma$ parameter.
+More details about ECC are contained in references \citenum{melcr18, martinek17, leontyev09, leontyev11, leontyev14}. 
 
 Derivation of the correct scaling factor for lipids is more complicated, because
 the partial charges depend on the methods used to derive the respective force fields.
@@ -716,7 +723,7 @@ longest observed residence times are $141\,\mathrm{ns}$ and $485\,\mathrm{ns}$, 
 \begin{figure}[tbp!] 
   \centering 
   \begin{tabular}{ c }
-  \includegraphics[width=\figwidthfull]{../img/populations_stoichiometry.pdf} 
+  \includegraphics[width=\figwidthfull]{../img/populations_stoichiometry_structures.pdf} 
   \end{tabular}
   \caption{ \label{fig:cacl_complexes} 
     \textbf{(A)} Percentages of the bound Ca$^{2+}$ 
@@ -726,13 +733,16 @@ longest observed residence times are $141\,\mathrm{ns}$ and $485\,\mathrm{ns}$, 
 	In the case of simultaneous binding to both PC and PS,
 	the percentages refer to the moieties in PS.
         For numerical values, see table~\ref{tab:binding}.
-    \textbf{(B)} Relative probabilities of \ce{Ca^{2+}} ions to coordinate with a certain number of lipids
-    in pure POPC bilayer with 350 mM CaCl$_2$ and in POPC:POPS (5:1) mixture with 400 mM CaCl$_2$.  
+    \textbf{(B)} Relative probabilities of \ce{Ca^{2+}} ions to coordinate with the given number of lipids
+    in a pure POPC bilayer with 350~mM~CaCl$_2$ and in POPC:POPS (5:1) mixture with 400~mM~CaCl$_2$.  
     Analysis was done for both systems by considering all lipids (blue and violet) and
     for POPC:POPS (5:1) mixture also by considering only POPC and POPS lipids separately (green and orange). 
     Clusters of four or more lipids were not observed in either membrane.
     The threshold for counting coordinated lipids in a complex with \ce{Ca^{2+}} was set to $0.3\,\mathrm{nm}$, 
     for the distance between the cation and the oxygen atoms of the lipids. 
+    \textbf{(C and D)} Representative example configurations of \ce{Ca^{2+}} coordinated complexes 
+    of one POPS with one POPC (C) or two POPC lipids (D). 
+    Extra configurations are given in Fig.~\ref{fig:strcutures_SI} in the SI. 
     Previously published simulation data \cite{melcr18} for pure POPC bilayers were taken directly from Ref.~\citenum{ECC-POPC_nacl_cacl2_files}. 
   }
 \end{figure} 
@@ -758,7 +768,7 @@ Here, we analyze the calcium binding details from ECC-lipids simulation of POPC:
 because it surpasses the quality of other force fields in direct comparison with experimental order parameter data.
 In the ECC-lipid simulation, calcium ions binds approximately twice more likely 
 to the carboxylate than to the phosphate moiety of POPS headgroup,
-while binding to acyl chain carbonyls is almost negligible (Fig.~\ref{fig:cacl_complexes} and Table~\ref{tab:binding}).
+while binding only to acyl chain carbonyls is almost negligible (Fig.~\ref{fig:cacl_complexes} and Table~\ref{tab:binding}).
 The result is consistent with CHARMM36 simulations without the NBfix correction \cite{hallock18},
 but CHARMM36 simulations with the NBfix correction \cite{kim16} predict almost exclusive binding to carboxylate group \cite{valentine18}
 and Berger simulations show signifincant binding affinity also to acyl chain carbonyls \cite{melcrova16}.
@@ -801,7 +811,7 @@ There is, however, room for improvement in capturing the sensitive headgroup res
 small concentrations of CaCl$_2$.
 
 In our ECC-lipids simulation, Ca$^{2+}$ ions bind twice more likely to carboxylate groups
-of PS headgroups than to phosphate groups, while binding to carbonyls is almost negligible.
+of PS headgroups than to phosphate groups, while binding only to carbonyls is almost negligible.
 Binding of Ca$^{2+}$ ions to more than two POPS lipids simultaneously is very rare in \mbox{ECC-lipids} simulations.
 Because \mbox{ECC-lipids} parameters give the best results in direct comparison with NMR order parameters, 
 we believe that our results help in resolving controversial interpretations of more indirect experiments
