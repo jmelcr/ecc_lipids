@@ -200,13 +200,14 @@ separate page at the end of the document.
   Classical molecular dynamics (MD) simulations can potentially give detailed description of lipid-ion interactions,
   but the results strongly depend on the used force field. Here, we apply the electronic continuum correction (ECC) to
   the Amber Lipid17 parameters of 1-palmitoyl-2-oleoyl-{\it sn}-glycero-3-phospho-L-serine (POPS) lipid to improve its
-  interactions with Na$^+$ and Ca$^{2+}$ ions.
+  interactions with \ce{K^+}, Na$^+$ and Ca$^{2+}$ ions.
   The partial charges of headgroup, glycerol backbone and carbonyls of POPS, bearing a unit negative charge, were scaled with a
   factor of 0.75, derived for monovalent ions and the Lennard-Jones $\sigma$ parameters of the same segments were scaled with a factor of 0.89.
   The resulting ECC-POPS model gives more realistic interactions with Na$^+$ and Ca$^{2+}$ cations than the original Amber Lipid17 parameters,
   when validated using headgroup order parameters and ''electrometer concept''.
-  In ECC-lipids simulations, Ca$^{2+}$ cations do not simultaneously interact with more than two PS lipids, and interactions 
-  with carboxylate groups is twice more likely than with phosphate groups, while interaction with carbonyls is almost negligible.
+  In ECC-lipids simulations, populations of complexes of Ca$^{2+}$ cations with more than two PS lipids are negligible, 
+and interactions of Ca$^{2+}$ cations with only carboxylate groups is twice more likely than with only phosphate groups, 
+while interactions with carbonyls almost entirely involve also other groups. 
   Our results pave the way for more realistic MD simulations of anionic biological membranes and demonstrate the 
   usefulness of ECC also to charged lipids.
 \end{abstract} 
