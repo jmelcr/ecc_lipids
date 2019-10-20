@@ -324,22 +324,20 @@ equivalent by scaling the charges by a factor of ~0.75 \cite{leontyev09,leontyev
 This electronic continuum correction (ECC), which can be view as a mean-field continuum way for accounting for electronic polarization,
 has been shown to significantly improve the description of interactions between aqueous ions and biologically relevant charged groups \cite{pluharova13,kohagen14,kohagen14b,melcr18,xie16,kroutil17,bruce18}
 %[dx.doi.org/10.1021/jp402532e, dx.doi.org/10.1021/jp5005693, dx.doi.org/10.1021/jz502099g, DOI: 10.1021/acs.jpcb.7b12510, https://doi.org/10.1021/acs.jpcb.5b10755, DOI:10.1007/s00894-017-3490-x, https://doi.org/10.1063/1.5017101].
-This correction is particularly important for high charge density species where it helps to remove artifacts such as excessive ion pairing in water [dx.doi.org/10.1021/jp402532e, dx.doi.org/10.1021/jp310719g]. One should, however, bear in mind that existing non-polarizable force fields have been parameterized also using experimental data, which means that they may to a certain extent include implicitly electronic polarization effects. Therefore, in such cases a charge scaling factor between 0.75 and 1 should carefully be adjusted such that electronic polarization effect are not overaccounted for.    
-
-
+This correction is particularly important for high charge density species where it helps to remove artifacts such as excessive ion pairing in water [dx.doi.org/10.1021/jp402532e, dx.doi.org/10.1021/jp310719g]. One should, however, bear in mind that existing non-polarizable force fields have been parameterized also using experimental data, which means that they may to a certain extent include implicitly electronic polaization effects. Therefore, in such cases a charge scaling factor between 0.75 and 1 should carefully be adjusted such that electronic polarization effect are not overaccounted.    
 In addition to the charge, the Lennard-Jones parameter~$\sigma$ of the ions needed to be modified 
 to improve the description of hydration properties of ions with respect to scattering data in these studies 
 by scaling with a factor $ 0.72 < f_\sigma \leq 1$.
 The reason for the small readjustment of the ionic radii is that the original force fields were often developed such that the first peak on the experimental ion-water oxygen radial distribution function was reproduced. 
 Upon charge scaling this peak typically moved to slightly larger distances and the agreement with experiment was then restored by a small decrease of the Lennard-Jones~$\sigma$ parameter.
-More detailed description of ECC and its applications are contained in references \citenum{melcr18, martinek17, Pluharova2014, leontyev09, leontyev11, leontyev14}. 
+%More detailed description of ECC and its applications are contained in references \citenum{melcr18, martinek17, Pluharova2014, leontyev09, leontyev11, leontyev14}. 
 
-Derivation of the correct scaling factor for lipids is more complicated, because
-the partial charges depend on the methods used to derive the respective force fields.
-For example, the partial charges of overall neutral molecules may already include the effects of electronic polarizability to some extent,
-and hence, the scaling factor can be larger than the theoretically derived value for ions in water, $f_q \approx 0.75$.  
+%Derivation of the correct scaling factor for lipids is more complicated, because
+%the partial charges depend on the methods used to derive the respective force fields.
+%For example, the partial charges of overall neutral molecules may already include the effects of electronic polarizability to some extent,
+%and hence, the scaling factor can be larger than the theoretically derived value for ions in water, $f_q \approx 0.75$.  
 Before the ECC theory was rigorously derived, similar idea was already employed in early classical 
-MD simulations of lipids and surfactants using the scaling factor of 0.5 for atomic charges  \cite{jonsson86,egberts94, berendsen1996}. 
+MD simulations of lipids and surfactants using the ad hoc scaling factor of 0.5 for atomic charges  \cite{jonsson86,egberts94, berendsen1996}. 
 In our recent work, we applied the ECC to the Amber based lipid14 force field of zwitterionic POPC lipid \cite{dickson14}
 by scaling the partial charges and Lennard-Jones~$\sigma$ parameters of headgroup, glycerol backbone,
 and carbonyl regions \cite{melcr18}. The scaling factors were optimized to reproduce 
