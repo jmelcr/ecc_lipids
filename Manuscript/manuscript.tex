@@ -169,9 +169,8 @@ Inclusion of Electronic Polarization}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{tocentry} 
  
-\includegraphics[height=1.4 in]{../img/TOC_graphic.pdf} 
+\includegraphics[height=1.375 in]{../img/TOC_graphic.pdf} 
 
-For table of contents only. 
  
 \end{tocentry} 
  
@@ -239,7 +238,7 @@ interactions between ions and PS lipids, but the data is often indirect and diff
 interpret \cite{hauser77,kurland79,eisenberg79,hauser83,dluhy83,hauser85,feigenson86,mattai89,roux90,roux91}.
 Some studies suggest that the
 binding affinity of ions to negatively charged lipids is similar to that of zwitterionic lipids,
-and it increases only due to the increased cation
+and the amount of bound ions increases only due to the increased cation
 concentration in the vicinity of the membrane \cite{seelig90,sinn06}.
 On the other hand, calcium forms dehydrated complexes with PS headgroups
 which cause phase separation \cite{hauser77,kurland79,hauser85,feigenson86,mattai89,roux90,roux91,boettcher11}.
@@ -289,30 +288,45 @@ for a wide range of applications.
  
 \subsection{Electronic continuum correction for PS lipids}\label{section:ecc} 
 
-Electronic continuum correction (ECC) is an implicit mean-field representation of 
-the electronic polarization in classical MD simulations, 
-which has been recently applied to improve empirical models for ions and
- biomolecules containing charged groups such as proteins and lipids. 
-\cite{melcr18, Pluharova2014, martinek17, duboue2018insulin, Mason2019, Duboue2018MgZn}
-For simple ions in water, the electronic polarizability
-can be taken into account by scaling the charge with a constant factor 
-%\begin{equation}
- \mbox{$ f_q = \frac{1}{\sqrt{\epsilon_{el}}} \approx 0.75$,}
-%\end{equation}
-where  $\epsilon_{el} = 1.78$ is the high-frequency dielectric constant of electrons in water \cite{leontyev09}.
+
+%Electronic continuum correction (ECC) is an implicit mean-field representation of 
+%the electronic polarization in classical MD simulations, 
+%which has been recently applied to improve empirical models for ions and
+% biomolecules containing charged groups such as proteins and lipids. 
+%\cite{melcr18, Pluharova2014, martinek17, duboue2018insulin, Mason2019, Duboue2018MgZn}
+%For simple ions in water, the electronic polarizability
+%can be taken into account by scaling the charge with a constant factor 
+%%\begin{equation}
+% \mbox{$ f_q = \frac{1}{\sqrt{\epsilon_{el}}} \approx 0.75$,}
+%%\end{equation}
+%where  $\epsilon_{el} = 1.78$ is the high-frequency dielectric constant of electrons in water \cite{leontyev09}.
+
+Electrostatic interactions between charges in a dielectric medium are attenuated by a factor equal to the
+corresponding relative permittivity (dielectric constant). Standard non-polarizable force fields are capable to
+account for the dielectric response from the orientation of the solvent molecules (low-frequency nuclear response), but fail to account for the electronic (high frequency) polarization.
+In most biologically relevant environments this high frequency dielectric constant is ~2 (for water the value is 1.78).
+This means that for a non-polarizable force field that would strictly account only for the low-frequency dielectric response
+interactions between charges in aqueous environments should be further attenuated by a factor of 1.78, which is mathematically
+equivalent by scaling the charges by a factor of ~0.75 \cite{leontyev09,leontyev14}. 
+This electronic continuum correction (ECC), which can be view as a mean-field continuum way for accounting for electronic polarization,
+has been shown to significantly improve the description of interactions between aqueous ions and biologically relevant charged groups \cite{pluharova13,kohagen14,kohagen14b,melcr18,xie16,kroutil17,bruce18}
+%[dx.doi.org/10.1021/jp402532e, dx.doi.org/10.1021/jp5005693, dx.doi.org/10.1021/jz502099g, DOI: 10.1021/acs.jpcb.7b12510, https://doi.org/10.1021/acs.jpcb.5b10755, DOI:10.1007/s00894-017-3490-x, https://doi.org/10.1063/1.5017101].
+This correction is particularly important for high charge density species where it helps to remove artifacts such as excessive ion pairing in water~\cite{pluharova13,vazdar13}.
+%[dx.doi.org/10.1021/jp402532e, dx.doi.org/10.1021/jp310719g].
+One should, however, bear in mind that existing non-polarizable force fields have been parameterized also using experimental data, which means that they may to a certain extent include implicitly electronic polaization effects. Therefore, in such cases a charge scaling factor between 0.75 and 1 should carefully be adjusted such that electronic polarization effect are not overaccounted.    
 In addition to the charge, the Lennard-Jones parameter~$\sigma$ of the ions needed to be modified 
 to improve the description of hydration properties of ions with respect to scattering data in these studies 
 by scaling with a factor $ 0.72 < f_\sigma \leq 1$.
 The reason for the small readjustment of the ionic radii is that the original force fields were often developed such that the first peak on the experimental ion-water oxygen radial distribution function was reproduced. 
 Upon charge scaling this peak typically moved to slightly larger distances and the agreement with experiment was then restored by a small decrease of the Lennard-Jones~$\sigma$ parameter.
-More detailed description of ECC and its applications are contained in references \citenum{melcr18, martinek17, Pluharova2014, leontyev09, leontyev11, leontyev14}. 
+%More detailed description of ECC and its applications are contained in references \citenum{melcr18, martinek17, Pluharova2014, leontyev09, leontyev11, leontyev14}. 
 
-Derivation of the correct scaling factor for lipids is more complicated, because
-the partial charges depend on the methods used to derive the respective force fields.
-For example, the partial charges of overall neutral molecules may already include the effects of electronic polarizability to some extent,
-and hence, the scaling factor can be larger than the theoretically derived value for ions in water, $f_q \approx 0.75$.  
+%Derivation of the correct scaling factor for lipids is more complicated, because
+%the partial charges depend on the methods used to derive the respective force fields.
+%For example, the partial charges of overall neutral molecules may already include the effects of electronic polarizability to some extent,
+%and hence, the scaling factor can be larger than the theoretically derived value for ions in water, $f_q \approx 0.75$.  
 Before the ECC theory was rigorously derived, similar idea was already employed in early classical 
-MD simulations of lipids and surfactants using the scaling factor of 0.5 for atomic charges  \cite{jonsson86,egberts94, berendsen1996}. 
+MD simulations of lipids and surfactants using the ad hoc scaling factor of 0.5 for atomic charges  \cite{jonsson86,egberts94, berendsen1996}. 
 In our recent work, we applied the ECC to the Amber based lipid14 force field of zwitterionic POPC lipid \cite{dickson14}
 by scaling the partial charges and Lennard-Jones~$\sigma$ parameters of headgroup, glycerol backbone,
 and carbonyl regions \cite{melcr18}. The scaling factors were optimized to reproduce 
@@ -451,8 +465,9 @@ the standard error of the mean from these individual values was then used as the
 error estimate \cite{botan15,ollila16,NMRlipidsIV}.
 The ion number density profiles were calculated using the {\tt gmx density} tool
 of the Gromacs sofware package \cite{gromacsMANUAL}.
-In simulations, the salt concentrations in a buffer before solvating the lipids, 
+The salt concentrations in a buffer before solvating the lipids, 
 as reported in the used experimental data set \cite{roux90},
+%is simulations
 were calculated as $[{\rm salt}]=N_{\rm c} \times[{\rm water}]\,/\,N_{\rm w}$,
 where $N_{\rm c}$ is the number of additional cations, 
 $N_{\rm w}$ is the number of water molecules,
@@ -547,7 +562,7 @@ against experiments using the order parameters of $\alpha$ and $\beta$ carbons i
 phosphatidylcholine (PC) lipid headgroup (see Fig.~\ref{fig:delta_ordPar_monoval_PCPS} for the labeling) \cite{catte16,melcr18,NMRlipidsIV}.
 According to the ''electrometer concept'' \citep{seelig87}, these order parameters
 decrease proportionally to the amount of bound positive charge because the headgroup dipole tilts more
-parallel to the mebrane normal.
+parallel to the membrane normal.
 Although the response of PS lipid headgroup order parameters to the bound charge is also systematic,
 it is less well undestood and the addition of cations may cause phase transitions in negatively charged
 bilayers \cite{feigenson86,mattai89,roux91,roux90}.
@@ -732,8 +747,8 @@ longest observed residence times are $141\,\mathrm{ns}$ and $485\,\mathrm{ns}$, 
     The threshold for counting coordinated lipids in a complex with \ce{Ca^{2+}} was set to $0.3\,\mathrm{nm}$, 
     for the distance between the cation and the oxygen atoms of the lipids. 
     \textbf{(C and D)} Representative example configurations of \ce{Ca^{2+}} coordinated complexes 
-    of one POPS with one POPC (C) or two POPC lipids (D). 
-    Extra configurations are given in Fig.~\ref{fig:strcutures_SI} in the SI. 
+    of one POPS with one (C) or two POPC lipids (D). 
+    More configurations are shown in Fig.~\ref{fig:strcutures_SI} in the SI. 
     Previously published simulation data for pure POPC bilayers \cite{melcr18} were taken directly from Ref.~\citenum{ECC-POPC_nacl_cacl2_files}. 
   }
 \end{figure} 
@@ -753,10 +768,10 @@ discrepancy include the above observed slight overestimation of \ce{Na^+} counte
 imperfect structures of the lipid headgroup (Fig.~\ref{simVSexpNOions_POPS}).
 
 Recent analyzes of interaction sites between calcium and PS lipids combining
-MD simulations with various experimental techniques remain controversial 
-as the results strongly depend on force fields parameters \cite{melcrova16,valentine18,hallock18, NMRlipidsIV}.
+MD simulations with various experimental techniques have been controversial 
+because the results strongly depend on force fields parameters \cite{melcrova16,valentine18,hallock18, NMRlipidsIV}.
 Here, we analyze the calcium binding details of POPC:POPS (5:1) mixture with 409 mM CaCl$_2$ from ECC-lipids simulations,
-which in this respect surpass the quality of other force fields in direct comparison with experimental order parameters.
+which surpass the quality of other force fields in direct comparison with experimental order parameters.
 In the ECC-lipid simulation, calcium ions binds approximately twice more likely 
 to the carboxylate than to the phosphate moiety of POPS headgroup,
 while binding only to acyl chain carbonyls is almost negligible (Fig.~\ref{fig:cacl_complexes} and Table~\ref{tab:binding}).
@@ -802,8 +817,8 @@ There is, however, still room for improvement in capturing the sensitive headgro
 small concentrations of CaCl$_2$.
 
 In our ECC-lipids simulation, Ca$^{2+}$ ions bind twice more likely to carboxylate groups
-of PS headgroups than to phosphate groups, 
-while binding only to carbonyls is negligible and almost entirely involves also other groups. 
+of PS headgroups than to phosphate groups, while binding only to carbonyls is negligible.
+However, calcium can bind also to carbonyls when simultaneously bound also to carboxylate (Fig. \ref{fig:strcutures_SI}) or phosphate group.
 Binding of Ca$^{2+}$ ions to more than two POPS lipids simultaneously is very rare in \mbox{ECC-lipids} simulations.
 Because \mbox{ECC-lipids} parameters give the best results in direct comparison with NMR order parameters, 
 we believe that our results help in resolving controversial interpretations of more indirect experiments
@@ -842,7 +857,9 @@ CSC-IT center for science for computational resources.
  
 The following files are available free of charge. 
 \begin{itemize} 
-  \item SI.pdf: Additional simulation and experimental details, figures and tables. 
+\item SI.pdf: Measured 1D and 2D NMR spectra, additional details and results from simulations
+  about monovalent ion binding, configurations and populations of bound calcium to POPS lipids, and
+  residence times of bound calcium.
 \end{itemize} 
  
 \end{suppinfo} 
