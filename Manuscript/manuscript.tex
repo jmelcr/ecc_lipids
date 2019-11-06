@@ -191,7 +191,7 @@ Inclusion of Electronic Polarization}
   The partial charges of headgroup, glycerol backbone and carbonyls of POPS, bearing a unit negative charge, were scaled with a
   factor of 0.75, derived for monovalent ions and the Lennard-Jones $\sigma$ parameters of the same segments were scaled with a factor of 0.89.
   The resulting ECC-POPS model gives more realistic interactions with Na$^+$ and Ca$^{2+}$ cations than the original Amber Lipid17 parameters,
-  when validated using headgroup order parameters and ''electrometer concept''.
+  when validated using headgroup order parameters and the ''electrometer concept''.
   In ECC-lipids simulations, populations of complexes of Ca$^{2+}$ cations with more than two PS lipids are negligible, 
 and interactions of Ca$^{2+}$ cations with only carboxylate groups is twice more likely than with only phosphate groups, 
 while interactions with carbonyls almost entirely involve also other groups. 
@@ -238,7 +238,7 @@ interactions between ions and PS lipids, but the data is often indirect and diff
 interpret \cite{hauser77,kurland79,eisenberg79,hauser83,dluhy83,hauser85,feigenson86,mattai89,roux90,roux91}.
 Some studies suggest that the
 binding affinity of ions to negatively charged lipids is similar to that of zwitterionic lipids,
-and the amount of bound ions increases only due to the increased cation
+and that the amount of bound ions increases only due to the increased cation
 concentration in the vicinity of the membrane \cite{seelig90,sinn06}.
 On the other hand, calcium forms dehydrated complexes with PS headgroups
 which cause phase separation \cite{hauser77,kurland79,hauser85,feigenson86,mattai89,roux90,roux91,boettcher11}.
@@ -271,7 +271,7 @@ In our recent work~\cite{melcr18}, we were able to improve the cation binding af
 to zwitterionic 1-palmitoyl-2-oleoyl-sn-glycero-3-phosphocholine (POPC) lipid bilayer
 by implicitly including electronic polarizability using the electronic continuum
 correction (ECC) \cite{leontyev09}. The good agreement between the resulting ECC-POPC
-model and experiments enable detailed interpretation of calcium binding details to a POPC lipid bilayer.
+model and experiments enables a more detailed molecular interpretation of the calcium binding to a POPC lipid bilayer.
 
 Here, we extend the ECC approach also to the negatively charged 1-palmitoyl-2-oleoyl-{\it sn}-glycero-3-phospho-L-serine (POPS) lipid.
 We also complement the available experimental data for the force field quality
@@ -288,43 +288,23 @@ for a wide range of applications.
  
 \subsection{Electronic continuum correction for PS lipids}\label{section:ecc} 
 
-
-%Electronic continuum correction (ECC) is an implicit mean-field representation of 
-%the electronic polarization in classical MD simulations, 
-%which has been recently applied to improve empirical models for ions and
-% biomolecules containing charged groups such as proteins and lipids. 
-%\cite{melcr18, Pluharova2014, martinek17, duboue2018insulin, Mason2019, Duboue2018MgZn}
-%For simple ions in water, the electronic polarizability
-%can be taken into account by scaling the charge with a constant factor 
-%%\begin{equation}
-% \mbox{$ f_q = \frac{1}{\sqrt{\epsilon_{el}}} \approx 0.75$,}
-%%\end{equation}
-%where  $\epsilon_{el} = 1.78$ is the high-frequency dielectric constant of electrons in water \cite{leontyev09}.
-
 Electrostatic interactions between charges in a dielectric medium are attenuated by a factor equal to the
 corresponding relative permittivity (dielectric constant). Standard non-polarizable force fields are capable to
 account for the dielectric response from the orientation of the solvent molecules (low-frequency nuclear response), but fail to account for the electronic (high frequency) polarization.
-In most biologically relevant environments this high frequency dielectric constant is ~2 (for water the value is 1.78).
+In most biologically relevant environments this high frequency dielectric constant is approximately 2 (for water the value is 1.78).
 This means that for a non-polarizable force field that would strictly account only for the low-frequency dielectric response
 interactions between charges in aqueous environments should be further attenuated by a factor of 1.78, which is mathematically
 equivalent by scaling the charges by a factor of ~0.75 \cite{leontyev09,leontyev14}. 
 This electronic continuum correction (ECC), which can be view as a mean-field continuum way for accounting for electronic polarization,
 has been shown to significantly improve the description of interactions between aqueous ions and biologically relevant charged groups \cite{pluharova13,kohagen14,kohagen14b,melcr18,xie16,kroutil17,bruce18}
-%[dx.doi.org/10.1021/jp402532e, dx.doi.org/10.1021/jp5005693, dx.doi.org/10.1021/jz502099g, DOI: 10.1021/acs.jpcb.7b12510, https://doi.org/10.1021/acs.jpcb.5b10755, DOI:10.1007/s00894-017-3490-x, https://doi.org/10.1063/1.5017101].
 This correction is particularly important for high charge density species where it helps to remove artifacts such as excessive ion pairing in water~\cite{pluharova13,vazdar13}.
-%[dx.doi.org/10.1021/jp402532e, dx.doi.org/10.1021/jp310719g].
-One should, however, bear in mind that existing non-polarizable force fields have been parameterized also using experimental data, which means that they may to a certain extent include implicitly electronic polaization effects. Therefore, in such cases a charge scaling factor between 0.75 and 1 should carefully be adjusted such that electronic polarization effect are not overaccounted.    
+One should, however, bear in mind that existing non-polarizable force fields have been parameterized also using experimental data, which means that they may to a certain extent include implicitly electronic polarization effects. Therefore, in such cases a charge scaling factor between 0.75 and 1 should carefully be adjusted such that the electronic polarization effects are not overaccounted.    
 In addition to the charge, the Lennard-Jones parameter~$\sigma$ of the ions needed to be modified 
 to improve the description of hydration properties of ions with respect to scattering data in these studies 
 by scaling with a factor $ 0.72 < f_\sigma \leq 1$.
 The reason for the small readjustment of the ionic radii is that the original force fields were often developed such that the first peak on the experimental ion-water oxygen radial distribution function was reproduced. 
 Upon charge scaling this peak typically moved to slightly larger distances and the agreement with experiment was then restored by a small decrease of the Lennard-Jones~$\sigma$ parameter.
-%More detailed description of ECC and its applications are contained in references \citenum{melcr18, martinek17, Pluharova2014, leontyev09, leontyev11, leontyev14}. 
 
-%Derivation of the correct scaling factor for lipids is more complicated, because
-%the partial charges depend on the methods used to derive the respective force fields.
-%For example, the partial charges of overall neutral molecules may already include the effects of electronic polarizability to some extent,
-%and hence, the scaling factor can be larger than the theoretically derived value for ions in water, $f_q \approx 0.75$.  
 Before the ECC theory was rigorously derived, similar idea was already employed in early classical 
 MD simulations of lipids and surfactants using the ad hoc scaling factor of 0.5 for atomic charges  \cite{jonsson86,egberts94, berendsen1996}. 
 In our recent work, we applied the ECC to the Amber based lipid14 force field of zwitterionic POPC lipid \cite{dickson14}
@@ -491,7 +471,7 @@ can be directly calculated from MD simulations~\cite{ollila16}.
 The X-ray scattering form factors and C-H bond order parameters in
 the headgroup and glycerol backbone region of a POPS lipid bilayer are already available in the literature \cite{kucerka14,NMRlipidsIV}.
 Here, we measure also the C--H bond order parameters of the acyl chain region from multi-lamellar POPS vesicles using $^1$H--$^{13}$C
-dipolar recoupling 2D NMR experiment. As described in the Methods section, we performed R-PDLF 2D spectroscopy~\cite{dvinskikh04} to
+dipolar recoupling 2D NMR spectroscopy. As described in the Methods section, we performed R-PDLF 2D spectroscopy~\cite{dvinskikh04} to
 obtain a spectra correlating chemical shifts (direct dimension) and C--H bond dipolar couplings (indirect dimension) from which the C--H bond order parameters defined in eq.~\ref{OPequation} can be determined. The assignment of the peaks in the $^{13}$C chemical shift dimension to acyl chain carbon sites was done based on previous work {\cite{ferreira13}} and is shown in Figs.~\ref{INEPT}~and~\ref{R-PDLF}. The dipolar splittings for the assigned carbons that were used to calculate their C--H bond order parameter magnitudes are shown in Fig.~\ref{R-PDLFslices}. Because the complete assignment of the peaks in the crowded spectral region between 29-31 ppm was not possible due to the chemical shift overlap of different carbons (Fig.~\ref{R-PDLF}), we partially assigned the acyl chain order parameters of this region to mimic the profile predicted by the MD simulations (Fig.~\ref{simVSexpNOions_POPS}).
 
 
@@ -522,7 +502,7 @@ acyl chain order parameters (Fig.~\ref{simVSexpNOions_POPS}),
 indicating that the bilayer dimensions and acyl chain
 conformations are well described by the force field. The area per lipid from ECC-POPS simulation is slightly
 smaller than the value reported from SDP model \cite{kucerka14} (Fig.~\ref{simVSexpNOions_POPS}), but the values
-agree within their error estimates. The larger area in ECC-POPS compared to Lipid17/Dang simulation can be
+agree within their error estimates. Both the smaller order parameters and larger area in ECC-POPS compared to Lipid17/Dang simulation can be
 explained by increased headgroup repulsion due to lower counterion binding affinity (Fig. \ref{fig:POPS-counterions-dens}).
 This explains also the larger area per molecule (57~\AA$^2$) reported for Lipid17 POPS simulations
 with {\AA}qvist ion parameters~\cite{NMRlipidsIV}.
@@ -831,8 +811,8 @@ allowing to elucidate signaling processes involving PS and \ce{Ca^{2+}}.
 
 The general philosophy behind our approach is to build upon existing non-polarizable force fields making the minimum of necessary changes by scaling only groups bearing a sizeable (partial) charge, followed by slight readjustments of van der Waals radii and possibly also other parameters such as those concerning dihedral angle terms.
 The present work thus represents another piece in the mosaic that leads to development of an improved empirical force field for biomolecular simulations involving aqueous salt solutions, proteins, peptides, lipid membranes, and/or nucleic acids, which include electronic polarization effects in a mean field way via charge scaling without extra computational costs compared to standard non-polarizable simulations. 
-We believe that such ECC corrected force fields will be useful in modeling complex biomembranes when 
-explicitly polarizable force fields for biomolecules \cite{amoeba13,li17,chu18} are not necessary.
+We believe that such ECC force fields will be useful in modeling complex biomembranes when simulations with
+explicitly polarizable force fields for biomolecules \cite{amoeba13,li17,chu18} are not practical.
 
 % If you have acknowledgments, this puts in the proper section head. 
 \begin{acknowledgement} 
