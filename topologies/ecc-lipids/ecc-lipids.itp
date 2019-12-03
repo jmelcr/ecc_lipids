@@ -26,6 +26,8 @@
  hE       hE          0.00000  0.00000   A     0.219950   6.56888e-02 ; EVAL 5 0.247135*PARM['sigma_scale_factor.txt:1.0'] /EVAL
  hX       hX          0.00000  0.00000   A     0.174438   6.56888e-02 ; EVAL 5 0.195998*PARM['sigma_scale_factor.txt:1.0'] /EVAL
  hN       hN          0.00000  0.00000   A     0.0935445  6.56888e-02 ; EVAL 5 0.106908*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ oH        8        16.000000  0.000000  A     0.261657    0.50208    ; EVAL 5 0.29399658*PARM['sigma_scale_factor.txt:1.0'] /EVAL
+ hO        1         1.008000  0.000000  A     0.095147986 0.0656888  ; EVAL 5 0.10690785*PARM['sigma_scale_factor.txt:1.0'] /EVAL
 ; tweak end
 ; lipid-tail atom types
  cD       cD          0.00000  0.00000   A     3.39967e-01   4.57730e-01 ; 1.91  0.1094
