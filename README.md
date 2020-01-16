@@ -14,7 +14,7 @@ like zwitterionic lipids, e.g. [POPC](https://pubs.acs.org/doi/10.1021/acs.jpcb.
 
 This work is open to any contribution from anyone
 from pointig out bugs, [raising issues](https://github.com/jmelcr/ecc_lipids/issues)
-and adding extra starting structures 
+improving this page and adding extra starting structures 
 to adding new molecules and headgroup-tail combinations and improving the whole force field.
 Enjoy the force field, fork this repository 
 and contribute through [pull requests](https://github.com/jmelcr/ecc_lipids/pulls)!
@@ -86,13 +86,13 @@ as it is consistent with the principles underling ECC.
 However, the results with ECC-lipids are robust with respect to the choice of the water model
 as was shown in [SI of ECC-POPC publication](https://pubs.acs.org/doi/suppl/10.1021/acs.jpcb.7b12510/suppl_file/jp7b12510_si_001.pdf). 
 
-## papers with ECC-lipids
+## Papers with ECC-lipids
 
 + Accurate Binding of Sodium and Calcium to a POPC Bilayer by Effective Inclusion of Electronic Polarization, [ECC-POPC](https://pubs.acs.org/doi/10.1021/acs.jpcb.7b12510) also available at [GitHub](https://github.com/ohsOllila/NMRlipids_VI-NewIonModel)
 + Improved Cation Binding to Lipid Bilayers with Negatively Charged POPS by Effective Inclusion of Electronic Polarization [ECC-POPS](https://pubs.acs.org/doi/10.1021/acs.jctc.9b00824) also available at [GitHub](https://github.com/jmelcr/ecc_pops)
 
 
-## related work
+## Related work
 
 + [NMRLipids projects](https://nmrlipids.blogspot.cz/)
    + [Molecular electrometer and binding of cations to phospholipid bilayers](https://pubs.rsc.org/en/content/articlelanding/2016/cp/c6cp04883h#!), also on [GitHub](https://github.com/NMRLipids/lipid_ionINTERACTION/blob/master/Manuscript/LIPIDionINTERACT.pdf) 
@@ -104,13 +104,10 @@ as was shown in [SI of ECC-POPC publication](https://pubs.acs.org/doi/suppl/10.1
 
 + Molecular dynamics in electronic continuum (MDEC)
    + MDEC 2009, [Electronic continuum model for molecular dynamics simulations](http://scitation.aip.org/content/aip/journal/jcp/130/8/10.1063/1.3060164)
-   + MDEC 2010,
-## pre-equilibrated ECC-lipids membranes 
-
- [Electronic Continuum Model for Molecular Dynamics Simulations of Biological Molecules](http://dx.doi.org/10.1021/ct9005807)
+   + MDEC 2010, [Electronic Continuum Model for Molecular Dynamics Simulations of Biological Molecules](http://dx.doi.org/10.1021/ct9005807)
 
 
-## notes
+## Notes
 
 The directory structure and working style of this repository
 is highly inspired by open-collaboration [NMRLipids projects](https://nmrlipids.blogspot.cz/),
