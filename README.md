@@ -20,6 +20,7 @@ to adding new molecules and headgroup-tail combinations and improving the whole 
 Enjoy ECC-lipids, fork this repository 
 and contribute through [pull requests](https://github.com/jmelcr/ecc_lipids/pulls)!
 
+![From ECC-POPC paper](https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/jctcce/2020/jctcce.2020.16.issue-1/acs.jctc.9b00824/20200113/images/medium/ct9b00824_0002.gif)
 
 # Quick start
 
