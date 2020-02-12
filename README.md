@@ -1,11 +1,10 @@
 # ECC-lipids
 
 ECC-lipids is a classical MD lipid force field with 
-implicit embedding of the electronic polarization
+an implicit embedding of the electronic polarization
 through the Electronic Continuum Correction ([ECC](https://jmelcr.github.io/blog/ECC-post)).
 
-The electronic polarization
-(included e.g. via ECC)
+Electronic polarization (included e.g. via ECC)
 is [important for accurate interactions](https://www.frontiersin.org/articles/10.3389/fmolb.2019.00143/full) 
 of charged molecules, cation and anions, 
 like sodium or [divalent calcium cations](http://aip.scitation.org/doi/10.1063/1.5006779),
@@ -28,14 +27,25 @@ and contribute through [pull requests](https://github.com/jmelcr/ecc_lipids/pull
 # Quick start
 
 Good news - using ECC-lipids in your simulations is easy! 
-Depending on naming conventions in coordinate files and topologies, 
-we present two kinds of topologies (but still the same parameters and interactions):
+All ECC-lipids topologies are available 
+at [ecc_lipids/topologies/ecc-lipids/](https://github.com/jmelcr/ecc_lipids/tree/master/topologies/ecc-lipids). 
+
+The ECC-lipids topology files are created for two popular naming conventions:
  - CHARMM-compatible naming convention
  - AMBER-compatible naming convention
 
-## CHARMM-compatible topologies
+The difference between them is only in
+the order of atoms and their names in coordinate and topology files.
+Importantly, the interaction parameters are identical and 
+simulations with either of the two conventions yield the same configuration ensembles. 
 
-All ECC-lipids topologies are available at [ecc_lipids/topologies/ecc-lipids/](https://github.com/jmelcr/ecc_lipids/tree/master/topologies/ecc-lipids) in this repository.
+
+# Starting configurations
+
+Several equilibrated starting configurations are available below for both naming conventions. 
+
+
+## CHARMM-compatible topologies and configurations
 
 Several starting structures:
  - [POPC bilayer ](https://zenodo.org/record/1118266/files/sim_ECC-POPC_SPCE_noIons-ref.gro?download=1) (SPC/E water, 4 CaCl2, equilibrated)
@@ -61,7 +71,7 @@ An example topology for ECC-lipids is given in
 [topologies/ecc-lipids](https://github.com/jmelcr/ecc_lipids/tree/master/topologies/ecc-lipids).
 
 
-## Amber Lipid14-compatible topologies
+## Amber Lipid14-compatible topologies and configurations
 
  - [POPC bilayer without ions and 3-point water model (SPC/E)](https://zenodo.org/record/1118266/files/sim_ECC-POPC_SPCE_noIons-ref.gro?download=1)
  - [POPC bilayer without ions and 4-point water model (TIP4p-2005)](https://zenodo.org/record/1118980/files/sim_ECC-POPC_TIP4p2005_noIons-ref.gro?download=1)
@@ -103,14 +113,14 @@ but were also tested with [openMM](http://openmm.org/)
 as is shown in [SI of ECC-POPC publication](https://pubs.acs.org/doi/suppl/10.1021/acs.jpcb.7b12510/suppl_file/jp7b12510_si_001.pdf). 
 
 
-## Papers with ECC-lipids
+# Papers with ECC-lipids
 
 + Accurate Binding of Sodium and Calcium to a POPC Bilayer by Effective Inclusion of Electronic Polarization, [ECC-POPC](https://pubs.acs.org/doi/10.1021/acs.jpcb.7b12510) also available at [GitHub](https://github.com/ohsOllila/NMRlipids_VI-NewIonModel)
 + Improved Cation Binding to Lipid Bilayers with Negatively Charged POPS by Effective Inclusion of Electronic Polarization [ECC-POPS](https://pubs.acs.org/doi/10.1021/acs.jctc.9b00824) also available at [GitHub](https://github.com/jmelcr/ecc_pops)
 + Simulation of processes in cellular membranes [PhD thesis](https://dspace.cuni.cz/bitstream/handle/20.500.11956/102874/140068373.pdf?sequence=1&isAllowed=y) including POPC, POPE and POPS; also on [GitHub](https://github.com/jmelcr/phd-thesis/blob/master/en/thesis.pdf)
 
 
-## Related work
+# Related work
 
 + [NMRLipids projects](https://nmrlipids.blogspot.cz/)
    + [Molecular electrometer and binding of cations to phospholipid bilayers](https://pubs.rsc.org/en/content/articlelanding/2016/cp/c6cp04883h#!), also on [GitHub](https://github.com/NMRLipids/lipid_ionINTERACTION/blob/master/Manuscript/LIPIDionINTERACT.pdf) 
