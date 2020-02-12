@@ -50,7 +50,7 @@ Zenodo deposits including more details, e.g. long trajectories, salt concentrati
  - POPC and POPS lipid bilayers (various mixtures) and Na+ (K+) counterions - [Zenodo deposit](https://doi.org/10.5281/zenodo.1488093)
  - POPC and POPS lipid bilayers (various mixtures) and Na+ (K+) counterions and additional CaCl2 concentrations - [Zenodo deposit](https://doi.org/10.5281/zenodo.1488101)
 
-**Can use CHARMM-gui!**
+### Can use CHARMM-gui!
 Also, since the molecular topology of ECC-lipids 
 is designed to agree with CHARMM lipids,
 ECC-lipids can be used directly 
